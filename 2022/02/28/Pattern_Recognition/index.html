@@ -1,0 +1,1027 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/android-chrome-192x192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="“This is really a great lesson.” “If there are no such many homework.”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pattern Recognition">
+<meta property="og:url" content="http://andrew-rey.github.io/2022/02/28/Pattern_Recognition/index.html">
+<meta property="og:site_name" content="Andrew-Rey">
+<meta property="og:description" content="“This is really a great lesson.” “If there are no such many homework.”">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-19T02:43:18.794Z">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Pattern Recognition - Andrew-Rey</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"andrew-rey.github.io","root":"/","version":"1.8.14","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":false,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Pattern Recognition</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-28 00:00" pubdate>
+          February 28, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          89 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Pattern Recognition</h1>
+            
+            <div class="markdown-body">
+              
+              <p>“This is really a great lesson.”</p>
+<p>“If there are no such many homework.”</p>
+<span id="more"></span>
+<h1>Introduction</h1>
+<h2 id="What-is-Patter-Recognition">What is Patter Recognition?</h2>
+<ul>
+<li>Pattern
+<ul>
+<li>the opposite of choas</li>
+</ul>
+</li>
+<li>Recognition
+<ul>
+<li>Identification of a pattern as  a member of a category</li>
+<li><font color=blue>Classification</font>: category known $\Rightarrow$ assign proper class label for each pattern</li>
+<li><font color=blue>Clustering</font>: category unknown $\Rightarrow$ learn categories and group patterns</li>
+</ul>
+</li>
+<li>Pattern Recognition
+<ul>
+<li>Perceive (理解): interact with the real-world</li>
+<li>Process (处理): learn to distinguish patterns of interest</li>
+<li>Prediction (预测): make sound and reasonable decisions about the categories</li>
+</ul>
+</li>
+</ul>
+<div class="note note-primary">
+            <h3 id="preview-three-classification-ideas">preview:three classification ideas</h3><ul><li>estimate the class conditional function</li><li>estimate the posterior</li><li>calculate the discriminant function directly</li></ul>
+          </div>
+<h1>Bayesian Decision Theory</h1>
+<h2 id="Basic-Theory">Basic Theory</h2>
+<h3 id="🌸Bayesian-Formula">🌸Bayesian Formula</h3>
+<p>$$<br>
+P(\omega_i | \mathbf{x}) = \frac{P(\omega_i)p(\mathbf{x} | \omega_i)}{p(\mathbf{x})}<br>
+$$<br>
+Where $\omega_i(i = 1,\dots, c)$ is the category of research object. $\mathbf{x}$ is the <strong>feature vector</strong>, has $d$ dimensions. We call $P(\omega_i | \mathbf{x})$ <strong>posterior</strong>, $P(\omega_i)$ <strong>prior probability</strong> and $p(\mathbf{x} | \omega_i)$ <strong>likelihood</strong> of $\mathbf{x}$ in category $\omega_i$. Note that $p(\omega{x})$ is a constant, we call it <strong>evidence coefficient</strong>.<br>
+$$<br>
+p(\mathbf{x}) = \sum_{i = 1}^c P(\omega_i)p(\mathbf{x} | \omega_i)<br>
+$$</p>
+<h3 id="🌸Loss-function">🌸Loss function</h3>
+<p>We use<br>
+$$<br>
+\lambda(\alpha_i | \omega_j)<br>
+$$<br>
+to describe the loss or penetrate we get since we take action $\alpha_i$ while the true category is $\omega_j$.</p>
+<h3 id="🌸Class-Conditional-Probability">🌸Class-Conditional Probability</h3>
+<p>We define the <strong>class conditional probability</strong> relative to the action $\alpha_i$<br>
+$$<br>
+R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) P(\omega_j | \mathbf{x})<br>
+$$<br>
+So the <strong>total risk</strong> is defined as:<br>
+$$<br>
+R = \int_{feature\ space} R(\alpha_i | \mathbf{x}) p(\mathbf{x}) d\mathbf{x}<br>
+$$</p>
+<h3 id="🌸The-Decision-Theory">🌸The Decision Theory</h3>
+<p><strong>Bayesian Decision Theory</strong>: In order to minimize the total risk $R$, for $i = 1, \dots, a$ we calculate the class-conditional probability<br>
+$$<br>
+R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) p(\omega_j | \mathbf{x})<br>
+$$<br>
+and choose a proper action $\alpha_i$ to make the $R(\alpha_i | \mathbf{x})$ minimized.</p>
+<h2 id="Two-class-classification">Two-class classification</h2>
+<p>The loss function is<br>
+$$<br>
+\lambda_{ij} \doteq \lambda(\alpha_i | \omega_j)<br>
+$$<br>
+And our class conditional function are:</p>
+<p>\[
+\begin{aligned}
+R(\alpha_1 | \mathbf{x}) &= \lambda_{11} p(\omega_1 | \mathbf{x}) + \lambda_{12} p(\omega_2 | \mathbf{x})\\
+R(\alpha_2 | \mathbf{x}) &= \lambda_{21} p(\omega_1 | \mathbf{x}) + \lambda_{22} p(\omega_2 | \mathbf{x})
+\end{aligned}
+\]</p>
+<p>The decision is: if $R(\alpha_1 | \mathbf{x}) &lt; R(\alpha_2 | \mathbf{x})$, then it means $\alpha_1$ takes smaller risk, and so we choose the action $\alpha_1$.</p>
+<p>Using the posterior probability to describe is:<br>
+$$<br>
+(\lambda_{21} - \lambda_{11})P(\omega_1 | \mathbf{x}) &gt; (\lambda_{12} - \lambda_{22})P(\omega_2 | \mathbf{x})<br>
+$$</p>
+<p>Using the Bayes’ Formula, converting the prior probability to posterior probability:<br>
+$$<br>
+(\lambda_{21} - \lambda_{11})p(\mathbf{x} | \omega_1)P(\omega_1) &gt; (\lambda_{12} - \lambda_{22})p(\mathbf{x} | \omega_2)P(\omega_2)<br>
+$$</p>
+<p>Or writing with fraction form:<br>
+$$<br>
+\frac{p(\mathbf{x} | \omega_1)}{p(\mathbf{x} | \omega_2)} &gt; \frac{\lambda_{12} - \lambda_{22}}{\lambda_{21} - \lambda_{11}}\frac{P(\omega_2)}{P(\omega_1)}<br>
+$$</p>
+<h2 id="The-Minimum-error-Classification">The Minimum-error Classification</h2>
+<p>We define the minimum-error classification is a problem that uses the <strong>symmetric loss</strong> or <strong>“0-1” loss</strong>:</p>
+<p>\[
+\lambda(\alpha_i | \omega_j) = \left\{\begin{aligned}
+&0&\ &i=j,\\
+&1&\ &i\neq j
+\end{aligned}\right.\ \ \ i,j = 1,\dots,c
+\]</p>
+<p>If you use this symmetric loss in a classification problem, you mean <strong>all the error decisions make the same consequence</strong>.</p>
+<p>Our decision is made based on conditional risk:</p>
+<p>
+\[
+\begin{aligned}
+R(\alpha_i | \omega_j) &= \sum_{j = 1}^c \lambda_{ij} P(\omega_j | \mathbf{x})\\
+&= \sum_{i\neq j} 1 \cdot P(\omega_j | \mathbf{x})\\
+&= 1 - P(\omega_i | \mathbf{x})
+\end{aligned}  
+\]
+</p>
+<h3 id="🌸Minimax-Rule">🌸Minimax Rule</h3>
+<p>I will not write this part until I make it clear…</p>
+<h2 id="The-Discriminant-Function-Decision-Surface-Based-on-Gaussian-Distribution">The Discriminant Function, Decision Surface Based on Gaussian Distribution</h2>
+<h3 id="🌸Gaussian-Distribution">🌸Gaussian Distribution</h3>
+<p>\[\begin{aligned}
+\varphi(\mathbf{x}) = \frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(\mathbf{x} - \mathbf{\mu})^T\Sigma^{-1}(\mathbf{x} - \mathbf{\mu}))
+\end{aligned}\]</p>
+<h3 id="🌸Discriminant-Function">🌸Discriminant Function</h3>
+<p>The discriminant function is defined as: we choose $i^{th}$ class, if<br>
+$$<br>
+g_i(x)&gt;g_j(x)<br>
+$$<br>
+for $\forall j\neq i$. And $g_i(x)$ is called discriminant function.</p>
+<p>Based on minimum-error classification, the discriminant function can be written as:</p>
+<p>
+\[
+\begin{aligned}
+g_i(x)&=-P(\omega_i|x) \\
+&=P(\omega_i|x) \\
+&=p(x|\omega_i)P(\omega_i)\ (Bayes' Formula) \\
+&=lnp(x|\omega_i)+lnP(\omega_i)
+\end{aligned}
+\]
+</p>
+where the "=" means "equivalent" or "the same to".
+<p>Specially, if it’s a two-class classification:<br>
+$$<br>
+g(x)=g_1(x)-g_2(x)<br>
+$$<br>
+or<br>
+$$<br>
+g(x)=P(\omega_1|x)-P(\omega_2|x)<br>
+$$<br>
+or<br>
+$$<br>
+g(x)=ln\frac{p(x|\omega_1)}{p(x|\omega_2)}+ln\frac{P(\omega_1)}{P(\omega_2)}<br>
+$$<br>
+Correspondingly, we have <strong>decision boundary</strong> and <strong>decision region</strong>.</p>
+<h3 id="🌸Minimum-total-risk-based-on-Gaussian-distribution-Discriminant-Function-Discriminant-Boundary">🌸Minimum total risk based on Gaussian distribution: Discriminant Function, Discriminant Boundary</h3>
+<p>On this section, we discuss the situation that <strong>the likelihood submits Gaussian distribution</strong> and <strong>the loss is “0-1” loss</strong>.</p>
+<p>
+\[
+p(x|\omega_i)=\frac{1}{(2\pi)^{d/2} |\Sigma_i| ^ {1/2}}exp(-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i))
+\]
+</p>
+<p>$$<br>
+\lambda(\alpha_i|\omega_j) = I(i\neq j)<br>
+$$</p>
+<p>$$<br>
+g_i(x)=lnp(x|\omega_i)+lnP(\omega_i)=-\frac{1}{2}(x-\mu_i)^T \Sigma_i^{-1}(x-\mu_i)-\frac{d}{2}ln2\pi-\frac{1}{2}ln|\Sigma|+lnP(\omega_i)<br>
+$$</p>
+<p>🚩<b>Minimum distance classifier</b></p>
+<p>💙<strong>case 1a:</strong> suppose all prior probabilities are the same</p>
+<p>$$<br>
+P(\omega_i)=1/c\ \ \forall i \in (1,c)<br>
+$$</p>
+<p>and all features have no relationships with others and all classes have the same covariance matrices</p>
+<p>$$<br>
+\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)<br>
+$$</p>
+<p>Discriminant function:</p>
+<p>
+\[
+\begin{aligned}
+  g_i(x)&=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)+constant \\
+  g_i(x)&=-\frac{1}{2\sigma^2}(x-\mu_i)^T(x-\mu_i)\ \ \ (Euclidean\ distance) \\
+  g_i(x)&=-\frac{1}{2\sigma^2}(x^Tx-2\mu_i^Tx+\mu_i^T\mu_i) \\
+\end{aligned}
+\]
+</p>
+<p>$x^Tx$ is independent with $\forall i$, so $x^Tx$ is a constant when considering $i$.</p>
+<p>
+\[
+g_i(x)=\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i
+\]
+</p>
+<p>this is a <strong>linear discriminant machine</strong>.</p>
+<p>Discriminant boundary:</p>
+<p>
+\[
+g_i=g_j  
+\]
+</p>
+<p>
+\[
+  \begin{aligned}
+&\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i=
+\frac{1}{\sigma^2}\mu_j^Tx-\frac{1}{2\sigma^2}\mu_j^T\mu_j \\
+&\frac{1}{\sigma^2}(\mu_i^T-\mu_j^T)x - \frac{1}{2\sigma^2}(\mu_i^T + \mu_j^T)(\mu_i - \mu_j)=0 \\
+&\frac{1}{\sigma^2}(\mu_i-\mu_j)^T(x-\frac{1}{2}(\mu_i + \mu_j))  =0 \\
+\end{aligned}
+\]
+</p>
+<div class="note note-primary">
+            <p>so the discriminant boundary must pass the point $x=\frac{1}{2}(\mu_i + \mu_j)$, and is vertical with $(\mu_i-\mu_j)$</p>
+          </div>
+<p>💙<strong>case 1b:</strong> suppose all prior probabilities are the same:</p>
+<p>$$<br>
+P_i=1/c<br>
+$$</p>
+<p>and all covariance are the same, but features have relationships with each other:</p>
+<p>$$<br>
+\Sigma_i=\Sigma<br>
+$$</p>
+<p>Discriminant function:</p>
+<p>
+\[
+\begin{aligned}
+&g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)-\frac{1}{2}ln|\Sigma_i|+constant \\
+&g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)-\frac{1}{2}ln|\Sigma| \\
+&g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)\ \ \ (Mahalanobis\ distance) \\
+&g_i(x)=2\mu_i^T\Sigma^{-1}x-\mu_i^T\Sigma^{-1}\mu_i \\
+\end{aligned}
+\]
+</p>
+<p>this is also a <strong>linear discriminant machine</strong>.</p>
+<p>Discriminant boundary:</p>
+<p>
+\[
+(\Sigma^{-1}(\mu_i-\mu_j))^T(x-\frac{\mu_i+\mu_j}{2})=0
+\]
+</p>
+<div class="note note-primary">
+            <p>the boundary crosses the middle point of $\mu_i$ and $\mu_j$, but is not vertical with $\mu_i-\mu_j$ as $\Sigma$ provides a rotation with $\mu_i-\mu_j$.</p>
+          </div>
+<p>💙<strong>case 2a:</strong> suppose $P(\omega_i)$ are not the same, while all features have no relationships with others and all classes have the same covariance matrices</p>
+<p>$$<br>
+\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)<br>
+$$</p>
+<p>Discriminant function:</p>
+<p>
+\[
+  g_i(x)=2\mu_i^Tx-\mu_i^T\mu_i+2\sigma^2lnP(\omega_i)
+\]
+</p>
+<p>this is a <strong>linear discriminant machine</strong></p>
+<p>Discriminant boundary:</p>
+<p>
+\[
+(\mu_i-\mu_j)^T(x-\frac{\mu_i+\mu_j}{2}-\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))  
+\]
+</p>
+<p>if $P(\omega_i)&gt;P(\omega_j)$, then</p>
+<p>\[
+\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))>0
+\]</p>
+ , it will cross a point that is closer to $\mu_j$.
+<p>💙<strong>case 2b:</strong> suppose $P(\omega_i)$ are not the same, while covariance are the same, but features have relationships with each other:</p>
+<p>$$<br>
+\Sigma_i=\Sigma<br>
+$$</p>
+<p>Discriminant function:</p>
+<p>
+\[
+g_i(x)=(\Sigma\mu_i)^Tx-\frac{1}{2}\mu_i^T\Sigma^{-1}\mu_i+lnP(\omega_i)  
+\]
+</p>
+<p>this is a <strong>linear discriminant machine</strong></p>
+<p>Discriminant boundary:</p>
+<p>
+\[
+  (\Sigma(\mu_i-\mu_j))^T(x-\frac{1}{2}(\mu_i+\mu_j)-\frac{ln[P(\omega_i)/P(\omega_j)]}{(\mu_i-\mu_j)^T\Sigma(\mu_i-\mu_j)}(\mu_i-\mu_j))
+\]
+</p>
+<p>💙<strong>case 3:</strong> suppose that $P(\omega_i)$ are not the same as well as covariance matrices, then the discriminant function is a quadric function. The discriminant boundary will be more various.</p>
+<h1>Maximum Likelihood estimation and Bayesian estimation</h1>
+<p>In the chapter 2, we suppose the likelihood function $p(x|\omega)$ is known, but it impossible to know about it in the daily life or experiments, so we must estimate the likelihood function. Generally speaking, we have two methods to solve this problem: the one is <strong>parameter estimation</strong> and the other is <strong>non-parameter estimation</strong>.</p>
+<p>In <strong>parameter estimation</strong>, we will give a prior model of likelihood function of $x$ with unknown parameters, and what we should do is estimating the parameters using the data set.</p>
+<h2 id="Maximum-Likelihood-estimation">Maximum Likelihood estimation</h2>
+<p>Use the <strong>parameterized form</strong> of class-conditional density function (likelihood):</p>
+<p>$$<br>
+p(x|\omega_i, \theta_i)<br>
+$$</p>
+<p>As we solve all classes’ parameters <strong>respectively</strong>, we can simplify the denotation as:</p>
+<p>$$<br>
+P(D|\theta)<br>
+$$</p>
+<p>where $D$ means the data set of class $\omega_i$.</p>
+<p>samples are i.i.d:</p>
+<p>
+\[
+p(D|\theta_i)=\prod_{k=1}^n p(x_k|\theta)
+\]
+</p>
+<p>and the ML estimation method asks we to find a suitable $\theta$ to maximize $p(D|\theta)$, which means:</p>
+<p>
+\[
+\theta = argmax_{\theta} p(D|\theta)  
+\]
+</p>
+<p>if we know $\theta$, we will know $p(x|\omega_i,\theta_i)$(just to traverse all categories and calculate $\theta_i$), and then we can train classifiers based on Bayesian decision thm.</p>
+<p>So how to solve $\theta = argmax_{\theta} p(D|\theta)$:</p>
+<p>log-likelihood function:</p>
+<p>
+\[
+\ell(\theta)=\sum_{k=1}^n lnp(x_k|\theta)  
+\]
+</p>
+<p>maximizing $p(D|\theta)$ is the same with maximizing log-likelihood. So, calculate the gradient of $\theta$:</p>
+<p>$$<br>
+\frac{\partial}{\partial \theta}\ell(\theta)<br>
+$$</p>
+<p><strong>we will discuss the Gaussian situation:</strong></p>
+<h3 id="🌸ML-Gaussian-Case-mu-is-unknown">🌸ML Gaussian Case: $\mu$ is unknown</h3>
+<p>As $\Sigma$ is know, so</p>
+<p>$$<br>
+\theta=\mu<br>
+$$</p>
+<p>
+\[
+\begin{aligned}
+\ell(\theta)&=\sum_{k=1}^n lnp(x_k|\theta) \\
+&=\sum_{k=1}^n -\frac{1}{2}(x_k-\mu)^T\Sigma^{-1}(x_k-\mu)-ln(2\pi)^{d/2}|\Sigma|^{1/2} \\
+\end{aligned}
+\]
+</p>
+<p>Gradient:</p>
+<p>
+\[
+\begin{aligned}
+\ell^{\prime}(\theta)&=\sum_{k=1}^n 2\Sigma^{-1}x_k-2\Sigma^{-1}\mu \\
+\end{aligned}
+\]
+</p>
+<p>let</p>
+<p>$$<br>
+\ell(\theta)=0<br>
+$$</p>
+<p>we get:</p>
+<p>$$<br>
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k<br>
+$$</p>
+<h3 id="🌸ML-Gaussian-Case-mu-and-Sigma-are-unknown">🌸ML Gaussian Case: $\mu$ and $\Sigma$ are unknown</h3>
+<ol>
+<li>for only one feature (1-dim case):<br>
+we have:<br>
+$$<br>
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k<br>
+$$<br>
+and</li>
+</ol>
+<p>
+\[
+\hat{\Sigma} = \hat{\sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})^2
+\]
+</p>
+<ol start="2">
+<li>for multi-feature (multi-dim case):</li>
+</ol>
+<p>
+\[
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k
+\]
+</p>
+<p>
+\[
+\hat{\Sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})(x_k-\hat{\mu})^T
+\]
+</p>
+<div class="note note-primary">
+            <p>$\hat{\mu}$ is unbiased estimation, $\hat{\Sigma}$ is not.</p><p>But $\frac{n}{n-1}\hat{\Sigma}$ is unbiased estimation.</p>
+          </div>
+<h2 id="Bayesian-estimation">Bayesian estimation</h2>
+<p><strong>We suppose our parameter $\theta$ submits to a prior distribution, and our goal is to estimation $\theta$'s distribution with given data set and prior distribution</strong>.</p>
+<p>Some notions:</p>
+<p>prior probability $P(\theta)$</p>
+<p>posterior $p(\theta|D)$</p>
+<p>likelihood $p(x|D)(i.e.p(x|\omega))$</p>
+<p>Two important relations:</p>
+<p>
+\[
+p(x|D) = \int p(x,\theta|D)d\theta = \int p(x|\theta)p(\theta|D)d\theta\qquad(1)
+\]
+</p>
+<p>
+\[
+  \begin{aligned}
+  p(\theta|D)&=\frac{p(D|\theta)P(\theta)}{\int p(D|\theta)P(\theta)d\theta} \\
+  &=\alpha p(D|\theta)P(\theta) \\
+  &=\alpha\prod_{k=1}^n p(x_k|\theta)P(\theta)\qquad(2)
+  \end{aligned}
+\]
+</p>
+<p><strong>Ongoing update…</strong></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Artificial-Intelligence/" class="category-chain-item">Artificial Intelligence</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Pattern Recognition</div>
+      <div>http://andrew-rey.github.io/2022/02/28/Pattern_Recognition/</div>
+    </div>
+    <div class="license-meta">
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 28, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/17/%E7%9F%A9%E9%98%B5%E8%AE%BA/" title="矩阵论(一)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">矩阵论(一)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/26/CmptWeb/" title="计算机网络">
+                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
