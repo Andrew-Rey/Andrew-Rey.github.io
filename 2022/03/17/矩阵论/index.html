@@ -286,19 +286,11 @@
 <p>“?”</p>
 <span id="more"></span>
 <p>参考教材: 戴华, “矩阵论,” 科学出版社, 2001年出版</p>
-<h1>线性空间与内积空间</h1>
-<h2 id="预备知识-集合-映射-数域">预备知识: 集合, 映射, 数域</h2>
-<h3 id="🌸集合及其运算-略">🌸集合及其运算(略)</h3>
-<h3 id="🌸二元关系与等价关系">🌸二元关系与等价关系</h3>
-<p><strong>Descartes积:</strong> \(A, B\neq \phi\), 集合\(\lbrace(a,b) | a\in A, b\in B\rbrace\)称为\(A\)与\(B\)的Descartes积, 记作\(A \times B\).<br>
-$$<br>
-A\times B = \lbrace(a,b) | a\in A, b\in B\rbrace<br>
-$$</p>
-<p><strong>二元关系:</strong> 子集\(R\)称为二元关系, 若<br>
-$$<br>
-R\subseteq A\times B<br>
-$$<br>
-\(A\)与\(B\)有二元关系\(R\), 记作 \(aRb\). \(A\times A\)的二元关系 简称为\(A\)上的二元关系.</p>
+<h1 id="线性空间与内积空间"><a href="#线性空间与内积空间" class="headerlink" title="线性空间与内积空间"></a>线性空间与内积空间</h1><h2 id="预备知识-集合-映射-数域"><a href="#预备知识-集合-映射-数域" class="headerlink" title="预备知识: 集合, 映射, 数域"></a>预备知识: 集合, 映射, 数域</h2><h3 id="cherry-blossom-集合及其运算-略"><a href="#cherry-blossom-集合及其运算-略" class="headerlink" title=":cherry_blossom:集合及其运算(略)"></a>:cherry_blossom:集合及其运算(略)</h3><h3 id="cherry-blossom-二元关系与等价关系"><a href="#cherry-blossom-二元关系与等价关系" class="headerlink" title=":cherry_blossom:二元关系与等价关系"></a>:cherry_blossom:二元关系与等价关系</h3><p><strong>Descartes积:</strong> \(A, B\neq \phi\), 集合\(\lbrace(a,b) | a\in A, b\in B\rbrace\)称为\(A\)与\(B\)的Descartes积, 记作\(A \times B\).</p>
+<script type="math/tex; mode=display">
+A\times B = \lbrace(a,b) | a\in A, b\in B\rbrace</script><p><strong>二元关系:</strong> 子集\(R\)称为二元关系, 若</p>
+<script type="math/tex; mode=display">
+R\subseteq A\times B</script><p>\(A\)与\(B\)有二元关系\(R\), 记作 \(aRb\). \(A\times A\)的二元关系 简称为\(A\)上的二元关系.</p>
 <p><strong>等价关系:</strong> 集合\(A\)上的关系\(R\)满足:</p>
 <ol>
 <li>自反性:\(\forall a \in A \Rightarrow aRa\)</li>
@@ -313,13 +305,10 @@ $$<br>
 <li>集合 A 上的每个等价关系 R 都决定 A 的一个分类</li>
 <li>集合 A 的一个分类都决定 A 上的一个等价关系</li>
 </ol>
-<h3 id="🌸映射">🌸映射</h3>
-<p>描述两个集合的元素之间的关系. 映射的关系能用<strong>有向图</strong>很清楚地阐释.</p>
-<p>记号:<br>
-$$f:A\rightarrow B$$<br>
-表示一个抽象的映射, 而记号<br>
-$$f:x\rightarrow f(x)$$<br>
-表示具体的对应关系.</p>
+<h3 id="cherry-blossom-映射"><a href="#cherry-blossom-映射" class="headerlink" title=":cherry_blossom:映射"></a>:cherry_blossom:映射</h3><p>描述两个集合的元素之间的关系. 映射的关系能用<strong>有向图</strong>很清楚地阐释.</p>
+<p>记号: </p>
+<script type="math/tex; mode=display">f:A\rightarrow B</script><p>表示一个抽象的映射, 而记号</p>
+<script type="math/tex; mode=display">f:x\rightarrow f(x)</script><p>表示具体的对应关系.</p>
 <p><strong>相关定义</strong>: 单映射, 满映射, 双映射, 映射相等.</p>
 <p><strong>映射乘积:</strong> \(A,B,C\neq \phi, f_1:A\rightarrow B, f_2:B\rightarrow C\), 则\(f_1, f_2\)确定的从\(A\)到\(C\)的映射\(f_3:a\rightarrow f_2(f_1(a)), a\in A\)称为\(f_1, f_2\)的乘积, 记为:\(f_3 = f_2\cdot f_1\)</p>
 <ul>
@@ -330,19 +319,14 @@ $$f:x\rightarrow f(x)$$<br>
 <li>\(f_3\cdot (f_2 \cdot f_1) = (f_3\cdot f_2)\cdot f_1\)</li>
 <li>\(f_1\cdot I_A = I_B\cdot f_1=f_1\)</li>
 </ol>
-<p><strong>逆映射:</strong><br>
-$$f:A\rightarrow B$$<br>
-$$if\ \exists\ g:B\rightarrow A$$<br>
-$$s.t.\ g\cdot f = I_A,\quad f\cdot g = I_B$$<br>
-则称\(g\)为\(f\)的一个逆映射, 记为\(f^{-1}\),此时\(f\)称为可逆映射.</p>
+<p><strong>逆映射:</strong> </p>
+<script type="math/tex; mode=display">f:A\rightarrow B</script><script type="math/tex; mode=display">if\ \exists\ g:B\rightarrow A</script><script type="math/tex; mode=display">s.t.\ g\cdot f = I_A,\quad f\cdot g = I_B</script><p>则称\(g\)为\(f\)的一个逆映射, 记为\(f^{-1}\),此时\(f\)称为可逆映射.</p>
 <p><strong>Thm:</strong> 可逆映射的逆映射唯一.</p>
 <p><strong>Thm:</strong> 映射是可逆映射的充要条件是该映射是一一映射.</p>
 <p><strong>变换:</strong> 非空集合到自身的一个映射称为变换. 若是双映射则称为<strong>一一变换</strong>; 若是有限集合, 则该一一变换称为<strong>置换</strong>.</p>
-<h3 id="🌸数域与代数运算">🌸数域与代数运算</h3>
-<p><strong>数域:</strong> 包含0和1在内的数集, 满足对和差积商封闭.</p>
+<h3 id="cherry-blossom-数域与代数运算"><a href="#cherry-blossom-数域与代数运算" class="headerlink" title=":cherry_blossom:数域与代数运算"></a>:cherry_blossom:数域与代数运算</h3><p><strong>数域:</strong> 包含0和1在内的数集, 满足对和差积商封闭.</p>
 <p><strong>代数运算:</strong> 映射\(\circ:A\times B\rightarrow C\), 其中所有集合非空. 若\(A=B=C\), 则称为<strong>二元运算</strong>. 记为\(a \circ b\).</p>
-<h2 id="线性空间">线性空间</h2>
-<p><strong>线性空间:</strong> 称\(V\)是\(P\)上的线性空间, 若\(V\)满足:</p>
+<h2 id="线性空间"><a href="#线性空间" class="headerlink" title="线性空间"></a>线性空间</h2><p><strong>线性空间:</strong> 称\(V\)是\(P\)上的线性空间, 若\(V\)满足:</p>
 <ol>
 <li>加法可交换</li>
 <li>加法可结合</li>
@@ -359,12 +343,10 @@ $$s.t.\ g\cdot f = I_A,\quad f\cdot g = I_B$$<br>
 <li>零元唯一</li>
 <li>逆元唯一</li>
 </ol>
-<p><strong>凸集:</strong> \(V\)是\(P\)上的线性空间, \(W\)是\(V\)的非空子集, 如\(\forall \alpha, \beta\in W\ and\ \forall \lambda \in [0, 1]\)成立\(\lambda \alpha + (1-\lambda) \beta\in W\), 则\(W\)是凸集.</p>
-<div class="note note-info">
+<p><strong>凸集:</strong> \(V\)是\(P\)上的线性空间, \(W\)是\(V\)的非空子集, 如\(\forall \alpha, \beta\in W\ and\ \forall \lambda \in [0, 1]\)成立\(\lambda \alpha + (1-\lambda) \beta\in W\), 则\(W\)是凸集.<br><div class="note note-info">
             <p>注意: 抛开数域\(P\)谈线性空间\(V\)是没有意义的.</p>
-          </div>
-<h3 id="🌸线性相关">🌸线性相关</h3>
-<p><strong>线性表示</strong>(略)</p>
+          </div></p>
+<h3 id="cherry-blossom-线性相关"><a href="#cherry-blossom-线性相关" class="headerlink" title=":cherry_blossom:线性相关"></a>:cherry_blossom:线性相关</h3><p><strong>线性表示</strong>(略)</p>
 <p><strong>线性组合</strong>(略)</p>
 <p><strong>向量组等价</strong>(略)</p>
 <p><strong>线性相关, 线性无关</strong>(略)</p>
@@ -373,105 +355,67 @@ $$s.t.\ g\cdot f = I_A,\quad f\cdot g = I_B$$<br>
 <p><strong>Thm:</strong> 线性空间中的向量组\(\alpha_1,\dots,\alpha_r\)线性无关, 并且可由向量组\(\beta_1,\dots,\beta_s\)线性表示, 则\(r\leq s\).</p>
 <p><strong>Thm:</strong> 两个等价的线性无关向量组必含有相同个数的向量.</p>
 <p><strong>Thm:</strong> 向量组\(\alpha_1,\dots,\alpha_r\)线性无关, 但向量组\(\alpha_1,\dots,\alpha_r, \beta\)线性相关, 则\(\beta\)可以被\(\alpha_1,\dots,\alpha_r\)唯一线性表示.</p>
-<p><strong>极大线性无关组:</strong> 线性空间中的一组向量\(\alpha_1,\dots,\alpha_s\)中若存在\(r\)个线性无关的向量\(\alpha_{i_1},\dots,\alpha_{i_r}\)且\(\alpha_1,\dots,\alpha_s\)任意向量能被\(\alpha_{i_1},\dots,\alpha_{i_r}\)线性表示, 则称\(\alpha_{i_1},\dots,\alpha_{i_r}\)为向量\(\alpha_1,\dots,\alpha_s\)的一个极大无关组. 数\(r\)称为向量\(\alpha_1,\dots,\alpha_s\)的<strong>秩</strong>.</p>
-<h3 id="🌸线性空间的维度">🌸线性空间的维度</h3>
-<p><strong>维度:</strong> 线性空间若有 n 个线性无关的向量, 且再无更多的向量, 则\(dim(V)=n\). 若总是可以找到任意多的线性无关向量, 则是<strong>无限维</strong>的.</p>
+<p><strong>极大线性无关组:</strong> 线性空间中的一组向量\(\alpha<em>1,\dots,\alpha_s\)中若存在\(r\)个线性无关的向量\(\alpha</em>{i<em>1},\dots,\alpha</em>{i<em>r}\)且\(\alpha_1,\dots,\alpha_s\)任意向量能被\(\alpha</em>{i<em>1},\dots,\alpha</em>{i<em>r}\)线性表示, 则称\(\alpha</em>{i<em>1},\dots,\alpha</em>{i_r}\)为向量\(\alpha_1,\dots,\alpha_s\)的一个极大无关组. 数\(r\)称为向量\(\alpha_1,\dots,\alpha_s\)的<strong>秩</strong>.</p>
+<h3 id="cherry-blossom-线性空间的维度"><a href="#cherry-blossom-线性空间的维度" class="headerlink" title=":cherry_blossom:线性空间的维度"></a>:cherry_blossom:线性空间的维度</h3><p><strong>维度:</strong> 线性空间若有 n 个线性无关的向量, 且再无更多的向量, 则\(dim(V)=n\). 若总是可以找到任意多的线性无关向量, 则是<strong>无限维</strong>的.</p>
 <p><strong>Thm:</strong> 线性空间 V 中有 n 个线性无关的向量, 且 V 中任意向量都可以被这个向量组线性表示, 则 V 的维度为 n.</p>
-<h2 id="基与坐标">基与坐标</h2>
-<p><strong>Thm:</strong> 线性空间中任意一组线性无关的向量都可以扩充为一组基.</p>
-<p><strong>过渡矩阵:</strong><br>
-$$\epsilon^{\prime}=\epsilon T$$<br>
-$$T=(t_{ij})$$<br>
-其中基 \(\epsilon^\prime\) 是基 \(\epsilon\) 通过转移矩阵 \(T\) 变换而来的.</p>
+<h2 id="基与坐标"><a href="#基与坐标" class="headerlink" title="基与坐标"></a>基与坐标</h2><p><strong>Thm:</strong> 线性空间中任意一组线性无关的向量都可以扩充为一组基.</p>
+<p><strong>过渡矩阵:</strong></p>
+<script type="math/tex; mode=display">\epsilon^{\prime}=\epsilon T</script><script type="math/tex; mode=display">T=(t_{ij})</script><p>其中基 \(\epsilon^\prime\) 是基 \(\epsilon\) 通过转移矩阵 \(T\) 变换而来的.</p>
 <p><strong>Thm:</strong> 过渡矩阵可逆.</p>
-<p><strong>坐标变换:</strong><br>
-$$\alpha=\epsilon X=\epsilon^\prime X^\prime$$<br>
-$$\epsilon^{\prime}=\epsilon T$$<br>
-$$\epsilon X=\epsilon T X^\prime$$<br>
-由于\(\epsilon\)列向量线性无关, 因此<br>
-$$X = T X^\prime$$<br>
-或者<br>
-$$X^\prime = T^{-1} X$$</p>
-<h2 id="线性子空间">线性子空间</h2>
-<h3 id="🌸基本概念">🌸基本概念</h3>
-<p><strong>线性子空间:</strong> 线性空间的一个非空子集对于加法和数乘同样封闭, 则称该子集为一个线性子空间.</p>
-<p><strong>Thm:</strong> 线性空间中的非空子集是线性子空间等价于对加法和数乘封闭.</p>
-<div class="note note-info">
+<p><strong>坐标变换:</strong> </p>
+<script type="math/tex; mode=display">\alpha=\epsilon X=\epsilon^\prime X^\prime</script><script type="math/tex; mode=display">\epsilon^{\prime}=\epsilon T</script><script type="math/tex; mode=display">\epsilon X=\epsilon T X^\prime</script><p>由于\(\epsilon\)列向量线性无关, 因此</p>
+<script type="math/tex; mode=display">X = T X^\prime</script><p>或者</p>
+<script type="math/tex; mode=display">X^\prime = T^{-1} X</script><h2 id="线性子空间"><a href="#线性子空间" class="headerlink" title="线性子空间"></a>线性子空间</h2><h3 id="cherry-blossom-基本概念"><a href="#cherry-blossom-基本概念" class="headerlink" title=":cherry_blossom:基本概念"></a>:cherry_blossom:基本概念</h3><p><strong>线性子空间:</strong> 线性空间的一个非空子集对于加法和数乘同样封闭, 则称该子集为一个线性子空间.</p>
+<p><strong>Thm:</strong> 线性空间中的非空子集是线性子空间等价于对加法和数乘封闭.<br><div class="note note-info">
             <p>注意: 线性空间的每个线性子空间都是凸集.</p>
-          </div>
+          </div></p>
 <p><strong>(非)平凡子空间</strong>: 零子空间和全空间(即 V )是平凡的, 其余子空间是非平凡的.</p>
-<p><strong>example:</strong><br>
-\(A\in R^{n\times n}\)那么齐次方程组\(Ax=0\)的全部解向量构成 n 维线性空间的一个子空间. 即齐次线性方程组的解空间或矩阵\(A\)的核空间\(N(A)\). 我们有结论:<br>
-$$<br>
-dim(N(A))=n-rank(A)<br>
-$$</p>
-<p><strong>Thm:</strong> 若 W 是线性空间 V 的一个子空间, 则<br>
-$$<br>
-dim(W)\leq dim(V)<br>
-$$</p>
-<p><strong>Thm:</strong> 若 W 是有限维线性空间 V 的子空间, 则 W 的一组基可以扩充为 V 的一组基.</p>
-<p><strong>张成空间:</strong> 设\(\alpha_1,\dots,\alpha_s\)是数域 P 上线性空间 V 的一组向量, 有它们的所有线性组合构成的集合<br>
-$$<br>
-W =\lbrace k_1\alpha_1 + k_s\alpha_s | k_i\in P,i=1,\dots,s\rbrace<br>
-$$<br>
-是 V 的非空子集, 并且是 V 的子空间, W 即为\(\alpha_1,\dots,\alpha_s\)的张成空间, 记为<br>
-$$<br>
-L(\alpha_1,\dots,\alpha_s) 或 span(\alpha_1,\dots,\alpha_s)<br>
-$$</p>
-<p><strong>Thm:</strong></p>
+<p><strong>example:</strong><br>\(A\in R^{n\times n}\)那么齐次方程组\(Ax=0\)的全部解向量构成 n 维线性空间的一个子空间. 即齐次线性方程组的解空间或矩阵\(A\)的核空间\(N(A)\). 我们有结论:</p>
+<script type="math/tex; mode=display">
+dim(N(A))=n-rank(A)</script><p><strong>Thm:</strong> 若 W 是线性空间 V 的一个子空间, 则</p>
+<script type="math/tex; mode=display">
+dim(W)\leq dim(V)</script><p><strong>Thm:</strong> 若 W 是有限维线性空间 V 的子空间, 则 W 的一组基可以扩充为 V 的一组基.</p>
+<p><strong>张成空间:</strong> 设\(\alpha_1,\dots,\alpha_s\)是数域 P 上线性空间 V 的一组向量, 有它们的所有线性组合构成的集合</p>
+<script type="math/tex; mode=display">
+W =\lbrace k_1\alpha_1 + k_s\alpha_s | k_i\in P,i=1,\dots,s\rbrace</script><p>是 V 的非空子集, 并且是 V 的子空间, W 即为\(\alpha_1,\dots,\alpha_s\)的张成空间, 记为</p>
+<script type="math/tex; mode=display">
+L(\alpha_1,\dots,\alpha_s) 或 span(\alpha_1,\dots,\alpha_s)</script><p><strong>Thm:</strong> </p>
 <ol>
 <li>\(span(\alpha_1,\dots,\alpha_s)=span(\beta_1,\dots,\beta_t)\Leftrightarrow \alpha_1,\dots,\alpha_s\)与\(\beta_1,\dots,\beta_t\)等价</li>
 <li>\(dim(span(\alpha_1,\dots,\alpha_s))=rank(\alpha_1,\dots,\alpha_s)\)且\(span(\alpha_1,\dots,\alpha_s)\)的基是向量组\(\alpha_1,\dots,\alpha_s\)的一个极大无关组.</li>
 </ol>
-<p><strong>列空间(值域):</strong> \(A\in R^{m\times n}, A\doteq[\alpha_1,\dots,\alpha_n],\alpha_i\in R^m(i=1,\dots,n)\), 则\(span(\alpha_1,\dots,\alpha_n)\)是 m 维线性空间\(R^{m}\)的一个子空间, 即 A 的列空间 (值域).<br>
-$$<br>
-R(A)=\lbrace y | y=Ax,x\in R^n \rbrace<br>
-$$</p>
-<p>显然:<br>
-$$<br>
-dim(R(A)) = rank(A)<br>
-$$<br>
-从而:<br>
-$$<br>
-dim(N(A))+dim(R(A))=n<br>
-$$</p>
-<h3 id="🌸子空间的交与和">🌸子空间的交与和</h3>
-<p><strong>子空间的和:</strong> \(\lbrace\alpha_1+\alpha_2 | \alpha_1\in V_1, \alpha_2\in V_2\rbrace\)</p>
+<p><strong>列空间(值域):</strong> \(A\in R^{m\times n}, A\doteq[\alpha_1,\dots,\alpha_n],\alpha_i\in R^m(i=1,\dots,n)\), 则\(span(\alpha_1,\dots,\alpha_n)\)是 m 维线性空间\(R^{m}\)的一个子空间, 即 A 的列空间 (值域).</p>
+<script type="math/tex; mode=display">
+R(A)=\lbrace y | y=Ax,x\in R^n \rbrace</script><p>显然:</p>
+<script type="math/tex; mode=display">
+dim(R(A)) = rank(A)</script><p>从而:</p>
+<script type="math/tex; mode=display">
+dim(N(A))+dim(R(A))=n</script><h3 id="cherry-blossom-子空间的交与和"><a href="#cherry-blossom-子空间的交与和" class="headerlink" title=":cherry_blossom:子空间的交与和"></a>:cherry_blossom:子空间的交与和</h3><p><strong>子空间的和:</strong> \(\lbrace\alpha_1+\alpha_2 | \alpha_1\in V_1, \alpha_2\in V_2\rbrace\)</p>
 <p><strong>Thm:</strong> 子空间的交与和仍是子空间.</p>
-<p><strong>Thm(维数公式):</strong> 有限维线性空间的子空间是有限维的, 并且它们的交与和也是有限维的, 且成立维数公式:<br>
-$$<br>
-dim(V_1)+dim(V_2)=dim(V_1\cap V_2)+dim(V_1+V_2)<br>
-$$</p>
-<h3 id="🌸子空间的直和">🌸子空间的直和</h3>
-<p>首先指出: 直和是和的特殊形式</p>
-<p><strong>直和:</strong><br>
-$$<br>
-V_1 \dot{+} V_2 = \lbrace \alpha_1+\alpha_2 | \alpha_1\in V_1, \alpha_2\in V_2 \rbrace<br>
-$$</p>
-<p><strong>Thm:</strong> \(V_1, V_2\) 是数域\(P\)上线性空间\(V\)的两个子空间, 则下列叙述等价:</p>
+<p><strong>Thm(维数公式):</strong> 有限维线性空间的子空间是有限维的, 并且它们的交与和也是有限维的, 且成立维数公式:</p>
+<script type="math/tex; mode=display">
+dim(V_1)+dim(V_2)=dim(V_1\cap V_2)+dim(V_1+V_2)</script><h3 id="cherry-blossom-子空间的直和"><a href="#cherry-blossom-子空间的直和" class="headerlink" title=":cherry_blossom:子空间的直和"></a>:cherry_blossom:子空间的直和</h3><p>首先指出: 直和是和的特殊形式</p>
+<p><strong>直和:</strong></p>
+<script type="math/tex; mode=display">
+V_1 \dot{+} V_2 = \lbrace \alpha_1+\alpha_2 | \alpha_1\in V_1, \alpha_2\in V_2 \rbrace</script><p><strong>Thm:</strong> \(V_1, V_2\) 是数域\(P\)上线性空间\(V\)的两个子空间, 则下列叙述等价:</p>
 <ol>
 <li>和\(V_1+V_2\)是直和</li>
 <li>和\(V_1+V_2\)中零向量表示唯一, 即若\(\alpha_1+\alpha_2=0(\alpha_1\in V_1, \alpha_2\in V_2)\), 则\(\alpha_1=0,\alpha_2=0\).</li>
 <li>\(V_1\cap V_2=\lbrace0\rbrace\)</li>
 <li>\(dim(V_1+V_2)=dim(V_1)+dim(V_2)\)</li>
 </ol>
-<p><strong>Thm:</strong> 设 U 是数域 P 上<strong>有限维</strong>线性空间 V 的一个子空间, 则存在 V 的一个子空间 W 使得<br>
-$$<br>
-V=U\dot{+}W<br>
-$$</p>
-<p>上述结论可以推广至有 n 个子空间的直和.</p>
-<h2 id="线性空间的同构">线性空间的同构</h2>
-<p><strong>同构:</strong> \(V, V^\prime\)是数域\(P\)上的线性空间, 二者是同构的, 若存在<strong>同构映射</strong>\(\sigma\):</p>
+<p><strong>Thm:</strong> 设 U 是数域 P 上<strong>有限维</strong>线性空间 V 的一个子空间, 则存在 V 的一个子空间 W 使得</p>
+<script type="math/tex; mode=display">
+V=U\dot{+}W</script><p>上述结论可以推广至有 n 个子空间的直和.</p>
+<h2 id="线性空间的同构"><a href="#线性空间的同构" class="headerlink" title="线性空间的同构"></a>线性空间的同构</h2><p><strong>同构:</strong> \(V, V^\prime\)是数域\(P\)上的线性空间, 二者是同构的, 若存在<strong>同构映射</strong>\(\sigma\):</p>
 <ol>
 <li>\(\sigma(\alpha+\beta)=\sigma(\alpha)+\sigma(\beta)\)</li>
 <li>\(\sigma(k\alpha)=k\sigma(\alpha)\)</li>
 </ol>
 <p>其中\(\alpha,\beta\in V\), \(k\in P\).</p>
-<p><strong>Thm:</strong> 设 \(V, V^\prime\) 是数域\(P\)上的同构线性空间, 同构映射<br>
-$$<br>
-\sigma:V\rightarrow V^\prime<br>
-$$<br>
-则</p>
+<p><strong>Thm:</strong> 设 \(V, V^\prime\) 是数域\(P\)上的同构线性空间, 同构映射</p>
+<script type="math/tex; mode=display">
+\sigma:V\rightarrow V^\prime</script><p>则</p>
 <ol>
 <li>\(\sigma(0)=0^\prime, 0^\prime\) 是 \(V^\prime\)的零元.</li>
 <li>\(\forall\alpha\in V, \sigma(-\alpha)=-\sigma(\alpha)\).</li>
@@ -486,17 +430,7 @@ $$<br>
 <div class="note note-info">
             <p>正因同构, 且都与 \(P^n\) 同构, 因此 \(P^n\) 上的一些结论在同构空间也成立.</p>
           </div>
-<h2 id="内积空间">内积空间</h2>
-<h1>线性映射与线性变换</h1>
-<h1>\(\lambda\) 矩阵与矩阵的Jordan标准形</h1>
-<h1>矩阵的因子分解</h1>
-<h1>Hermite矩阵与正定矩阵</h1>
-<h1>范数与极限</h1>
-<h1>矩阵函数与矩阵值函数</h1>
-<h1>广义逆矩阵</h1>
-<h1>Kronecker积与线性矩阵方程</h1>
-<h1>非负矩阵</h1>
-
+<h2 id="内积空间"><a href="#内积空间" class="headerlink" title="内积空间"></a>内积空间</h2><h1 id="线性映射与线性变换"><a href="#线性映射与线性变换" class="headerlink" title="线性映射与线性变换"></a>线性映射与线性变换</h1><h1 id="lambda-矩阵与矩阵的Jordan标准形"><a href="#lambda-矩阵与矩阵的Jordan标准形" class="headerlink" title="\(\lambda\) 矩阵与矩阵的Jordan标准形"></a>\(\lambda\) 矩阵与矩阵的Jordan标准形</h1><h1 id="矩阵的因子分解"><a href="#矩阵的因子分解" class="headerlink" title="矩阵的因子分解"></a>矩阵的因子分解</h1><h1 id="Hermite矩阵与正定矩阵"><a href="#Hermite矩阵与正定矩阵" class="headerlink" title="Hermite矩阵与正定矩阵"></a>Hermite矩阵与正定矩阵</h1><h1 id="范数与极限"><a href="#范数与极限" class="headerlink" title="范数与极限"></a>范数与极限</h1><h1 id="矩阵函数与矩阵值函数"><a href="#矩阵函数与矩阵值函数" class="headerlink" title="矩阵函数与矩阵值函数"></a>矩阵函数与矩阵值函数</h1><h1 id="广义逆矩阵"><a href="#广义逆矩阵" class="headerlink" title="广义逆矩阵"></a>广义逆矩阵</h1><h1 id="Kronecker积与线性矩阵方程"><a href="#Kronecker积与线性矩阵方程" class="headerlink" title="Kronecker积与线性矩阵方程"></a>Kronecker积与线性矩阵方程</h1><h1 id="非负矩阵"><a href="#非负矩阵" class="headerlink" title="非负矩阵"></a>非负矩阵</h1>
               
             </div>
             <hr/>
@@ -643,6 +577,12 @@ $$<br>
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -899,6 +839,44 @@ $$<br>
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

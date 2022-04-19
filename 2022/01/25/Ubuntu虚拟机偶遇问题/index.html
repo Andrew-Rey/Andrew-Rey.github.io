@@ -285,20 +285,18 @@
               <p>“一杯茶一根烟, 一个bug调一天.”</p>
 <p>“吸烟有害健康.”</p>
 <span id="more"></span>
-<h1>网络问题</h1>
-<h3 id="突然上不了网">突然上不了网</h3>
-<p>2022.1.25这一天, 本来想下个 nmap , 突然告诉我下载失败, 提示信息显示的是 <em>暂时无法解析域名</em></p>
-<p>我就纳闷了, ping 了一下百度, 它告诉我 <a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a> 无法解析 ???</p>
+<h1 id="网络问题"><a href="#网络问题" class="headerlink" title="网络问题"></a>网络问题</h1><h3 id="突然上不了网"><a href="#突然上不了网" class="headerlink" title="突然上不了网"></a>突然上不了网</h3><p>2022.1.25这一天, 本来想下个 nmap , 突然告诉我下载失败, 提示信息显示的是 <em>暂时无法解析域名</em></p>
+<p>我就纳闷了, ping 了一下百度, 它告诉我 www.baidu.com 无法解析 ???</p>
 <p>可是我昨天还可以解析的啊…</p>
 <p>不管了, 85% 的问题都可以通过重启解决. 于是我把虚拟机和主机都分别重启了一遍, 温和地敲了密码, 耐心等了一会儿, 发现还是没有联网.</p>
 <p>然后我查看了一下我的网卡配置:</p>
 <p><code>ifconfig</code></p>
-<p>??? 只显示了本地回环的IP.</p>
+<p>??? 只显示了本地回环的IP. </p>
 <p>绝了.</p>
 <p>然后在 settings 的 network 里面, 我本以为是把网络关了, 打开后发现甚至没有开关这个选项…</p>
 <p>上网查! 结果自然是喜忧参半的.</p>
 <p>喜, 是因为我找到了很多解决方案; 忧, 是因为我不是第一个发现这个 bug 的人.</p>
-<p><strong>解决 :</strong></p>
+<p><strong>解决 :</strong>  </p>
 <ul>
 <li>删除NetworkManager缓存文件, 参考: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuhanxu/p/15550864.html">https://www.cnblogs.com/liuhanxu/p/15550864.html</a></li>
 </ul>
@@ -451,6 +449,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -707,6 +711,44 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.3k words
+          9.2k words
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          78 mins
+          77 mins
         
       </span>
     
@@ -286,24 +286,21 @@
 <p>“学不完.”</p>
 <span id="more"></span>
 <hr>
-<h1>概论</h1>
-<h2 id="速率相关的性能指标">速率相关的性能指标</h2>
-<p><strong>速率 :</strong> 计网主机在数字信道传送数据 <em><strong>位数</strong></em> 的速率</p>
-<p><strong>带宽 :</strong> 单位时间向链路中 <em><strong>注入</strong></em> 的数据位数, 最高数据率</p>
-<p><strong>吞吐量 :</strong> 单位时间通过某个 <em><strong>网络 (或信道, 接口)</strong></em> 的数据量</p>
+<h1 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h1><h2 id="速率相关的性能指标"><a href="#速率相关的性能指标" class="headerlink" title="速率相关的性能指标"></a>速率相关的性能指标</h2><p><strong>速率 :</strong> 计网主机在数字信道传送数据 <strong><em>位数</em></strong> 的速率</p>
+<p><strong>带宽 :</strong> 单位时间向链路中 <strong><em>注入</em></strong> 的数据位数, 最高数据率</p>
+<p><strong>吞吐量 :</strong> 单位时间通过某个 <strong><em>网络 (或信道, 接口)</em></strong> 的数据量</p>
 <p><strong>时延 :</strong> 从网络或链路的一端传送到另一端所需要的时间; 包括 <strong>发送(传输)时延, 传播时延, 排队时延, 处理时延.</strong> 后两者发生在路由器内, 第一个发生在主机内部, 第二个发生在链路上</p>
 <p><strong>时延带宽积 :</strong> 时延×带宽 (单位bit), 又称以比特为单位的链路长度</p>
 <p><strong>往返时延RTT :</strong> 从发送放发送数据开始, 到发送方收到接受方确认 (接收方收到数据立即确认) ,总共经历的时延, 通过 <code>ping</code> 查看. RTT包括来回的传播时延和末端处理时延; RTT越大, 在收到确认前, 可以发送的数据就越多</p>
-<p><strong>利用率 :</strong> 包括 <em><strong>信道利用率</strong></em> 和 <em><strong>网络利用率</strong></em></p>
+<p><strong>利用率 :</strong> 包括 <strong><em>信道利用率</em></strong> 和 <strong><em>网络利用率</em></strong> </p>
 <ul>
 <li>$信道利用率 = \frac{有数据通过时间}{有+无数据通过时间}$</li>
 <li>$网络利用率 = 信道利用率加权平均$</li>
 </ul>
-<h2 id="分层结构">分层结构</h2>
-<p><strong>实体 :</strong> 第n层中活动的元素称为n层实体, 同一层实体称为对等实体</p>
-<p><strong>协议 :</strong> 为进行网络中的 <em><strong>对等实体</strong></em> 数据交换而建立的规则, 标准或约定. 是水平层面对行为的描述和限制</p>
+<h2 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h2><p><strong>实体 :</strong> 第n层中活动的元素称为n层实体, 同一层实体称为对等实体</p>
+<p><strong>协议 :</strong> 为进行网络中的 <strong><em>对等实体</em></strong> 数据交换而建立的规则, 标准或约定. 是水平层面对行为的描述和限制</p>
 <ul>
-<li>协议包括 <em><strong>语法</strong></em> (规定传输的数据格式), <em><strong>语义</strong></em> (规定所要完成的功能) 和 <em><strong>同步</strong></em> (规定各种操作的顺序)</li>
+<li>协议包括 <strong><em>语法</em></strong> (规定传输的数据格式), <strong><em>语义</em></strong> (规定所要完成的功能) 和 <strong><em>同步</em></strong> (规定各种操作的顺序)</li>
 </ul>
 <p><strong>接口 (访问服务点SAP) :</strong> 下层为上层提供服务的入口, 只在相邻层次有接口</p>
 <p><strong>服务 :</strong> 下层为上层提供的功能调用 [垂直]</p>
@@ -316,33 +313,25 @@
 <li>注意: 数据链路层在首尾都加上了控制信息, 而物理层仅是将PDU转化为比特流</li>
 </ul>
 <hr>
-<h1>参考模型</h1>
-<h2 id="OSI-7层参考模型">OSI 7层参考模型</h2>
-<h3 id="资源子网">资源子网:</h3>
-<ul>
-<li>应用层: 所有能和用户交互产生网络流量的程序
-<ul>
+<h1 id="参考模型"><a href="#参考模型" class="headerlink" title="参考模型"></a>参考模型</h1><h2 id="OSI-7层参考模型"><a href="#OSI-7层参考模型" class="headerlink" title="OSI 7层参考模型"></a>OSI 7层参考模型</h2><h3 id="资源子网"><a href="#资源子网" class="headerlink" title="资源子网:"></a>资源子网:</h3><ul>
+<li>应用层: 所有能和用户交互产生网络流量的程序<ul>
 <li>例子: 文件传输FTP, 电子邮件SMTP, 万维网HTTP</li>
 </ul>
 </li>
-<li>表示层: 用于处理在两个通信系统中交换信息的表述方式 (语法和语义)
-<ul>
+<li>表示层: 用于处理在两个通信系统中交换信息的表述方式 (语法和语义)<ul>
 <li>功能: 数据格式转换, 数据加密解密, 数据压缩恢复</li>
 </ul>
 </li>
-<li>会话层: 想表示层实体/用户进程提供 <em><strong>建立连接</strong></em> 并在连接上有序地传输数据, 即 <em><strong>建立同步SYN</strong></em> .
-<ul>
+<li>会话层: 想表示层实体/用户进程提供 <strong><em>建立连接</em></strong> 并在连接上有序地传输数据, 即 <strong><em>建立同步SYN</em></strong> .<ul>
 <li>会话彼此独立</li>
 <li>功能: 建立, 管理, 终止会话</li>
 <li>使用校验点可以使会话在通信失效时从校验点/同步点恢复通信, 实现数据同步</li>
 </ul>
 </li>
 </ul>
-<h3 id="OSI传输层">OSI传输层:</h3>
-<ul>
-<li>负责两个进程中 <em><strong>端到端</strong></em> 通信. 传输单位是 <em><strong>报文段</strong></em> 或用户数据报
-<ul>
-<li>端到端通信即进程间的通信, 每一个进程有一个编号, 称为 <em><strong>端口号</strong></em></li>
+<h3 id="OSI传输层"><a href="#OSI传输层" class="headerlink" title="OSI传输层:"></a>OSI传输层:</h3><ul>
+<li>负责两个进程中 <strong><em>端到端</em></strong> 通信. 传输单位是 <strong><em>报文段</em></strong> 或用户数据报<ul>
+<li>端到端通信即进程间的通信, 每一个进程有一个编号, 称为 <strong><em>端口号</em></strong></li>
 </ul>
 </li>
 <li>可靠传输 (建立在确认机制上的, 往往传输大文件), 不可靠传输 (小文件等)</li>
@@ -351,46 +340,36 @@
 <li>复用分用</li>
 <li>协议: TCP, UDP等</li>
 </ul>
-<h3 id="通信子网">通信子网:</h3>
-<ul>
-<li>网络层: 把分组从源端传到目的端, 为分组交换网上的不同主机提供通信服务, 传输单位是数据报
-<ul>
+<h3 id="通信子网"><a href="#通信子网" class="headerlink" title="通信子网:"></a>通信子网:</h3><ul>
+<li>网络层: 把分组从源端传到目的端, 为分组交换网上的不同主机提供通信服务, 传输单位是数据报<ul>
 <li>功能: 路由选择 (选择最佳路径), 流量控制, 差错控制, 拥塞控制 (全局的拥塞控制)</li>
 <li>主要协议: IP, IPX, ICMP, ARP…</li>
 </ul>
 </li>
-<li>数据链路层: 将网络层传下来的数据 <em><strong>组装成帧</strong></em> , 传输单位是帧
-<ul>
+<li>数据链路层: 将网络层传下来的数据 <strong><em>组装成帧</em></strong> , 传输单位是帧<ul>
 <li>功能: 成帧, 差错控制 (帧错, 位错), 流量控制 (发送方和接收方的协调), 访问控制 (控制对信道的访问, 数据访问子层)</li>
 </ul>
 </li>
 <li>物理层: 在物理媒体上实现比特流的透明传输, 单位是比特</li>
 </ul>
-<h2 id="TCP-IP-4层参考模型">TCP/IP 4层参考模型</h2>
-<p><strong>OSI参考协议与TCP/IP参考协议以及TCP/IP协议栈 :</strong><br>
-<img src="" srcset="/img/loading.gif" lazyload alt=""><br>
-<strong>OSI和TCP/IP相同点和不同点 :</strong></p>
-<h2 id="5层参考模型">5层参考模型</h2>
-<p><strong>应用层 :</strong> 支持各种网络应用, 支持的协议有FTP, SMTP, HTTP</p>
+<h2 id="TCP-IP-4层参考模型"><a href="#TCP-IP-4层参考模型" class="headerlink" title="TCP/IP 4层参考模型"></a>TCP/IP 4层参考模型</h2><p><strong>OSI参考协议与TCP/IP参考协议以及TCP/IP协议栈 :</strong><br><img src="" srcset="/img/loading.gif" lazyload alt=""><br><strong>OSI和TCP/IP相同点和不同点 :</strong></p>
+<h2 id="5层参考模型"><a href="#5层参考模型" class="headerlink" title="5层参考模型"></a>5层参考模型</h2><p><strong>应用层 :</strong> 支持各种网络应用, 支持的协议有FTP, SMTP, HTTP</p>
 <p><strong>传输层 :</strong> 进程-进程的数据传输, 支持的协议有TCP, UDP</p>
 <p><strong>网络层 :</strong> 源主机到目的主机的数据分组路由与转发, 支持的协议有IP, ICMP, OSPF</p>
 <p><strong>数据链路层 :</strong> 把网络层传下来的数据报组装成帧, 支持的协议有Ethernet, PPP</p>
 <p><strong>物理层 :</strong> 比特传输</p>
 <hr>
-<h1>物理层</h1>
-<p>解决如何在连接计算机的各种传输媒体上 <em><strong>传输数据比特流</strong></em>, 而不是指具体的传输媒介</p>
+<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>解决如何在连接计算机的各种传输媒体上 <strong><em>传输数据比特流</em></strong>, 而不是指具体的传输媒介</p>
 <p>主要任务: 确定传输媒体接口特性</p>
 <ul>
 <li>机械特性, 电气特性, 功能特性, 规程特性</li>
 </ul>
-<h2 id="数据通信基础">数据通信基础</h2>
-<p><strong>码元 :</strong> 固定时长的信号波形, 代表不同离散值的基本波形, 是数字通信中的计量单位, 这个固定时长称为码元宽度, 若有M个离散状态, 则称为M进制码元; 一个码元可以携带多个比特</p>
+<h2 id="数据通信基础"><a href="#数据通信基础" class="headerlink" title="数据通信基础"></a>数据通信基础</h2><p><strong>码元 :</strong> 固定时长的信号波形, 代表不同离散值的基本波形, 是数字通信中的计量单位, 这个固定时长称为码元宽度, 若有M个离散状态, 则称为M进制码元; 一个码元可以携带多个比特</p>
 <p><strong>码元传输速率 :</strong> 1s中传输多少个码元, 单位: 波特Baud</p>
 <p><strong>信息传输速率 :</strong> 1s中传输的二进制码元个数, 单位: b/s</p>
 <p><strong>失真 :</strong> 传播过程中受带宽限制, 噪声干扰等导致信号发生变化的现象</p>
 <ul>
-<li>影响因素:
-<ul>
+<li>影响因素:<ul>
 <li>码元传输速率</li>
 <li>信号传输距离</li>
 <li>噪声干扰</li>
@@ -412,25 +391,23 @@
 <ul>
 <li>$极限数据传输速率 = W*log_2 (1 + S/N) (b/s)$</li>
 </ul>
-<h2 id="编码和调制">编码和调制</h2>
-<p><strong>信道 :</strong> 信号的传输媒介, 是 <em><strong>逻辑通路</strong></em></p>
+<h2 id="编码和调制"><a href="#编码和调制" class="headerlink" title="编码和调制"></a>编码和调制</h2><p><strong>信道 :</strong> 信号的传输媒介, 是 <strong><em>逻辑通路</em></strong> </p>
 <ul>
 <li>按传输信号分类: 模拟信道, 数字信道</li>
 <li>按传输介质分类: 无线信道, 有限信道</li>
 <li>信道上传送的信号有: 基带信号, 宽带信号</li>
 </ul>
-<p><strong>基带信号 :</strong> 来自信源的信号, 直接表达了要传输的信息的信号, 将数字信号0, 1用两种不同的电压表示, 在送到 <em><strong>数字信道</strong></em> 上去传输 (基带传输)</p>
+<p><strong>基带信号 :</strong> 来自信源的信号, 直接表达了要传输的信息的信号, 将数字信号0, 1用两种不同的电压表示, 在送到 <strong><em>数字信道</em></strong> 上去传输 (基带传输)</p>
 <ul>
 <li>近距离传输</li>
 </ul>
-<p><strong>宽带信号 :</strong> 将基带信号进行调制后形成的频分复用模拟信号, 再送到 <em><strong>模拟信号</strong></em> 去传输 (宽带传输)</p>
+<p><strong>宽带信号 :</strong> 将基带信号进行调制后形成的频分复用模拟信号, 再送到 <strong><em>模拟信号</em></strong> 去传输 (宽带传输)</p>
 <ul>
 <li>远距离传输</li>
 </ul>
 <p><strong>编码 :</strong> 将数据转化为数字信号</p>
 <ul>
-<li>数字数据: 数字发送器
-<ul>
+<li>数字数据: 数字发送器<ul>
 <li>非归零编码</li>
 <li>曼彻斯特编码</li>
 <li>差分曼彻斯特编码</li>
@@ -439,16 +416,14 @@
 <li>4B/5B编码</li>
 </ul>
 </li>
-<li>模拟信号: PCM编码器
-<ul>
-<li>三步: 抽样 (采样定理 $f_{采样频率} \geq 2f_{信号最高频率}$), 量化, 编码</li>
+<li>模拟信号: PCM编码器<ul>
+<li>三步: 抽样 (采样定理 $f<em>{采样频率} \geq 2f</em>{信号最高频率}$), 量化, 编码</li>
 </ul>
 </li>
 </ul>
 <p><strong>调制 :</strong> 将数据转化为模拟信号</p>
 <ul>
-<li>数字数据: 调制器
-<ul>
+<li>数字数据: 调制器<ul>
 <li>调频</li>
 <li>调幅</li>
 <li>调相</li>
@@ -457,41 +432,31 @@
 </li>
 <li>模拟信号: 放大器调制器 (高频)</li>
 </ul>
-<h2 id="传输介质">传输介质</h2>
-<h3 id="导向性传输介质">导向性传输介质</h3>
-<p>是物理通路. 传输媒体只是传递信号, 但物理层规定了电气特性等, 知道传输的数据. 传输媒介也称为第0层.</p>
+<h2 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h2><h3 id="导向性传输介质"><a href="#导向性传输介质" class="headerlink" title="导向性传输介质"></a>导向性传输介质</h3><p>是物理通路. 传输媒体只是传递信号, 但物理层规定了电气特性等, 知道传输的数据. 传输媒介也称为第0层.</p>
 <ul>
 <li>双绞线: 电磁波</li>
-<li>同轴电缆: 根据特性阻抗不同分为基带<sub>和宽带</sub>; 电磁波</li>
+<li>同轴电缆: 根据特性阻抗不同分为基带~和宽带~; 电磁波</li>
 <li>光纤: 光脉冲, 光电转换, 带宽远大于其他媒介, 全反射, 多模 (近距离)和单模 (远距离), 纤芯为实心</li>
 </ul>
-<h3 id="非导向性传输介质">非导向性传输介质</h3>
-<ul>
+<h3 id="非导向性传输介质"><a href="#非导向性传输介质" class="headerlink" title="非导向性传输介质"></a>非导向性传输介质</h3><ul>
 <li>无线电波</li>
 <li>微波</li>
 <li>红外线, 激光</li>
 </ul>
-<h2 id="物理设备">物理设备</h2>
-<h3 id="中继器">中继器</h3>
-<ul>
-<li>对数字信号 <em><strong>再生和还原</strong></em></li>
+<h2 id="物理设备"><a href="#物理设备" class="headerlink" title="物理设备"></a>物理设备</h2><h3 id="中继器"><a href="#中继器" class="headerlink" title="中继器"></a>中继器</h3><ul>
+<li>对数字信号 <strong><em>再生和还原</em></strong></li>
 </ul>
-<h3 id="集线器-多口中继器">集线器 (多口中继器)</h3>
-<ul>
-<li>对信号 <em><strong>再生和转发</strong></em> , 不具备定向功能</li>
+<h3 id="集线器-多口中继器"><a href="#集线器-多口中继器" class="headerlink" title="集线器 (多口中继器)"></a>集线器 (多口中继器)</h3><ul>
+<li>对信号 <strong><em>再生和转发</em></strong> , 不具备定向功能</li>
 </ul>
 <hr>
-<h1>数据链路层</h1>
-<p>主要作用: 将网络层给的数据报封装成帧后无差错地传给相邻结点</p>
-<h2 id="基本概念">基本概念</h2>
-<p><strong>结点 :</strong> 主机/路由器</p>
-<p><strong>链路 :</strong> 结点间的 <em><strong>物理通道</strong></em> , 传输介质包括双绞线等</p>
-<p><strong>数据链路 :</strong> 结点间的 <em><strong>逻辑通道</strong></em> , 把实现控制数据传输协议的硬件和软件加到链路上就够成数据链路</p>
+<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p>主要作用: 将网络层给的数据报封装成帧后无差错地传给相邻结点</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>结点 :</strong> 主机/路由器</p>
+<p><strong>链路 :</strong> 结点间的 <strong><em>物理通道</em></strong> , 传输介质包括双绞线等</p>
+<p><strong>数据链路 :</strong> 结点间的 <strong><em>逻辑通道</em></strong> , 把实现控制数据传输协议的硬件和软件加到链路上就够成数据链路</p>
 <p><strong>帧 :</strong> 封装网络层的数据报, 链路层协议数据单元</p>
-<h2 id="功能">功能</h2>
-<ul>
-<li>为网络层提供服务
-<ul>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>为网络层提供服务<ul>
 <li>无确认无连接服务: 不需要接收方返回是否收到, 也不需要在发送前进行连接; 适合近距离或误码率低</li>
 <li>有确认无连接服务</li>
 <li>有确认面向连接服务</li>
@@ -502,10 +467,7 @@
 <li>流量控制</li>
 <li>差错控制 (帧错/位错)</li>
 </ul>
-<h3 id="封装成帧">封装成帧</h3>
-<p>$$帧: 帧首部\quad|\quad帧的数据部分\quad|\quad帧尾部$$<br>
-$$帧的数据部分 \leq 最大传送单元MTU$$<br>
-首部和尾部包含很多的控制信息, 作用是帧定界 (定界符)</p>
+<h3 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h3><script type="math/tex; mode=display">帧: 帧首部\quad|\quad帧的数据部分\quad|\quad帧尾部</script><script type="math/tex; mode=display">帧的数据部分 \leq 最大传送单元MTU</script><p>首部和尾部包含很多的控制信息, 作用是帧定界 (定界符)</p>
 <p><strong>透明传输 :</strong> 不管所传的数据是什么比特流, 都应该被正确传输 (即使传输的数据和控制信息一样)</p>
 <p><strong>组帧方法 :</strong></p>
 <ol>
@@ -514,65 +476,54 @@ $$帧的数据部分 \leq 最大传送单元MTU$$<br>
 <li>零比特填充法: 01111110作为首尾界定符, 数据中若出现5个连续1则在后面添加一个0 (普遍使用)</li>
 <li>违规编码法: 对于曼彻斯特编码一个码元中只有 “高-低” 或 “低-高”, 因此用 “高-高”, “低-低” 代表帧首尾</li>
 </ol>
-<h3 id="差错控制">差错控制</h3>
-<ul>
+<h3 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h3><ul>
 <li>全局性的随机噪声</li>
 <li>局部性的冲击噪声 (造成差错)</li>
 </ul>
-<h3 id="流量控制">流量控制</h3>
-<ul>
-<li>链路层的流量控制是 <em><strong>点到点的</strong></em> : 在中间结点间 (路由器等) 控制流量; 传输层流量控制是 <em><strong>端到端的</strong></em></li>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><ul>
+<li>链路层的流量控制是 <strong><em>点到点的</em></strong> : 在中间结点间 (路由器等) 控制流量; 传输层流量控制是 <strong><em>端到端的</em></strong></li>
 <li>链路层手段: 接收方收不下就不回复确认 (确认帧: ACK)</li>
 <li>传输层手段: 接收端给发送端一个窗口公告</li>
 </ul>
 <ol>
 <li>停止-等待协议: 每发送一个帧便停止发送等待对方确认, 收到确认后继续发送</li>
-<li>滑动窗口协议
-<ol>
+<li>滑动窗口协议<ol>
 <li>后退N帧协议GBN 参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45067603/article/details/106980441">https://blog.csdn.net/weixin_45067603/article/details/106980441</a></li>
 <li>选择重传协议SR</li>
 </ol>
 </li>
 </ol>
-<h2 id="设备">设备</h2>
-<ol>
+<h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><ol>
 <li>交换机</li>
 <li>网桥</li>
 </ol>
 <hr>
-<h1>网络层</h1>
-<p>主要任务是把分组从源端传到目的端, 为分组交换网上不同主机提供通信服务, 传输单位为IP数据报 (或分组).</p>
+<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>主要任务是把分组从源端传到目的端, 为分组交换网上不同主机提供通信服务, 传输单位为IP数据报 (或分组).</p>
 <ul>
-<li>功能1: 路由选择与分组转发----选择最佳路径</li>
+<li>功能1: 路由选择与分组转发——选择最佳路径</li>
 <li>功能2: 异构网络互联</li>
-<li>拥塞控制
-<ul>
+<li>拥塞控制<ul>
 <li>开环控制</li>
 <li>闭环控制</li>
 </ul>
 </li>
 </ul>
-<h2 id="数据交换方式">数据交换方式</h2>
-<p><strong>交换网络 :</strong> 将大量的交换设备互联, 能减轻单个交换设备的流量, 减少当个设备的端口</p>
-<h3 id="电路交换">电路交换</h3>
-<p>如: 电话网络<br>
-$$建立连接 \Rightarrow 通信 \Rightarrow 释放电路$$</p>
-<ul>
+<h2 id="数据交换方式"><a href="#数据交换方式" class="headerlink" title="数据交换方式"></a>数据交换方式</h2><p><strong>交换网络 :</strong> 将大量的交换设备互联, 能减轻单个交换设备的流量, 减少当个设备的端口</p>
+<h3 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h3><p>如: 电话网络</p>
+<script type="math/tex; mode=display">建立连接 \Rightarrow 通信 \Rightarrow 释放电路</script><ul>
 <li>通信时延小 (但建立连接时间长)</li>
 <li>多路复用</li>
 <li>独占资源 (但使用效率低)</li>
-<li>有序传输</li>
+<li>有序传输 </li>
 <li>没有冲突</li>
 <li>实时性强</li>
 <li>灵活性差</li>
 <li>无差错控制</li>
 </ul>
-<h3 id="报文交换">报文交换</h3>
-<p><strong>报文 :</strong> 原应用发送的信息整体</p>
-<p>交换设备有 <em><strong>存储转发</strong></em> 的功能: 报文先被存储, 选择合适的链路后, 进行转发</p>
+<h3 id="报文交换"><a href="#报文交换" class="headerlink" title="报文交换"></a>报文交换</h3><p><strong>报文 :</strong> 原应用发送的信息整体</p>
+<p>交换设备有 <strong><em>存储转发</em></strong> 的功能: 报文先被存储, 选择合适的链路后, 进行转发</p>
 <ul>
-<li>优点:
-<ul>
+<li>优点:<ul>
 <li>无需建立连接</li>
 <li>存储转发, 动态分配路线</li>
 <li>线路可靠性较高</li>
@@ -580,18 +531,15 @@ $$建立连接 \Rightarrow 通信 \Rightarrow 释放电路$$</p>
 <li>多目标服务</li>
 </ul>
 </li>
-<li>缺点:
-<ul>
+<li>缺点:<ul>
 <li>存储转发时延</li>
 <li>报文大小不定, 需要网络结点有较大的缓存空间</li>
 </ul>
 </li>
 </ul>
-<h3 id="分组交换">分组交换</h3>
-<p><strong>分组 :</strong> 把大的数据块分成小的数据块</p>
+<h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><p><strong>分组 :</strong> 把大的数据块分成小的数据块</p>
 <ul>
-<li>优点:
-<ul>
+<li>优点:<ul>
 <li>无需建立连接</li>
 <li>存储转发, 动态分配路线</li>
 <li>线路可靠性较高</li>
@@ -599,8 +547,7 @@ $$建立连接 \Rightarrow 通信 \Rightarrow 释放电路$$</p>
 <li>相对于报文交换, 存储管理更容易</li>
 </ul>
 </li>
-<li>缺点:
-<ul>
+<li>缺点:<ul>
 <li>存储转发时延</li>
 <li>需要传输额外的信息 (分组编号, 分组起始符等)</li>
 <li>乱序到达时需要重组</li>
@@ -608,51 +555,38 @@ $$建立连接 \Rightarrow 通信 \Rightarrow 释放电路$$</p>
 </li>
 </ul>
 <ol>
-<li>
-<p>数据报方式: 为网络层提供 <em><strong>无连接服务</strong></em> , 目前使用的方式</p>
+<li><p>数据报方式: 为网络层提供 <strong><em>无连接服务</em></strong> , 目前使用的方式</p>
 <ul>
 <li>无连接服务: 不事先为分组传输确定传输路径, 每个分组独立确定传输路径, 不同分组的传输路径可能不同</li>
 <li>每个分组携带源地址和目的地址</li>
-<li>路由器根据分组的目的地址转发分组
-<ul>
-<li>基于路由协议/算法构建 <em><strong>转发表</strong></em> , 检索转发表, 每个分组独立选路</li>
+<li>路由器根据分组的目的地址转发分组<ul>
+<li>基于路由协议/算法构建 <strong><em>转发表</em></strong> , 检索转发表, 每个分组独立选路</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p>虚电路方式: 为网络层提供 <em><strong>连接服务</strong></em> , 将电路交换方式和数据报方式结合<br>
-<strong>虚电路 :</strong> 一条源主机到目的主机类似于电路的路径 (逻辑连接), 路径上所有结点都要维持虚电路的建立, 维持一张 <em>虚电路表</em> , 每一项记录着打开的虚电路信息.</p>
+<li><p>虚电路方式: 为网络层提供 <strong><em>连接服务</em></strong> , 将电路交换方式和数据报方式结合<br><strong>虚电路 :</strong> 一条源主机到目的主机类似于电路的路径 (逻辑连接), 路径上所有结点都要维持虚电路的建立, 维持一张 <em>虚电路表</em> , 每一项记录着打开的虚电路信息.</p>
 <ul>
 <li>连接服务: 事先为分组传输确定传输路径, 然后沿该连接传输系列分组, 不同分组的传输路径相同, 传输完成后拆除连接</li>
 <li>每个分组携带虚电路号</li>
 </ul>
 </li>
 </ol>
-<h2 id="IP数据报">IP数据报</h2>
-<h3 id="TCP-IP协议栈">TCP/IP协议栈</h3>
-<h3 id="IP数据报格式">IP数据报格式</h3>
-<p>$$首部\quad|\quad数据部分 (TCP, UDP段)$$<br>
-如图:<br>
-<img src="" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="IP数据报"><a href="#IP数据报" class="headerlink" title="IP数据报"></a>IP数据报</h2><h3 id="TCP-IP协议栈"><a href="#TCP-IP协议栈" class="headerlink" title="TCP/IP协议栈"></a>TCP/IP协议栈</h3><h3 id="IP数据报格式"><a href="#IP数据报格式" class="headerlink" title="IP数据报格式"></a>IP数据报格式</h3><script type="math/tex; mode=display">首部\quad|\quad数据部分 (TCP, UDP段)</script><p>如图:<br><img src="" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li>首部
-<ul>
+<li>首部<ul>
 <li>固定部分: 20字节</li>
 <li>可变部分</li>
 </ul>
 </li>
 <li>数据部分</li>
 </ul>
-<h3 id="IP数据报分片">IP数据报分片</h3>
-<p><strong>最大传输单元MTU :</strong> 链路层数据帧可封装数据的上限, (即网络层的IP数据报长度不能超过MTU)</p>
+<h3 id="IP数据报分片"><a href="#IP数据报分片" class="headerlink" title="IP数据报分片"></a>IP数据报分片</h3><p><strong>最大传输单元MTU :</strong> 链路层数据帧可封装数据的上限, (即网络层的IP数据报长度不能超过MTU)</p>
 <p>若传输的IP数据报超过了MTU, 则要进行分片 (有些IP数据报不允许分片)</p>
 <ul>
-<li>分片与IP数据报首部 <em>标识, 标志, 片偏移</em> 有关
-<ul>
+<li>分片与IP数据报首部 <em>标识, 标志, 片偏移</em> 有关<ul>
 <li>标识: 同一数据报的分片使用同一标识</li>
-<li>标志位: 有3位, 低2位有意义
-<ul>
+<li>标志位: 有3位, 低2位有意义<ul>
 <li>中间位DF: 1表示禁止分片, 0表示可以分片</li>
 <li>最低位MF: 1表示后面还有分片, 0表示后面没有分片 (最后一片)</li>
 </ul>
@@ -661,91 +595,76 @@ $$建立连接 \Rightarrow 通信 \Rightarrow 释放电路$$</p>
 </ul>
 </li>
 </ul>
-<h3 id="IP数据报的传输方式">IP数据报的传输方式</h3>
-<p><strong>单播 :</strong> 点对点, 使用单播IP地址作为目的地址</p>
+<h3 id="IP数据报的传输方式"><a href="#IP数据报的传输方式" class="headerlink" title="IP数据报的传输方式"></a>IP数据报的传输方式</h3><p><strong>单播 :</strong> 点对点, 使用单播IP地址作为目的地址</p>
 <p><strong>广播 :</strong> 一对多, 目的地址为全1的广播地址 (见后续内容)</p>
 <p><strong>组播 (多播) :</strong> 给组播组的发送信息</p>
 <ul>
-<li>组播组IP地址
-<ul>
+<li>组播组IP地址<ul>
 <li>应用于UDP</li>
 <li>无ICMP差错报告</li>
 </ul>
 </li>
 </ul>
-<h2 id="IPv4地址">IPv4地址</h2>
-<h3 id="分类的IP地址">分类的IP地址</h3>
-<p>点分十进制: 网络部分 + 主机部分</p>
+<h2 id="IPv4地址"><a href="#IPv4地址" class="headerlink" title="IPv4地址"></a>IPv4地址</h2><h3 id="分类的IP地址"><a href="#分类的IP地址" class="headerlink" title="分类的IP地址"></a>分类的IP地址</h3><p>点分十进制: 网络部分 + 主机部分</p>
 <p>通过路由器的一个接口连接的主机, 或是链路层设备 (比如网桥) 所连接的局域网</p>
 <p>主机号不能全0全1 (见特殊的IP地址)</p>
-<p>缺点:</p>
+<p>缺点: </p>
 <ol>
 <li>IP地址空间可能利用率很低</li>
 <li>两级IP地址不够灵活</li>
 </ol>
-<h3 id="网络地址转换NAT">网络地址转换NAT</h3>
-<p>路由器对目的地址是私有IP地址的数据报一律不进行转发</p>
+<h3 id="网络地址转换NAT"><a href="#网络地址转换NAT" class="headerlink" title="网络地址转换NAT"></a>网络地址转换NAT</h3><p>路由器对目的地址是私有IP地址的数据报一律不进行转发</p>
 <p>可以在专用网和因特网之间的路由器上安装NAT软件 (即NAT路由器), 它至少有一个有效的外部全球IP地址, 用于对本地网的IP地址进行伪装后, 向因特网进行通信</p>
 <ul>
-<li>NAT路由器的NAT转换表
-<ul>
+<li>NAT路由器的NAT转换表<ul>
 <li>用于将本地网的IP地址和端口号进行替换, LAN端 $\Leftrightarrow$ WAN端</li>
 </ul>
 </li>
 </ul>
-<h3 id="子网">子网</h3>
-<p>子网划分: 将主机号较高的一部分作为子网号, 形成三级IP地址; 子网号可以由用户 (公司等) 决定; 外界不找到具体的子网划分</p>
-<p><strong>子网掩码 :</strong></p>
+<h3 id="子网"><a href="#子网" class="headerlink" title="子网"></a>子网</h3><p>子网划分: 将主机号较高的一部分作为子网号, 形成三级IP地址; 子网号可以由用户 (公司等) 决定; 外界不找到具体的子网划分</p>
+<p><strong>子网掩码 :</strong> </p>
 <ul>
-<li>两级: 网络号全1, 主机号全0: 255.255.0.0
-<ul>
+<li>两级: 网络号全1, 主机号全0: 255.255.0.0<ul>
 <li>与IP地址相与得到网络地址</li>
 </ul>
 </li>
-<li>三级: 网络号和子网号全1, 主机号全0: 255.255.255.0
-<ul>
+<li>三级: 网络号和子网号全1, 主机号全0: 255.255.255.0<ul>
 <li>子网掩码与IP地址逐位相与, 得到子网网络的地址</li>
 </ul>
 </li>
 <li>注意: 子网掩码根据主机不同而有可能不同</li>
 </ul>
-<h3 id="超网">超网</h3>
-<p>无分类编址CIDR: 结构为二级<br>
-$$网络前缀\quad|\quad主机号$$</p>
-<ul>
+<h3 id="超网"><a href="#超网" class="headerlink" title="超网"></a>超网</h3><p>无分类编址CIDR: 结构为二级</p>
+<script type="math/tex; mode=display">网络前缀\quad|\quad主机号</script><ul>
 <li>变长的子网掩码: IP地址能够分给更多的主机数</li>
-<li>CIDR记法: 在IP地址后加上&quot;/&quot;, 然后写上网络前缀的位数 (可以是任意长度)</li>
+<li>CIDR记法: 在IP地址后加上”/“, 然后写上网络前缀的位数 (可以是任意长度)</li>
 <li>CIDR地址块: 网络前缀都相同的连续IP地址</li>
 <li>子网掩码: 网络前缀全为1, 主机号全为0</li>
 </ul>
 <p>构成超网:</p>
 <ul>
-<li>将多个子网聚合成一个较大的子网, 称为构成超网或路由聚合
-<ul>
+<li>将多个子网聚合成一个较大的子网, 称为构成超网或路由聚合<ul>
 <li>方法: 缩短网络前缀</li>
 </ul>
 </li>
 <li>最长前缀匹配: 使用CIDR时, 查找路由表可能有多个匹配结果, 应选择前缀最长的路由, 前缀越长, 地址快越小, 路由越具体</li>
 </ul>
-<h2 id="ARP协议">ARP协议</h2>
-<p>完成主机或路由器IP地址到MAC地址的映射</p>
+<h2 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h2><p>完成主机或路由器IP地址到MAC地址的映射</p>
 <p><strong>使用过程 :</strong></p>
 <ul>
-<li>检查 <em><strong>ARP高速缓存</strong></em> , 有对应表项则写入MAC帧; 没有则使用目的MAC为FF-FF-FF-FF-FF-FF的帧封装并广播 <em><strong>ARP请求分组</strong></em> , <em><strong>同一局域网</strong></em> 内所有主机都能收到该请求, 目的主机收到请求后会想源主机单播一个 <em><strong>ARP响应分组</strong></em> , 源主机收到后写入ARP高速缓存</li>
+<li>检查 <strong><em>ARP高速缓存</em></strong> , 有对应表项则写入MAC帧; 没有则使用目的MAC为FF-FF-FF-FF-FF-FF的帧封装并广播 <strong><em>ARP请求分组</em></strong> , <strong><em>同一局域网</em></strong> 内所有主机都能收到该请求, 目的主机收到请求后会想源主机单播一个 <strong><em>ARP响应分组</em></strong> , 源主机收到后写入ARP高速缓存</li>
 </ul>
 <p><strong>4中典型情况 :</strong></p>
 <ol>
-<li>主机A发送给 <em><strong>本网络</strong></em> 上的主机B: 用ARP高速缓存找到B的MAC地址</li>
-<li>主机A发给 <em><strong>另一个网络</strong></em> 上的主机B: 用ARP找到本网络上的路由器 (网关) 的MAC地址</li>
-<li>路由器发送给 <em><strong>本网络</strong></em> 上的主机A: 用ARP找到A的MAC地址</li>
-<li>路由器发送给 <em><strong>另一个网络</strong></em> 的主机B: 用ARP找到下一个路由器的MAC地址</li>
+<li>主机A发送给 <strong><em>本网络</em></strong> 上的主机B: 用ARP高速缓存找到B的MAC地址</li>
+<li>主机A发给 <strong><em>另一个网络</em></strong> 上的主机B: 用ARP找到本网络上的路由器 (网关) 的MAC地址</li>
+<li>路由器发送给 <strong><em>本网络</em></strong> 上的主机A: 用ARP找到A的MAC地址</li>
+<li>路由器发送给 <strong><em>另一个网络</em></strong> 的主机B: 用ARP找到下一个路由器的MAC地址</li>
 </ol>
-<h2 id="DHCP协议-应用层协议">DHCP协议 (应用层协议)</h2>
-<p><strong>使主机获得IP地址 :</strong></p>
+<h2 id="DHCP协议-应用层协议"><a href="#DHCP协议-应用层协议" class="headerlink" title="DHCP协议 (应用层协议)"></a>DHCP协议 (应用层协议)</h2><p><strong>使主机获得IP地址 :</strong></p>
 <ul>
 <li>静态配置: 由管理员为每个主机分配IP地址, 子网掩码, 默认网关</li>
-<li>动态配置: 通过DHCP服务器动态为范围内的主机或移动设备分配IP地址<br>
-<strong>DHCP协议步骤 :</strong></li>
+<li>动态配置: 通过DHCP服务器动态为范围内的主机或移动设备分配IP地址<br><strong>DHCP协议步骤 :</strong></li>
 </ul>
 <ol>
 <li>主机广播DHCP发现报文</li>
@@ -758,11 +677,9 @@ $$网络前缀\quad|\quad主机号$$</p>
 <li>使用客户/服务器方式</li>
 <li>基于UDP</li>
 </ul>
-<h2 id="ICMP协议-网际控制报文协议">ICMP协议 (网际控制报文协议)</h2>
-<p>更有效地转发IP数据报和提高交付成功的机会; 功能体现为发送特定的ICMP报文; ICMP数据报文是IP数据报的数据部分</p>
+<h2 id="ICMP协议-网际控制报文协议"><a href="#ICMP协议-网际控制报文协议" class="headerlink" title="ICMP协议 (网际控制报文协议)"></a>ICMP协议 (网际控制报文协议)</h2><p>更有效地转发IP数据报和提高交付成功的机会; 功能体现为发送特定的ICMP报文; ICMP数据报文是IP数据报的数据部分</p>
 <ol>
-<li>ICMP差错报告报文
-<ol>
+<li>ICMP差错报告报文<ol>
 <li>终点不可达 (解决无法交付)</li>
 <li>源点抑制 (解决拥塞) (不再使用)</li>
 <li>时间超过 (TTL == 0)</li>
@@ -770,27 +687,21 @@ $$网络前缀\quad|\quad主机号$$</p>
 <li>改变路由或重定向 (有更好的路由选择)</li>
 </ol>
 </li>
-<li>ICMP询问报文
-<ol>
+<li>ICMP询问报文<ol>
 <li>回送请求和回答报文, 测试目的站是否可达以及了解相关状态</li>
 <li>时间戳请求和回答报文, 请某个主机或路由器回答当前的时间, 用于时钟同步和测量时间</li>
 <li>掩码地址请求和回答报文 (不再使用)</li>
 <li>路由器询问和通告报文 (不再使用)</li>
 </ol>
 </li>
-<li>ICMP的应用
-<ol>
+<li>ICMP的应用<ol>
 <li>ping</li>
-<li>Traceroute: 跟踪一个分组从源点到终点的路径; 使用的是时间超过ICMP差错<br>
-报告报文</li>
+<li>Traceroute: 跟踪一个分组从源点到终点的路径; 使用的是时间超过ICMP差错<br>报告报文</li>
 </ol>
 </li>
 </ol>
-<h2 id="IPv6地址">IPv6地址</h2>
-<p>解决IPv4地址空间不足的方法; 改变IP数据报的首部格式, 提供更快的通信<br>
-$$IPv6: 基本首部\quad|\quad有效载荷$$<br>
-$$有效载荷: 扩展首部1\quad|\quad扩展首部2\quad|\quad数据部分$$</p>
-<ul>
+<h2 id="IPv6地址"><a href="#IPv6地址" class="headerlink" title="IPv6地址"></a>IPv6地址</h2><p>解决IPv4地址空间不足的方法; 改变IP数据报的首部格式, 提供更快的通信</p>
+<script type="math/tex; mode=display">IPv6: 基本首部\quad|\quad有效载荷</script><script type="math/tex; mode=display">有效载荷: 扩展首部1\quad|\quad扩展首部2\quad|\quad数据部分</script><ul>
 <li>地址空间有128位</li>
 <li>无校验和</li>
 <li>支持即插即用, 自动配置IP地址</li>
@@ -806,15 +717,14 @@ $$有效载荷: 扩展首部1\quad|\quad扩展首部2\quad|\quad数据部分$$</
 <li>任播: 一对一通信, 在任播组中选择其一通信, 只作为目的地址</li>
 </ul>
 <p><strong>IPv6和IPv4转化 :</strong> 隧道协议和双栈协议</p>
-<h2 id="RIP协议-应用层协议-和距离向量算法">RIP协议 (应用层协议) 和距离向量算法</h2>
-<p>分布式的基于 <em><strong>距离向量</strong></em> 的路由选择协议, 最大优点是 <em>简单</em></p>
+<h2 id="RIP协议-应用层协议-和距离向量算法"><a href="#RIP协议-应用层协议-和距离向量算法" class="headerlink" title="RIP协议 (应用层协议) 和距离向量算法"></a>RIP协议 (应用层协议) 和距离向量算法</h2><p>分布式的基于 <strong><em>距离向量</em></strong> 的路由选择协议, 最大优点是 <em>简单</em></p>
 <ul>
 <li>要求网络中每一个路由器维护从它自己到每一个目的网络的唯一最佳距离记录 (一组距离), 允许一条路由最多包含15个路由器</li>
 <li>只适用于小网络</li>
 <li>内部网关协议</li>
 <li>使用UDP协议传播</li>
 </ul>
-<p><strong>路由表的建立 :</strong></p>
+<p><strong>路由表的建立 :</strong> </p>
 <ul>
 <li>每个路由器之和相邻的路由器交换信息</li>
 <li>交换的信息是自己的路由表 (RIP报文)</li>
@@ -822,10 +732,9 @@ $$有效载荷: 扩展首部1\quad|\quad扩展首部2\quad|\quad数据部分$$</
 </ul>
 <p><strong>距离向量算法 :</strong></p>
 <p><strong>报文格式 :</strong> 首部 + 路由部分</p>
-<p>传输层: 头部添加 <em><strong>UDP首部</strong></em></p>
+<p>传输层: 头部添加 <strong><em>UDP首部</em></strong></p>
 <p>网络层: 头部添加 IP首部</p>
-<h2 id="OSPF协议和链路状态算法">OSPF协议和链路状态算法</h2>
-<p>使用分布式链路状态算法, Dijkstra的最短路径算法SPF</p>
+<h2 id="OSPF协议和链路状态算法"><a href="#OSPF协议和链路状态算法" class="headerlink" title="OSPF协议和链路状态算法"></a>OSPF协议和链路状态算法</h2><p>使用分布式链路状态算法, Dijkstra的最短路径算法SPF</p>
 <ul>
 <li>内部网关协议</li>
 <li>洪泛法</li>
@@ -836,63 +745,50 @@ $$有效载荷: 扩展首部1\quad|\quad扩展首部2\quad|\quad数据部分$$</
 </ul>
 <p><strong>链路状态路由算法 :</strong></p>
 <p><strong>区域 :</strong> 自治系统分为若干区域, 每一个区域用点分十进制表示, 主干区域全0</p>
-<h2 id="BGP协议">BGP协议</h2>
-<ul>
+<h2 id="BGP协议"><a href="#BGP协议" class="headerlink" title="BGP协议"></a>BGP协议</h2><ul>
 <li>外部网关协议: 自治系统AS间使用</li>
 <li>与其他AS邻站BGP发言人交换信息</li>
 <li>交换网络的可达性信息 (即所要经历的一系列AS)</li>
 <li>使用TCP协议传播</li>
 </ul>
 <p><strong>BGP发言人 :</strong> AS边界路由器</p>
-<h2 id="移动IP">移动IP</h2>
-<p>移动结点以固定的IP地址, 实现跨越不同网段的漫游功能, 保证网络权限不发生任何变化</p>
+<h2 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h2><p>移动结点以固定的IP地址, 实现跨越不同网段的漫游功能, 保证网络权限不发生任何变化</p>
 <ul>
 <li>即使所在的网络变化了, 但IP地址不变</li>
 </ul>
 <p><strong>移动结点 :</strong> 具有永久IP地址的移动设备</p>
-<p><strong>归属代理, 本地代理 :</strong></p>
+<p><strong>归属代理, 本地代理 :</strong> </p>
 <p><strong>移动IP的通信过程 :</strong></p>
-<h2 id="网络层设备">网络层设备</h2>
-<h3 id="路由器">路由器</h3>
-<p>具有多个输入端口和多个输出端口的专用计算机, 任务是 <em><strong>转发分组</strong></em></p>
+<h2 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h2><h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><p>具有多个输入端口和多个输出端口的专用计算机, 任务是 <strong><em>转发分组</em></strong></p>
 <ul>
-<li>路由选择: 路由选择处理机
-<ul>
+<li>路由选择: 路由选择处理机<ul>
 <li>构造路由表</li>
 </ul>
 </li>
-<li>分组转发: 交换结构
-<ul>
+<li>分组转发: 交换结构<ul>
 <li>根据转发表 (路由表而来) 对分组进行转发</li>
 </ul>
 </li>
 </ul>
-<h1>传输层</h1>
-<ol>
-<li>提供进程和进程之间的 <em><strong>逻辑通信</strong></em>, 网络层提供的是主机与主机之间的通信</li>
-<li>复用和分用
-<ol>
+<h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><ol>
+<li>提供进程和进程之间的 <strong><em>逻辑通信</em></strong>, 网络层提供的是主机与主机之间的通信</li>
+<li>复用和分用<ol>
 <li>不同进程使用相同的协议, 将接收的报文段分别送给不同的进程</li>
 <li>复用: 应用层所有的进程都可以通过传输层再传到网络层</li>
 <li>分用: 传输层从网络层收到数据后交付给指明的应用进程</li>
 <li>如何指明进程$\Rightarrow$端口号</li>
 </ol>
 </li>
-<li>对收到报文进行差错检测
-<ol>
-<li>网络层检测头部, 传输层检测数据部分</li>
+<li>对收到报文进行差错检测<ol>
+<li>网络层检测头部, 传输层检测数据部分<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2>逻辑端口/软件端口, 用于唯一标识主机中的应用进程, 传输层服务访问点SAP</li>
 </ol>
 </li>
 </ol>
-<h2 id="端口">端口</h2>
-<p>逻辑端口/软件端口, 用于唯一标识主机中的应用进程, 传输层服务访问点SAP</p>
 <ul>
 <li>只有本地意义, 不同计算机的相同端口号无联系</li>
 <li>$length = 16bit$</li>
-<li>分类:
-<ul>
-<li>服务端使用的端口号
-<ul>
+<li>分类:<ul>
+<li>服务端使用的端口号<ul>
 <li>熟知端口号$0\sim1023$: 给TCP/IP最重要的一些应用程序, 让所有用户都知道</li>
 <li>登记端口号$1024\sim49151$: 其他</li>
 </ul>
@@ -901,55 +797,10 @@ $$有效载荷: 扩展首部1\quad|\quad扩展首部2\quad|\quad数据部分$$</
 </ul>
 </li>
 </ul>
-<p>常见应用程序以及端口号:</p>
-<table>
-<thead>
-<tr>
-<th>应用程序</th>
-<th>熟知端口号</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FTP</td>
-<td>21</td>
-</tr>
-<tr>
-<td>TELNET</td>
-<td>23</td>
-</tr>
-<tr>
-<td>SMTP</td>
-<td>25</td>
-</tr>
-<tr>
-<td>DNS</td>
-<td>53</td>
-</tr>
-<tr>
-<td>TFTP</td>
-<td>69</td>
-</tr>
-<tr>
-<td>HTTP</td>
-<td>80</td>
-</tr>
-<tr>
-<td>SNMP</td>
-<td>161</td>
-</tr>
-<tr>
-<td>HTTPS</td>
-<td>443</td>
-</tr>
-</tbody>
-</table>
+<p>常见应用程序以及端口号:<br>| 应用程序 | 熟知端口号 |<br>| ———- | ————— |<br>| FTP | 21 |<br>| TELNET | 23 |<br>| SMTP | 25 |<br>| DNS | 53 |<br>| TFTP | 69 |<br>| HTTP | 80 |<br>| SNMP | 161 |<br>| HTTPS | 443 |</p>
 <p><strong>套接字 :</strong> 唯一标识网络中的一个主机和它上面的一个进程, 在网络中使用发送方和接收方的套接字组合来识别端点</p>
-<p>$$<br>
-Socket = (IPAttr, PortNum)<br>
-$$</p>
-<h2 id="UDP">UDP</h2>
-<p>无连接的用户数据报协议 (简单, 不可靠, 时延小, 适用于小文件)</p>
+<script type="math/tex; mode=display">
+  Socket = (IPAttr, PortNum)</script><h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>无连接的用户数据报协议 (简单, 不可靠, 时延小, 适用于小文件)</p>
 <p>只是在IP数据报服务上增加了复用分用和差错检测功能</p>
 <ol>
 <li>无连接</li>
@@ -960,61 +811,46 @@ $$</p>
 </ol>
 <p><strong>UDP首部格式 :</strong></p>
 <p><strong>UDP检验过程 :</strong></p>
-<h2 id="TCP">TCP</h2>
-<p>面向连接 (虚连接) 的传输控制协议 (复杂, 但可靠, 时延大, 大文件)</p>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>面向连接 (虚连接) 的传输控制协议 (复杂, 但可靠, 时延大, 大文件)</p>
 <ol>
-<li>面向字节流
-<ol>
+<li>面向字节流<ol>
 <li>流: 流入到进程或从进程流出的字节序列</li>
 </ol>
 </li>
 </ol>
-<p><strong>TCP首部格式 :</strong></p>
-<h3 id="TCP连接管理">TCP连接管理</h3>
-<p>全双工通信, 采用 <em><strong>客户服务器方式</strong></em></p>
+<p><strong>TCP首部格式 :</strong> </p>
+<h3 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h3><p>全双工通信, 采用 <strong><em>客户服务器方式</em></strong></p>
 <ul>
 <li>主动发起连接的应用进程称为客户, 被动等待建立连接的应用进程称为服务器</li>
 </ul>
-<p><strong>三次握手 :</strong></p>
+<p><strong>三次握手 :</strong> </p>
 <ul>
-<li>ROUND1: 客户端发送连接请求报文段<br>
-$$SYN=1, seq=x(random)$$</li>
-<li>ROUND2: 服务器为该TCP连接分配缓存和变量, 并向客户端返回确认报文段, 允许连接<br>
-$$SYN=1, ACK=1, seq=y(random), ack=x+1$$</li>
-<li>ROUND3: 客户端为该TCP分配缓存和变量, 并向服务器返回确认的确认, 可以携带数据<br>
-$$SYN=0, ACK=1, seq=x+1, ack=y+1$$</li>
+<li>ROUND1: 客户端发送连接请求报文段<script type="math/tex; mode=display">SYN=1, seq=x(random)</script></li>
+<li>ROUND2: 服务器为该TCP连接分配缓存和变量, 并向客户端返回确认报文段, 允许连接<script type="math/tex; mode=display">SYN=1, ACK=1, seq=y(random), ack=x+1</script></li>
+<li>ROUND3: 客户端为该TCP分配缓存和变量, 并向服务器返回确认的确认, 可以携带数据<script type="math/tex; mode=display">SYN=0, ACK=1, seq=x+1, ack=y+1</script></li>
 </ul>
-<p><strong>SYN洪泛攻击 :</strong></p>
+<p><strong>SYN洪泛攻击 :</strong> </p>
 <ul>
 <li>解决办法: 设置SYN cookie</li>
 </ul>
 <p><strong>四次挥手 :</strong></p>
 <ul>
 <li>参与TCP连接的双方都可以主动终止连接, 连接结束后, 相关的缓存和变量被释放</li>
-<li>ROUND1: 客户端发送释放连接报文段, 停止发送数据, 主动终止<br>
-$$FIN=1, seq=u(no data)$$</li>
-<li>ROUND2: 服务器端发送确认报文段, 客户到服务器方向的连接就释放了, 即半关闭状态<br>
-$$ACK=1, seq=v, ack=u+1$$</li>
-<li>ROUND3: 服务器端发完数据, 就发出连接释放报文段, 主动关闭TCP连接<br>
-$$FIN=1, ACK=1, seq=w, ack=u+1$$</li>
-<li>ROUND4: 客户端回送一个确认报文段, 再等到时间等待计数器到2MSL(最长报文段寿命)后, 彻底关闭连接
-<ul>
-<li>之所以需要等待2MSL, 是因为若最后一个报文段发生丢失, 服务器会再次发送释放报文段, 客户端接收后再次确认, 结束<br>
-$$ACK=1, seq=u+1, ack=w+1$$</li>
+<li>ROUND1: 客户端发送释放连接报文段, 停止发送数据, 主动终止<script type="math/tex; mode=display">FIN=1, seq=u(no data)</script></li>
+<li>ROUND2: 服务器端发送确认报文段, 客户到服务器方向的连接就释放了, 即半关闭状态<script type="math/tex; mode=display">ACK=1, seq=v, ack=u+1</script></li>
+<li>ROUND3: 服务器端发完数据, 就发出连接释放报文段, 主动关闭TCP连接<script type="math/tex; mode=display">FIN=1, ACK=1, seq=w, ack=u+1</script></li>
+<li>ROUND4: 客户端回送一个确认报文段, 再等到时间等待计数器到2MSL(最长报文段寿命)后, 彻底关闭连接<ul>
+<li>之所以需要等待2MSL, 是因为若最后一个报文段发生丢失, 服务器会再次发送释放报文段, 客户端接收后再次确认, 结束<script type="math/tex; mode=display">ACK=1, seq=u+1, ack=w+1</script></li>
 </ul>
 </li>
 </ul>
-<h3 id="TCP可靠传输">TCP可靠传输</h3>
-<ol>
+<h3 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h3><ol>
 <li>校验</li>
 <li>序列</li>
 <li>确认</li>
 <li>重传</li>
 </ol>
-<h3 id="TCP流量控制">TCP流量控制</h3>
-<h3 id="TCP拥塞控制">TCP拥塞控制</h3>
-<h1>应用层</h1>
-<p>应用层对应用程序的通信提供服务</p>
+<h3 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h3><h3 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h3><h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><p>应用层对应用程序的通信提供服务</p>
 <ol>
 <li>应用进程交换的报文类型, 请求还是相应</li>
 <li>各种报文类型的语法</li>
@@ -1028,32 +864,26 @@ $$ACK=1, seq=u+1, ack=w+1$$</li>
 <li>虚拟终端 (HTTP)</li>
 <li>查询服务和远程作业登陆 (DNS)</li>
 </ol>
-<h2 id="网络应用层模型">网络应用层模型</h2>
-<ol>
-<li>S/C模型 (客户端/服务器模型)
-<ol>
-<li>服务器
-<ol>
+<h2 id="网络应用层模型"><a href="#网络应用层模型" class="headerlink" title="网络应用层模型"></a>网络应用层模型</h2><ol>
+<li>S/C模型 (客户端/服务器模型)<ol>
+<li>服务器<ol>
 <li>永久提供服务</li>
 <li>永久性访问地址/域名</li>
 </ol>
 </li>
-<li>客户机
-<ol>
+<li>客户机<ol>
 <li>间歇性接入网络</li>
 <li>可能使用动态IP地址</li>
 <li>不与其他客户机直接通信</li>
 </ol>
 </li>
-<li>应用
-<ol>
+<li>应用<ol>
 <li>Web, 文件传输FTP, 远程登陆, 电子邮件</li>
 </ol>
 </li>
 </ol>
 </li>
-<li>P2P模型 (对等模型, peer to peer)
-<ol>
+<li>P2P模型 (对等模型, peer to peer)<ol>
 <li>每个主机既可以成为服务器也可以成为客户机</li>
 <li>任意端系统间可以直接通信</li>
 <li>间歇性接入网络</li>
@@ -1063,12 +893,9 @@ $$ACK=1, seq=u+1, ack=w+1$$</li>
 </ol>
 </li>
 </ol>
-<h2 id="DNS系统">DNS系统</h2>
-<p>$$IP \Leftrightarrow DNS$$<br>
-<strong>域名 :</strong></p>
+<h2 id="DNS系统"><a href="#DNS系统" class="headerlink" title="DNS系统"></a>DNS系统</h2><script type="math/tex; mode=display">IP \Leftrightarrow DNS</script><p><strong>域名 :</strong> </p>
 <ul>
-<li>顶级域名
-<ul>
+<li>顶级域名<ul>
 <li>com, cn, arpa, net…</li>
 </ul>
 </li>
@@ -1083,44 +910,35 @@ $$ACK=1, seq=u+1, ack=w+1$$</li>
 <li>本地域名</li>
 </ul>
 <p><strong>递归查询和迭代查询 :</strong></p>
-<h2 id="FTP">FTP</h2>
-<p>FTP文件传输软件<br>
-工作原理:</p>
+<h2 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h2><p>FTP文件传输软件\<br>工作原理:</p>
 <ul>
 <li>登陆 (用户名密码登陆, 匿名登陆)</li>
 <li>TCP传输</li>
 </ul>
-<h2 id="电子邮件">电子邮件</h2>
-<p>SMTP: 简单文件传输协议</p>
+<h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h2><p>SMTP: 简单文件传输协议</p>
 <p>MIME: 通用因特网邮件扩充, 使传输文件更加丰富, 逐渐应用于浏览器</p>
 <p>POP3: 邮局协议</p>
 <p>IMAP: 网际报文存储协议</p>
 <ul>
-<li>基于万维网的电子邮件
-<ul>
+<li>基于万维网的电子邮件<ul>
 <li>HTTP+SMTP+POP3</li>
 </ul>
 </li>
 </ul>
-<h2 id="万维网">万维网</h2>
-<p>大规模, 联机式的信息储藏所/资料空间, 是无数个网络站点和网页集合</p>
+<h2 id="万维网"><a href="#万维网" class="headerlink" title="万维网"></a>万维网</h2><p>大规模, 联机式的信息储藏所/资料空间, 是无数个网络站点和网页集合</p>
 <ul>
-<li>访问资源: URL统一资源定位符唯一标识资源
-<ul>
+<li>访问资源: URL统一资源定位符唯一标识资源<ul>
 <li>格式</li>
 </ul>
 </li>
 </ul>
-<p>$$&lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;$$</p>
-<ul>
+<script type="math/tex; mode=display"><协议>://<主机>:<端口>/<路径></script><ul>
 <li>协议有http, ftp</li>
 <li>主机位IP地址或者是域名</li>
 <li>路径可以不写</li>
 </ul>
 <p><strong>超文本标记语言HTML :</strong> 从一个界面的链接转到另一个界面</p>
-<h2 id="HTTP">HTTP</h2>
-<p>定义了浏览器 (万维网客户服务进程) 怎样向万维网服务器请求万维网文档, 以及服务器怎样把文档传送给浏览器<br>
-特点:</p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>定义了浏览器 (万维网客户服务进程) 怎样向万维网服务器请求万维网文档, 以及服务器怎样把文档传送给浏览器\<br>特点:</p>
 <ul>
 <li>无状态</li>
 <li>Cookie, 存储在用户主机中的文本文件, 记录一段时间内某用户的访问记录 (通过访问码)</li>
@@ -1273,6 +1091,12 @@ $$ACK=1, seq=u+1, ack=w+1$$</li>
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -1529,6 +1353,44 @@ $$ACK=1, seq=u+1, ack=w+1$$</li>
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
