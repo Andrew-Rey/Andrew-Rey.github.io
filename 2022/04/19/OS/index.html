@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://andrew-rey.github.io/2022/04/19/OS/nonpree.png">
 <meta property="og:image" content="http://andrew-rey.github.io/2022/04/19/OS/pree.png">
 <meta property="article:published_time" content="2022-04-19T02:43:18.778Z">
-<meta property="article:modified_time" content="2022-04-28T08:47:52.857Z">
+<meta property="article:modified_time" content="2022-05-03T11:21:49.880Z">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://andrew-rey.github.io/2022/04/19/OS/system_call1.png">
   
@@ -229,7 +229,7 @@
         
         
         
-          243 mins
+          242 mins
         
       </span>
     
@@ -284,7 +284,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on April 28, 2022 pm
+                    Last updated on May 3, 2022 pm
                   
                 
               </p>
@@ -306,7 +306,7 @@
 </ul>
 <p>These contents will be detailed written in the following chapters</p>
 <h2 id="Operating-system-components">Operating system components</h2>
-<h3 id="🌸Process-management">🌸Process management</h3>
+<h3 id="Process-management">Process management</h3>
 <p><strong>process</strong>: A process is a <font color=blue>program</font> in <font color=red>execution</font>.</p>
 <ul>
 <li>program has its own address space</li>
@@ -314,7 +314,7 @@
 <div class="note note-info">
             <h3 id="OS-activities">OS activities:</h3><ul><li>Process creation and deletion<ul><li>using <strong>fork</strong> system call</li></ul></li><li>Process suspension and resumption (挂起或恢复)</li><li>Provision of mechanism for:<ul><li>process synchronization (进程同步)<ul><li>such as two processes should share a variable to achieve a task or job. And synchronization mechanism helps to finish this job in a proper order.</li></ul></li><li>process communication (进程通信)</li><li>deadlock handling (死锁处理)</li></ul></li></ul>
           </div>
-<h3 id="🌸Main-memory-management">🌸Main memory management</h3>
+<h3 id="Main-memory-management">Main memory management</h3>
 <p><strong>memory</strong>: Memory is a large array of words or bytes, each with its own address. It is a repository of quickly accessible data shared by the CPU and I/O devices.</p>
 <p><strong>Main memory</strong> or <strong>primary storage</strong> is a volatile storage device (掉电易失设备).</p>
 <div class="note note-info">
@@ -324,7 +324,7 @@
 <ul>
 <li>without regard to the limits of physical memory.</li>
 </ul>
-<h3 id="🌸File-management">🌸File management</h3>
+<h3 id="File-management">File management</h3>
 <p><strong>file</strong>: A file is a collection of related information defined by its creator. Commonly, files represent programs (both source and object form) and data.</p>
 <ul>
 <li>this a uniform logical view of information storage provided by OS.</li>
@@ -334,7 +334,7 @@
           </div>
 <p><em>Windows file management is related to storage, but Linux not. In Linux, every thing is file, having a unified form to access files.</em></p>
 <p><strong>Mount (挂载)</strong>: create a mounting point, and this file is can be accessed using mounting point.</p>
-<h3 id="🌸I-O-system-management">🌸I/O system management</h3>
+<h3 id="I-O-system-management">I/O system management</h3>
 <p>The I/O subsystem consists of:</p>
 <ul>
 <li>a buffer-caching system</li>
@@ -347,7 +347,7 @@
 </li>
 <li>drivers for specific hardware devices</li>
 </ul>
-<h3 id="🌸Secondary-storage-disk-management">🌸Secondary-storage (disk) management</h3>
+<h3 id="Secondary-storage-disk-management">Secondary-storage (disk) management</h3>
 <p><strong>Secondary storage</strong> is the principle on-line storage medium (线性存储介质) for both programs and data.</p>
 <ul>
 <li>disk</li>
@@ -356,7 +356,7 @@
 <div class="note note-info">
             <h3 id="OS-activities-v4">OS activities;</h3><ul><li>Free space management (which parts of disk are free and how to allocate these free blocks)</li><li>Storage allocation</li><li>Disk scheduling (磁盘调度)<ul><li>磁头移动, 请求分布在不同柱面上, 相应时需要磁头在不同不同柱面上切换, 经过算法, 设计磁头移动的最短距离 (有计算题).</li></ul></li></ul>
           </div>
-<h3 id="🌸Protection-system">🌸Protection system</h3>
+<h3 id="Protection-system">Protection system</h3>
 <p><strong>Protection</strong> refers to a mechanism for controlling access by programs, processes, or users to both system and user resources.</p>
 <ul>
 <li>distinguish between authorized and unauthorized usage.</li>
@@ -364,14 +364,14 @@
 </ul>
 <p>Example:<br>
 In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <strong>user(u)</strong>, <strong>group(g)</strong>, <strong>other(o)</strong></p>
-<h3 id="🌸Command-interpreter-system">🌸Command-interpreter system</h3>
+<h3 id="Command-interpreter-system">Command-interpreter system</h3>
 <p><strong>Command-interpreter system</strong>(命令行解释系统): Interact with users, users can send instructions to OS.</p>
 <ul>
 <li>Shell</li>
 <li>its functions is to get and execute the next command statement.</li>
 </ul>
 <h2 id="Operating-system-services">Operating system services</h2>
-<h3 id="🌸Core-operating-system-services">🌸Core operating system services</h3>
+<h3 id="Core-operating-system-services">Core operating system services</h3>
 <p>From the view of an user:</p>
 <p><strong>Program execution</strong></p>
 <ul>
@@ -397,7 +397,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <ul>
 <li>ensure correct computing in CPU, memory hardware, I/O devices, user programs</li>
 </ul>
-<h3 id="🌸Additional-operating-system-functions">🌸Additional operating system functions</h3>
+<h3 id="Additional-operating-system-functions">Additional operating system functions</h3>
 <p>From a view of system:</p>
 <p>This part is user for <strong>efficient system operations</strong>, not for helping users.</p>
 <ul>
@@ -416,7 +416,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <li>Some language like <code>C</code> language and <code>C++</code> are defined to replace assembly-language for system programming, which allow system call to be made directly.</li>
 </ul>
 <p><img src="system_call1.png" srcset="/img/loading.gif" lazyload alt="system_call1"></p>
-<h3 id="🌸The-implementation-of-system-call">🌸The implementation of system call</h3>
+<h3 id="The-implementation-of-system-call">The implementation of system call</h3>
 <p>Typically, a number (index) associated with each system call.</p>
 <ul>
 <li>System call interface maintains a table indexed according to these numbers</li>
@@ -433,7 +433,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 </ul>
 <p><img src="system_call2.png" srcset="/img/loading.gif" lazyload alt="system_call2"></p>
 <p>In this picture, <code>open()</code> function acts as an API, and <code>open()</code> gives a system call (in the function library) to OS (maybe in the library, <code>open()</code> function use other system functions to give a system call, because <code>open()</code> is just an <u>API</u> of system call functions). Then the OS look up this system call in its number table and then execute a specific system program (according to the index number). Finally, the OS returns the states.</p>
-<h3 id="🌸Parameter-passing-in-system-call">🌸Parameter passing in system call</h3>
+<h3 id="Parameter-passing-in-system-call">Parameter passing in system call</h3>
 <p>Often, more information is required than simply identity of desired system call.</p>
 <p>Three types:</p>
 <ul>
@@ -450,7 +450,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <li>Parameters placed, or <u>pushed</u> onto the <em><strong>stack</strong></em> by program and <u>popped</u> off the stack by the OS.</li>
 </ul>
 <p><u>Block and stack don’t limit the number and the length of parameters.</u></p>
-<h3 id="🌸Types-of-system-call">🌸Types of system call</h3>
+<h3 id="Types-of-system-call">Types of system call</h3>
 <p>Five main types:</p>
 <ul>
 <li>process control</li>
@@ -576,14 +576,14 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 </table>
 <h2 id="System-structure">System structure</h2>
 <p>monolithic单体结构（一个进程）$\rightarrow$ 分层式 $\rightarrow$ 微内核结构（最核心的功能放在内核中）、模块化结构（linux）</p>
-<h3 id="🌸-UNIX">🌸 UNIX</h3>
+<h3 id="UNIX">UNIX</h3>
 <p>have no concept of <strong>structure</strong>, is <strong>Single core structure.</strong></p>
 <p>consists of two separable parts:</p>
 <ul>
 <li>system programs</li>
 <li>the kernel</li>
 </ul>
-<h3 id="🌸-Microkernel">🌸 Microkernel</h3>
+<h3 id="Microkernel">Microkernel</h3>
 <p>assign only a few essential functions to the kernel</p>
 <ul>
 <li>address spaces</li>
@@ -593,7 +593,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <div class="note note-info">
             <h3 id="Benefit-and-detriments">Benefit and detriments</h3><ul><li>reliable</li><li>easy to extend</li><li>secure</li><li>communication occupies much space</li></ul>
           </div>
-<h3 id="🌸Modules">🌸Modules</h3>
+<h3 id="Modules">Modules</h3>
 <p>most modern OS implement module method:</p>
 <p>kernel is divided into different modules.</p>
 <p>层次化不明显；可以动态对内核进行装载和删除内核模块</p>
@@ -617,7 +617,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 </ul>
 <h1>Process</h1>
 <h2 id="Concept-of-process">Concept of process</h2>
-<h3 id="🌸-What-is-a-process">🌸 What is a process?</h3>
+<h3 id="What-is-a-process">What is a process?</h3>
 <ul>
 <li>A program in execution</li>
 <li>An instance(实例) of a program running on a computer
@@ -628,7 +628,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <li>The entity(实体) that can be assigned to(指派) and executed on a processor</li>
 <li>A unit of activity characterized by the execution of a sequence of in instructions, a current state, and an associated set of system resources(一系列指令执行，状态(如wait, execution, ready)，有资源)</li>
 </ul>
-<h3 id="🌸Process-in-memory">🌸Process in memory</h3>
+<h3 id="Process-in-memory">Process in memory</h3>
 <ul>
 <li><strong>text</strong> 代码段(<code>addr=0</code>)
 <ul>
@@ -659,18 +659,18 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> x = <span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>  <span class="hljs-type">int</span> a;<br>  <span class="hljs-type">static</span> <span class="hljs-type">int</span> b;<br>  f1();<br>  <span class="hljs-type">int</span>* pointer = <span class="hljs-literal">NULL</span>;<br>  pointer = <span class="hljs-type">int</span> new();<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p><code>x</code> and <code>b</code> are in <code>data</code> sector; <code>a</code> and <code>f1()</code> are in <code>stack</code>; <code>pointer</code> points to a space of <code>heap</code>.</p>
 <p>HINT: there is a <u>flexible space</u> between <strong>heap</strong> and <strong>stack</strong>.</p>
-<h3 id="🌸Process-elements">🌸Process elements</h3>
+<h3 id="Process-elements">Process elements</h3>
 <ol>
 <li>program code (possible shared)</li>
 <li>a set of data</li>
 <li>a number of attributes describing the state of the process</li>
 </ol>
-<h3 id="🌸Trace-of-the-process">🌸Trace of the process</h3>
+<h3 id="Trace-of-the-process">Trace of the process</h3>
 <p>The behavior of an individual process is shown by <strong>listing the sequence of instructions</strong> the are executed. (指令按序执行)</p>
 <p>This list is called a <strong>trace</strong>.</p>
 <p><strong>Dispatcher</strong> is a small program which switches the processor from one process to another. (进程切换)</p>
 <h2 id="User-view-of-process">User-view of process</h2>
-<h3 id="🌸Process-creation">🌸Process creation</h3>
+<h3 id="Process-creation">Process creation</h3>
 <p>The OS builds a data structure to manage the process.</p>
 <ul>
 <li>
@@ -723,7 +723,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <p><strong>example 2:</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-comment">/*in file fork.c:*/</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>  <span class="hljs-type">pid_t</span> child_pid;<br>  <br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;the main program ID is %d\n&quot;</span>, (<span class="hljs-type">int</span>)getpid());<br><br>  child_pid = fork();<br>  <span class="hljs-keyword">if</span> (child != <span class="hljs-number">0</span>)<br>  &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;this is the parent process, with ID is %d\n&quot;</span>, (<span class="hljs-type">int</span>)getpid());<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;the child&#x27;s process ID is %d\n&quot;</span>, (<span class="hljs-type">int</span>)child_pid);<br>  &#125;<br>  <span class="hljs-keyword">else</span><br>  &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;this is the child process, with ID %d\n&quot;</span>, (<span class="hljs-type">int</span>)getpid());<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>And the running result is:</p>
-<h3 id="🌸Process-termination">🌸Process termination</h3>
+<h3 id="Process-termination">Process termination</h3>
 <p>Process executes last statement and asks the OS to delete it. (<code>exit()</code>)</p>
 <ul>
 <li>Output data from child to parents (via<code>wait()</code>)</li>
@@ -742,7 +742,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 </ul>
 </li>
 </ul>
-<h3 id="🌸Code-block">🌸Code block</h3>
+<h3 id="Code-block">Code block</h3>
 <p><strong>creating process:</strong></p>
 <p><code>int fork(void);</code></p>
 <ul>
@@ -796,7 +796,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 </ol>
 </li>
 </ol>
-<h3 id="🌸Process-Elements">🌸Process Elements</h3>
+<h3 id="Process-Elements">Process Elements</h3>
 <ul>
 <li>identifier</li>
 <li>state</li>
@@ -808,7 +808,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <li>accounting information</li>
 <li>and so on</li>
 </ul>
-<h3 id="🌸Implementing-process">🌸Implementing process</h3>
+<h3 id="Implementing-process">Implementing process</h3>
 <p>内核如何实现一个进程? 管理一个进程?</p>
 <p><strong>keep a data structure for each process</strong></p>
 <ul>
@@ -830,7 +830,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <div class="note note-info">
             <p>PCB is also a <strong>snapshot</strong> of a process, saving all status of a process.</p>
           </div>
-<h3 id="🌸Process-states">🌸Process states</h3>
+<h3 id="Process-states">Process states</h3>
 <p><strong>new</strong>: the process is being created</p>
 <p><strong>ready</strong>: the process is waiting to be assigned to a processor</p>
 <p><strong>running</strong>: instructions are being executed</p>
@@ -860,7 +860,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 <li>update memory-management data structures</li>
 <li>restore context of the selected process</li>
 </ul>
-<h3 id="🌸Process-scheduling-queues">🌸Process scheduling queues</h3>
+<h3 id="Process-scheduling-queues">Process scheduling queues</h3>
 <p><strong>Job queue</strong>: set of all processes in the system</p>
 <p><strong>Ready queue</strong>: set of all processes residing in main memory, <strong>ready</strong> and waiting to execute</p>
 <p><strong>Device queue</strong>: set of processes <strong>waiting</strong> for an I/O device</p>
@@ -868,7 +868,7 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
             <p>Process migration between the various queue.</p>
           </div>
 <p><img src="queue_switch.jpg" srcset="/img/loading.gif" lazyload alt="queue_switch"></p>
-<h3 id="🌸Scheduler">🌸Scheduler</h3>
+<h3 id="Scheduler">Scheduler</h3>
 <p><strong>Long-term scheduler(Job scheduler)</strong>: select which processes should be loaded into memory for execution.</p>
 <p><strong>Short-term scheduler(CPU scheduler)</strong>: selects which process should be executed next and allocates CPU</p>
 <p>Short-term scheduler is invoked very frequently (milliseconds----must be fast)</p>
@@ -880,13 +880,13 @@ In Linux, file access control: <strong>rwx</strong>, <strong>owner</strong>, <st
 </ul>
 <p>We also have <strong>Medium-term scheduler</strong></p>
 <h2 id="Inter-process-communication">Inter-process communication</h2>
-<h3 id="🌸Cooperating-process">🌸Cooperating process</h3>
+<h3 id="Cooperating-process">Cooperating process</h3>
 <p>Independent process cannot affect or be affected by the execution of another process.</p>
 <p>Cooperation process can affect or be affected by the execution of another process.</p>
 <div class="note note-info">
             <h3 id="Advantages">Advantages</h3><ul><li>information sharing</li><li>computation speed-up</li><li>modularity</li><li>convenience</li></ul>
           </div>
-<h3 id="🌸Communication-models">🌸Communication models</h3>
+<h3 id="Communication-models">Communication models</h3>
 <p><strong>message model</strong></p>
 <ul>
 <li>smaller data exchange</li>
@@ -1046,27 +1046,27 @@ e.g. POSIX Pthread, Mach C-threads, Solaris UI-threads</p>
 <p>Kernel threads are directly supported by the kernel. THe kernel dose thread creation, termination, joining and scheduling in kernel space. <strong>Kernel threads are usually slower than the user threads.</strong> However, <strong>blocking one thread will not cause other threads of the same process to block.</strong> The kernel simply <strong>runs other threads</strong> In a multi-processor environment, the kernel can schedule threads on different processors.</p>
 <p>The kernel has a <strong>thread table</strong> that keeps track of all the threads in the system. All calls that might block a thread are implemented as system calls. When a thread blocks, the kernel can run either another thread from the same process or a thread from a different process.</p>
 <h2 id="Multi-threading-Models">Multi-threading Models</h2>
-<h3 id="🌸Many-to-one">🌸Many-to-one</h3>
+<h3 id="Many-to-one">Many-to-one</h3>
 <p>Many user-level threads mapped to single kernel thread. Used on system that do not support  kernel thread.</p>
-<h3 id="🌸One-to-one">🌸One-to-one</h3>
+<h3 id="One-to-one">One-to-one</h3>
 <p>Each user-level thread maps to kernel thread.</p>
-<h3 id="🌸Many-to-Many">🌸Many-to-Many</h3>
+<h3 id="Many-to-Many">Many-to-Many</h3>
 <p>Allow many user threads to be mapped to many kernel threads.</p>
 <p>Allows the OS to create a sufficient number of kernel threads.</p>
 <h2 id="Threading-Issues">Threading Issues</h2>
-<h3 id="🌸Semantics-of-fork-and-exec">🌸Semantics of <code>fork()</code> and <code>exec()</code></h3>
+<h3 id="Semantics-of-fork-and-exec">Semantics of <code>fork()</code> and <code>exec()</code></h3>
 <p>Does <code>fork()</code> duplicate only the calling thread or all threads? (应该复制所有线程还是指定线程)</p>
 <ul>
 <li>if invoke <code>exec()</code> just after <code>fork()</code>, no need to duplicate all threads, since it is no meaning to duplicate all threads now that they will be replaced right after <code>fork()</code></li>
 <li>if invoke <code>exec()</code> after <code>fork()</code> for a long time, it will duplicates all threads</li>
 </ul>
-<h3 id="🌸Thread-Cancellation">🌸Thread Cancellation</h3>
+<h3 id="Thread-Cancellation">Thread Cancellation</h3>
 <p>Terminating a thread before it has finished, two general approaches:</p>
 <ul>
 <li>Asynchronous cancellation (terminate thread <strong>immediately</strong>)</li>
 <li>Deferred cancellation (thread check itself if it should be cancelled periodically)</li>
 </ul>
-<h3 id="🌸Signal-handling">🌸Signal handling</h3>
+<h3 id="Signal-handling">Signal handling</h3>
 <p>Signal is used to notify a process that a particular event has occurred. All signal has same patterns:</p>
 <ul>
 <li>generated by particular event</li>
@@ -1077,14 +1077,14 @@ e.g. POSIX Pthread, Mach C-threads, Solaris UI-threads</p>
 <div class="note note-info">
             <h3 id="options">options</h3><ul><li>deliver the signal to the thread to which the signal applies</li><li>deliver the signal to every thread in the process</li><li>~ to certain threads</li><li>Assign a specific thread receive all signals for the process</li></ul>
           </div>
-<h3 id="🌸Thread-Pools">🌸Thread Pools</h3>
+<h3 id="Thread-Pools">Thread Pools</h3>
 <p>Create a number of threads in a pool where they await work.</p>
 <div class="note note-info">
             <h3 id="Advantages-v2">Advantages</h3><ul><li>Usually slightly faster to service a request with an exiting thread than create a new thread.</li><li>Allows the number of threads in the application(s) to be bound to the size of pool.</li></ul>
           </div>
-<h3 id="🌸Thread-Specific-Data">🌸Thread Specific Data</h3>
+<h3 id="Thread-Specific-Data">Thread Specific Data</h3>
 <p>Allows each thread to have its own <strong>copy</strong> of data</p>
-<h3 id="🌸Scheduler-Activations">🌸Scheduler Activations</h3>
+<h3 id="Scheduler-Activations">Scheduler Activations</h3>
 <p>Both M:M and Two-level models require communication to maintain the appropriate number of kernel threads allocated to the application</p>
 <p>一种解决解决用户线程库和内核间通信的方法被称为 <strong>调度器激活</strong>.</p>
 <p>Scheduler activations provides <strong>upcalls</strong>, a communication mechanism from the kernel to the thread library. 上级调用用于告知用户程序特定的事件</p>
@@ -1097,7 +1097,7 @@ e.g. POSIX Pthread, Mach C-threads, Solaris UI-threads</p>
             <h3 id="CPU-I-O-bound">CPU, I/O bound</h3><ul><li>CPU bound: a process generates I/O requests infrequently, using more of its time doing computation</li><li>I/O bound: a process spends more of its time to do I/O than doing computation</li></ul>
           </div>
 <p><strong>CPU Scheduler:</strong> When the CPU is idle, the OS mus select another process to run. The selected process is carried out by <strong>the short-term scheduler(CPU scheduler)</strong>. The CPU scheduler selects a process from the ready queue, and allocates the CPU resources to it. The ready queue does not have to be a FIFO one. There are many ways to organize the ready queue.</p>
-<h2 id="🌸Circumstances-that-scheduling-may-take-place">🌸Circumstances that scheduling may take place</h2>
+<h2 id="Circumstances-that-scheduling-may-take-place">Circumstances that scheduling may take place</h2>
 <ol>
 <li>running -&gt; wait (e.g. doing for I/O)</li>
 <li>running -&gt; ready (e.g. interrupt occurs)</li>
@@ -1157,7 +1157,7 @@ e.g. POSIX Pthread, Mach C-threads, Solaris UI-threads</p>
 <li>Multilevel Queue</li>
 <li>Multilevel Feedback Queue</li>
 </ul>
-<h3 id="🌸FCFS">🌸FCFS</h3>
+<h3 id="FCFS">FCFS</h3>
 <p><strong>description</strong>: the process that requests the CPU first is allocated the CPU first</p>
 <p><strong>Queue</strong></p>
 <p><strong>Non-preemptive</strong>: once a process has the CPU, it will occupy the CPU until the process completes or voluntarily enters the wait state.</p>
@@ -1168,7 +1168,7 @@ e.g. POSIX Pthread, Mach C-threads, Solaris UI-threads</p>
 <div class="note note-info">
             <h3 id="disadvantages">disadvantages</h3><ul><li>convoy effect: all the processes wait for one big process to get off the CPU. CPU utilization may be low.</li><li>not be fair to those short ones.</li><li>troublesome for time-sharing system, where each user needs to get a share of the CPU at regular intervals.</li></ul>
           </div>
-<h3 id="🌸SJF">🌸SJF</h3>
+<h3 id="SJF">SJF</h3>
 <p><strong>use each process’ CPU burst length----shortest the first</strong>: when a process must be selected from the ready queue, the process with smallest next CPU burst is selected. The processes in the ready queue are sorted in CPU burst length</p>
 <p><strong>if non-preemptive:</strong> once the CPU is given to the process, it cannot be preempted until completes its CPU burst</p>
 <p><strong>if preemptive:</strong> if a new process arrives with less CPU burst length than <strong>remaining</strong> time of others, it will be selected immediately.</p>
@@ -1185,14 +1185,14 @@ e.g. POSIX Pthread, Mach C-threads, Solaris UI-threads</p>
 <div class="note note-info">
             <h3 id="disadvantages-v2">disadvantages</h3><ul><li>difficult to estimate the next burst time value accurately</li><li>in favor of short jobs. some long time jobs have no chance to run. (starvation)</li></ul>
           </div>
-<h3 id="🌸Priority">🌸Priority</h3>
+<h3 id="Priority">Priority</h3>
 <p>Priority may be determetered internally or externally. FCFS and SJF are the special cases of Priority.</p>
 <p><strong>non-preemptive</strong></p>
 <p><strong>preemptive:</strong> if the newly arrived process has higher priority, it is selected.</p>
 <p>but indefinite block (or starvation) may occur: a low priority process may never have a chance to run</p>
 <p><strong>method:</strong></p>
 <p><strong>Aging:</strong> gradually increases the priority of processes that wait in the system for a long time. It is a technique to overcome the starvation problem.</p>
-<h3 id="🌸Round-Robin-RR">🌸Round Robin (RR)</h3>
+<h3 id="Round-Robin-RR">Round Robin (RR)</h3>
 <p>Similar to FCFS, except that each process is assigned a <strong>time quanntum</strong></p>
 <ul>
 <li>All processes are in the ready queue (FIFO list). When the CPU is free and lets it run for one time quantum.</li>
@@ -1201,7 +1201,7 @@ e.g. POSIX Pthread, Mach C-threads, Solaris UI-threads</p>
 <div class="note note-info">
             <h3 id="Some-issues">Some issues</h3><ul><li>if time quantum is too large, RR reduces(退化) to FCFS</li><li>if time quantum is too small, RR becomes <strong>processor sharing</strong></li><li>context switching may affect the performance of RR, shorter time quantum means more context</li><li>turnaround time dependes on the size of time quantum</li><li>in general, 80% of the CPU burst should shorter than the time quantum</li></ul>
           </div>
-<h3 id="🌸Multilevel-Queue-多级队列">🌸Multilevel Queue (多级队列)</h3>
+<h3 id="Multilevel-Queue-多级队列">Multilevel Queue (多级队列)</h3>
 <p>Ready queue is partitioned into separate queues:<br>
 foreground (interactive),<br>
 background (batch)</p>
@@ -1218,7 +1218,7 @@ background (batch)</p>
 <li>fixed <strong>priority</strong> scheduling(i.e. serve all from foreground then from background); Possibility of starvation.</li>
 <li>time quantum, each queue gets a certain amount of CPU time which it can amongst its processes</li>
 </ul>
-<h3 id="🌸Multilevel-Feedback-Queue-多级反馈队列">🌸Multilevel Feedback Queue (多级反馈队列)</h3>
+<h3 id="Multilevel-Feedback-Queue-多级反馈队列">Multilevel Feedback Queue (多级反馈队列)</h3>
 <p>allows processes to move between queues. (can be implemented by aging)</p>
 <p>if a processe uses more CPU time, it is moved to a queue of lower priority.</p>
 <p>defined my the following parameters:</p>
@@ -1242,7 +1242,7 @@ background (batch)</p>
 <p>进程同步–抽象为临界区问题–提出三种解决方案 (软件方案, 硬件方案, 信号量方案)–经典同步问题–管程 (相对高级的同步结构)–补充例子</p>
 <h2 id="Background">Background</h2>
 <p>Concurrent access to shared data may result in data inconsisitency. Maintaining data consistency requires mechanisms to ensure the <strong>orderly execution</strong> of coorperating processes. Such as <em>producer-consumer problem</em> need a mechanism to ensure the order of execution.</p>
-<h3 id="🌸Race-Condition">🌸Race Condition</h3>
+<h3 id="Race-Condition">Race Condition</h3>
 <p>Race condition occurs, if:</p>
 <ul>
 <li>2 or more processes/threads access and manipulate the same data concurrently</li>
@@ -1264,9 +1264,9 @@ background (batch)</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-keyword">do</span> &#123;<br>    flag[i] = <span class="hljs-literal">true</span>;<br>    turn = j;<br>    <span class="hljs-keyword">while</span> (flag[j] == <span class="hljs-literal">true</span> &amp;&amp; turn == j);<br>    <span class="hljs-comment">// critical section</span><br>    flag[i] = <span class="hljs-literal">false</span>;<br>    <span class="hljs-comment">// remainder section</span><br>&#125;<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
 <h2 id="Synchronization-hardware">Synchronization hardware</h2>
 <p>Two types: <strong>disabling enabling interrupts</strong> close interrupt if a process in critical section; <strong>Special machine instructions</strong>.</p>
-<h3 id="🌸Interrupt-disabling">🌸Interrupt disabling</h3>
+<h3 id="Interrupt-disabling">Interrupt disabling</h3>
 <p>Because interrupts are disabled, no context switch will occur in a critical section. Infeasible in a multiprocessor system because all CPUs must be informed. Some features that depend on interrupts (e.g. clock) may not work properly.</p>
-<h3 id="🌸Using-Atomaical-instructions">🌸Using Atomaical instructions</h3>
+<h3 id="Using-Atomaical-instructions">Using Atomaical instructions</h3>
 <p>Test and modify the content of a word <strong>atomically</strong>.</p>
 <div class="note note-info">
             <p><u>atomical instructions</u> mean an instruction that can’t be devided or interrupted.</p>

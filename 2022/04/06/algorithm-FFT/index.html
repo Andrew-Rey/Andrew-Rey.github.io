@@ -24,7 +24,7 @@
 <meta property="og:description" content="“FFT是我见过最美的算法.” “说的好像你见过很多算法似的.”">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-06T08:08:39.000Z">
-<meta property="article:modified_time" content="2022-05-03T05:57:48.362Z">
+<meta property="article:modified_time" content="2022-05-03T10:36:56.419Z">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -220,7 +220,7 @@
         
         
         
-          60 mins
+          61 mins
         
       </span>
     
@@ -398,35 +398,35 @@ c_n<br>
 <p>终于能正式地介绍世界上最美丽的算法了: <strong>快速傅里叶变换(FFT)</strong>. FFT解决的是多项式从系数表示到点表示的过程中, 计算复杂度的问题.</p>
 <h2 id="框架">框架</h2>
 <p><strong>分解:</strong></p>
-<p>$$</p>
-<p>p(x)=\sum_{k=0}<sup>nc_kx</sup>k=P_{e1}(x<sup>2)+xP_{e2}(x</sup>2):=[ \omega^0, \omega^1, \dots, \omega^n]</p>
-<p>$$</p>
-<p><strong>递归:</strong></p>
-<p>$$</p>
-<p>P_{e1}(x^2) = P<sup>{\prime}_{e1}(x</sup>4)+xP<sup>{\prime}_{e2}(x</sup>4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]</p>
-<p>$$</p>
-<p>$$</p>
-<p>P_{e2}(x^2) = P<sup>{\prime}_{e1}(x</sup>4)+xP<sup>{\prime}_{e2}(x</sup>4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]</p>
-<p>$$</p>
-<p><strong>加和:</strong></p>
-<p>$$</p>
-<p>P(\omega<sup>j)=P_{e1}(\omega</sup>{j})+\omega<sup>jP_{e2}(\omega</sup>j)</p>
-<p>$$</p>
-<p>$$</p>
-<p>P(\omega<sup>{j+n/2})=P_{e1}(\omega</sup>{j+n/2})+\omega<sup>{j+n/2}P_{e2}(\omega</sup>{j+n/2})</p>
 <p>$$<br>
+p(x)=\sum_{k=0}^nc_kx^k=P_{e1}(x^2)+xP_{e2}(x^2):=[ \omega^0, \omega^1, \dots, \omega^n]<br>
+$$</p>
+<p><strong>递归:</strong></p>
+<p>$$<br>
+P_{e1}(x^2) = P^{\prime}<em>{e1}(x^4)+xP^{\prime}</em>{e2}(x^4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]<br>
+$$</p>
+<p>$$<br>
+P_{e2}(x^2) = P^{\prime}<em>{e1}(x^4)+xP^{\prime}</em>{e2}(x^4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]<br>
+$$</p>
+<p><strong>加和:</strong></p>
+<p>$$<br>
+P(\omega^j)=P_{e1}(\omega^{j})+\omega^jP_{e2}(\omega^j)<br>
+$$</p>
+<p>$$<br>
+P(\omega^{j+n/2})=P_{e1}(\omega^{j+n/2})+\omega^{j+n/2}P_{e2}(\omega^{j+n/2})<br>
+$$<br>
 $j\in[0,1,\dots, n/2+1]$  \</p>
 <p><strong>返回</strong>$p(x)$</p>
 <p>时间复杂度为: $O(nlog_2n)$</p>
 <h2 id="一些数学">一些数学</h2>
 <div class="note note-primary">
-            <p>对于 n 次多项式 $p(x)=\sum_{k=0}^n c_kx^k$, 我们给定$n+1$个点: $x_0, \dots, x_n$, 从而得到关于原多项式 $n+1$ 个系数的线性方程组:</p><p>$$</p><h1>\left[<br>\begin{aligned}<br>p_0 \<br>p_1 \<br>\vdots \<br>p_n<br>\end{aligned}\right]</h1><p>\left[<br>\begin{aligned}<br>1\quad &amp; x_0\quad &amp; \dots\quad &amp; x_0^n \<br>1\quad &amp; x_1\quad &amp; \dots\quad &amp; x_1^n \<br>\vdots\quad &amp; \vdots\quad &amp; \quad &amp; \vdots \<br>1\quad &amp; x_n\quad &amp; \dots\quad &amp; x_n^n<br>\end{aligned}<br>\right]<br>\left[<br>\begin{aligned}<br>c_0 \<br>c_1 \<br>\vdots \<br>c_n<br>\end{aligned}\right]</p><p>$$</p><p>我们在复数域上考虑, 令<br>$$<br>x_k=\omega^k,\quad where\ \ \omega=e^{\frac{2k\pi}{n}}<br>$$<br>(这是因为, 我们希望多项式在复数域上考虑时, 我们可以在单位圆周上讨论. 其中$x_k$表示我们取的第 k 个点, 刚好与 $\omega^k$是对应的.)</p><p>则线性方程组可以化为:</p><p>$$</p><h1>\left[<br>\begin{aligned}<br>p_0 \<br>p_1 \<br>\vdots \<br>p_n<br>\end{aligned}\right]</h1><p>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega\quad   &amp; \omega^2\quad          &amp; \dots\quad &amp; \omega^n \<br>1\quad      &amp; \omega^2\quad &amp; \omega^4\quad          &amp; \dots\quad &amp; \omega^{2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^n\quad &amp; \omega^{2n}\quad  &amp; \dots\quad &amp; \omega^{n\times n}<br>\end{aligned}<br>\right]<br>\left[<br>\begin{aligned}<br>c_0 \<br>c_1 \<br>\vdots \<br>c_n<br>\end{aligned}\right]<br>$$</p><p>其中</p><p>$$</p><p>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega\quad   &amp; \omega^2\quad          &amp; \dots\quad &amp; \omega^n \<br>1\quad      &amp; \omega^2\quad &amp; \omega^4\quad          &amp; \dots\quad &amp; \omega^{2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^n\quad &amp; \omega^{2n}\quad  &amp; \dots\quad &amp; \omega^{n\times n}<br>\end{aligned}<br>\right]</p><p>$$</p><p>称为**离散傅里叶变换矩阵(DFT)**显然该矩阵是 <strong>对称的</strong> 且 <strong>可逆</strong>, 其逆矩阵为:<br>$$<br>\frac{1}{n}<br>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega^{-1}\quad   &amp; \omega^{-2}\quad          &amp; \dots\quad &amp; \omega^{-n} \<br>1\quad      &amp; \omega^{-2}\quad &amp; \omega^{-4}\quad          &amp; \dots\quad &amp; \omega^{-2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^{-n}\quad &amp; \omega^{-2n}\quad  &amp; \dots\quad &amp; \omega^{-n\times n}<br>\end{aligned}<br>\right]<br>$$</p><p>并且, 该逆矩阵看起来和原矩阵 <strong>一模一样!</strong><br>.</p>
+            <p>对于 n 次多项式 $p(x)=\sum_{k=0}^n c_kx^k$, 我们给定$n+1$个点: $x_0, \dots, x_n$, 从而得到关于原多项式 $n+1$ 个系数的线性方程组:</p><h1>$$<br>\left[<br>\begin{aligned}<br>p_0 \<br>p_1 \<br>\vdots \<br>p_n<br>\end{aligned}\right]</h1><p>\left[<br>\begin{aligned}<br>1\quad &amp; x_0\quad &amp; \dots\quad &amp; x_0^n \<br>1\quad &amp; x_1\quad &amp; \dots\quad &amp; x_1^n \<br>\vdots\quad &amp; \vdots\quad &amp; \quad &amp; \vdots \<br>1\quad &amp; x_n\quad &amp; \dots\quad &amp; x_n^n<br>\end{aligned}<br>\right]<br>\left[<br>\begin{aligned}<br>c_0 \<br>c_1 \<br>\vdots \<br>c_n<br>\end{aligned}\right]<br>$$</p><p>我们在复数域上考虑, 令<br>$$<br>x_k=\omega^k,\quad where\ \ \omega=e^{\frac{2k\pi}{n}}<br>$$<br>(这是因为, 我们希望多项式在复数域上考虑时, 我们可以在单位圆周上讨论. 其中$x_k$表示我们取的第 k 个点, 刚好与 $\omega^k$是对应的.)</p><p>则线性方程组可以化为:</p><h1>$$<br>\left[<br>\begin{aligned}<br>p_0 \<br>p_1 \<br>\vdots \<br>p_n<br>\end{aligned}\right]</h1><p>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega\quad   &amp; \omega^2\quad          &amp; \dots\quad &amp; \omega^n \<br>1\quad      &amp; \omega^2\quad &amp; \omega^4\quad          &amp; \dots\quad &amp; \omega^{2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^n\quad &amp; \omega^{2n}\quad  &amp; \dots\quad &amp; \omega^{n\times n}<br>\end{aligned}<br>\right]<br>\left[<br>\begin{aligned}<br>c_0 \<br>c_1 \<br>\vdots \<br>c_n<br>\end{aligned}\right]<br>$$</p><p>其中</p><p>$$<br>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega\quad   &amp; \omega^2\quad          &amp; \dots\quad &amp; \omega^n \<br>1\quad      &amp; \omega^2\quad &amp; \omega^4\quad          &amp; \dots\quad &amp; \omega^{2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^n\quad &amp; \omega^{2n}\quad  &amp; \dots\quad &amp; \omega^{n\times n}<br>\end{aligned}<br>\right]<br>$$<br>称为**离散傅里叶变换矩阵(DFT)**显然该矩阵是 <strong>对称的</strong> 且 <strong>可逆</strong>, 其逆矩阵为:<br>$$<br>\frac{1}{n}<br>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega^{-1}\quad   &amp; \omega^{-2}\quad          &amp; \dots\quad &amp; \omega^{-n} \<br>1\quad      &amp; \omega^{-2}\quad &amp; \omega^{-4}\quad          &amp; \dots\quad &amp; \omega^{-2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^{-n}\quad &amp; \omega^{-2n}\quad  &amp; \dots\quad &amp; \omega^{-n\times n}<br>\end{aligned}<br>\right]<br>$$</p><p>并且, 该逆矩阵看起来和原矩阵 <strong>一模一样!</strong><br>.</p>
           </div>
 <h2 id="结束了">结束了?</h2>
 <p>当我们乐呵呵地把FFT转化为代码时, 开心的分解多项式, 然后选点, 相乘, <strong>等等!</strong> 你还没告诉我, 怎么从点表示转化回系数表示呢!</p>
 <p>这就是FFT<strong>对称</strong>的魅力了. 由点求系数, 不过是矩阵求逆的过程:</p>
-<p>$$</p>
-<h1>\left[<br>
+<h1>$$<br>
+\left[<br>
 \begin{aligned}<br>
 c_0 \<br>
 c_1 \<br>
@@ -465,8 +465,8 @@ p_0 \<br>
 p_1 \<br>
 \vdots \<br>
 p_n<br>
-\end{aligned}\right]</p>
-<p>$$</p>
+\end{aligned}\right]<br>
+$$</p>
 <p>显然, 由于DFT和DFT逆矩阵具有相似的形式, 我们完全可以用<strong>同一个函数</strong>完成快速傅里叶的正反变换!</p>
 <h1>后记-“对称, 万变不离其宗”</h1>
 <p>不会真有人会把这个没有图的文章看完吧?</p>
