@@ -285,45 +285,30 @@
               <p>“内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?”</p>
 <p>“我已经晕了.”</p>
 <span id="more"></span>
-<h1>数域</h1>
-<p>\(P\)是包含0, 1的数集, 且对 \(P\)中任意两个数的加减乘除运算封闭, 则称 \(P\)是一个数域.</p>
-<h1>线性空间</h1>
-<p>在数域的基础上, 我们提出线性空间的概念:</p>
-<p>给定数域 \(P\) , 和集合 \(V\). 有如下映射:<br>
-$$<br>
-+:V\times V\rightarrow V<br>
-$$<br>
-$$<br>
-\cdot:P\times V\rightarrow V<br>
-$$<br>
-且 (\(V, P, +, \cdot\)) 满足<strong>八条基本性质</strong>, 则\(V\)称为一个线性空间.</p>
-<h1>赋范空间</h1>
-<p><u>赋范空间是定义在线性空间之上的.</u></p>
-<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:<br>
-$$<br>
-||\cdot||:  V\rightarrow R<br>
-$$<br>
-且该映射满足: 正定, 齐次, 三角不等式. 则 \(V\) 是一个赋范空间, 其中映射 \(||\cdot||\) 称为范数.</p>
-<h1>内积空间</h1>
-<p><u>内积空间是定义在线性空间之上的.</u></p>
-<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:<br>
-$$<br>
-\cdot:  V\times V\rightarrow R<br>
-$$<br>
-则 \(V\) 是一个内积空间.</p>
+<h1 id="数域"><a href="#数域" class="headerlink" title="数域"></a>数域</h1><p>\(P\)是包含0, 1的数集, 且对 \(P\)中任意两个数的加减乘除运算封闭, 则称 \(P\)是一个数域.</p>
+<h1 id="线性空间"><a href="#线性空间" class="headerlink" title="线性空间"></a>线性空间</h1><p>在数域的基础上, 我们提出线性空间的概念:</p>
+<p>给定数域 \(P\) , 和集合 \(V\). 有如下映射:</p>
+<script type="math/tex; mode=display">
++:V\times V\rightarrow V</script><script type="math/tex; mode=display">
+\cdot:P\times V\rightarrow V</script><p>且 (\(V, P, +, \cdot\)) 满足<strong>八条基本性质</strong>, 则\(V\)称为一个线性空间.</p>
+<h1 id="赋范空间"><a href="#赋范空间" class="headerlink" title="赋范空间"></a>赋范空间</h1><p><u>赋范空间是定义在线性空间之上的.</u></p>
+<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:</p>
+<script type="math/tex; mode=display">
+||\cdot||:  V\rightarrow R</script><p>且该映射满足: 正定, 齐次, 三角不等式. 则 \(V\) 是一个赋范空间, 其中映射 \(||\cdot||\) 称为范数.</p>
+<h1 id="内积空间"><a href="#内积空间" class="headerlink" title="内积空间"></a>内积空间</h1><p><u>内积空间是定义在线性空间之上的.</u></p>
+<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:</p>
+<script type="math/tex; mode=display">
+\cdot:  V\times V\rightarrow R</script><p>则 \(V\) 是一个内积空间.</p>
 <div class="note note-info">
             <p>定义了内积后, 我们可以讨论向量 (即线性空间的元素) 间的长度和夹角, 并进一步讨论正交性等.</p>
           </div>
 <div class="note note-danger">
             <p>注意: 内积本身具有自然定义的范数, 即内积可以诱导出范数, \(||x||=\sqrt{(x,x)}\), 因此内积空间含于赋范空间.</p>
           </div>
-<h1>度量空间</h1>
-<p>度量空间是某个具有距离函数的集合. 该函数定义的是集合内所有元素的距离, 即集合上的某种度量, 即:</p>
-<p>给定<strong>集合</strong>\(V\), 有映射:<br>
-$$<br>
-d:V\times V\rightarrow \mathbf{R}<br>
-$$<br>
-满足:</p>
+<h1 id="度量空间"><a href="#度量空间" class="headerlink" title="度量空间"></a>度量空间</h1><p>度量空间是某个具有距离函数的集合. 该函数定义的是集合内所有元素的距离, 即集合上的某种度量, 即:</p>
+<p>给定<strong>集合</strong>\(V\), 有映射:</p>
+<script type="math/tex; mode=display">
+d:V\times V\rightarrow \mathbf{R}</script><p>满足:</p>
 <p>\[
 \begin{aligned}
 &d(x,y)\geq0\quad (d(x,y)=0\Leftrightarrow x=0,y=0)\\
@@ -331,25 +316,22 @@ $$<br>
 &d(x,y)\leq d(x,z)+d(z,y)
 \end{aligned}
 \]</p>
+
 <div class="note note-info">
             <p>注意: 此处并未要求线性结构.</p>
           </div>
 <div class="note note-danger">
             <p><strong>注意: 赋范空间一定可以诱导出度量空间, 因此赋范空间含于度量空间</strong></p>
           </div>
-<h1>完备空间</h1>
-<p>完备空间又称 Cauchy 空间. <u>完备空间是定义在度量空间之上的.</u></p>
+<h1 id="完备空间"><a href="#完备空间" class="headerlink" title="完备空间"></a>完备空间</h1><p>完备空间又称 Cauchy 空间. <u>完备空间是定义在度量空间之上的.</u></p>
 <p>若度量空间 \(M\) 中所有的柯西序列都收敛在 \(M\) 中的一点, 则 \(M\) 是一个完备空间.</p>
-<h1>Hilbert空间</h1>
-<p>在<strong>内积空间</strong>的基础上增添<strong>完备性条件</strong>, 即得到<strong>Hilbert空间</strong>.</p>
-<h1>总结</h1>
-<p>范数运算+向量空间=(线性)赋范空间</p>
+<h1 id="Hilbert空间"><a href="#Hilbert空间" class="headerlink" title="Hilbert空间"></a>Hilbert空间</h1><p>在<strong>内积空间</strong>的基础上增添<strong>完备性条件</strong>, 即得到<strong>Hilbert空间</strong>.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>范数运算+向量空间=(线性)赋范空间</p>
 <p>(线性)赋范空间 + 内积运算=内积空间</p>
 <p>(线性)赋范空间 + 完备性 = Banach 空间</p>
 <p>内积空间 + 完备性 = Hilbert 空间</p>
 <p>内积空间 + 完备性 + 有限维 = Euclidean 空间</p>
-<h1>References</h1>
-<p>zhihu:</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>zhihu:</p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/332144499/answer/731866608">https://www.zhihu.com/question/332144499/answer/731866608</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/42312263/answer/699451330">https://www.zhihu.com/question/42312263/answer/699451330</a></p>
 <p>wikipedia:</p>
