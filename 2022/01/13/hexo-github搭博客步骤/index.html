@@ -285,14 +285,23 @@
               <p>“大家有问题可以来问我，我可以帮你们去查。”</p>
 <p>“就你家有网？”</p>
 <span id="more"></span>
-<h1 id="hexo-github搭博客步骤"><a href="#hexo-github搭博客步骤" class="headerlink" title="hexo-github搭博客步骤"></a>hexo-github搭博客步骤</h1><h2 id="安装、环境配置（略）"><a href="#安装、环境配置（略）" class="headerlink" title="安装、环境配置（略）"></a>安装、环境配置（略）</h2><h2 id="连接本地库和远程库"><a href="#连接本地库和远程库" class="headerlink" title="连接本地库和远程库"></a>连接本地库和远程库</h2><p><em><strong>(免责声明：首先说本人毫无使用git和hexo的经验，如果我敲的逻辑有问题或者解释完全错误，不要打我；其次如果按我这样写有问题，那我不管，反正我搭完了)</strong></em><br>:stuck_out_tongue_winking_eye:</p>
+<h1>hexo-github搭博客步骤</h1>
+<h2 id="安装、环境配置（略）">安装、环境配置（略）</h2>
+<h2 id="连接本地库和远程库">连接本地库和远程库</h2>
+<p><em><strong>(免责声明：首先说本人毫无使用git和hexo的经验，如果我敲的逻辑有问题或者解释完全错误，不要打我；其次如果按我这样写有问题，那我不管，反正我搭完了)</strong></em><br>
+:stuck_out_tongue_winking_eye:</p>
 <p>以我为例</p>
-<p>打开git bash<br><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs arcade">mkdir D:<span class="hljs-regexp">/Documents/</span>Repo/Blog  <span class="hljs-comment">// 创建存放博客的空文件夹</span><br>cd D:<span class="hljs-regexp">/Documents/</span>Repo/Blog  <span class="hljs-comment">// 转到此文件夹</span><br>npm install -g hexo-cli  <span class="hljs-comment">// 下 hexo</span><br>hexo init  <span class="hljs-comment">// 此处会认定你的分支名为master，若想更换名字，见文末[1]代码</span><br>npm install<br>git init  <span class="hljs-comment">// 生成.git隐藏文件夹</span><br>git remote add origin https:<span class="hljs-regexp">/ /gi</span>thub/your_user_name/your_user_name.github.io<span class="hljs-comment">// 将自己的仓库设置为远端(remote),叫做origin</span><br>git add --<span class="hljs-built_in">all</span>  <span class="hljs-comment">// 将内容上传至本地库</span><br>git commit -m <span class="hljs-string">&quot;initail commit&quot;</span>  <span class="hljs-comment">// 提交至暂存区(-m 后面接本次提交的注释)</span><br>git <span class="hljs-built_in">push</span> origin master  <span class="hljs-comment">// 将暂存区的内容同步至远端库</span><br>hexo g  <span class="hljs-comment">// hexo 生成网页内容 (generate)</span><br>hexo d  <span class="hljs-comment">// hexo 部署网页内容 (deploy)</span><br>hexo s  <span class="hljs-comment">// 运行服务器查看预览效果 (server)</span><br></code></pre></td></tr></table></figure></p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ol>
-<li>更换分支名<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">git branch old<span class="hljs-number">_n</span>ame <span class="hljs-keyword">new</span><span class="hljs-number">_n</span>ame<br></code></pre></td></tr></table></figure></li>
-<li>创建新的post文件<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">hexo <span class="hljs-keyword">new</span> <span class="hljs-type">post</span> <span class="hljs-string">&quot;post_name&quot;</span><br></code></pre></td></tr></table></figure>
-</li>
+<p>打开git bash</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs arcade">mkdir D:<span class="hljs-regexp">/Documents/</span>Repo/Blog  <span class="hljs-comment">// 创建存放博客的空文件夹</span><br>cd D:<span class="hljs-regexp">/Documents/</span>Repo/Blog  <span class="hljs-comment">// 转到此文件夹</span><br>npm install -g hexo-cli  <span class="hljs-comment">// 下 hexo</span><br>hexo init  <span class="hljs-comment">// 此处会认定你的分支名为master，若想更换名字，见文末[1]代码</span><br>npm install<br>git init  <span class="hljs-comment">// 生成.git隐藏文件夹</span><br>git remote add origin https:<span class="hljs-regexp">/ /gi</span>thub/your_user_name/your_user_name.github.io<span class="hljs-comment">// 将自己的仓库设置为远端(remote),叫做origin</span><br>git add --<span class="hljs-built_in">all</span>  <span class="hljs-comment">// 将内容上传至本地库</span><br>git commit -m <span class="hljs-string">&quot;initail commit&quot;</span>  <span class="hljs-comment">// 提交至暂存区(-m 后面接本次提交的注释)</span><br>git <span class="hljs-built_in">push</span> origin master  <span class="hljs-comment">// 将暂存区的内容同步至远端库</span><br>hexo g  <span class="hljs-comment">// hexo 生成网页内容 (generate)</span><br>hexo d  <span class="hljs-comment">// hexo 部署网页内容 (deploy)</span><br>hexo s  <span class="hljs-comment">// 运行服务器查看预览效果 (server)</span><br></code></pre></td></tr></table></figure>
+<h2 id="附录">附录</h2>
+<ol>
+<li>更换分支名</li>
 </ol>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">git branch old<span class="hljs-number">_n</span>ame <span class="hljs-keyword">new</span><span class="hljs-number">_n</span>ame<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建新的post文件</li>
+</ol>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">hexo <span class="hljs-keyword">new</span> <span class="hljs-type">post</span> <span class="hljs-string">&quot;post_name&quot;</span><br></code></pre></td></tr></table></figure>
 
               
             </div>

@@ -208,7 +208,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k words
+          11k words
         
       </span>
     
@@ -219,7 +219,7 @@
         
         
         
-          87 mins
+          88 mins
         
       </span>
     
@@ -284,18 +284,23 @@
               <p>“This is really a great lesson.”</p>
 <p>“If there are no such many homework.”</p>
 <span id="more"></span>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="What-is-Patter-Recognition"><a href="#What-is-Patter-Recognition" class="headerlink" title="What is Patter Recognition?"></a>What is Patter Recognition?</h2><ul>
-<li>Pattern<ul>
-<li>the opposite of choas </li>
+<h1>Introduction</h1>
+<h2 id="What-is-Patter-Recognition">What is Patter Recognition?</h2>
+<ul>
+<li>Pattern
+<ul>
+<li>the opposite of choas</li>
 </ul>
 </li>
-<li>Recognition<ul>
+<li>Recognition
+<ul>
 <li>Identification of a pattern as  a member of a category</li>
 <li><font color=blue>Classification</font>: category known $\Rightarrow$ assign proper class label for each pattern</li>
 <li><font color=blue>Clustering</font>: category unknown $\Rightarrow$ learn categories and group patterns</li>
 </ul>
 </li>
-<li>Pattern Recognition<ul>
+<li>Pattern Recognition
+<ul>
 <li>Perceive (理解): interact with the real-world</li>
 <li>Process (处理): learn to distinguish patterns of interest</li>
 <li>Prediction (预测): make sound and reasonable decisions about the categories</li>
@@ -303,46 +308,72 @@
 </li>
 </ul>
 <div class="note note-primary">
-            <h3 id="preview-three-classification-ideas"><a href="#preview-three-classification-ideas" class="headerlink" title="preview:three classification ideas"></a>preview:three classification ideas</h3><ul><li>estimate the class conditional function</li><li>estimate the posterior</li><li>calculate the discriminant function directly</li></ul>
+            <h3 id="preview-three-classification-ideas">preview:three classification ideas</h3><ul><li>estimate the class conditional function</li><li>estimate the posterior</li><li>calculate the discriminant function directly</li></ul>
           </div>
-<h1 id="Bayesian-Decision-Theory"><a href="#Bayesian-Decision-Theory" class="headerlink" title="Bayesian Decision Theory"></a>Bayesian Decision Theory</h1><h2 id="Basic-Theory"><a href="#Basic-Theory" class="headerlink" title="Basic Theory"></a>Basic Theory</h2><h3 id="Bayesian-Formula"><a href="#Bayesian-Formula" class="headerlink" title="Bayesian Formula"></a>Bayesian Formula</h3><script type="math/tex; mode=display">
-P(\omega_i | \mathbf{x}) = \frac{P(\omega_i)p(\mathbf{x} | \omega_i)}{p(\mathbf{x})}</script><p>Where $\omega_i(i = 1,\dots, c)$ is the category of research object. $\mathbf{x}$ is the <strong>feature vector</strong>, has $d$ dimensions. We call $P(\omega_i | \mathbf{x})$ <strong>posterior</strong>, $P(\omega_i)$ <strong>prior probability</strong> and $p(\mathbf{x} | \omega_i)$ <strong>likelihood</strong> of $\mathbf{x}$ in category $\omega_i$. Note that $p(\omega{x})$ is a constant, we call it <strong>evidence coefficient</strong>.</p>
-<script type="math/tex; mode=display">
-p(\mathbf{x}) = \sum_{i = 1}^c P(\omega_i)p(\mathbf{x} | \omega_i)</script><h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p>We use </p>
-<script type="math/tex; mode=display">
-\lambda(\alpha_i | \omega_j)</script><p>to describe the loss or penetrate we get since we take action $\alpha_i$ while the true category is $\omega_j$.</p>
-<h3 id="Class-Conditional-Probability"><a href="#Class-Conditional-Probability" class="headerlink" title="Class-Conditional Probability"></a>Class-Conditional Probability</h3><p>We define the <strong>class conditional probability</strong> relative to the action $\alpha_i$</p>
-<script type="math/tex; mode=display">
-R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) P(\omega_j | \mathbf{x})</script><p>So the <strong>total risk</strong> is defined as:</p>
-<script type="math/tex; mode=display">
-R = \int_{feature\ space} R(\alpha_i | \mathbf{x}) p(\mathbf{x}) d\mathbf{x}</script><h3 id="The-Decision-Theory"><a href="#The-Decision-Theory" class="headerlink" title="The Decision Theory"></a>The Decision Theory</h3><p><strong>Bayesian Decision Theory</strong>: In order to minimize the total risk $R$, for $i = 1, \dots, a$ we calculate the class-conditional probability</p>
-<script type="math/tex; mode=display">
-R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) p(\omega_j | \mathbf{x})</script><p>and choose a proper action $\alpha_i$ to make the $R(\alpha_i | \mathbf{x})$ minimized.</p>
-<h2 id="Two-class-classification"><a href="#Two-class-classification" class="headerlink" title="Two-class classification"></a>Two-class classification</h2><p>The loss function is</p>
-<script type="math/tex; mode=display">
-\lambda_{ij} \doteq \lambda(\alpha_i | \omega_j)</script><p>And our class conditional function are:</p>
+<h1>Bayesian Decision Theory</h1>
+<h2 id="Basic-Theory">Basic Theory</h2>
+<h3 id="Bayesian-Formula">Bayesian Formula</h3>
+<p>$$<br>
+P(\omega_i | \mathbf{x}) = \frac{P(\omega_i)p(\mathbf{x} | \omega_i)}{p(\mathbf{x})}<br>
+$$<br>
+Where $\omega_i(i = 1,\dots, c)$ is the category of research object. $\mathbf{x}$ is the <strong>feature vector</strong>, has $d$ dimensions. We call $P(\omega_i | \mathbf{x})$ <strong>posterior</strong>, $P(\omega_i)$ <strong>prior probability</strong> and $p(\mathbf{x} | \omega_i)$ <strong>likelihood</strong> of $\mathbf{x}$ in category $\omega_i$. Note that $p(\omega{x})$ is a constant, we call it <strong>evidence coefficient</strong>.<br>
+$$<br>
+p(\mathbf{x}) = \sum_{i = 1}^c P(\omega_i)p(\mathbf{x} | \omega_i)<br>
+$$</p>
+<h3 id="Loss-function">Loss function</h3>
+<p>We use<br>
+$$<br>
+\lambda(\alpha_i | \omega_j)<br>
+$$<br>
+to describe the loss or penetrate we get since we take action $\alpha_i$ while the true category is $\omega_j$.</p>
+<h3 id="Class-Conditional-Probability">Class-Conditional Probability</h3>
+<p>We define the <strong>class conditional probability</strong> relative to the action $\alpha_i$<br>
+$$<br>
+R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) P(\omega_j | \mathbf{x})<br>
+$$<br>
+So the <strong>total risk</strong> is defined as:<br>
+$$<br>
+R = \int_{feature\ space} R(\alpha_i | \mathbf{x}) p(\mathbf{x}) d\mathbf{x}<br>
+$$</p>
+<h3 id="The-Decision-Theory">The Decision Theory</h3>
+<p><strong>Bayesian Decision Theory</strong>: In order to minimize the total risk $R$, for $i = 1, \dots, a$ we calculate the class-conditional probability<br>
+$$<br>
+R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) p(\omega_j | \mathbf{x})<br>
+$$<br>
+and choose a proper action $\alpha_i$ to make the $R(\alpha_i | \mathbf{x})$ minimized.</p>
+<h2 id="Two-class-classification">Two-class classification</h2>
+<p>The loss function is<br>
+$$<br>
+\lambda_{ij} \doteq \lambda(\alpha_i | \omega_j)<br>
+$$<br>
+And our class conditional function are:</p>
 <p>
 \begin{aligned}
 R(\alpha_1 | \mathbf{x}) &= \lambda_{11} p(\omega_1 | \mathbf{x}) + \lambda_{12} p(\omega_2 | \mathbf{x})\\
 R(\alpha_2 | \mathbf{x}) &= \lambda_{21} p(\omega_1 | \mathbf{x}) + \lambda_{22} p(\omega_2 | \mathbf{x})
 \end{aligned}
 </p>
-
 <p>The decision is: if $R(\alpha_1 | \mathbf{x}) &lt; R(\alpha_2 | \mathbf{x})$, then it means $\alpha_1$ takes smaller risk, and so we choose the action $\alpha_1$.</p>
-<p>Using the posterior probability to describe is:</p>
-<script type="math/tex; mode=display">
-(\lambda_{21} - \lambda_{11})P(\omega_1 | \mathbf{x}) > (\lambda_{12} - \lambda_{22})P(\omega_2 | \mathbf{x})</script><p>Using the Bayes’ Formula, converting the prior probability to posterior probability:</p>
-<script type="math/tex; mode=display">
-(\lambda_{21} - \lambda_{11})p(\mathbf{x} | \omega_1)P(\omega_1) > (\lambda_{12} - \lambda_{22})p(\mathbf{x} | \omega_2)P(\omega_2)</script><p>Or writing with fraction form:</p>
-<script type="math/tex; mode=display">
-\frac{p(\mathbf{x} | \omega_1)}{p(\mathbf{x} | \omega_2)} > \frac{\lambda_{12} - \lambda_{22}}{\lambda_{21} - \lambda_{11}}\frac{P(\omega_2)}{P(\omega_1)}</script><h2 id="The-Minimum-error-Classification"><a href="#The-Minimum-error-Classification" class="headerlink" title="The Minimum-error Classification"></a>The Minimum-error Classification</h2><p>We define the minimum-error classification is a problem that uses the <strong>symmetric loss</strong> or <strong>“0-1” loss</strong>:</p>
+<p>Using the posterior probability to describe is:<br>
+$$<br>
+(\lambda_{21} - \lambda_{11})P(\omega_1 | \mathbf{x}) &gt; (\lambda_{12} - \lambda_{22})P(\omega_2 | \mathbf{x})<br>
+$$</p>
+<p>Using the Bayes’ Formula, converting the prior probability to posterior probability:<br>
+$$<br>
+(\lambda_{21} - \lambda_{11})p(\mathbf{x} | \omega_1)P(\omega_1) &gt; (\lambda_{12} - \lambda_{22})p(\mathbf{x} | \omega_2)P(\omega_2)<br>
+$$</p>
+<p>Or writing with fraction form:<br>
+$$<br>
+\frac{p(\mathbf{x} | \omega_1)}{p(\mathbf{x} | \omega_2)} &gt; \frac{\lambda_{12} - \lambda_{22}}{\lambda_{21} - \lambda_{11}}\frac{P(\omega_2)}{P(\omega_1)}<br>
+$$</p>
+<h2 id="The-Minimum-error-Classification">The Minimum-error Classification</h2>
+<p>We define the minimum-error classification is a problem that uses the <strong>symmetric loss</strong> or <strong>“0-1” loss</strong>:</p>
 <p>\[
 \lambda(\alpha_i | \omega_j) = \left\{\begin{aligned}
 &0&\ &i=j,\\
 &1&\ &i\neq j
 \end{aligned}\right.\ \ \ i,j = 1,\dots,c
 \]</p>
-
 <p>If you use this symmetric loss in a classification problem, you mean <strong>all the error decisions make the same consequence</strong>.</p>
 <p>Our decision is made based on conditional risk:</p>
 <p>
@@ -352,17 +383,21 @@ R(\alpha_i | \omega_j) &= \sum_{j = 1}^c \lambda_{ij} P(\omega_j | \mathbf{x})\\
 &= 1 - P(\omega_i | \mathbf{x})
 \end{aligned}
 </p>
-
-<h3 id="Minimax-Rule"><a href="#Minimax-Rule" class="headerlink" title="Minimax Rule"></a>Minimax Rule</h3><p>I will not write this part until I make it clear…</p>
-<h2 id="The-Discriminant-Function-Decision-Surface-Based-on-Gaussian-Distribution"><a href="#The-Discriminant-Function-Decision-Surface-Based-on-Gaussian-Distribution" class="headerlink" title="The Discriminant Function, Decision Surface Based on Gaussian Distribution"></a>The Discriminant Function, Decision Surface Based on Gaussian Distribution</h2><h3 id="Gaussian-Distribution"><a href="#Gaussian-Distribution" class="headerlink" title="Gaussian Distribution"></a>Gaussian Distribution</h3><p>
+<h3 id="Minimax-Rule">Minimax Rule</h3>
+<p>I will not write this part until I make it clear…</p>
+<h2 id="The-Discriminant-Function-Decision-Surface-Based-on-Gaussian-Distribution">The Discriminant Function, Decision Surface Based on Gaussian Distribution</h2>
+<h3 id="Gaussian-Distribution">Gaussian Distribution</h3>
+<p>
 \begin{aligned}
 \varphi(\mathbf{x}) = \frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(\mathbf{x} - \mathbf{\mu})^T\Sigma^{-1}(\mathbf{x} - \mathbf{\mu}))
 \end{aligned}
 </p>
-
-<h3 id="Discriminant-Function"><a href="#Discriminant-Function" class="headerlink" title="Discriminant Function"></a>Discriminant Function</h3><p>The discriminant function is defined as: we choose $i^{th}$ class, if</p>
-<script type="math/tex; mode=display">
-g_i(x)>g_j(x)</script><p>for $\forall j\neq i$. And $g_i(x)$ is called discriminant function.</p>
+<h3 id="Discriminant-Function">Discriminant Function</h3>
+<p>The discriminant function is defined as: we choose $i^{th}$ class, if</p>
+<p>$$<br>
+g_i(x)&gt;g_j(x)<br>
+$$</p>
+<p>for $\forall j\neq i$. And $g_i(x)$ is called discriminant function.</p>
 <p>Based on minimum-error classification, the discriminant function can be written as:</p>
 <p>
 \begin{aligned}
@@ -372,25 +407,41 @@ g_i(x)&=-P(\omega_i|x) \\
 &=lnp(x|\omega_i)+lnP(\omega_i)
 \end{aligned}
 </p>
-
 <p>where the “=” means “equivalent” or “the same to”.</p>
-<p>Specially, if it’s a two-class classification:</p>
-<script type="math/tex; mode=display">
-g(x)=g_1(x)-g_2(x)</script><p>or</p>
-<script type="math/tex; mode=display">
-g(x)=P(\omega_1|x)-P(\omega_2|x)</script><p>or</p>
-<script type="math/tex; mode=display">
-g(x)=ln\frac{p(x|\omega_1)}{p(x|\omega_2)}+ln\frac{P(\omega_1)}{P(\omega_2)}</script><p>Correspondingly, we have <strong>decision boundary</strong> and <strong>decision region</strong>.</p>
-<h3 id="Minimum-total-risk-based-on-Gaussian-distribution-Discriminant-Function-Discriminant-Boundary"><a href="#Minimum-total-risk-based-on-Gaussian-distribution-Discriminant-Function-Discriminant-Boundary" class="headerlink" title="Minimum total risk based on Gaussian distribution: Discriminant Function, Discriminant Boundary"></a>Minimum total risk based on Gaussian distribution: Discriminant Function, Discriminant Boundary</h3><p>On this section, we discuss the situation that <strong>the likelihood submits Gaussian distribution</strong> and <strong>the loss is “0-1” loss</strong>.</p>
-<script type="math/tex; mode=display">
-p(x|\omega_i)=\frac{1}{(2\pi)^{d/2} |\Sigma_i| ^ {1/2}}exp(-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i))</script><script type="math/tex; mode=display">
-\lambda(\alpha_i|\omega_j) = I(i\neq j)</script><script type="math/tex; mode=display">
-g_i(x)=lnp(x|\omega_i)+lnP(\omega_i)=-\frac{1}{2}(x-\mu_i)^T \Sigma_i^{-1}(x-\mu_i)-\frac{d}{2}ln2\pi-\frac{1}{2}ln|\Sigma|+lnP(\omega_i)</script><p> <b>Minimum distance classifier</b></p>
-<p> <strong>case 1a:</strong> suppose all prior probabilities are the same</p>
-<script type="math/tex; mode=display">
-P(\omega_i)=1/c\ \ \forall i \in (1,c)</script><p>and all features have no relationships with others and all classes have the same covariance matrices</p>
-<script type="math/tex; mode=display">
-\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)</script><p>Discriminant function:</p>
+<p>Specially, if it’s a two-class classification:<br>
+$$<br>
+g(x)=g_1(x)-g_2(x)<br>
+$$<br>
+or<br>
+$$<br>
+g(x)=P(\omega_1|x)-P(\omega_2|x)<br>
+$$<br>
+or<br>
+$$<br>
+g(x)=ln\frac{p(x|\omega_1)}{p(x|\omega_2)}+ln\frac{P(\omega_1)}{P(\omega_2)}<br>
+$$<br>
+Correspondingly, we have <strong>decision boundary</strong> and <strong>decision region</strong>.</p>
+<h3 id="Minimum-total-risk-based-on-Gaussian-distribution-Discriminant-Function-Discriminant-Boundary">Minimum total risk based on Gaussian distribution: Discriminant Function, Discriminant Boundary</h3>
+<p>On this section, we discuss the situation that <strong>the likelihood submits Gaussian distribution</strong> and <strong>the loss is “0-1” loss</strong>.</p>
+<p>$$<br>
+p(x|\omega_i)=\frac{1}{(2\pi)^{d/2} |\Sigma_i| ^ {1/2}}exp(-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i))<br>
+$$</p>
+<p>$$<br>
+\lambda(\alpha_i|\omega_j) = I(i\neq j)<br>
+$$</p>
+<p>$$<br>
+g_i(x)=lnp(x|\omega_i)+lnP(\omega_i)=-\frac{1}{2}(x-\mu_i)^T \Sigma_i^{-1}(x-\mu_i)-\frac{d}{2}ln2\pi-\frac{1}{2}ln|\Sigma|+lnP(\omega_i)<br>
+$$</p>
+<p><b>Minimum distance classifier</b></p>
+<p><strong>case 1a:</strong> suppose all prior probabilities are the same</p>
+<p>$$<br>
+P(\omega_i)=1/c\ \ \forall i \in (1,c)<br>
+$$</p>
+<p>and all features have no relationships with others and all classes have the same covariance matrices</p>
+<p>$$<br>
+\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)<br>
+$$</p>
+<p>Discriminant function:</p>
 <p>
 \begin{aligned}
   g_i(x)&=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)+constant \\
@@ -398,13 +449,16 @@ P(\omega_i)=1/c\ \ \forall i \in (1,c)</script><p>and all features have no relat
   g_i(x)&=-\frac{1}{2\sigma^2}(x^Tx-2\mu_i^Tx+\mu_i^T\mu_i) \\
 \end{aligned}
 </p>
-
 <p>$x^Tx$ is independent with $\forall i$, so $x^Tx$ is a constant when considering $i$.</p>
-<script type="math/tex; mode=display">
-g_i(x)=\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i</script><p>this is a <strong>linear discriminant machine</strong>.</p>
+<p>$$<br>
+g_i(x)=\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i<br>
+$$</p>
+<p>this is a <strong>linear discriminant machine</strong>.</p>
 <p>Discriminant boundary:</p>
-<script type="math/tex; mode=display">
-g_i=g_j</script><p>
+<p>$$<br>
+g_i=g_j<br>
+$$</p>
+<p>
 \begin{aligned}
   &\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i=
   \frac{1}{\sigma^2}\mu_j^Tx-\frac{1}{2\sigma^2}\mu_j^T\mu_j  \\
@@ -412,15 +466,18 @@ g_i=g_j</script><p>
   &\frac{1}{\sigma^2}(\mu_i-\mu_j)^T(x-\frac{1}{2}(\mu_i + \mu_j))  =0 \\
 \end{aligned}
 </p>
-
 <div class="note note-primary">
             <p>so the discriminant boundary must pass the point $x=\frac{1}{2}(\mu_i + \mu_j)$, and is vertical with $(\mu_i-\mu_j)$</p>
           </div>
-<p> <strong>case 1b:</strong> suppose all prior probabilities are the same:</p>
-<script type="math/tex; mode=display">
-P_i=1/c</script><p>and all covariance are the same, but features have relationships with each other:</p>
-<script type="math/tex; mode=display">
-\Sigma_i=\Sigma</script><p>Discriminant function:</p>
+<p><strong>case 1b:</strong> suppose all prior probabilities are the same:</p>
+<p>$$<br>
+P_i=1/c<br>
+$$</p>
+<p>and all covariance are the same, but features have relationships with each other:</p>
+<p>$$<br>
+\Sigma_i=\Sigma<br>
+$$</p>
+<p>Discriminant function:</p>
 <p>
 \begin{aligned}
 &g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)-\frac{1}{2}ln|\Sigma_i|+constant \\
@@ -429,98 +486,146 @@ P_i=1/c</script><p>and all covariance are the same, but features have relationsh
 &g_i(x)=2\mu_i^T\Sigma^{-1}x-\mu_i^T\Sigma^{-1}\mu_i \\
 \end{aligned}
 </p>
-
 <p>this is also a <strong>linear discriminant machine</strong>.</p>
 <p>Discriminant boundary:</p>
-<script type="math/tex; mode=display">
-(\Sigma^{-1}(\mu_i-\mu_j))^T(x-\frac{\mu_i+\mu_j}{2})=0</script><div class="note note-primary">
+<p>$$<br>
+(\Sigma^{-1}(\mu_i-\mu_j))^T(x-\frac{\mu_i+\mu_j}{2})=0<br>
+$$</p>
+<div class="note note-primary">
             <p>the boundary crosses the middle point of $\mu_i$ and $\mu_j$, but is not vertical with $\mu_i-\mu_j$ as $\Sigma$ provides a rotation with $\mu_i-\mu_j$.</p>
           </div>
 <p><strong>case 2a:</strong> suppose $P(\omega_i)$ are not the same, while all features have no relationships with others and all classes have the same covariance matrices</p>
-<script type="math/tex; mode=display">
-\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)</script><p>Discriminant function:</p>
-<script type="math/tex; mode=display">
-  g_i(x)=2\mu_i^Tx-\mu_i^T\mu_i+2\sigma^2lnP(\omega_i)</script><p>this is a <strong>linear discriminant machine</strong></p>
+<p>$$<br>
+\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)<br>
+$$</p>
+<p>Discriminant function:</p>
+<p>$$<br>
+g_i(x)=2\mu_i^Tx-\mu_i^T\mu_i+2\sigma^2lnP(\omega_i)<br>
+$$</p>
+<p>this is a <strong>linear discriminant machine</strong></p>
 <p>Discriminant boundary:</p>
-<script type="math/tex; mode=display">
-(\mu_i-\mu_j)^T(x-\frac{\mu_i+\mu_j}{2}-\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))</script><p>if $P(\omega_i)&gt;P(\omega_j)$, then </p>
-<script type="math/tex; mode=display">
-\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))>0</script><p> , it will cross a point that is closer to $\mu_j$.</p>
+<p>$$<br>
+(\mu_i-\mu_j)^T(x-\frac{\mu_i+\mu_j}{2}-\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))<br>
+$$</p>
+<p>if $P(\omega_i)&gt;P(\omega_j)$, then<br>
+$$<br>
+\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))&gt;0<br>
+$$<br>
+, it will cross a point that is closer to $\mu_j$.</p>
 <p><strong>case 2b:</strong> suppose $P(\omega_i)$ are not the same, while covariance are the same, but features have relationships with each other:</p>
-<script type="math/tex; mode=display">
-\Sigma_i=\Sigma</script><p>Discriminant function:</p>
-<script type="math/tex; mode=display">
-g_i(x)=(\Sigma\mu_i)^Tx-\frac{1}{2}\mu_i^T\Sigma^{-1}\mu_i+lnP(\omega_i)</script><p>this is a <strong>linear discriminant machine</strong></p>
+<p>$$<br>
+\Sigma_i=\Sigma<br>
+$$</p>
+<p>Discriminant function:</p>
+<p>$$<br>
+g_i(x)=(\Sigma\mu_i)^Tx-\frac{1}{2}\mu_i^T\Sigma^{-1}\mu_i+lnP(\omega_i)<br>
+$$</p>
+<p>this is a <strong>linear discriminant machine</strong></p>
 <p>Discriminant boundary:</p>
-<script type="math/tex; mode=display">
-  (\Sigma(\mu_i-\mu_j))^T(x-\frac{1}{2}(\mu_i+\mu_j)-\frac{ln[P(\omega_i)/P(\omega_j)]}{(\mu_i-\mu_j)^T\Sigma(\mu_i-\mu_j)}(\mu_i-\mu_j))</script><p><strong>case 3:</strong> suppose that $P(\omega_i)$ are not the same as well as covariance matrices, then the discriminant function is a quadric function. The discriminant boundary will be more various.</p>
-<h1 id="Maximum-Likelihood-estimation-and-Bayesian-estimation"><a href="#Maximum-Likelihood-estimation-and-Bayesian-estimation" class="headerlink" title="Maximum Likelihood estimation and Bayesian estimation"></a>Maximum Likelihood estimation and Bayesian estimation</h1><p>In the chapter 2, we suppose the likelihood function $p(x|\omega)$ is known, but it impossible to know about it in the daily life or experiments, so we must estimate the likelihood function. Generally speaking, we have two methods to solve this problem: the one is <strong>parameter estimation</strong> and the other is <strong>non-parameter estimation</strong>.</p>
+<p>$$<br>
+(\Sigma(\mu_i-\mu_j))^T(x-\frac{1}{2}(\mu_i+\mu_j)-\frac{ln[P(\omega_i)/P(\omega_j)]}{(\mu_i-\mu_j)^T\Sigma(\mu_i-\mu_j)}(\mu_i-\mu_j))<br>
+$$</p>
+<p><strong>case 3:</strong> suppose that $P(\omega_i)$ are not the same as well as covariance matrices, then the discriminant function is a quadric function. The discriminant boundary will be more various.</p>
+<h1>Maximum Likelihood estimation and Bayesian estimation</h1>
+<p>In the chapter 2, we suppose the likelihood function $p(x|\omega)$ is known, but it impossible to know about it in the daily life or experiments, so we must estimate the likelihood function. Generally speaking, we have two methods to solve this problem: the one is <strong>parameter estimation</strong> and the other is <strong>non-parameter estimation</strong>.</p>
 <p>In <strong>parameter estimation</strong>, we will give a prior model of likelihood function of $x$ with unknown parameters, and what we should do is estimating the parameters using the data set.</p>
-<h2 id="Maximum-Likelihood-estimation"><a href="#Maximum-Likelihood-estimation" class="headerlink" title="Maximum Likelihood estimation"></a>Maximum Likelihood estimation</h2><p>Use the <strong>parameterized form</strong> of class-conditional density function (likelihood):</p>
-<script type="math/tex; mode=display">
-p(x|\omega_i, \theta_i)</script><p>As we solve all classes’ parameters <strong>respectively</strong>, we can simplify the denotation as:</p>
-<script type="math/tex; mode=display">
-P(D|\theta)</script><p>where $D$ means the data set of class $\omega_i$.</p>
+<h2 id="Maximum-Likelihood-estimation">Maximum Likelihood estimation</h2>
+<p>Use the <strong>parameterized form</strong> of class-conditional density function (likelihood):</p>
+<p>$$<br>
+p(x|\omega_i, \theta_i)<br>
+$$</p>
+<p>As we solve all classes’ parameters <strong>respectively</strong>, we can simplify the denotation as:</p>
+<p>$$<br>
+P(D|\theta)<br>
+$$</p>
+<p>where $D$ means the data set of class $\omega_i$.</p>
 <p>samples are i.i.d:</p>
-<script type="math/tex; mode=display">
-p(D|\theta_i)=\prod_{k=1}^n p(x_k|\theta)</script><p>and the ML estimation method asks we to find a suitable $\theta$ to maximize $p(D|\theta)$, which means:</p>
-<script type="math/tex; mode=display">
-\theta = argmax_{\theta} p(D|\theta)</script><p>if we know $\theta$, we will know $p(x|\omega_i,\theta_i)$(just to traverse all categories and calculate $\theta_i$), and then we can train classifiers based on Bayesian decision thm.</p>
+<p>$$<br>
+p(D|\theta_i)=\prod_{k=1}^n p(x_k|\theta)<br>
+$$</p>
+<p>and the ML estimation method asks we to find a suitable $\theta$ to maximize $p(D|\theta)$, which means:</p>
+<p>$$<br>
+\theta = argmax_{\theta} p(D|\theta)<br>
+$$</p>
+<p>if we know $\theta$, we will know $p(x|\omega_i,\theta_i)$(just to traverse all categories and calculate $\theta_i$), and then we can train classifiers based on Bayesian decision thm.</p>
 <p>So how to solve $\theta = argmax_{\theta} p(D|\theta)$:</p>
 <p>log-likelihood function:</p>
-<script type="math/tex; mode=display">
-\ell(\theta)=\sum_{k=1}^n lnp(x_k|\theta)</script><p>maximizing $p(D|\theta)$ is the same with maximizing log-likelihood. So, calculate the gradient of $\theta$:</p>
-<script type="math/tex; mode=display">
-\frac{\partial}{\partial \theta}\ell(\theta)</script><p><strong>we will discuss the Gaussian situation:</strong></p>
-<h3 id="ML-Gaussian-Case-mu-is-unknown"><a href="#ML-Gaussian-Case-mu-is-unknown" class="headerlink" title="ML Gaussian Case: $\mu$ is unknown"></a>ML Gaussian Case: $\mu$ is unknown</h3><p>As $\Sigma$ is know, so </p>
-<script type="math/tex; mode=display">
-\theta=\mu</script><p>
+<p>$$<br>
+\ell(\theta)=\sum_{k=1}^n lnp(x_k|\theta)<br>
+$$</p>
+<p>maximizing $p(D|\theta)$ is the same with maximizing log-likelihood. So, calculate the gradient of $\theta$:</p>
+<p>$$<br>
+\frac{\partial}{\partial \theta}\ell(\theta)<br>
+$$</p>
+<p><strong>we will discuss the Gaussian situation:</strong></p>
+<h3 id="ML-Gaussian-Case-mu-is-unknown">ML Gaussian Case: $\mu$ is unknown</h3>
+<p>As $\Sigma$ is know, so</p>
+<p>$$<br>
+\theta=\mu<br>
+$$</p>
+<p>
 \begin{aligned}
 \ell(\theta)&=\sum_{k=1}^n lnp(x_k|\theta) \\
 &=\sum_{k=1}^n -\frac{1}{2}(x_k-\mu)^T\Sigma^{-1}(x_k-\mu)-ln(2\pi)^{d/2}|\Sigma|^{1/2} \\
 \end{aligned}
 </p>
-
 <p>Gradient:</p>
 <p>
 \begin{aligned}
 \ell^{\prime}(\theta)&=\sum_{k=1}^n 2\Sigma^{-1}x_k-2\Sigma^{-1}\mu \\
 \end{aligned}
 </p>
-
 <p>let</p>
-<script type="math/tex; mode=display">
-\ell(\theta)=0</script><p>we get:</p>
-<script type="math/tex; mode=display">
-\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k</script><h3 id="ML-Gaussian-Case-mu-and-Sigma-are-unknown"><a href="#ML-Gaussian-Case-mu-and-Sigma-are-unknown" class="headerlink" title="ML Gaussian Case: $\mu$ and $\Sigma$ are unknown"></a>ML Gaussian Case: $\mu$ and $\Sigma$ are unknown</h3><ol>
-<li><p>for only one feature (1-dim case):<br>we have:</p>
-<script type="math/tex; mode=display">
-\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k</script><p>and</p>
-<script type="math/tex; mode=display">
-\hat{\Sigma} = \hat{\sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})^2</script></li>
-<li><p>for multi-feature (multi-dim case):</p>
+<p>$$<br>
+\ell(\theta)=0<br>
+$$</p>
+<p>we get:</p>
+<p>$$<br>
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k<br>
+$$</p>
+<h3 id="ML-Gaussian-Case-mu-and-Sigma-are-unknown">ML Gaussian Case: $\mu$ and $\Sigma$ are unknown</h3>
+<ol>
+<li>
+<p>for only one feature (1-dim case):<br>
+we have:<br>
+$$<br>
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k<br>
+$$<br>
+and<br>
+$$<br>
+\hat{\Sigma} = \hat{\sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})^2<br>
+$$</p>
+</li>
+<li>
+<p>for multi-feature (multi-dim case):</p>
 </li>
 </ol>
-<script type="math/tex; mode=display">
-\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k</script><script type="math/tex; mode=display">
-\hat{\Sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})(x_k-\hat{\mu})^T</script><div class="note note-primary">
+<p>$$<br>
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k<br>
+$$</p>
+<p>$$<br>
+\hat{\Sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})(x_k-\hat{\mu})^T<br>
+$$</p>
+<div class="note note-primary">
             <p>$\hat{\mu}$ is unbiased estimation, $\hat{\Sigma}$ is not.</p><p>But $\frac{n}{n-1}\hat{\Sigma}$ is unbiased estimation.</p>
           </div>
-<h2 id="Bayesian-estimation"><a href="#Bayesian-estimation" class="headerlink" title="Bayesian estimation"></a>Bayesian estimation</h2><p><strong>We suppose our parameter $\theta$ submits to a prior distribution, and our goal is to estimation $\theta$’s distribution with given data set and prior distribution</strong>.</p>
+<h2 id="Bayesian-estimation">Bayesian estimation</h2>
+<p><strong>We suppose our parameter $\theta$ submits to a prior distribution, and our goal is to estimation $\theta$'s distribution with given data set and prior distribution</strong>.</p>
 <p>Some notions:</p>
 <p>prior probability $P(\theta)$</p>
 <p>posterior $p(\theta|D)$</p>
 <p>likelihood $p(x|D)(i.e.p(x|\omega))$</p>
 <p>Two important relations:</p>
-<script type="math/tex; mode=display">
-p(x|D) = \int p(x,\theta|D)d\theta = \int p(x|\theta)p(\theta|D)d\theta\qquad(1)</script><p>
+<p>$$<br>
+p(x|D) = \int p(x,\theta|D)d\theta = \int p(x|\theta)p(\theta|D)d\theta\qquad(1)<br>
+$$</p>
+<p>
   \begin{aligned}
   p(\theta|D)&=\frac{p(D|\theta)P(\theta)}{\int p(D|\theta)P(\theta)d\theta} \\
   &=\alpha p(D|\theta)P(\theta) \\
   &=\alpha\prod_{k=1}^n p(x_k|\theta)P(\theta)\qquad(2)
   \end{aligned}
 </p>
-
 <p><strong>Ongoing update…</strong></p>
 
               
