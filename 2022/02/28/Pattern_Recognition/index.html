@@ -16,15 +16,15 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="&quot;This is really a great lesson.&quot; &quot;If there are no such many homework.&quot;">
+    <meta name="description" content="“This is really a great lesson.” “If there are no such many homework.”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pattern Recognition">
 <meta property="og:url" content="http://andrew-rey.github.io/2022/02/28/Pattern_Recognition/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="&quot;This is really a great lesson.&quot; &quot;If there are no such many homework.&quot;">
+<meta property="og:description" content="“This is really a great lesson.” “If there are no such many homework.”">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-03T05:34:20.598Z">
+<meta property="article:modified_time" content="2022-05-03T05:46:15.329Z">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -219,7 +219,7 @@
         
         
         
-          93 mins
+          90 mins
         
       </span>
     
@@ -281,446 +281,350 @@
             
             <div class="markdown-body">
               
-              <p>"This is really a great lesson."</p>
-<p>"If there are no such many homework."</p>
+              <p>“This is really a great lesson.”</p>
+<p>“If there are no such many homework.”</p>
 <span id="more"></span>
-<h1 id="introduction">Introduction</h1>
-<h2 id="what-is-patter-recognition">What is Patter Recognition?</h2>
-<ul>
-<li>Pattern
-<ul>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="What-is-Patter-Recognition"><a href="#What-is-Patter-Recognition" class="headerlink" title="What is Patter Recognition?"></a>What is Patter Recognition?</h2><ul>
+<li>Pattern<ul>
 <li>the opposite of choas</li>
-</ul></li>
-<li>Recognition
-<ul>
-<li>Identification of a pattern as a member of a category</li>
-<li><font color=blue>Classification</font>: category known <span
-class="math inline">\(\Rightarrow\)</span> assign proper class label for
-each pattern</li>
-<li><font color=blue>Clustering</font>: category unknown <span
-class="math inline">\(\Rightarrow\)</span> learn categories and group
-patterns</li>
-</ul></li>
-<li>Pattern Recognition
-<ul>
+</ul>
+</li>
+<li>Recognition<ul>
+<li>Identification of a pattern as  a member of a category</li>
+<li><font color=blue>Classification</font>: category known $\Rightarrow$ assign proper class label for each pattern</li>
+<li><font color=blue>Clustering</font>: category unknown $\Rightarrow$ learn categories and group patterns</li>
+</ul>
+</li>
+<li>Pattern Recognition<ul>
 <li>Perceive (理解): interact with the real-world</li>
 <li>Process (处理): learn to distinguish patterns of interest</li>
-<li>Prediction (预测): make sound and reasonable decisions about the
-categories</li>
-</ul></li>
+<li>Prediction (预测): make sound and reasonable decisions about the categories</li>
+</ul>
+</li>
 </ul>
 <div class="note note-primary">
-            <h3 id="previewthree-classification-ideas">preview:three classificationideas</h3><ul><li>estimate the class conditional function</li><li>estimate the posterior</li><li>calculate the discriminant function directly</li></ul>
+            <h3 id="preview-three-classification-ideas"><a href="#preview-three-classification-ideas" class="headerlink" title="preview:three classification ideas"></a>preview:three classification ideas</h3><ul><li>estimate the class conditional function</li><li>estimate the posterior</li><li>calculate the discriminant function directly</li></ul>
           </div>
-<h1 id="bayesian-decision-theory">Bayesian Decision Theory</h1>
-<h2 id="basic-theory">Basic Theory</h2>
-<h3 id="cherry_blossombayesian-formula">:cherry_blossom:Bayesian
-Formula</h3>
-<p><span class="math display">\[
-P(\omega_i | \mathbf{x}) = \frac{P(\omega_i)p(\mathbf{x} |
-\omega_i)}{p(\mathbf{x})}
-\]</span> Where <span class="math inline">\(\omega_i(i = 1,\dots,
-c)\)</span> is the category of research object. <span
-class="math inline">\(\mathbf{x}\)</span> is the <strong>feature
-vector</strong>, has <span class="math inline">\(d\)</span> dimensions.
-We call <span class="math inline">\(P(\omega_i | \mathbf{x})\)</span>
-<strong>posterior</strong>, <span
-class="math inline">\(P(\omega_i)\)</span> <strong>prior
-probability</strong> and <span class="math inline">\(p(\mathbf{x} |
-\omega_i)\)</span> <strong>likelihood</strong> of <span
-class="math inline">\(\mathbf{x}\)</span> in category <span
-class="math inline">\(\omega_i\)</span>. Note that <span
-class="math inline">\(p(\omega{x})\)</span> is a constant, we call it
-<strong>evidence coefficient</strong>. <span class="math display">\[
-p(\mathbf{x}) = \sum_{i = 1}^c P(\omega_i)p(\mathbf{x} | \omega_i)
-\]</span></p>
-<h3 id="cherry_blossomloss-function">:cherry_blossom:Loss function</h3>
-<p>We use <span class="math display">\[
-\lambda(\alpha_i | \omega_j)
-\]</span> to describe the loss or penetrate we get since we take action
-<span class="math inline">\(\alpha_i\)</span> while the true category is
-<span class="math inline">\(\omega_j\)</span>.</p>
-<h3
-id="cherry_blossomclass-conditional-probability">:cherry_blossom:Class-Conditional
-Probability</h3>
-<p>We define the <strong>class conditional probability</strong> relative
-to the action <span class="math inline">\(\alpha_i\)</span> <span
-class="math display">\[
-R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j)
-P(\omega_j | \mathbf{x})
-\]</span> So the <strong>total risk</strong> is defined as: <span
-class="math display">\[
-R = \int_{feature\ space} R(\alpha_i | \mathbf{x}) p(\mathbf{x})
-d\mathbf{x}
-\]</span></p>
-<h3 id="cherry_blossomthe-decision-theory">:cherry_blossom:The Decision
-Theory</h3>
-<p><strong>Bayesian Decision Theory</strong>: In order to minimize the
-total risk <span class="math inline">\(R\)</span>, for <span
-class="math inline">\(i = 1, \dots, a\)</span> we calculate the
-class-conditional probability <span class="math display">\[
-R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j)
-p(\omega_j | \mathbf{x})
-\]</span> and choose a proper action <span
-class="math inline">\(\alpha_i\)</span> to make the <span
-class="math inline">\(R(\alpha_i | \mathbf{x})\)</span> minimized.</p>
-<h2 id="two-class-classification">Two-class classification</h2>
-<p>The loss function is <span class="math display">\[
-\lambda_{ij} \doteq \lambda(\alpha_i | \omega_j)
-\]</span> And our class conditional function are: <span
-class="math display">\[
+<h1 id="Bayesian-Decision-Theory"><a href="#Bayesian-Decision-Theory" class="headerlink" title="Bayesian Decision Theory"></a>Bayesian Decision Theory</h1><h2 id="Basic-Theory"><a href="#Basic-Theory" class="headerlink" title="Basic Theory"></a>Basic Theory</h2><h3 id="cherry-blossom-Bayesian-Formula"><a href="#cherry-blossom-Bayesian-Formula" class="headerlink" title=":cherry_blossom:Bayesian Formula"></a>:cherry_blossom:Bayesian Formula</h3><script type="math/tex; mode=display">
+P(\omega_i | \mathbf{x}) = \frac{P(\omega_i)p(\mathbf{x} | \omega_i)}{p(\mathbf{x})}</script><p>Where $\omega_i(i = 1,\dots, c)$ is the category of research object. $\mathbf{x}$ is the <strong>feature vector</strong>, has $d$ dimensions. We call $P(\omega_i | \mathbf{x})$ <strong>posterior</strong>, $P(\omega_i)$ <strong>prior probability</strong> and $p(\mathbf{x} | \omega_i)$ <strong>likelihood</strong> of $\mathbf{x}$ in category $\omega_i$. Note that $p(\omega{x})$ is a constant, we call it <strong>evidence coefficient</strong>.</p>
+<script type="math/tex; mode=display">
+p(\mathbf{x}) = \sum_{i = 1}^c P(\omega_i)p(\mathbf{x} | \omega_i)</script><h3 id="cherry-blossom-Loss-function"><a href="#cherry-blossom-Loss-function" class="headerlink" title=":cherry_blossom:Loss function"></a>:cherry_blossom:Loss function</h3><p>We use </p>
+<script type="math/tex; mode=display">
+\lambda(\alpha_i | \omega_j)</script><p>to describe the loss or penetrate we get since we take action $\alpha_i$ while the true category is $\omega_j$.</p>
+<h3 id="cherry-blossom-Class-Conditional-Probability"><a href="#cherry-blossom-Class-Conditional-Probability" class="headerlink" title=":cherry_blossom:Class-Conditional Probability"></a>:cherry_blossom:Class-Conditional Probability</h3><p>We define the <strong>class conditional probability</strong> relative to the action $\alpha_i$</p>
+<script type="math/tex; mode=display">
+R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) P(\omega_j | \mathbf{x})</script><p>So the <strong>total risk</strong> is defined as:</p>
+<script type="math/tex; mode=display">
+R = \int_{feature\ space} R(\alpha_i | \mathbf{x}) p(\mathbf{x}) d\mathbf{x}</script><h3 id="cherry-blossom-The-Decision-Theory"><a href="#cherry-blossom-The-Decision-Theory" class="headerlink" title=":cherry_blossom:The Decision Theory"></a>:cherry_blossom:The Decision Theory</h3><p><strong>Bayesian Decision Theory</strong>: In order to minimize the total risk $R$, for $i = 1, \dots, a$ we calculate the class-conditional probability</p>
+<script type="math/tex; mode=display">
+R(\alpha_i | \mathbf{x}) = \sum_{j=1}^c \lambda(\alpha_i | \omega_j) p(\omega_j | \mathbf{x})</script><p>and choose a proper action $\alpha_i$ to make the $R(\alpha_i | \mathbf{x})$ minimized.</p>
+<h2 id="Two-class-classification"><a href="#Two-class-classification" class="headerlink" title="Two-class classification"></a>Two-class classification</h2><p>The loss function is</p>
+<script type="math/tex; mode=display">
+\lambda_{ij} \doteq \lambda(\alpha_i | \omega_j)</script><p>And our class conditional function are:</p>
+<p>\[
 \begin{aligned}
-R(\alpha_1 | \mathbf{x}) &amp;= \lambda_{11} p(\omega_1 | \mathbf{x}) +
-\lambda_{12} p(\omega_2 | \mathbf{x})\\
-R(\alpha_2 | \mathbf{x}) &amp;= \lambda_{21} p(\omega_1 | \mathbf{x}) +
-\lambda_{22} p(\omega_2 | \mathbf{x})
+R(\alpha_1 | \mathbf{x}) &= \lambda_{11} p(\omega_1 | \mathbf{x}) + \lambda_{12} p(\omega_2 | \mathbf{x})\\
+R(\alpha_2 | \mathbf{x}) &= \lambda_{21} p(\omega_1 | \mathbf{x}) + \lambda_{22} p(\omega_2 | \mathbf{x})
 \end{aligned}
-\]</span></p>
-<p>The decision is: if <span class="math inline">\(R(\alpha_1 |
-\mathbf{x}) &lt; R(\alpha_2 | \mathbf{x})\)</span>, then it means <span
-class="math inline">\(\alpha_1\)</span> takes smaller risk, and so we
-choose the action <span class="math inline">\(\alpha_1\)</span>.</p>
-<p>Using the posterior probability to describe is: <span
-class="math display">\[
-(\lambda_{21} - \lambda_{11})P(\omega_1 | \mathbf{x}) &gt; (\lambda_{12}
-- \lambda_{22})P(\omega_2 | \mathbf{x})
-\]</span></p>
-<p>Using the Bayes' Formula, converting the prior probability to
-posterior probability: <span class="math display">\[
-(\lambda_{21} - \lambda_{11})p(\mathbf{x} | \omega_1)P(\omega_1) &gt;
-(\lambda_{12} - \lambda_{22})p(\mathbf{x} | \omega_2)P(\omega_2)
-\]</span></p>
-<p>Or writing with fraction form: <span class="math display">\[
-\frac{p(\mathbf{x} | \omega_1)}{p(\mathbf{x} | \omega_2)} &gt;
-\frac{\lambda_{12} - \lambda_{22}}{\lambda_{21} -
-\lambda_{11}}\frac{P(\omega_2)}{P(\omega_1)}
-\]</span></p>
-<h2 id="the-minimum-error-classification">The Minimum-error
-Classification</h2>
-<p>We define the minimum-error classification is a problem that uses the
-<strong>symmetric loss</strong> or <strong>"0-1" loss</strong>: <span
-class="math display">\[
+\]</p>
+
+<p>The decision is: if $R(\alpha_1 | \mathbf{x}) &lt; R(\alpha_2 | \mathbf{x})$, then it means $\alpha_1$ takes smaller risk, and so we choose the action $\alpha_1$.</p>
+<p>Using the posterior probability to describe is:</p>
+<script type="math/tex; mode=display">
+(\lambda_{21} - \lambda_{11})P(\omega_1 | \mathbf{x}) > (\lambda_{12} - \lambda_{22})P(\omega_2 | \mathbf{x})</script><p>Using the Bayes’ Formula, converting the prior probability to posterior probability:</p>
+<script type="math/tex; mode=display">
+(\lambda_{21} - \lambda_{11})p(\mathbf{x} | \omega_1)P(\omega_1) > (\lambda_{12} - \lambda_{22})p(\mathbf{x} | \omega_2)P(\omega_2)</script><p>Or writing with fraction form:</p>
+<script type="math/tex; mode=display">
+\frac{p(\mathbf{x} | \omega_1)}{p(\mathbf{x} | \omega_2)} > \frac{\lambda_{12} - \lambda_{22}}{\lambda_{21} - \lambda_{11}}\frac{P(\omega_2)}{P(\omega_1)}</script><h2 id="The-Minimum-error-Classification"><a href="#The-Minimum-error-Classification" class="headerlink" title="The Minimum-error Classification"></a>The Minimum-error Classification</h2><p>We define the minimum-error classification is a problem that uses the <strong>symmetric loss</strong> or <strong>“0-1” loss</strong>:</p>
+<p>\[
 \lambda(\alpha_i | \omega_j) = \left\{\begin{aligned}
-&amp;0&amp;\ &amp;i=j,\\
-&amp;1&amp;\ &amp;i\neq j
+&0&\ &i=j,\\
+&1&\ &i\neq j
 \end{aligned}\right.\ \ \ i,j = 1,\dots,c
-\]</span></p>
-<p>If you use this symmetric loss in a classification problem, you mean
-<strong>all the error decisions make the same consequence</strong>.</p>
-<p>Our decision is made based on conditional risk: <span
-class="math display">\[
+\]</p>
+
+<p>If you use this symmetric loss in a classification problem, you mean <strong>all the error decisions make the same consequence</strong>.</p>
+<p>Our decision is made based on conditional risk:</p>
+<p>
+\[
 \begin{aligned}
-R(\alpha_i | \omega_j) &amp;= \sum_{j = 1}^c \lambda_{ij} P(\omega_j |
-\mathbf{x})\\
-&amp;= \sum_{i\neq j} 1 \cdot P(\omega_j | \mathbf{x})\\
-&amp;= 1 - P(\omega_i | \mathbf{x})
+R(\alpha_i | \omega_j) &= \sum_{j = 1}^c \lambda_{ij} P(\omega_j | \mathbf{x})\\
+&= \sum_{i\neq j} 1 \cdot P(\omega_j | \mathbf{x})\\
+&= 1 - P(\omega_i | \mathbf{x})
 \end{aligned}  
-\]</span></p>
-<h3 id="cherry_blossomminimax-rule">:cherry_blossom:Minimax Rule</h3>
-<p>I will not write this part until I make it clear...</p>
-<h2
-id="the-discriminant-function-decision-surface-based-on-gaussian-distribution">The
-Discriminant Function, Decision Surface Based on Gaussian
-Distribution</h2>
-<h3 id="cherry_blossomgaussian-distribution">:cherry_blossom:Gaussian
-Distribution</h3>
-<p><span class="math display">\[
+\]
+</p>
+
+<h3 id="cherry-blossom-Minimax-Rule"><a href="#cherry-blossom-Minimax-Rule" class="headerlink" title=":cherry_blossom:Minimax Rule"></a>:cherry_blossom:Minimax Rule</h3><p>I will not write this part until I make it clear…</p>
+<h2 id="The-Discriminant-Function-Decision-Surface-Based-on-Gaussian-Distribution"><a href="#The-Discriminant-Function-Decision-Surface-Based-on-Gaussian-Distribution" class="headerlink" title="The Discriminant Function, Decision Surface Based on Gaussian Distribution"></a>The Discriminant Function, Decision Surface Based on Gaussian Distribution</h2><h3 id="cherry-blossom-Gaussian-Distribution"><a href="#cherry-blossom-Gaussian-Distribution" class="headerlink" title=":cherry_blossom:Gaussian Distribution"></a>:cherry_blossom:Gaussian Distribution</h3><p>\[\begin{aligned}
+\varphi(\mathbf{x}) = \frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(\mathbf{x} - \mathbf{\mu})^T\Sigma^{-1}(\mathbf{x} - \mathbf{\mu}))
+\end{aligned}\]</p>
+
+<h3 id="cherry-blossom-Discriminant-Function"><a href="#cherry-blossom-Discriminant-Function" class="headerlink" title=":cherry_blossom:Discriminant Function"></a>:cherry_blossom:Discriminant Function</h3><p>The discriminant function is defined as: we choose $i^{th}$ class, if</p>
+<script type="math/tex; mode=display">
+g_i(x)>g_j(x)</script><p>for $\forall j\neq i$. And $g_i(x)$ is called discriminant function.</p>
+<p>Based on minimum-error classification, the discriminant function can be written as:</p>
+<p>
+\[
 \begin{aligned}
-\varphi(\mathbf{x}) =
-\frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma|^{\frac{1}{2}}}exp(-\frac{1}{2}(\mathbf{x}
-- \mathbf{\mu})^T\Sigma^{-1}(\mathbf{x} - \mathbf{\mu}))
+g_i(x)&=-P(\omega_i|x) \\
+&=P(\omega_i|x) \\
+&=p(x|\omega_i)P(\omega_i)\ (Bayes' Formula) \\
+&=lnp(x|\omega_i)+lnP(\omega_i)
 \end{aligned}
-\]</span></p>
-<h3
-id="cherry_blossomdiscriminant-function">:cherry_blossom:Discriminant
-Function</h3>
-<p>The discriminant function is defined as: we choose <span
-class="math inline">\(i^{th}\)</span> class, if <span
-class="math display">\[
-g_i(x)&gt;g_j(x)
-\]</span> for <span class="math inline">\(\forall j\neq i\)</span>. And
-<span class="math inline">\(g_i(x)\)</span> is called discriminant
-function.</p>
-<p>Based on minimum-error classification, the discriminant function can
-be written as: <span class="math display">\[
-\begin{aligned}
-g_i(x)&amp;=-P(\omega_i|x) \\
-&amp;=P(\omega_i|x) \\
-&amp;=p(x|\omega_i)P(\omega_i)\ (Bayes&#39; Formula) \\
-&amp;=lnp(x|\omega_i)+lnP(\omega_i)
-\end{aligned}
-\]</span> where the "=" means "equivalent" or "the same to".</p>
-<p>Specially, if it's a two-class classification: <span
-class="math display">\[
+\]
+</p>
+where the "=" means "equivalent" or "the same to".
+
+Specially, if it's a two-class classification:
+$$
 g(x)=g_1(x)-g_2(x)
-\]</span> or <span class="math display">\[
+$$
+or
+$$
 g(x)=P(\omega_1|x)-P(\omega_2|x)
-\]</span> or <span class="math display">\[
+$$
+or
+$$
 g(x)=ln\frac{p(x|\omega_1)}{p(x|\omega_2)}+ln\frac{P(\omega_1)}{P(\omega_2)}
-\]</span> Correspondingly, we have <strong>decision boundary</strong>
-and <strong>decision region</strong>.</p>
-<h3
-id="cherry_blossomminimum-total-risk-based-on-gaussian-distribution-discriminant-function-discriminant-boundary">:cherry_blossom:Minimum
-total risk based on Gaussian distribution: Discriminant Function,
-Discriminant Boundary</h3>
-<p>On this section, we discuss the situation that <strong>the likelihood
-submits Gaussian distribution</strong> and <strong>the loss is "0-1"
-loss</strong>.</p>
-<p><span class="math display">\[
-p(x|\omega_i)=\frac{1}{(2\pi)^{d/2} |\Sigma_i| ^
-{1/2}}exp(-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i))
-\]</span></p>
-<p><span class="math display">\[
-\lambda(\alpha_i|\omega_j) = I(i\neq j)
-\]</span></p>
-<p><span class="math display">\[
-g_i(x)=lnp(x|\omega_i)+lnP(\omega_i)=-\frac{1}{2}(x-\mu_i)^T
-\Sigma_i^{-1}(x-\mu_i)-\frac{d}{2}ln2\pi-\frac{1}{2}ln|\Sigma|+lnP(\omega_i)
-\]</span></p>
-<p>:triangular_flag_on_post:<b>Minimum distance classifier</b></p>
-<p>:blue_heart:<strong>case 1a:</strong> suppose all prior probabilities
-are the same</p>
-<p><span class="math display">\[
-P(\omega_i)=1/c\ \ \forall i \in (1,c)
-\]</span></p>
-<p>and all features have no relationships with others and all classes
-have the same covariance matrices</p>
-<p><span class="math display">\[
-\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)
-\]</span></p>
-<p>Discriminant function:</p>
-<p><span class="math display">\[
+$$
+Correspondingly, we have **decision boundary** and **decision region**.
+
+### :cherry_blossom:Minimum total risk based on Gaussian distribution: Discriminant Function, Discriminant Boundary
+On this section, we discuss the situation that **the likelihood submits Gaussian distribution** and **the loss is "0-1" loss**.
+
+<p>
+\[
+p(x|\omega_i)=\frac{1}{(2\pi)^{d/2} |\Sigma_i| ^ {1/2}}exp(-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i))
+\]
+</p>
+
+<script type="math/tex; mode=display">
+\lambda(\alpha_i|\omega_j) = I(i\neq j)</script><script type="math/tex; mode=display">
+g_i(x)=lnp(x|\omega_i)+lnP(\omega_i)=-\frac{1}{2}(x-\mu_i)^T \Sigma_i^{-1}(x-\mu_i)-\frac{d}{2}ln2\pi-\frac{1}{2}ln|\Sigma|+lnP(\omega_i)</script><p>:triangular_flag_on_post:<b>Minimum distance classifier</b></p>
+<p>:blue_heart:<strong>case 1a:</strong> suppose all prior probabilities are the same</p>
+<script type="math/tex; mode=display">
+P(\omega_i)=1/c\ \ \forall i \in (1,c)</script><p>and all features have no relationships with others and all classes have the same covariance matrices</p>
+<script type="math/tex; mode=display">
+\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)</script><p>Discriminant function:</p>
+<p>
+\[
 \begin{aligned}
-  g_i(x)&amp;=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)+constant \\
-  g_i(x)&amp;=-\frac{1}{2\sigma^2}(x-\mu_i)^T(x-\mu_i)\ \ \ (Euclidean\
-distance) \\
-  g_i(x)&amp;=-\frac{1}{2\sigma^2}(x^Tx-2\mu_i^Tx+\mu_i^T\mu_i) \\
+  g_i(x)&=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)+constant \\
+  g_i(x)&=-\frac{1}{2\sigma^2}(x-\mu_i)^T(x-\mu_i)\ \ \ (Euclidean\ distance) \\
+  g_i(x)&=-\frac{1}{2\sigma^2}(x^Tx-2\mu_i^Tx+\mu_i^T\mu_i) \\
 \end{aligned}
-\]</span></p>
-<p><span class="math inline">\(x^Tx\)</span> is independent with <span
-class="math inline">\(\forall i\)</span>, so <span
-class="math inline">\(x^Tx\)</span> is a constant when considering <span
-class="math inline">\(i\)</span>.</p>
-<p><span class="math display">\[
+\]
+</p>
+
+<p>$x^Tx$ is independent with $\forall i$, so $x^Tx$ is a constant when considering $i$.</p>
+<p>
+\[
 g_i(x)=\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i
-\]</span></p>
+\]
+</p>
+
 <p>this is a <strong>linear discriminant machine</strong>.</p>
 <p>Discriminant boundary:</p>
-<p><span class="math display">\[
+<p>
+\[
 g_i=g_j  
-\]</span></p>
-<p><span class="math display">\[
+\]
+</p>
+
+<p>
+\[
   \begin{aligned}
-&amp;\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i=
+&\frac{1}{\sigma^2}\mu_i^Tx-\frac{1}{2\sigma^2}\mu_i^T\mu_i=
 \frac{1}{\sigma^2}\mu_j^Tx-\frac{1}{2\sigma^2}\mu_j^T\mu_j \\
-&amp;\frac{1}{\sigma^2}(\mu_i^T-\mu_j^T)x - \frac{1}{2\sigma^2}(\mu_i^T
-+ \mu_j^T)(\mu_i - \mu_j)=0 \\
-&amp;\frac{1}{\sigma^2}(\mu_i-\mu_j)^T(x-\frac{1}{2}(\mu_i + \mu_j))  =0
-\\
+&\frac{1}{\sigma^2}(\mu_i^T-\mu_j^T)x - \frac{1}{2\sigma^2}(\mu_i^T + \mu_j^T)(\mu_i - \mu_j)=0 \\
+&\frac{1}{\sigma^2}(\mu_i-\mu_j)^T(x-\frac{1}{2}(\mu_i + \mu_j))  =0 \\
 \end{aligned}
-\]</span></p>
+\]
+</p>
+
 <div class="note note-primary">
-            <p>so the discriminant boundary must pass the point <spanclass="math inline">\(x=\frac{1}{2}(\mu_i + \mu_j)\)</span>, and isvertical with <span class="math inline">\((\mu_i-\mu_j)\)</span></p>
+            <p>so the discriminant boundary must pass the point $x=\frac{1}{2}(\mu_i + \mu_j)$, and is vertical with $(\mu_i-\mu_j)$</p>
           </div>
-<p>:blue_heart:<strong>case 1b:</strong> suppose all prior probabilities
-are the same:</p>
-<p><span class="math display">\[
-P_i=1/c
-\]</span></p>
-<p>and all covariance are the same, but features have relationships with
-each other:</p>
-<p><span class="math display">\[
-\Sigma_i=\Sigma
-\]</span></p>
-<p>Discriminant function: <span class="math display">\[
+<p>:blue_heart:<strong>case 1b:</strong> suppose all prior probabilities are the same:</p>
+<script type="math/tex; mode=display">
+P_i=1/c</script><p>and all covariance are the same, but features have relationships with each other:</p>
+<script type="math/tex; mode=display">
+\Sigma_i=\Sigma</script><p>Discriminant function:</p>
+<p>
+\[
 \begin{aligned}
-&amp;g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)-\frac{1}{2}ln|\Sigma_i|+constant
-\\
-&amp;g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)-\frac{1}{2}ln|\Sigma|
-\\
-&amp;g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)\ \ \
-(Mahalanobis\ distance) \\
-&amp;g_i(x)=2\mu_i^T\Sigma^{-1}x-\mu_i^T\Sigma^{-1}\mu_i \\
+&g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)-\frac{1}{2}ln|\Sigma_i|+constant \\
+&g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)-\frac{1}{2}ln|\Sigma| \\
+&g_i(x)=-\frac{1}{2}(x-\mu_i)^T\Sigma_i^{-1}(x-\mu_i)\ \ \ (Mahalanobis\ distance) \\
+&g_i(x)=2\mu_i^T\Sigma^{-1}x-\mu_i^T\Sigma^{-1}\mu_i \\
 \end{aligned}
-\]</span></p>
+\]
+</p>
+
 <p>this is also a <strong>linear discriminant machine</strong>.</p>
 <p>Discriminant boundary:</p>
-<p><span class="math display">\[
+<p>
+\[
 (\Sigma^{-1}(\mu_i-\mu_j))^T(x-\frac{\mu_i+\mu_j}{2})=0
-\]</span></p>
+\]
+</p>
+
 <div class="note note-primary">
-            <p>the boundary crosses the middle point of <spanclass="math inline">\(\mu_i\)</span> and <spanclass="math inline">\(\mu_j\)</span>, but is not vertical with <spanclass="math inline">\(\mu_i-\mu_j\)</span> as <spanclass="math inline">\(\Sigma\)</span> provides a rotation with <spanclass="math inline">\(\mu_i-\mu_j\)</span>.</p>
+            <p>the boundary crosses the middle point of $\mu_i$ and $\mu_j$, but is not vertical with $\mu_i-\mu_j$ as $\Sigma$ provides a rotation with $\mu_i-\mu_j$.</p>
           </div>
-<p>:blue_heart:<strong>case 2a:</strong> suppose <span
-class="math inline">\(P(\omega_i)\)</span> are not the same, while all
-features have no relationships with others and all classes have the same
-covariance matrices</p>
-<p><span class="math display">\[
-\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)
-\]</span></p>
-<p>Discriminant function:</p>
-<p><span class="math display">\[
+<p>:blue_heart:<strong>case 2a:</strong> suppose $P(\omega_i)$ are not the same, while all features have no relationships with others and all classes have the same covariance matrices</p>
+<script type="math/tex; mode=display">
+\Sigma_i=\sigma^2I\ \ \forall i \in (1,c)</script><p>Discriminant function:</p>
+<p>
+\[
   g_i(x)=2\mu_i^Tx-\mu_i^T\mu_i+2\sigma^2lnP(\omega_i)
-\]</span></p>
+\]
+</p>
+
 <p>this is a <strong>linear discriminant machine</strong></p>
 <p>Discriminant boundary:</p>
-<p><span class="math display">\[
+<p>
+\[
 (\mu_i-\mu_j)^T(x-\frac{\mu_i+\mu_j}{2}-\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))  
-\]</span></p>
-<p>if <span class="math inline">\(P(\omega_i)&gt;P(\omega_j)\)</span>,
-then <span class="math display">\[
-\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))&gt;0
-\]</span> , it will cross a point that is closer to <span
-class="math inline">\(\mu_j\)</span>.</p>
-<p>:blue_heart:<strong>case 2b:</strong> suppose <span
-class="math inline">\(P(\omega_i)\)</span> are not the same, while
-covariance are the same, but features have relationships with each
-other:</p>
-<p><span class="math display">\[
+\]
+</p>
+
+<p>if $P(\omega_i)&gt;P(\omega_j)$, then </p>
+<p>\[
+\frac{\sigma^2}{||\mu_i-\mu_j||^2}ln\frac{P(\omega_i)}{P(\omega_j)}(\mu_i-\mu_j))>0
+\]</p>
+ , it will cross a point that is closer to $\mu_j$.
+
+:blue_heart:**case 2b:** suppose $P(\omega_i)$ are not the same, while covariance are the same, but features have relationships with each other:
+
+$$
 \Sigma_i=\Sigma
-\]</span></p>
-<p>Discriminant function:</p>
-<p><span class="math display">\[
+$$
+
+Discriminant function:
+
+<p>
+\[
 g_i(x)=(\Sigma\mu_i)^Tx-\frac{1}{2}\mu_i^T\Sigma^{-1}\mu_i+lnP(\omega_i)  
-\]</span></p>
+\]
+</p>
+
 <p>this is a <strong>linear discriminant machine</strong></p>
 <p>Discriminant boundary:</p>
-<p><span class="math display">\[
+<p>
+\[
   (\Sigma(\mu_i-\mu_j))^T(x-\frac{1}{2}(\mu_i+\mu_j)-\frac{ln[P(\omega_i)/P(\omega_j)]}{(\mu_i-\mu_j)^T\Sigma(\mu_i-\mu_j)}(\mu_i-\mu_j))
-\]</span></p>
-<p>:blue_heart:<strong>case 3:</strong> suppose that <span
-class="math inline">\(P(\omega_i)\)</span> are not the same as well as
-covariance matrices, then the discriminant function is a quadric
-function. The discriminant boundary will be more various.</p>
-<h1 id="maximum-likelihood-estimation-and-bayesian-estimation">Maximum
-Likelihood estimation and Bayesian estimation</h1>
-<p>In the chapter 2, we suppose the likelihood function <span
-class="math inline">\(p(x|\omega)\)</span> is known, but it impossible
-to know about it in the daily life or experiments, so we must estimate
-the likelihood function. Generally speaking, we have two methods to
-solve this problem: the one is <strong>parameter estimation</strong> and
-the other is <strong>non-parameter estimation</strong>.</p>
-<p>In <strong>parameter estimation</strong>, we will give a prior model
-of likelihood function of <span class="math inline">\(x\)</span> with
-unknown parameters, and what we should do is estimating the parameters
-using the data set.</p>
-<h2 id="maximum-likelihood-estimation">Maximum Likelihood
-estimation</h2>
-<p>Use the <strong>parameterized form</strong> of class-conditional
-density function (likelihood):</p>
-<p><span class="math display">\[
-p(x|\omega_i, \theta_i)
-\]</span></p>
-<p>As we solve all classes' parameters <strong>respectively</strong>, we
-can simplify the denotation as:</p>
-<p><span class="math display">\[
-P(D|\theta)
-\]</span></p>
-<p>where <span class="math inline">\(D\)</span> means the data set of
-class <span class="math inline">\(\omega_i\)</span>.</p>
+\]
+</p>
+
+<p>:blue_heart:<strong>case 3:</strong> suppose that $P(\omega_i)$ are not the same as well as covariance matrices, then the discriminant function is a quadric function. The discriminant boundary will be more various.</p>
+<h1 id="Maximum-Likelihood-estimation-and-Bayesian-estimation"><a href="#Maximum-Likelihood-estimation-and-Bayesian-estimation" class="headerlink" title="Maximum Likelihood estimation and Bayesian estimation"></a>Maximum Likelihood estimation and Bayesian estimation</h1><p>In the chapter 2, we suppose the likelihood function $p(x|\omega)$ is known, but it impossible to know about it in the daily life or experiments, so we must estimate the likelihood function. Generally speaking, we have two methods to solve this problem: the one is <strong>parameter estimation</strong> and the other is <strong>non-parameter estimation</strong>.</p>
+<p>In <strong>parameter estimation</strong>, we will give a prior model of likelihood function of $x$ with unknown parameters, and what we should do is estimating the parameters using the data set.</p>
+<h2 id="Maximum-Likelihood-estimation"><a href="#Maximum-Likelihood-estimation" class="headerlink" title="Maximum Likelihood estimation"></a>Maximum Likelihood estimation</h2><p>Use the <strong>parameterized form</strong> of class-conditional density function (likelihood):</p>
+<script type="math/tex; mode=display">
+p(x|\omega_i, \theta_i)</script><p>As we solve all classes’ parameters <strong>respectively</strong>, we can simplify the denotation as:</p>
+<script type="math/tex; mode=display">
+P(D|\theta)</script><p>where $D$ means the data set of class $\omega_i$.</p>
 <p>samples are i.i.d:</p>
-<p><span class="math display">\[
+<p>
+\[
 p(D|\theta_i)=\prod_{k=1}^n p(x_k|\theta)
-\]</span></p>
-<p>and the ML estimation method asks we to find a suitable <span
-class="math inline">\(\theta\)</span> to maximize <span
-class="math inline">\(p(D|\theta)\)</span>, which means:</p>
-<p><span class="math display">\[
+\]
+</p>
+
+<p>and the ML estimation method asks we to find a suitable $\theta$ to maximize $p(D|\theta)$, which means:</p>
+<p>
+\[
 \theta = argmax_{\theta} p(D|\theta)  
-\]</span></p>
-<p>if we know <span class="math inline">\(\theta\)</span>, we will know
-<span class="math inline">\(p(x|\omega_i,\theta_i)\)</span>(just to
-traverse all categories and calculate <span
-class="math inline">\(\theta_i\)</span>), and then we can train
-classifiers based on Bayesian decision thm.</p>
-<p>So how to solve <span class="math inline">\(\theta = argmax_{\theta}
-p(D|\theta)\)</span>:</p>
+\]
+</p>
+
+<p>if we know $\theta$, we will know $p(x|\omega_i,\theta_i)$(just to traverse all categories and calculate $\theta_i$), and then we can train classifiers based on Bayesian decision thm.</p>
+<p>So how to solve $\theta = argmax_{\theta} p(D|\theta)$:</p>
 <p>log-likelihood function:</p>
-<p><span class="math display">\[
+<p>
+\[
 \ell(\theta)=\sum_{k=1}^n lnp(x_k|\theta)  
-\]</span></p>
-<p>maximizing <span class="math inline">\(p(D|\theta)\)</span> is the
-same with maximizing log-likelihood. So, calculate the gradient of <span
-class="math inline">\(\theta\)</span>:</p>
-<p><span class="math display">\[
-\frac{\partial}{\partial \theta}\ell(\theta)
-\]</span></p>
-<p><strong>we will discuss the Gaussian situation:</strong></p>
-<h3 id="cherry_blossomml-gaussian-case-mu-is-unknown">:cherry_blossom:ML
-Gaussian Case: <span class="math inline">\(\mu\)</span> is unknown</h3>
-<p>As <span class="math inline">\(\Sigma\)</span> is know, so</p>
-<p><span class="math display">\[
-\theta=\mu
-\]</span></p>
-<p><span class="math display">\[
+\]
+</p>
+
+<p>maximizing $p(D|\theta)$ is the same with maximizing log-likelihood. So, calculate the gradient of $\theta$:</p>
+<script type="math/tex; mode=display">
+\frac{\partial}{\partial \theta}\ell(\theta)</script><p><strong>we will discuss the Gaussian situation:</strong></p>
+<h3 id="cherry-blossom-ML-Gaussian-Case-mu-is-unknown"><a href="#cherry-blossom-ML-Gaussian-Case-mu-is-unknown" class="headerlink" title=":cherry_blossom:ML Gaussian Case: $\mu$ is unknown"></a>:cherry_blossom:ML Gaussian Case: $\mu$ is unknown</h3><p>As $\Sigma$ is know, so </p>
+<script type="math/tex; mode=display">
+\theta=\mu</script><p>
+\[
 \begin{aligned}
-\ell(\theta)&amp;=\sum_{k=1}^n lnp(x_k|\theta) \\
-&amp;=\sum_{k=1}^n
--\frac{1}{2}(x_k-\mu)^T\Sigma^{-1}(x_k-\mu)-ln(2\pi)^{d/2}|\Sigma|^{1/2}
-\\
+\ell(\theta)&=\sum_{k=1}^n lnp(x_k|\theta) \\
+&=\sum_{k=1}^n -\frac{1}{2}(x_k-\mu)^T\Sigma^{-1}(x_k-\mu)-ln(2\pi)^{d/2}|\Sigma|^{1/2} \\
 \end{aligned}
-\]</span></p>
+\]
+</p>
+
 <p>Gradient:</p>
-<p><span class="math display">\[
+<p>
+\[
 \begin{aligned}
-\ell^{\prime}(\theta)&amp;=\sum_{k=1}^n 2\Sigma^{-1}x_k-2\Sigma^{-1}\mu
-\\
+\ell^{\prime}(\theta)&=\sum_{k=1}^n 2\Sigma^{-1}x_k-2\Sigma^{-1}\mu \\
 \end{aligned}
-\]</span></p>
+\]
+</p>
+
 <p>let</p>
-<p><span class="math display">\[
-\ell(\theta)=0
-\]</span></p>
-<p>we get:</p>
-<p><span class="math display">\[
-\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k
-\]</span></p>
-<h3
-id="cherry_blossomml-gaussian-case-mu-and-sigma-are-unknown">:cherry_blossom:ML
-Gaussian Case: <span class="math inline">\(\mu\)</span> and <span
-class="math inline">\(\Sigma\)</span> are unknown</h3>
-<ol type="1">
-<li><p>for only one feature (1-dim case): we have: <span
-class="math display">\[
-\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k
-\]</span> and <span class="math display">\[
+<script type="math/tex; mode=display">
+\ell(\theta)=0</script><p>we get:</p>
+<script type="math/tex; mode=display">
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k</script><h3 id="cherry-blossom-ML-Gaussian-Case-mu-and-Sigma-are-unknown"><a href="#cherry-blossom-ML-Gaussian-Case-mu-and-Sigma-are-unknown" class="headerlink" title=":cherry_blossom:ML Gaussian Case: $\mu$ and $\Sigma$ are unknown"></a>:cherry_blossom:ML Gaussian Case: $\mu$ and $\Sigma$ are unknown</h3><ol>
+<li><p>for only one feature (1-dim case):<br>we have:</p>
+<script type="math/tex; mode=display">
+\hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k</script><p>and</p>
+<p>
+\[
 \hat{\Sigma} = \hat{\sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})^2
-\]</span></p></li>
-<li><p>for multi-feature (multi-dim case): <span class="math display">\[
+\]
+</p>
+</li>
+<li><p>for multi-feature (multi-dim case):</p>
+<p>
+\[
 \hat{\mu} = \frac{1}{n}\sum_{k=1}^n x_k
-\]</span></p></li>
-</ol>
-<p><span class="math display">\[
+\]
+</p>
+<p>
+\[
 \hat{\Sigma} = \frac{1}{n}\sum_{k=1}^n(x_k-\hat{\mu})(x_k-\hat{\mu})^T
-\]</span></p>
+\]
+</p>
+
+</li>
+</ol>
 <div class="note note-primary">
-            <p><span class="math inline">\(\hat{\mu}\)</span> is unbiasedestimation, <span class="math inline">\(\hat{\Sigma}\)</span> isnot.</p><p>But <span class="math inline">\(\frac{n}{n-1}\hat{\Sigma}\)</span> isunbiased estimation.</p>
+            <p>$\hat{\mu}$ is unbiased estimation, $\hat{\Sigma}$ is not.</p><p>But $\frac{n}{n-1}\hat{\Sigma}$ is unbiased estimation.</p>
           </div>
-<h2 id="bayesian-estimation">Bayesian estimation</h2>
-<p><strong>We suppose our parameter <span
-class="math inline">\(\theta\)</span> submits to a prior distribution,
-and our goal is to estimation <span
-class="math inline">\(\theta\)</span>'s distribution with given data set
-and prior distribution</strong>.</p>
+<h2 id="Bayesian-estimation"><a href="#Bayesian-estimation" class="headerlink" title="Bayesian estimation"></a>Bayesian estimation</h2><p><strong>We suppose our parameter $\theta$ submits to a prior distribution, and our goal is to estimation $\theta$’s distribution with given data set and prior distribution</strong>.</p>
 <p>Some notions:</p>
-<p>prior probability <span class="math inline">\(P(\theta)\)</span></p>
-<p>posterior <span class="math inline">\(p(\theta|D)\)</span></p>
-<p>likelihood <span
-class="math inline">\(p(x|D)(i.e.p(x|\omega))\)</span></p>
+<p>prior probability $P(\theta)$</p>
+<p>posterior $p(\theta|D)$</p>
+<p>likelihood $p(x|D)(i.e.p(x|\omega))$</p>
 <p>Two important relations:</p>
-<p><span class="math display">\[
-p(x|D) = \int p(x,\theta|D)d\theta = \int
-p(x|\theta)p(\theta|D)d\theta\qquad(1)
-\]</span></p>
-<p><span class="math display">\[
+<p>
+\[
+p(x|D) = \int p(x,\theta|D)d\theta = \int p(x|\theta)p(\theta|D)d\theta\qquad(1)
+\]
+</p>
+<p>
+\[
   \begin{aligned}
-  p(\theta|D)&amp;=\frac{p(D|\theta)P(\theta)}{\int
-p(D|\theta)P(\theta)d\theta} \\
-  &amp;=\alpha p(D|\theta)P(\theta) \\
-  &amp;=\alpha\prod_{k=1}^n p(x_k|\theta)P(\theta)\qquad(2)
+  p(\theta|D)&=\frac{p(D|\theta)P(\theta)}{\int p(D|\theta)P(\theta)d\theta} \\
+  &=\alpha p(D|\theta)P(\theta) \\
+  &=\alpha\prod_{k=1}^n p(x_k|\theta)P(\theta)\qquad(2)
   \end{aligned}
-\]</span></p>
-<p><strong>Ongoing update...</strong></p>
+\]
+</p>
+
+<p><strong>Ongoing update…</strong></p>
 
               
             </div>
@@ -861,6 +765,12 @@ p(D|\theta)P(\theta)d\theta} \\
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -1117,6 +1027,44 @@ p(D|\theta)P(\theta)d\theta} \\
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.0/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
