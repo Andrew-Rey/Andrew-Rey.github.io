@@ -24,7 +24,7 @@
 <meta property="og:description" content="“FFT是我见过最美的算法.” “说的好像你见过很多算法似的.”">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-06T08:08:39.000Z">
-<meta property="article:modified_time" content="2022-05-03T10:36:56.419Z">
+<meta property="article:modified_time" content="2022-05-04T04:08:10.248Z">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.2k words
+          6.7k words
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          61 mins
+          57 mins
         
       </span>
     
@@ -275,7 +275,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on May 3, 2022 pm
+                    Last updated on May 4, 2022 pm
                   
                 
               </p>
@@ -299,7 +299,7 @@
 </ul>
 <p>例如上面那个例子:</p>
 <div class="note note-primary">
-            <h3 id="solution-1">solution 1</h3><p>$$</p><pre><code class="hljs">\begin{aligned}    r(x) &amp;= (2x^3+x+1)(x^2+4x+5) \\    &amp;= 2x^5+8x^4+10x^3+x^3+4x^2+5x+x^2+4x+5 \\    &amp;= 2x^5+8x^4+11x^3+5x^2+5x+5\end{aligned}</code></pre><p>$$</p>
+            <h3 id="solution-1">solution 1</h3><p>\[    \begin{aligned}        r(x) &= (2x^3+x+1)(x^2+4x+5) \\        &= 2x^5+8x^4+10x^3+x^3+4x^2+5x+x^2+4x+5 \\        &= 2x^5+8x^4+11x^3+5x^2+5x+5    \end{aligned}\]</p>
           </div>
 <p>(<strong>???是什么动力让我深夜在这里口算多项式乘法???</strong>)</p>
 <p>显然, 如果一个 n 次多项式乘上一个 m 次多项式, 在合并同类项前应该有 $n\times m$ 次多项式, 这谁顶得住? 对于正常人类而言显然顶不住, 对于计算机而言, 时间复杂度是$O(n^2)$, 也是算比较大的开销了吧.</p>
@@ -314,45 +314,45 @@ $$<br>
 $$<br>
 构成了该空间的一组基, 将函数展开成 Taylor 级数便用了这组基作为基底, 基前面的系数也就是<strong>坐标</strong>.</p>
 <p>其次, 对于一个 n 次多项式而言, 只要我们确定了它的坐标, 就能唯一确定这个多项式. <strong>现在的问题是不知道坐标, 如何确定多项式.</strong> 这里的巧妙之处就在于, 多项式函数是一个映射, 对于一个特定的 x, 总是能给出唯一一个值与之对应, 这不就是一个方程吗?</p>
-<ul>
-<li>我给你一个 x, 你输出一个值, 同时由于多项式系数全部未知, 这就是一个关于 $n+1$个系数的方程</li>
-</ul>
-<p>显然, 我需要$n+1$个不同的点来唯一确定我的系数. 这就是所谓的点表示法. 这样一来, 我们将这$n+1$个方程写成矩阵形式:</p>
-<h1>$$<br>
-\left[<br>
-\begin{aligned}<br>
-p_0 \<br>
-p_1 \<br>
-\vdots \<br>
-p_n<br>
-\end{aligned}\right]</h1>
-<p>\left[<br>
-\begin{aligned}<br>
-1\quad &amp; x_0\quad &amp; \dots\quad &amp; x_0^n \<br>
-1\quad &amp; x_1\quad &amp; \dots\quad &amp; x_1^n \<br>
-\vdots\quad &amp; \vdots\quad &amp; \quad &amp; \vdots \<br>
-1\quad &amp; x_n\quad &amp; \dots\quad &amp; x_n^n<br>
-\end{aligned}<br>
-\right]<br>
-\left[<br>
-\begin{aligned}<br>
-c_0 \<br>
-c_1 \<br>
-\vdots \<br>
-c_n<br>
-\end{aligned}\right]</p>
-<p>$$</p>
+<p>我给你一个 x, 你输出一个值, 同时由于多项式系数全部未知, 这就是一个关于 $n+1$ 个系数的方程</p>
+<p>显然, 我需要 $n+1$ 个不同的点来唯一确定我的系数. 这就是所谓的点表示法. 这样一来, 我们将这 $n+1$ 个方程写成矩阵形式:</p>
+<p>\[
+\left[
+\begin{aligned}
+p_0 \\
+p_1 \\
+\vdots \\
+p_n
+\end{aligned}
+\right]
+=
+\left[
+\begin{aligned}
+1\quad & x_0\quad & \dots\quad & x_0^n \\
+1\quad & x_1\quad & \dots\quad & x_1^n \\
+\vdots\quad & \vdots\quad & \quad & \vdots \\
+1\quad & x_n\quad & \dots\quad & x_n^n
+\end{aligned}
+\right]
+\left[
+\begin{aligned}
+c_0 \\
+c_1 \\
+\vdots \\
+c_n
+\end{aligned}\right]
+\]</p>
 <p>看到这里我终于理解了为什么在学高等代数时要突然讲一个<strong>范德蒙德(Vandermonde)行列式</strong>, 也就是这里的</p>
-<p>$$</p>
-<p>\left[<br>
-\begin{aligned}<br>
-1\quad &amp; x_0\quad &amp; \dots\quad &amp; x_0^n \<br>
-1\quad &amp; x_1\quad &amp; \dots\quad &amp; x_1^n \<br>
-\vdots\quad &amp; \vdots\quad &amp; \quad &amp; \vdots \<br>
-1\quad &amp; x_n\quad &amp; \dots\quad &amp; x_n^n<br>
-\end{aligned}<br>
-\right]</p>
-<p>$$</p>
+<p>\[
+\left[
+\begin{aligned}
+1\quad & x_0\quad & \dots\quad & x_0^n \\
+1\quad & x_1\quad & \dots\quad & x_1^n \\
+\vdots\quad & \vdots\quad & \quad & \vdots \\
+1\quad & x_n\quad & \dots\quad & x_n^n
+\end{aligned}
+\right]
+\]</p>
 <p>将上述矩阵定义为我们最喜欢的字母$A$.</p>
 <p>好, 既然这东西是范德蒙德行列式, 那我们可以知道它行列式$|A|=\prod_{0\leq j&lt; i\leq n}(x_i-x_j)$不为 0, 也就是说, 这个矩阵是可逆的, 也就是当我们取 $n+1$ 个不同点时, 确实是可以使方程组有唯一解, 也就是 <strong>$n+1$ 个点可以唯一表示一个 n 次多项式.</strong></p>
 <h2 id="乘法">乘法</h2>
@@ -403,70 +403,71 @@ p(x)=\sum_{k=0}^nc_kx^k=P_{e1}(x^2)+xP_{e2}(x^2):=[ \omega^0, \omega^1, \dots, \
 $$</p>
 <p><strong>递归:</strong></p>
 <p>$$<br>
-P_{e1}(x^2) = P^{\prime}<em>{e1}(x^4)+xP^{\prime}</em>{e2}(x^4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]<br>
+P_{e1}(x^2) = P^{\prime}_{e1}(x^4)+xP^{\prime}_{e2}(x^4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]<br>
 $$</p>
 <p>$$<br>
-P_{e2}(x^2) = P^{\prime}<em>{e1}(x^4)+xP^{\prime}</em>{e2}(x^4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]<br>
+P_{e2}(x^2) = P^{\prime}_{e1}(x^4)+xP^{\prime}_{e2}(x^4):=[\omega^0, \omega^1, \dots, \omega^{n-1}]<br>
 $$</p>
-<p><strong>加和:</strong></p>
-<p>$$<br>
+<p><strong>加和:</strong><br>
+$$<br>
 P(\omega^j)=P_{e1}(\omega^{j})+\omega^jP_{e2}(\omega^j)<br>
 $$</p>
 <p>$$<br>
 P(\omega^{j+n/2})=P_{e1}(\omega^{j+n/2})+\omega^{j+n/2}P_{e2}(\omega^{j+n/2})<br>
-$$<br>
-$j\in[0,1,\dots, n/2+1]$  \</p>
+$$</p>
+<p>$j\in[0,1,\dots, n/2+1]$</p>
 <p><strong>返回</strong>$p(x)$</p>
 <p>时间复杂度为: $O(nlog_2n)$</p>
 <h2 id="一些数学">一些数学</h2>
 <div class="note note-primary">
-            <p>对于 n 次多项式 $p(x)=\sum_{k=0}^n c_kx^k$, 我们给定$n+1$个点: $x_0, \dots, x_n$, 从而得到关于原多项式 $n+1$ 个系数的线性方程组:</p><h1>$$<br>\left[<br>\begin{aligned}<br>p_0 \<br>p_1 \<br>\vdots \<br>p_n<br>\end{aligned}\right]</h1><p>\left[<br>\begin{aligned}<br>1\quad &amp; x_0\quad &amp; \dots\quad &amp; x_0^n \<br>1\quad &amp; x_1\quad &amp; \dots\quad &amp; x_1^n \<br>\vdots\quad &amp; \vdots\quad &amp; \quad &amp; \vdots \<br>1\quad &amp; x_n\quad &amp; \dots\quad &amp; x_n^n<br>\end{aligned}<br>\right]<br>\left[<br>\begin{aligned}<br>c_0 \<br>c_1 \<br>\vdots \<br>c_n<br>\end{aligned}\right]<br>$$</p><p>我们在复数域上考虑, 令<br>$$<br>x_k=\omega^k,\quad where\ \ \omega=e^{\frac{2k\pi}{n}}<br>$$<br>(这是因为, 我们希望多项式在复数域上考虑时, 我们可以在单位圆周上讨论. 其中$x_k$表示我们取的第 k 个点, 刚好与 $\omega^k$是对应的.)</p><p>则线性方程组可以化为:</p><h1>$$<br>\left[<br>\begin{aligned}<br>p_0 \<br>p_1 \<br>\vdots \<br>p_n<br>\end{aligned}\right]</h1><p>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega\quad   &amp; \omega^2\quad          &amp; \dots\quad &amp; \omega^n \<br>1\quad      &amp; \omega^2\quad &amp; \omega^4\quad          &amp; \dots\quad &amp; \omega^{2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^n\quad &amp; \omega^{2n}\quad  &amp; \dots\quad &amp; \omega^{n\times n}<br>\end{aligned}<br>\right]<br>\left[<br>\begin{aligned}<br>c_0 \<br>c_1 \<br>\vdots \<br>c_n<br>\end{aligned}\right]<br>$$</p><p>其中</p><p>$$<br>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega\quad   &amp; \omega^2\quad          &amp; \dots\quad &amp; \omega^n \<br>1\quad      &amp; \omega^2\quad &amp; \omega^4\quad          &amp; \dots\quad &amp; \omega^{2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^n\quad &amp; \omega^{2n}\quad  &amp; \dots\quad &amp; \omega^{n\times n}<br>\end{aligned}<br>\right]<br>$$<br>称为**离散傅里叶变换矩阵(DFT)**显然该矩阵是 <strong>对称的</strong> 且 <strong>可逆</strong>, 其逆矩阵为:<br>$$<br>\frac{1}{n}<br>\left[<br>\begin{aligned}[c]<br>1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>1\quad      &amp; \omega^{-1}\quad   &amp; \omega^{-2}\quad          &amp; \dots\quad &amp; \omega^{-n} \<br>1\quad      &amp; \omega^{-2}\quad &amp; \omega^{-4}\quad          &amp; \dots\quad &amp; \omega^{-2n} \<br>\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>1\quad      &amp; \omega^{-n}\quad &amp; \omega^{-2n}\quad  &amp; \dots\quad &amp; \omega^{-n\times n}<br>\end{aligned}<br>\right]<br>$$</p><p>并且, 该逆矩阵看起来和原矩阵 <strong>一模一样!</strong><br>.</p>
+            <p>对于 n 次多项式 $p(x)=\sum_{k=0}^n c_kx^k$, 我们给定$n+1$个点: $x_0, \dots, x_n$, 从而得到关于原多项式 $n+1$ 个系数的线性方程组:</p><p>\[\left[\begin{aligned}p_0 \\p_1 \\\vdots \\p_n\end{aligned}\right]=\left[\begin{aligned}1\quad & x_0\quad & \dots\quad & x_0^n \\1\quad & x_1\quad & \dots\quad & x_1^n \\\vdots\quad & \vdots\quad & \quad & \vdots \\1\quad & x_n\quad & \dots\quad & x_n^n\end{aligned}\right]\left[\begin{aligned}c_0 \\c_1 \\\vdots \\c_n\end{aligned}\right] \]</p><p>我们在复数域上考虑, 令<br>$$<br>x_k=\omega^k,\quad where\ \ \omega=e^{\frac{2k\pi}{n}}<br>$$<br>(这是因为, 我们希望多项式在复数域上考虑时, 我们可以在单位圆周上讨论. 其中$x_k$表示我们取的第 k 个点, 刚好与 $\omega^k$是对应的.)</p><p>则线性方程组可以化为:</p><p>\[\left[\begin{aligned}p_0 \\p_1 \\\vdots \\p_n\end{aligned}\right]=\left[\begin{aligned}[c]1\quad      & 1\quad        & 1\quad                 & \dots\quad & 1 \\1\quad      & \omega\quad   & \omega^2\quad          & \dots\quad & \omega^n \\1\quad      & \omega^2\quad & \omega^4\quad          & \dots\quad & \omega^{2n} \\\vdots\quad & \vdots\quad   & \vdots\quad       &            & \vdots \\1\quad      & \omega^n\quad & \omega^{2n}\quad  & \dots\quad & \omega^{n\times n}\end{aligned}\right]\left[\begin{aligned}c_0 \\c_1 \\\vdots \\c_n\end{aligned}\right] \]</p><p>其中</p><p>\[ \left[\begin{aligned}[c]1\quad      & 1\quad        & 1\quad                 & \dots\quad & 1 \\1\quad      & \omega\quad   & \omega^2\quad          & \dots\quad & \omega^n \\1\quad      & \omega^2\quad & \omega^4\quad          & \dots\quad & \omega^{2n} \\\vdots\quad & \vdots\quad   & \vdots\quad       &            & \vdots \\1\quad      & \omega^n\quad & \omega^{2n}\quad  & \dots\quad & \omega^{n\times n}\end{aligned}\right] \]</p>称为**离散傅里叶变换矩阵(DFT)**显然该矩阵是 **对称的** 且 **可逆**, 其逆矩阵为:<p>\[\frac{1}{n} \left[\begin{aligned}[c]1\quad      & 1\quad        & 1\quad                 & \dots\quad & 1 \\1\quad      & \omega^{-1}\quad   & \omega^{-2}\quad          & \dots\quad & \omega^{-n} \\1\quad      & \omega^{-2}\quad & \omega^{-4}\quad          & \dots\quad & \omega^{-2n} \\\vdots\quad & \vdots\quad   & \vdots\quad       &            & \vdots \\1\quad      & \omega^{-n}\quad & \omega^{-2n}\quad  & \dots\quad & \omega^{-n\times n}\end{aligned}\right]   \]</p><p>并且, 该逆矩阵看起来和原矩阵 <strong>一模一样!</strong><br>.</p>
           </div>
 <h2 id="结束了">结束了?</h2>
 <p>当我们乐呵呵地把FFT转化为代码时, 开心的分解多项式, 然后选点, 相乘, <strong>等等!</strong> 你还没告诉我, 怎么从点表示转化回系数表示呢!</p>
 <p>这就是FFT<strong>对称</strong>的魅力了. 由点求系数, 不过是矩阵求逆的过程:</p>
-<h1>$$<br>
-\left[<br>
-\begin{aligned}<br>
-c_0 \<br>
-c_1 \<br>
-\vdots \<br>
-c_n<br>
-\end{aligned}\right]</h1>
-<p>\left[<br>
-\begin{aligned}[c]<br>
-1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>
-1\quad      &amp; \omega\quad   &amp; \omega^2\quad          &amp; \dots\quad &amp; \omega^n \<br>
-1\quad      &amp; \omega^2\quad &amp; \omega^4\quad          &amp; \dots\quad &amp; \omega^{2n} \<br>
-\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>
-1\quad      &amp; \omega^n\quad &amp; \omega^{2n}\quad  &amp; \dots\quad &amp; \omega^{n\times n}<br>
-\end{aligned}<br>
-\right]^{-1}<br>
-\left[<br>
-\begin{aligned}<br>
-p_0 \<br>
-p_1 \<br>
-\vdots \<br>
-p_n<br>
-\end{aligned}\right] \<br>
-=\frac{1}{n}<br>
-\left[<br>
-\begin{aligned}[c]<br>
-1\quad      &amp; 1\quad        &amp; 1\quad                 &amp; \dots\quad &amp; 1 \<br>
-1\quad      &amp; \omega^{-1}\quad   &amp; \omega^{-2}\quad          &amp; \dots\quad &amp; \omega^{-n} \<br>
-1\quad      &amp; \omega^{-2}\quad &amp; \omega^{-4}\quad          &amp; \dots\quad &amp; \omega^{-2n} \<br>
-\vdots\quad &amp; \vdots\quad   &amp; \vdots\quad       &amp;            &amp; \vdots \<br>
-1\quad      &amp; \omega^{-n}\quad &amp; \omega^{-2n}\quad  &amp; \dots\quad &amp; \omega^{-n\times n}<br>
-\end{aligned}<br>
-\right]<br>
-\left[<br>
-\begin{aligned}<br>
-p_0 \<br>
-p_1 \<br>
-\vdots \<br>
-p_n<br>
-\end{aligned}\right]<br>
-$$</p>
+<p>\[
+\left[
+\begin{aligned}
+c_0 \\
+c_1 \\
+\vdots \\
+c_n
+\end{aligned}\right]
+=
+\left[
+\begin{aligned}[c]
+1\quad      & 1\quad        & 1\quad                 & \dots\quad & 1 \\
+1\quad      & \omega\quad   & \omega^2\quad          & \dots\quad & \omega^n \\
+1\quad      & \omega^2\quad & \omega^4\quad          & \dots\quad & \omega^{2n} \\
+\vdots\quad & \vdots\quad   & \vdots\quad       &            & \vdots \\
+1\quad      & \omega^n\quad & \omega^{2n}\quad  & \dots\quad & \omega^{n\times n}
+\end{aligned}
+\right]^{-1}
+\left[
+\begin{aligned}
+p_0 \\
+p_1 \\
+\vdots \\
+p_n
+\end{aligned}\right] \\
+=\frac{1}{n}
+ \left[
+\begin{aligned}[c]
+1\quad      & 1\quad        & 1\quad                 & \dots\quad & 1 \\
+1\quad      & \omega^{-1}\quad   & \omega^{-2}\quad          & \dots\quad & \omega^{-n} \\
+1\quad      & \omega^{-2}\quad & \omega^{-4}\quad          & \dots\quad & \omega^{-2n} \\
+\vdots\quad & \vdots\quad   & \vdots\quad       &            & \vdots \\
+1\quad      & \omega^{-n}\quad & \omega^{-2n}\quad  & \dots\quad & \omega^{-n\times n}
+\end{aligned}
+\right] 
+\left[
+\begin{aligned}
+p_0 \\
+p_1 \\
+\vdots \\
+p_n
+\end{aligned}\right] 
+\]</p>
 <p>显然, 由于DFT和DFT逆矩阵具有相似的形式, 我们完全可以用<strong>同一个函数</strong>完成快速傅里叶的正反变换!</p>
 <h1>后记-“对称, 万变不离其宗”</h1>
 <p>不会真有人会把这个没有图的文章看完吧?</p>
