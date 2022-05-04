@@ -16,12 +16,12 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="“很明显, 内容是抄来的.” “你是瞧不起李航还是瞧不起我?”">
+    <meta name="description" content="&quot;很明显, 内容是抄来的.&quot; &quot;你是瞧不起李航还是瞧不起我?&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM">
 <meta property="og:url" content="http://andrew-rey.github.io/2022/05/03/SVM/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="“很明显, 内容是抄来的.” “你是瞧不起李航还是瞧不起我?”">
+<meta property="og:description" content="&quot;很明显, 内容是抄来的.&quot; &quot;你是瞧不起李航还是瞧不起我?&quot;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://andrew-rey.github.io/2022/05/03/SVM/svm_data1.png">
 <meta property="article:published_time" content="2022-05-03T13:26:05.000Z">
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          534 words
+          568 words
         
       </span>
     
@@ -284,16 +284,30 @@
             
             <div class="markdown-body">
               
-              <p>“很明显, 内容是抄来的.”</p>
-<p>“你是瞧不起李航还是瞧不起我?”</p>
+              <p>"很明显, 内容是抄来的."</p>
+<p>"你是瞧不起李航还是瞧不起我?"</p>
 <span id="more"></span>
-<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>没什么引言, 姑且谈谈什么是 <strong>函数间隔</strong>, 什么是 <strong>几何间隔</strong> 吧.</p>
-<p>其实大部分来自于直觉和观察吧. 比如你看下面这幅图, <del>好看不? 我画的.</del><br><img src="svm_data1.png" srcset="/img/loading.gif" lazyload alt="svm_data_1"><br>假设蓝色点为正例, 显然直线代表的是分界面, 并且从直观上感受: 对于某个蓝色点而言, <strong>离分界面越远, 它是正例的可能性越高</strong>, 而 <strong>某个蓝色点离分界面越近, 它是正例可能性越小 (即被误判的可能性越高)</strong>. 因此, 能不能使用一种方法, 或者是表达方式来展示这种直觉呢? 答案是 <strong>距离</strong>.</p>
-<p>一般而言, 一个点距离分离超平面的远近可以表示分类预测的确信程度. 设分离超平面为 $w^Tx+b=0$, 则 $|w^Tx+b|$ 表示了某个样本点 $x$ 与超平面的距离. 而 $|w^Tx+b|$ 的符号与类标签 $y\in{-1,1}$ 是否一致能够表示分类是否正确. 所以, 用</p>
-<script type="math/tex; mode=display">
-y(w^Tx+b)</script><p>可以表示分类的正确性和确信度. 这便是所谓的函数间隔.</p>
+<h1 id="引言">引言</h1>
+<p>没什么引言, 姑且谈谈什么是 <strong>函数间隔</strong>, 什么是
+<strong>几何间隔</strong> 吧.</p>
+<p>其实大部分来自于直觉和观察吧. 比如你看下面这幅图, <del>好看不?
+我画的.</del> <img src="svm_data1.png" srcset="/img/loading.gif" lazyload alt="svm_data_1" />
+假设蓝色点为正例, 显然直线代表的是分界面, 并且从直观上感受:
+对于某个蓝色点而言, <strong>离分界面越远, 它是正例的可能性越高</strong>,
+而 <strong>某个蓝色点离分界面越近, 它是正例可能性越小
+(即被误判的可能性越高)</strong>. 因此, 能不能使用一种方法,
+或者是表达方式来展示这种直觉呢? 答案是 <strong>距离</strong>.</p>
+<p>一般而言, 一个点距离分离超平面的远近可以表示分类预测的确信程度.
+设分离超平面为 <span class="math inline">\(w^Tx+b=0\)</span>, 则 <span
+class="math inline">\(|w^Tx+b|\)</span> 表示了某个样本点 <span
+class="math inline">\(x\)</span> 与超平面的距离. 而 <span
+class="math inline">\(|w^Tx+b|\)</span> 的符号与类标签 <span
+class="math inline">\(y\in{-1,1}\)</span> 是否一致能够表示分类是否正确.
+所以, 用 <span class="math display">\[
+y(w^Tx+b)
+\]</span> 可以表示分类的正确性和确信度. 这便是所谓的函数间隔.</p>
 <div class="note note-info">
-            <h3 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h3><p>训练集 $T$, 超平面 $(w, b)$, $(w, b)$ 关于某样本点 $(x_i, y_i)$ 的函数间隔定义为</p><script type="math/tex; mode=display">\hat{\gamma}_i=y_i(w^Tx_i+b)</script><p>而超平面 $(w, b)$ 关于 $T$ 的函数间隔定义为</p><script type="math/tex; mode=display">\hat{\gamma}=min_{i=1,\cdots,n}\hat{\gamma}_i</script>
+            <h3 id="函数间隔">函数间隔</h3><p>训练集 <span class="math inline">\(T\)</span>, 超平面 <spanclass="math inline">\((w, b)\)</span>, <span class="math inline">\((w,b)\)</span> 关于某样本点 <span class="math inline">\((x_i, y_i)\)</span>的函数间隔定义为 <span class="math display">\[\hat{\gamma}_i=y_i(w^Tx_i+b)\]</span></p><p>而超平面 <span class="math inline">\((w, b)\)</span> 关于 <spanclass="math inline">\(T\)</span> 的函数间隔定义为 <spanclass="math display">\[\hat{\gamma}=min_{i=1,\cdots,n}\hat{\gamma}_i\]</span></p>
           </div>
 
               
@@ -725,6 +739,7 @@ y(w^Tx+b)</script><p>可以表示分类的正确性和确信度. 这便是所谓
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://lib.baomitu.com/mathjax/3.2.0/"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
