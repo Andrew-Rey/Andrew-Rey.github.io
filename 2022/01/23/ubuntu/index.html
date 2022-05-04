@@ -16,12 +16,12 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="&quot;终于要开始学习了.&quot; &quot;这不是有手就行?&quot;">
+    <meta name="description" content="“终于要开始学习了.” “这不是有手就行?”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu基本命令">
 <meta property="og:url" content="http://andrew-rey.github.io/2022/01/23/ubuntu/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="&quot;终于要开始学习了.&quot; &quot;这不是有手就行?&quot;">
+<meta property="og:description" content="“终于要开始学习了.” “这不是有手就行?”">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://andrew-rey.github.io/2022/01/23/ubuntu/ubuntu/prtsc1.png">
 <meta property="og:image" content="http://andrew-rey.github.io/2022/01/23/ubuntu/ubuntu/prtsc2.png">
@@ -285,691 +285,603 @@
             
             <div class="markdown-body">
               
-              <p>"终于要开始学习了."</p>
-<p>"这不是有手就行?"</p>
+              <p>“终于要开始学习了.”</p>
+<p>“这不是有手就行?”</p>
 <span id="more"></span>
-<h2 id="操作系统分类"># 操作系统分类</h2>
-<h3 id="桌面操作系统">桌面操作系统</h3>
-<ol type="1">
+<h1 id="操作系统分类"><a href="#操作系统分类" class="headerlink" title="操作系统分类"></a>操作系统分类</h1><hr>
+<h3 id="桌面操作系统"><a href="#桌面操作系统" class="headerlink" title="桌面操作系统"></a>桌面操作系统</h3><ol>
 <li>windows</li>
 <li>macOS</li>
 <li>Linux</li>
 </ol>
-<h3 id="服务器操作系统">服务器操作系统</h3>
-<ol type="1">
+<h3 id="服务器操作系统"><a href="#服务器操作系统" class="headerlink" title="服务器操作系统"></a>服务器操作系统</h3><ol>
 <li>Linux</li>
 <li>windows Server</li>
 </ol>
-<h3 id="嵌入式操作系统">嵌入式操作系统</h3>
-<ol type="1">
+<h3 id="嵌入式操作系统"><a href="#嵌入式操作系统" class="headerlink" title="嵌入式操作系统"></a>嵌入式操作系统</h3><ol>
 <li>Linux</li>
 </ol>
-<h3 id="移动设备操作系统">移动设备操作系统</h3>
-<ol type="1">
+<h3 id="移动设备操作系统"><a href="#移动设备操作系统" class="headerlink" title="移动设备操作系统"></a>移动设备操作系统</h3><ol>
 <li>iOS</li>
 <li>Android</li>
 </ol>
-<h2 id="linux"># Linux</h2>
-<h3 id="内核版本">内核版本</h3>
-<p>运行程序和管理硬件设备的核心程序. 提供在裸设备和应用程序间的抽象层.
-内核包括系统调用和终端命令. 终端命令调用系统调用,
-系统调用对硬件进行操作, 从而实现简介操作硬件. ### 发行版本
-在内核的基础上, 开发的一套应用系统. 包括桌面环境, 办公套件等软件.
-包括Ubuntu, Redhat, CentOS等. ### Linux 文件系统 #### 根目录: /
-根目录下分为/bin, /etc, /home, /lib, /usr等目录. #### 主目录: /home
-<strong>多用户操作系统</strong>, 每一个用户在/home下有一个/username目录,
-用户只能在自己的/username下操作. 没有盘符的概念. ####
-系统配置文件存放的目录: /etc #### 保存可执行的二进制文件的目录: /bin
-如常用的ls, cat, rm等命令.</p>
-<h2 id="ubuntu"># Ubuntu</h2>
-<h3 id="图形界面基本操作">图形界面基本操作</h3>
-<p>这个有啥好写的呢???</p>
-<h3 id="基本linux命令">基本Linux命令</h3>
-<p>命令格式: command <a
-href="选项,%20对命令进行控制,%20可以省略">-options</a> <a
-href="传参,%20可以是多个,%20也可以没有">parameter</a><br />
-用Ctrl+C结束执行命令</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><hr>
+<h3 id="内核版本"><a href="#内核版本" class="headerlink" title="内核版本"></a>内核版本</h3><p>运行程序和管理硬件设备的核心程序. 提供在裸设备和应用程序间的抽象层. 内核包括系统调用和终端命令. 终端命令调用系统调用, 系统调用对硬件进行操作, 从而实现简介操作硬件.</p>
+<h3 id="发行版本"><a href="#发行版本" class="headerlink" title="发行版本"></a>发行版本</h3><p>在内核的基础上, 开发的一套应用系统. 包括桌面环境, 办公套件等软件. 包括Ubuntu, Redhat, CentOS等. </p>
+<h3 id="Linux-文件系统"><a href="#Linux-文件系统" class="headerlink" title="Linux 文件系统"></a>Linux 文件系统</h3><h4 id="根目录"><a href="#根目录" class="headerlink" title="根目录: /"></a>根目录: /</h4><p>根目录下分为/bin, /etc, /home, /lib, /usr等目录.</p>
+<h4 id="主目录-home"><a href="#主目录-home" class="headerlink" title="主目录: /home"></a>主目录: /home</h4><p><strong>多用户操作系统</strong>, 每一个用户在/home下有一个/username目录, 用户只能在自己的/username下操作. 没有盘符的概念.</p>
+<h4 id="系统配置文件存放的目录-etc"><a href="#系统配置文件存放的目录-etc" class="headerlink" title="系统配置文件存放的目录: /etc"></a>系统配置文件存放的目录: /etc</h4><h4 id="保存可执行的二进制文件的目录-bin"><a href="#保存可执行的二进制文件的目录-bin" class="headerlink" title="保存可执行的二进制文件的目录: /bin"></a>保存可执行的二进制文件的目录: /bin</h4><p>如常用的ls, cat, rm等命令.</p>
+<h1 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h1><hr>
+<h3 id="图形界面基本操作"><a href="#图形界面基本操作" class="headerlink" title="图形界面基本操作"></a>图形界面基本操作</h3><p>这个有啥好写的呢???</p>
+<h3 id="基本Linux命令"><a href="#基本Linux命令" class="headerlink" title="基本Linux命令"></a>基本Linux命令</h3><p>命令格式: command [-options] [parameter]<br>用Ctrl+C结束执行命令  </p>
 <ul>
 <li>command: 命令名</li>
-<li></li>
-<li></li>
+<li>[-options]: 选项, 对命令进行控制, 可以省略</li>
+<li>[parameter]: 传参, 可以是多个, 也可以没有</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Commands</th>
 <th>Decription</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>ls</td>
 <td>查看当前文件夹下的内容</td>
 </tr>
-<tr class="even">
+<tr>
 <td>pwd</td>
 <td>查看当前所在文件夹</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>cd[dir_name]</td>
 <td>切换文件夹</td>
 </tr>
-<tr class="even">
+<tr>
 <td>touch[file_name]</td>
 <td>若文件不存在,则新建文件</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>mkdir[dir_name]</td>
 <td>创建目录</td>
 </tr>
-<tr class="even">
+<tr>
 <td>rm[file_name]</td>
 <td>删除文件</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>clear</td>
 <td>清屏</td>
 </tr>
-<tr class="even">
-<td>command --help</td>
+<tr>
+<td>command —help</td>
 <td>查看帮助</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>man command</td>
 <td>打开帮助手册</td>
 </tr>
-<tr class="even">
+<tr>
 <td>tree [目录名]</td>
 <td>以树状图的形式列出文件目录结构</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>cp 源文件 目标文件</td>
 <td>将源文件复制到目标文件</td>
 </tr>
-<tr class="even">
+<tr>
 <td>mv 源文件 目标文件</td>
 <td>移动文件或目录/文件或目录重命名</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>cat 文件名</td>
 <td>查看文件内容, 创建文件, 文件合并, 追加文件内容等</td>
 </tr>
-<tr class="even">
+<tr>
 <td>more 文件名</td>
 <td>分屏显示文件内容</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>grep</td>
 <td>搜索文本文件内容</td>
 </tr>
-<tr class="even">
+<tr>
 <td>gedit 文件名</td>
 <td>打开文件并编辑</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>echo</td>
 <td>将输入的文字再次显示在终端上, 常和重定向联合使用</td>
 </tr>
-<tr class="even">
+<tr>
 <td>&gt;</td>
 <td>重定向, 表示输出, 会覆盖原文件内容</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>&gt;&gt;</td>
 <td>重定向, 表示追加, 将内容追加到文件末尾</td>
 </tr>
-<tr class="even">
-<td>|</td>
+<tr>
+<td>\</td>
+<td></td>
 <td>管道, 一个命令的输出, 通过管道, 可以作为另一个命令的输入</td>
 </tr>
 </tbody>
 </table>
-<h4 id="ls">ls</h4>
-<p><strong>选项:</strong><br />
--a : 查看隐藏文件<br />
--l : 列表方式显示文件详细信息<br />
--h : 配合-l以人性化的方式显示文件大小<br />
-<strong>通配符的使用:</strong><br />
-* : 表示任意多的任意字符<br />
-? : 任意一个字符, 至少1个<br />
-[] : 可以匹配字符组中的任意一个 [abc] : 匹配abc中的任意一个字母 [a-f] :
-匹配a到f中的任意一个字母</p>
-<h4 id="cd">cd</h4>
-<dl>
-<dt><strong>选项:</strong></dt>
-<dd>
-: 切换至主目录/home (或直接cd)<br />
-. : 保持当前目录不变<br />
-.. : 切换到上级目录<br />
-- : 最近两次的工作目录里切换<br />
-<strong>绝对路径:</strong><br />
-从主目录或根目录的准确的目录.<br />
-<strong>相对路径:</strong><br />
-相对于当前目录而言的目录.
-</dd>
-</dl>
-<h4 id="touch">touch</h4>
-<p>若文件不存在, 则创建新文件;
-若文件存在,则可以修改文件的末次修改日期.</p>
-<h4 id="mkdir">mkdir</h4>
-<p><strong>选项:</strong><br />
--p : 递归创建目录</p>
-<h4 id="rm">rm</h4>
-<p>删除后不能恢复 (不能在回收站中找到)<br />
-<strong>选项:</strong><br />
--r : 递归删除目录中的所有内容, 用于删除文件夹<br />
--f : 强制删除, 忽略不存在的文件, 没有提示信息</p>
-<h4 id="tree">tree</h4>
-<p><strong>选项:</strong><br />
--d : 只显示目录</p>
-<h4 id="cp">cp</h4>
-<p><strong>选项:</strong><br />
--f : 已存在的目录直接覆盖, 不会提示<br />
--i : 覆盖文件前提示<br />
--r : 若给出的源文件是目录文件, 则cp</p>
-<h4 id="mv">mv</h4>
-<p>相当于剪切, 可以移动整个目录也可以移动单个文件, 可以用于改名.<br />
-<strong>选项:</strong><br />
--i : 覆盖前提示. 若直接mv且有同名文件时, 则会发生无提示覆盖,
-无法找回被覆盖的文件</p>
-<h4 id="cat">cat</h4>
-<p>一次性查看所有文件.<br />
-<strong>选项:</strong><br />
--b : 对非空输出行编号 (等价于nl命令)<br />
--n : 对输出的所有行编号</p>
-<h4 id="more">more</h4>
-<p><strong>操作:</strong><br />
-空格 : 下一页<br />
-回车 : 显示下一行<br />
-b : 上一页<br />
-f : 下一页<br />
-q : 退出<br />
-/word : 搜索word字符串</p>
-<h4 id="grep">grep</h4>
-<p>支持正则表达式查找.<br />
-<strong>选项:</strong><br />
--n : 显示匹配行和行号<br />
--v : 求反, 显示不包括匹配文本的所有行<br />
--i : 忽略大小写<br />
-<strong>正则表达式模式匹配:</strong><br />
-^a : 行首, 以a开头的行<br />
-ke$ : 行尾, 以ke结束的行</p>
-<h4 id="重定向-和">重定向 &gt; 和 &gt;&gt;</h4>
-<p>允许命令执行结果重定向到一个文件;
-将本应显示在终端上的内容输出或追加到指定文件中.</p>
-<h4 id="管道">管道 |</h4>
-<p>允许将一个命令的输出, 通过管道, 作为另一个命令的输入, 左端写入,
-右端读出.<br />
-<strong>常用的管道命令:</strong><br />
-more : 分屏显示内容<br />
-grep : 在命令执行结果的基础上查询指定文本</p>
-<h3 id="远程管理常用命令">远程管理常用命令</h3>
+</div>
+<h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p><strong>选项:</strong><br>-a : 查看隐藏文件<br>-l : 列表方式显示文件详细信息<br>-h : 配合-l以人性化的方式显示文件大小<br><strong>通配符的使用:</strong><br>* : 表示任意多的任意字符<br>? : 任意一个字符, 至少1个<br>[] : 可以匹配字符组中的任意一个<br>[abc] : 匹配abc中的任意一个字母<br>[a-f] : 匹配a到f中的任意一个字母</p>
+<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><p><strong>选项:</strong><br>~ : 切换至主目录/home (或直接cd)<br>. : 保持当前目录不变<br>.. : 切换到上级目录<br>- : 最近两次的工作目录里切换<br><strong>绝对路径:</strong><br>从主目录或根目录的准确的目录.<br><strong>相对路径:</strong><br>相对于当前目录而言的目录.  </p>
+<h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>若文件不存在, 则创建新文件; 若文件存在,则可以修改文件的末次修改日期.</p>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p><strong>选项:</strong><br>-p : 递归创建目录  </p>
+<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><p>删除后不能恢复 (不能在回收站中找到)<br><strong>选项:</strong><br>-r : 递归删除目录中的所有内容, 用于删除文件夹<br>-f : 强制删除, 忽略不存在的文件, 没有提示信息  </p>
+<h4 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h4><p><strong>选项:</strong><br>-d : 只显示目录</p>
+<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p><strong>选项:</strong><br>-f : 已存在的目录直接覆盖, 不会提示<br>-i : 覆盖文件前提示<br>-r : 若给出的源文件是目录文件, 则cp  </p>
+<h4 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h4><p>相当于剪切, 可以移动整个目录也可以移动单个文件, 可以用于改名.<br><strong>选项:</strong><br>-i : 覆盖前提示. 若直接mv且有同名文件时, 则会发生无提示覆盖, 无法找回被覆盖的文件</p>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>一次性查看所有文件.<br><strong>选项:</strong><br>-b : 对非空输出行编号 (等价于nl命令)<br>-n : 对输出的所有行编号  </p>
+<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><p><strong>操作:</strong><br>空格 : 下一页<br>回车 : 显示下一行<br>b : 上一页<br>f : 下一页<br>q : 退出<br>/word : 搜索word字符串</p>
+<h4 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h4><p>支持正则表达式查找.<br><strong>选项:</strong><br>-n : 显示匹配行和行号<br>-v : 求反, 显示不包括匹配文本的所有行<br>-i : 忽略大小写<br><strong>正则表达式模式匹配:</strong><br>\^a : 行首, 以a开头的行<br>ke$ : 行尾, 以ke结束的行  </p>
+<h4 id="重定向-gt-和-gt-gt"><a href="#重定向-gt-和-gt-gt" class="headerlink" title="重定向 &gt; 和 &gt;&gt;"></a>重定向 &gt; 和 &gt;&gt;</h4><p>允许命令执行结果重定向到一个文件; 将本应显示在终端上的内容输出或追加到指定文件中. </p>
+<h4 id="管道"><a href="#管道" class="headerlink" title="管道 |"></a>管道 |</h4><p>允许将一个命令的输出, 通过管道, 作为另一个命令的输入, 左端写入, 右端读出.<br><strong>常用的管道命令:</strong><br>more : 分屏显示内容<br>grep : 在命令执行结果的基础上查询指定文本</p>
+<h3 id="远程管理常用命令"><a href="#远程管理常用命令" class="headerlink" title="远程管理常用命令"></a>远程管理常用命令</h3><div class="table-container">
 <table>
-
 <thead>
-<tr class="header">
+<tr>
 <th>Command</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>shutdown <a href="选项,%20对命令进行控制,%20可以省略">-options</a>
-[time]</td>
-<td>关机 (默认1分钟后关机, -c 表示取消) / 重启 (加-r) ; time可以写 :
-now表示立即执行, 具体时间, +num表示在num后执行</td>
+<tr>
+<td>shutdown [-options] [time]</td>
+<td>关机 (默认1分钟后关机, -c 表示取消) / 重启 (加-r) ; time可以写 : now表示立即执行, 具体时间, +num表示在num后执行</td>
 </tr>
-<tr class="even">
+<tr>
 <td>ifconfig</td>
 <td>配置/查看计算机当前的网卡配置信息</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>ping ip地址 (或域名)</td>
 <td>检测到目标地址的连接是否正常</td>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>注:</li>
-<li>利用ifconfig | grep inet可以迅速查看IP地址<br />
-</li>
+<li>利用ifconfig | grep inet可以迅速查看IP地址  </li>
 <li>查看网卡地址时, 物理网卡的命名通常以ensXX表示</li>
-<li>127.0.0.1称为本地回环地址, 一般用于测试本机网卡是否正常, 即使用ping
-127.0.0.1查看反馈时间</li>
+<li>127.0.0.1称为本地回环地址, 一般用于测试本机网卡是否正常, 即使用ping 127.0.0.1查看反馈时间</li>
 </ul>
-<h3 id="远程登陆和复制文件">远程登陆和复制文件</h3>
-<h4 id="ssh基础">SSH基础</h4>
-<p>通过SSH客户端可以连接到运行了SSH服务器的远程机器上,
-其中数据传输是加密且压缩的. * SSH客户端是一种使用Secure Shell (SSH)
-协议连接到远程计算机的<strong>软件</strong>程序,
-SSH是专为远程登陆会话和其他网络服务提供安全性的协议. *
-macOS和Linux操作系统的计算机预装了SSH客户端,
-而Windows需要安装PuTTY或者XShell客户端软件.</p>
-<h4 id="域名和端口号">域名和端口号</h4>
-<p><strong>域名 :</strong> * 用点分隔的字符串, 如www.baidu.com. *
-是IP地址的别名, 方便记忆 <strong>端口号 :</strong> *
-通过端口号可以找到计算机上运行的应用程序 * SSH服务器的端口号默认是22,
-如果是默认端口号, 在连接时可以省略 * 常见的端口号:</p>
+<h3 id="远程登陆和复制文件"><a href="#远程登陆和复制文件" class="headerlink" title="远程登陆和复制文件"></a>远程登陆和复制文件</h3><h4 id="SSH基础"><a href="#SSH基础" class="headerlink" title="SSH基础"></a>SSH基础</h4><p>通过SSH客户端可以连接到运行了SSH服务器的远程机器上, 其中数据传输是加密且压缩的. </p>
+<ul>
+<li>SSH客户端是一种使用Secure Shell (SSH) 协议连接到远程计算机的<strong>软件</strong>程序, SSH是专为远程登陆会话和其他网络服务提供安全性的协议. </li>
+<li>macOS和Linux操作系统的计算机预装了SSH客户端, 而Windows需要安装PuTTY或者XShell客户端软件. </li>
+</ul>
+<h4 id="域名和端口号"><a href="#域名和端口号" class="headerlink" title="域名和端口号"></a>域名和端口号</h4><p><strong>域名 :</strong></p>
+<ul>
+<li>用点分隔的字符串, 如www.baidu.com.</li>
+<li>是IP地址的别名, 方便记忆<br><strong>端口号 :</strong></li>
+<li>通过端口号可以找到计算机上运行的应用程序<ul>
+<li>SSH服务器的端口号默认是22, 如果是默认端口号, 在连接时可以省略</li>
+</ul>
+</li>
+<li>常见的端口号:</li>
+</ul>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>服务</th>
 <th>端口号</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>SSH服务器</td>
 <td>22</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Web服务器</td>
 <td>80</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>HTTPS</td>
 <td>443</td>
 </tr>
-<tr class="even">
+<tr>
 <td>FTP服务器</td>
 <td>21</td>
 </tr>
 </tbody>
 </table>
-<h4 id="ssh">ssh</h4>
-<p>ssh [-p port] user@remote * user: 远程机器的用户名,
-不指定默认为当前用户 * remote: 远程机器的地址, 可以是IP/域名, 或者是别名
-* port: SSH Server监听的端口, 如果不指定, 默认为22,
-若SSH服务器端口号不是22, 则需要用-p选项选择正确的端口号. *
-windows系统一般不会默认开启ssh服务器端,
-因此要使用管理员身份来开启windows的服务端.如下图:<br />
-<img src="ubuntu\prtsc1.png" srcset="/img/loading.gif" lazyload /> * 在ubuntu用ssh连接完服务器后,
-/目录中出现.ssh目录, 内部的known_hosts文件存储的内容为服务器的IP,
-方便下次登陆不用确认 (但依然要输入密码).
-同时在windows系统下.ssh文件夹下也会生成相应的known_hosts文件夹. *
-<strong>设置ssh公钥:</strong> * <code>ssh-keygen</code> (一直回车即可) *
-<code>ssh-copy-id username@IP</code> (输入win用户密码确认, 注意不是pin)
-* 公钥设置完成后在win用户目录下的.ssh文件夹中生成authorized_keys文件.
-<strong><span class="math inline">\(\color{red}{[出现乱码,
-未解决]}\)</span></strong> * <strong>配置远程别名:</strong> *
-用于替换username@remote * 在~/.ssh/config下追加: <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">Host win<br>  Hostname IP attrass<br>  <span class="hljs-keyword">User</span> <span class="hljs-title">username</span><br>  Port <span class="hljs-number">22</span><br></code></pre></td></tr></table></figure></p>
-<h4 id="scp">scp</h4>
-<p>Secure copy, 在Linux下用来远程拷贝文件的命令.<br />
-* 把本地当前目录的原文件复制到远程的/home目录:<br />
-<code>scp -P port 原文件 username@remote:目标文件(相对于/home的相对路径或绝对路径)</code>
-* 把远程的/home目录的原文件复制到本地当前目录:
-<code>scp -P port username@remote:原文件 (相对于/home的相对路径或绝对路径) 目标文件</code>
-* -r 表示可以传送文件夹 * <strong>注:</strong> *
-windows系统要下载putty软件, 将pscp.exe放入cmd文件目录下,
-才能实现与linux系统间的文件传输 *
-scp适用于linux和linux间或者linux和macOS间文件传输,
-而pscp适用于win与linux文件传输.</p>
-<h3 id="用户权限相关命令">用户权限相关命令</h3>
-<p><strong>用户 :</strong>
-Linux中可以指定每一个用户针对不同的文件或者目录有不同的权限.</p>
+</div>
+<h4 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h4><p>ssh [-p port] user@remote</p>
+<ul>
+<li>user: 远程机器的用户名, 不指定默认为当前用户</li>
+<li>remote: 远程机器的地址, 可以是IP/域名, 或者是别名</li>
+<li>port: SSH Server监听的端口, 如果不指定, 默认为22, 若SSH服务器端口号不是22, 则需要用-p选项选择正确的端口号.</li>
+<li>windows系统一般不会默认开启ssh服务器端, 因此要使用管理员身份来开启windows的服务端.如下图:<br><img src="ubuntu\prtsc1.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>在ubuntu用ssh连接完服务器后, /目录中出现.ssh目录, 内部的known_hosts文件存储的内容为服务器的IP, 方便下次登陆不用确认 (但依然要输入密码). 同时在windows系统下.ssh文件夹下也会生成相应的known_hosts文件夹.</li>
+<li><strong>设置ssh公钥:</strong><ul>
+<li><code>ssh-keygen</code> (一直回车即可)</li>
+<li><code>ssh-copy-id username@IP</code> (输入win用户密码确认, 注意不是pin)</li>
+</ul>
+</li>
+<li>公钥设置完成后在win用户目录下的.ssh文件夹中生成authorized_keys文件. <strong>$\color{red}{[出现乱码, 未解决]}$</strong></li>
+<li><strong>配置远程别名:</strong><ul>
+<li>用于替换username@remote</li>
+<li>在~/.ssh/config下追加:<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">Host win<br>  Hostname IP attrass<br>  <span class="hljs-keyword">User</span> <span class="hljs-title">username</span><br>  Port <span class="hljs-number">22</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h4><p>Secure copy, 在Linux下用来远程拷贝文件的命令.  </p>
+<ul>
+<li>把本地当前目录的原文件复制到远程的/home目录:<br><code>scp -P port 原文件 username@remote:目标文件(相对于/home的相对路径或绝对路径)</code></li>
+<li>把远程的/home目录的原文件复制到本地当前目录:<br><code>scp -P port username@remote:原文件 (相对于/home的相对路径或绝对路径) 目标文件</code></li>
+<li>-r 表示可以传送文件夹</li>
+<li><strong>注:</strong></li>
+<li>windows系统要下载putty软件, 将pscp.exe放入cmd文件目录下, 才能实现与linux系统间的文件传输</li>
+<li>scp适用于linux和linux间或者linux和macOS间文件传输, 而pscp适用于win与linux文件传输.</li>
+</ul>
+<h3 id="用户权限相关命令"><a href="#用户权限相关命令" class="headerlink" title="用户权限相关命令"></a>用户权限相关命令</h3><p><strong>用户 :</strong> Linux中可以指定每一个用户针对不同的文件或者目录有不同的权限.</p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Authority</th>
 <th>Abbreviation</th>
 <th>Num</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>read</td>
 <td>r</td>
 <td>4</td>
 </tr>
-<tr class="even">
+<tr>
 <td>write</td>
 <td>w</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>excute</td>
 <td>x</td>
 <td>1</td>
 </tr>
 </tbody>
 </table>
-<p><strong>组 :</strong> 方便用户管理, 将不同的用户添加到对应的组中,
-从而不用依次为每一个用户设置权限, 只需给组设置权限即可.</p>
-<p>如下图: <img src="ubuntu\prtsc2.png" srcset="/img/loading.gif" lazyload /><br />
-一共4行10列, 第一列单成为第0分区, 后面9列每3列进行划分.<br />
-第零分区表示该文件为目录还是文件;<br />
-第一分区表示文件拥有者权限 (此处为第一列的rey);<br />
-第二分区表示组的权限 (此处为第二列的rey);<br />
-第三分区表示其它用户的权限.<br />
-中间的一串数字代表硬链接数.</p>
-<p><strong>硬链接数 :</strong> 可以访问到当前文件/目录的方式数.
-(<em>"茴"字有多少种写法?)<br />
-</em> 用相对路径和绝对路径能到达的方式 * 一般而言, 文件是1,
-目录硬链接数取决于有多少子目录</p>
-<h4 id="chmod">chmod</h4>
-<p>可以修改用户/组对文件/目录的权限. 修改的是文件的读写性,
-并不能精确到拥有者/组/其他用户的具体权限.</p>
+</div>
+<p><strong>组 :</strong> 方便用户管理, 将不同的用户添加到对应的组中, 从而不用依次为每一个用户设置权限, 只需给组设置权限即可.  </p>
+<p>如下图:<br><img src="ubuntu\prtsc2.png" srcset="/img/loading.gif" lazyload alt=""><br>一共4行10列, 第一列单成为第0分区, 后面9列每3列进行划分.<br>第零分区表示该文件为目录还是文件;<br>第一分区表示文件拥有者权限 (此处为第一列的rey);<br>第二分区表示组的权限 (此处为第二列的rey);<br>第三分区表示其它用户的权限.<br>中间的一串数字代表硬链接数.  </p>
+<p><strong>硬链接数 :</strong> 可以访问到当前文件/目录的方式数. (<em>“茴”字有多少种写法?\doge</em>)  </p>
+<ul>
+<li>用相对路径和绝对路径能到达的方式</li>
+<li>一般而言, 文件是1, 目录硬链接数取决于有多少子目录</li>
+</ul>
+<h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>可以修改用户/组对文件/目录的权限. 修改的是文件的读写性, 并不能精确到拥有者/组/其他用户的具体权限. </p>
 <p><code>chmod +/-rwx file_name/dir_name</code></p>
 <ul>
-<li>例如对于<code>demo.py</code>文件,
-在文件头添加<code>#!/usr/bin/python3.8</code>并且在终端执行<code>chmod +x demo.py</code>后,
-执行<code>./demo.py</code>, 可以发现<code>demo.py</code>被执行.</li>
-<li>对于文件夹的可执行权限,
-表示在终端对文件夹进行的如<code>cd, ls</code>等命令权限.</li>
+<li>例如对于<code>demo.py</code>文件, 在文件头添加<code>#!/usr/bin/python3.8</code>并且在终端执行<code>chmod +x demo.py</code>后, 执行<code>./demo.py</code>, 可以发现<code>demo.py</code>被执行. </li>
+<li>对于文件夹的可执行权限, 表示在终端对文件夹进行的如<code>cd, ls</code>等命令权限. </li>
 </ul>
-<h4 id="超级用户">超级用户</h4>
-<p>Linux中的<code>root</code>账户, 用于系统的维护和管理,
-对操作系统的所有资源具有访问权限.
-<strong>标准账户</strong>是指linux在安装时自动为用户创建的账户,
-如我的<code>rey</code>.</p>
-<p>若标准用户想执行系统维护级的权限时, 添加<code>sudo</code> (substitute
-user), 表示用另一个用户的身份. 为经授权的用户使用sudo时,
-系统会发出警告邮件给管理员.</p>
-<h4 id="组管理">组管理</h4>
+<h4 id="超级用户"><a href="#超级用户" class="headerlink" title="超级用户"></a>超级用户</h4><p>Linux中的<code>root</code>账户, 用于系统的维护和管理, 对操作系统的所有资源具有访问权限. <strong>标准账户</strong>是指linux在安装时自动为用户创建的账户, 如我的<code>rey</code>. </p>
+<p>若标准用户想执行系统维护级的权限时, 添加<code>sudo</code> (substitute user), 表示用另一个用户的身份. 为经授权的用户使用sudo时, 系统会发出警告邮件给管理员. </p>
+<h4 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h4><div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Command</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>groupadd group_name</td>
 <td>add new group</td>
 </tr>
-<tr class="even">
+<tr>
 <td>groupdel group_name</td>
 <td>delete group</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>cat /etc/group</td>
 <td>comfirm group info</td>
 </tr>
-<tr class="even">
+<tr>
 <td>chgrp -R grp_name file/dir_name</td>
-<td>modify file/dir_name's group</td>
+<td>modify file/dir_name’s group</td>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>注: 创建/删除组时需要sudo</li>
 <li>/etc/group目录保存的是组的信息</li>
 <li>-R 表示是递归方式</li>
 </ul>
-<h4 id="用户管理">用户管理</h4>
+<h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><div class="table-container">
 <table>
-
 <thead>
-<tr class="header">
+<tr>
 <th>Command</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>useradd -m -g grp_name new_username</td>
 <td>add new user; -m: generate /home; -g: mark grp</td>
 </tr>
-<tr class="even">
+<tr>
 <td>passwd username</td>
 <td>set password</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>userdel -r username</td>
 <td>delete user, -r: delete /home</td>
 </tr>
-<tr class="even">
+<tr>
 <td>cat /etc/passwd</td>
 <td>grep username</td>
+<td>comfirm user info</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>id</td>
 <td>查看用户的UID和GID</td>
 </tr>
-<tr class="even">
+<tr>
 <td>who</td>
 <td>查看当前所有登陆的用户列表</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>whoami</td>
 <td>查看当前登录的用户名</td>
 </tr>
-<tr class="even">
+<tr>
 <td>usermod</td>
 <td>设置用户的主组和附加组</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>which</td>
 <td>查看命令所在位置, 除了Linux内核的cd命令不能查到</td>
 </tr>
-<tr class="even">
+<tr>
 <td>su -username</td>
 <td>切换用户和工作目录 (若添加-)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>exit</td>
 <td>退出当前账户 (并且回到上次的登陆账户)</td>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
-<li>注: 设置密码时, 普通用户设置自己的密码不用加sudo,
-直接passwd修改密码.</li>
+<li>注: 设置密码时, 普通用户设置自己的密码不用加sudo, 直接passwd修改密码.</li>
 <li>添加用户时, 若不指定组名, 则会生成一个与用户名同名的组名.</li>
-<li><strong>/etc/passwd文本文件 :</strong> 6个冒号组成的7段字符串.
-<ul>
-<li>用户名 : 密码 (x表示加密) : UID用户标识 : GID组标识 :
-用户全名或本地账号, 若为空表示与用户名相同 : 主目录 : 登陆使用的shell,
-ubuntu默认为dash.</li>
-</ul></li>
-<li><strong>主组 :</strong> 新建用户时指定, GID对应的组, 修改主组:
-<ul>
-<li><code>usermod -g group_name username</code></li>
-</ul></li>
-<li><strong>附加组 :</strong> /etc/group最后一列表示用户名,
-指定用户的附加权限, 修改附加组:
-<ul>
-<li><code>usermod -G grp_name username</code></li>
-<li>注意,
-默认以<code>useradd</code>添加的用户没有权限使用<code>sudo</code>以root身份执行命令.</li>
-</ul></li>
-<li><strong>Shell :</strong> 输入终端命令的窗口.修改shell:
-<ul>
-<li><code>usermod -s /bin/bash username</code></li>
-</ul></li>
+<li><strong>/etc/passwd文本文件 :</strong> 6个冒号组成的7段字符串.  <ul>
+<li>用户名 : 密码 (x表示加密) : UID用户标识 : GID组标识 : 用户全名或本地账号, 若为空表示与用户名相同 : 主目录 : 登陆使用的shell, ubuntu默认为dash.</li>
 </ul>
-<h4 id="文件管理">文件管理</h4>
+</li>
+<li><strong>主组 :</strong> 新建用户时指定, GID对应的组, 修改主组:<ul>
+<li><code>usermod -g group_name username</code></li>
+</ul>
+</li>
+<li><strong>附加组 :</strong> /etc/group最后一列表示用户名, 指定用户的附加权限, 修改附加组: <ul>
+<li><code>usermod -G grp_name username</code></li>
+<li>注意, 默认以<code>useradd</code>添加的用户没有权限使用<code>sudo</code>以root身份执行命令.</li>
+</ul>
+</li>
+<li><strong>Shell :</strong> 输入终端命令的窗口.修改shell:<ul>
+<li><code>usermod -s /bin/bash username</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Command</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>chown</td>
 <td>change owner</td>
 </tr>
-<tr class="even">
+<tr>
 <td>chmod</td>
 <td>change mode</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>chgrp</td>
 <td>change group</td>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
-<li>chown:
-<ul>
+<li>chown:<ul>
 <li><code>chown username file_name/dir_name</code></li>
-</ul></li>
-<li>chgrp:
-<ul>
+</ul>
+</li>
+<li>chgrp:<ul>
 <li><code>chgrp -R grp_name file/dir_name</code></li>
-</ul></li>
-<li>chmod:
-<ul>
+</ul>
+</li>
+<li>chmod:<ul>
 <li><code>chmod -R 755 file/dir_name</code></li>
 <li>chmod中用三个数字分别表示拥有者/组/其他用户的权限. (常用)</li>
-<li>由前面可知: 权限的二进制代号: r(100), w(010), r(001),
-由此组合分别得到三个用户的的权限.</li>
-</ul></li>
+<li>由前面可知: 权限的二进制代号: r(100), w(010), r(001), 由此组合分别得到三个用户的的权限.</li>
 </ul>
-<h3 id="系统操作命令">系统操作命令</h3>
-<h4 id="时间">时间</h4>
+</li>
+</ul>
+<h3 id="系统操作命令"><a href="#系统操作命令" class="headerlink" title="系统操作命令"></a>系统操作命令</h3><h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>date</th>
 <th>查看系统时间</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>cal</td>
 <td>查看日历, -y查看一年的日历</td>
 </tr>
 </tbody>
 </table>
-<h4 id="磁盘信息">磁盘信息</h4>
+</div>
+<h4 id="磁盘信息"><a href="#磁盘信息" class="headerlink" title="磁盘信息"></a>磁盘信息</h4><div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>df -h</th>
 <th>disk free显示磁盘剩余空间</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>du -h [dir_name]</td>
 <td>disk usage显示目录下的文件大小</td>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>-h表示人性化显示</li>
 </ul>
-<h4 id="进程">进程</h4>
-<p>指当前正在执行的一个程序. | ps aux | process status, 选项前没有 - |
-|--------|-----------------------------| | top |
-动态显示运行中的进程并排序 | | kill [-9] 进程代号PID | 终止指定进程,
--9表示强行终止 |</p>
+<h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p>指当前正在执行的一个程序.<br>| ps aux | process status, 选项前没有 - |<br>|————|——————————————-|<br>| top | 动态显示运行中的进程并排序 |<br>| kill [-9] 进程代号PID | 终止指定进程, -9表示强行终止 |</p>
 <ul>
 <li>ps默认只显示当前用户通过终端启动的应用程序</li>
-<li>ps选项:
-<ul>
+<li>ps选项:<ul>
 <li>a: 显示终端上的所有进程, 包括其他用户</li>
 <li>u: 显示进程的详细状态</li>
 <li>x: 显示不是通过终端启动的其他进程</li>
-</ul></li>
 </ul>
-<h3 id="其他命令">其他命令</h3>
+</li>
+</ul>
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>Command</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>find [path] -name "*.py"</td>
+<tr>
+<td>find [path] -name “*.py”</td>
 <td>在指定路径下查找.py文件, 包括子目录</td>
 </tr>
-<tr class="even">
+<tr>
 <td>ln -s 被链接的原文件 链接文件</td>
 <td>建立软链接</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>tar</td>
 <td>打包解包</td>
 </tr>
-<tr class="even">
+<tr>
 <td>gzip</td>
 <td>压缩, 解压缩</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>bzip2</td>
 <td>压缩, 解压缩</td>
 </tr>
-<tr class="even">
+<tr>
 <td>apt-get</td>
 <td>软件安装</td>
 </tr>
 </tbody>
 </table>
-<h4 id="find">find</h4>
-<p>省略路径时, 默认查找当前目录. 可以使用正则表达式查找,
-注意用双引号.</p>
-<h4 id="软链接">软链接</h4>
-<p>相当于windows中的快捷方式. * 若无-s, 建立的是硬链接文件 (链接名). *
-两个文件占用相同大小的硬盘空间, 工作中几乎不会建立文件的硬链接. *
-原文件要使用<strong>绝对路径</strong>, 方便移动链接文件后,
-仍能正常使用.</p>
-<h4 id="硬链接">硬链接</h4>
-<p>相当于文件名的别名, 浅拷贝. * Linux中, 文件名和文件数据是分开存储的.
-* 当且仅当硬链接数 == 0 时, 文件才会被删除 * ls -l查看硬链接数</p>
-<h4 id="打包压缩">打包压缩</h4>
-<p>winodws: rar<br />
-mac: zip<br />
-Linux: tar.gz</p>
+</div>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><p>省略路径时, 默认查找当前目录. 可以使用正则表达式查找, 注意用双引号.</p>
+<h4 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h4><p>相当于windows中的快捷方式.</p>
 <ul>
-<li><p><code>tar</code>只负责打包解包, 不负责压缩解压.</p></li>
+<li>若无-s, 建立的是硬链接文件 (链接名).<ul>
+<li>两个文件占用相同大小的硬盘空间, 工作中几乎不会建立文件的硬链接.</li>
+</ul>
+</li>
+<li>原文件要使用<strong>绝对路径</strong>, 方便移动链接文件后, 仍能正常使用.</li>
+</ul>
+<h4 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h4><p>相当于文件名的别名, 浅拷贝.</p>
+<ul>
+<li>Linux中, 文件名和文件数据是分开存储的.</li>
+<li>当且仅当硬链接数 == 0 时, 文件才会被删除</li>
+<li>ls -l查看硬链接数</li>
+</ul>
+<h4 id="打包压缩"><a href="#打包压缩" class="headerlink" title="打包压缩"></a>打包压缩</h4><p>winodws: rar<br>mac: zip<br>Linux: tar.gz  </p>
+<ul>
+<li><p><code>tar</code>只负责打包解包, 不负责压缩解压.</p>
+</li>
 <li><p>打包:</p>
 <ul>
 <li><code>tar -cvf 打包文件名.tar 被打包的文件/路径</code></li>
-</ul></li>
-<li><p>解包:</p>
-<ul>
+</ul>
+</li>
+<li>解包:<ul>
 <li><code>tar -xvf 打包文件.tar</code></li>
-</ul></li>
-<li><p>多个文件用空格分开</p></li>
+</ul>
+</li>
+<li>多个文件用空格分开</li>
 <li><p>选项说明:</p>
 <ul>
 <li>c : 生成档案文件, 创建打包文件</li>
 <li>x : 解开档案文件</li>
 <li>v : 列出归档解档的详细过程, 显示进度</li>
 <li>f : 指定档案文件名称, f后面一定是档案名称, 因此必须在最后</li>
-</ul></li>
-<li><p><code>gzip</code>压缩和解压缩文件命令,
-先用<code>tar</code>进行打包, 然后再用<code>gzip</code>压缩;
-或者在<code>tar</code>增加 -z 选项, 可以自动调用 gzip 命令.</p></li>
-<li><p>打包且压缩文件的扩展名为: .tar.gz</p></li>
-<li><p>压缩:</p>
-<ul>
+</ul>
+</li>
+<li><p><code>gzip</code>压缩和解压缩文件命令, 先用<code>tar</code>进行打包, 然后再用<code>gzip</code>压缩; 或者在<code>tar</code>增加 -z 选项, 可以自动调用 gzip 命令.</p>
+</li>
+<li>打包且压缩文件的扩展名为: .tar.gz</li>
+<li>压缩:<ul>
 <li><code>tar -zcvf 打包文件名.tar.gz 被打包的文件/路径</code></li>
-</ul></li>
+</ul>
+</li>
 <li><p>解压 [到指定路径]:</p>
 <ul>
 <li><code>tar -zxvf 打包文件.tar.gz [-C] [目标路径]</code></li>
-</ul></li>
-<li><p><code>bzip2</code>的用法与<code>gzip</code>相同,
-但扩展名为.tar.bz2, 在<code>tar</code>增加选项 -j .</p></li>
 </ul>
-<h4 id="软件安装">软件安装</h4>
-<ul>
-<li><code>apt</code>: Advanced Packaging Tool,
-是Linux下一款安装包管理工具, 可以在终端下安装, 卸载, 更新软件包.</li>
+</li>
+<li><p><code>bzip2</code>的用法与<code>gzip</code>相同, 但扩展名为.tar.bz2, 在<code>tar</code>增加选项 -j .</p>
+</li>
+</ul>
+<h4 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h4><ul>
+<li><code>apt</code>: Advanced Packaging Tool, 是Linux下一款安装包管理工具, 可以在终端下安装, 卸载, 更新软件包.</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs editor">安装:<br>sudo apt install 软件包<br><br>卸载:<br>sudo apt remove 软件名<br><br>更新:<br>sudo apt upgrade 软件名<br></code></pre></td></tr></table></figure>
-<p><strong>配置软件源 :</strong><br />
-去百度. 推荐清华镜像源和阿里镜像源
-(当然如果ubuntu主服务器比较快就没必要)</p>
-<h1 id="关于c语言">关于C语言</h1>
-<h2 id="使用gcc编译程序">使用GCC编译程序</h2>
-<p>从C语言编写的源代码， 到可执行程序， 分为4步： - 预编译：
-<code>gcc -E main.c -o main.i</code> - 预编译：将注释删除， 并展开头文件
-- 编译： <code>gcc -S main.i -o main.s</code> - 生成汇编代码，
-但不能执行 - 汇编： <code>gcc -c main.s -o main.o</code> - 二进制文件 -
-链接： <code>gcc main.o -o main</code> 可执行程序 - <code>./main</code>
-- 一步完成： <code>gcc -o main main.c</code> - 多个文件编译链接：
-<code>gcc -o main 1.c 2.c 3.c</code></p>
-<h2 id="makefile管理工程">Makefile管理工程</h2>
-<p><code>make</code> 命令。</p>
+<p><strong>配置软件源 :</strong><br>去百度. 推荐清华镜像源和阿里镜像源 (当然如果ubuntu主服务器比较快就没必要)</p>
+<h1 id="关于C语言"><a href="#关于C语言" class="headerlink" title="关于C语言"></a>关于C语言</h1><h2 id="使用GCC编译程序"><a href="#使用GCC编译程序" class="headerlink" title="使用GCC编译程序"></a>使用GCC编译程序</h2><p>从C语言编写的源代码， 到可执行程序， 分为4步：</p>
+<ul>
+<li>预编译： <code>gcc -E main.c -o main.i</code><ul>
+<li>预编译：将注释删除， 并展开头文件</li>
+</ul>
+</li>
+<li>编译： <code>gcc -S main.i -o main.s</code><ul>
+<li>生成汇编代码， 但不能执行</li>
+</ul>
+</li>
+<li>汇编： <code>gcc -c main.s -o main.o</code><ul>
+<li>二进制文件</li>
+</ul>
+</li>
+<li>链接： <code>gcc main.o -o main</code> 可执行程序<ul>
+<li><code>./main</code></li>
+</ul>
+</li>
+<li>一步完成： <code>gcc -o main main.c</code></li>
+<li>多个文件编译链接： <code>gcc -o main 1.c 2.c 3.c</code></li>
+</ul>
+<h2 id="Makefile管理工程"><a href="#Makefile管理工程" class="headerlink" title="Makefile管理工程"></a>Makefile管理工程</h2><p><code>make</code> 命令。</p>
 
               
             </div>
@@ -1062,8 +974,8 @@ Linux: tar.gz</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/01/13/hexo-github%E6%90%AD%E5%8D%9A%E5%AE%A2%E6%AD%A5%E9%AA%A4/" title="hexo-github搭博客步骤">
-                        <span class="hidden-mobile">hexo-github搭博客步骤</span>
+                      <a href="/2022/01/11/BabyBlog/" title="BabyBlog">
+                        <span class="hidden-mobile">BabyBlog</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
