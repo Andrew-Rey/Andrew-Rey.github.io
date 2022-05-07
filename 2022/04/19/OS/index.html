@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://andrew-rey.github.io/2022/04/19/OS/nonpree.png">
 <meta property="og:image" content="http://andrew-rey.github.io/2022/04/19/OS/pree.png">
 <meta property="article:published_time" content="2022-04-19T02:43:18.778Z">
-<meta property="article:modified_time" content="2022-05-05T03:27:11.616Z">
+<meta property="article:modified_time" content="2022-05-05T03:51:38.286Z">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://andrew-rey.github.io/2022/04/19/OS/system_call1.png">
   
@@ -229,7 +229,7 @@
         
         
         
-          264 mins
+          265 mins
         
       </span>
     
@@ -1171,6 +1171,11 @@ thread to run next</p>
 <h2 id="algorithm-evaluation">Algorithm Evaluation</h2>
 <p>no notes here.</p>
 <h1 id="process-synchronization">Process Synchronization</h1>
+<p>进程合作时, 几个进程之间会相互影响.
+合作的进程要么会直接共享逻辑地址空间 (即代码和数据),
+要么通过共享内存或信息传递的方式进行通信.
+但是并发的进程对数据操作可能会导致数据的不一致,
+因此需要进程间进行同步.</p>
 <p>进程同步--抽象为临界区问题--提出三种解决方案 (软件方案, 硬件方案,
 信号量方案)--经典同步问题--管程 (相对高级的同步结构)--补充例子 ##
 Background Concurrent access to shared data may result in data
@@ -1685,21 +1690,5 @@ Synchronization</h2>
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
