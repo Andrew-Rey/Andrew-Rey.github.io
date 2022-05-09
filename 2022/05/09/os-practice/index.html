@@ -16,20 +16,20 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="&quot;内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?&quot; &quot;我已经晕了.&quot;">
+    <meta name="description" content="&quot;操作系统习题, 包括进程同步, CPU调度等内容.&quot; &quot;还在更新...也有可能不在更新...&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="空间杂谈">
-<meta property="og:url" content="http://andrew-rey.github.io/2022/03/20/%E7%A9%BA%E9%97%B4%E6%9D%82%E8%B0%88/index.html">
+<meta property="og:title" content="操作系统练习">
+<meta property="og:url" content="http://andrew-rey.github.io/2022/05/09/os-practice/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="&quot;内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?&quot; &quot;我已经晕了.&quot;">
+<meta property="og:description" content="&quot;操作系统习题, 包括进程同步, CPU调度等内容.&quot; &quot;还在更新...也有可能不在更新...&quot;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-19T17:20:10.000Z">
-<meta property="article:modified_time" content="2022-05-03T05:46:15.329Z">
-<meta property="article:tag" content="Math">
+<meta property="article:published_time" content="2022-05-09T08:35:18.000Z">
+<meta property="article:modified_time" content="2022-05-09T09:08:59.327Z">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>空间杂谈 - Andrew-Rey</title>
+  <title>操作系统练习 - Andrew-Rey</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -186,7 +186,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="空间杂谈"></span>
+            <span id="subtitle" data-typed-text="操作系统练习"></span>
           
         </div>
 
@@ -197,8 +197,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-20 01:20" pubdate>
-          March 20, 2022 am
+        <time datetime="2022-05-09 16:35" pubdate>
+          May 9, 2022 pm
         </time>
       </span>
     
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k words
+          49 words
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          13 mins
+          1 mins
         
       </span>
     
@@ -270,98 +270,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">空间杂谈</h1>
+            <h1 style="display: none">操作系统练习</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on May 3, 2022 pm
+                    Last updated on May 9, 2022 pm
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p>"内积空间和度量空间有什么区别? Hilbert空间是什么?
-它与线性空间的关系是什么?"</p>
-<p>"我已经晕了."</p>
+              <p>"操作系统习题, 包括进程同步, CPU调度等内容."</p>
+<p>"还在更新...也有可能不在更新..."</p>
 <span id="more"></span>
-<h1 id="数域">数域</h1>
-<p>\(P\)是包含0, 1的数集, 且对 \(P\)中任意两个数的加减乘除运算封闭, 则称
-\(P\)是一个数域.</p>
-<h1 id="线性空间">线性空间</h1>
-<p>在数域的基础上, 我们提出线性空间的概念:</p>
-<p>给定数域 \(P\) , 和集合 \(V\). 有如下映射: <span
-class="math display">\[
-+:V\times V\rightarrow V
-\]</span> <span class="math display">\[
-\cdot:P\times V\rightarrow V
-\]</span> 且 (\(V, P, +, \)) 满足<strong>八条基本性质</strong>,
-则\(V\)称为一个线性空间.</p>
-<h1 id="赋范空间">赋范空间</h1>
-<p><u>赋范空间是定义在线性空间之上的.</u></p>
-<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射: <span
-class="math display">\[
-||\cdot||:  V\rightarrow R
-\]</span> 且该映射满足: 正定, 齐次, 三角不等式. 则 \(V\) 是一个赋范空间,
-其中映射 \(||||\) 称为范数.</p>
-<h1 id="内积空间">内积空间</h1>
-<p><u>内积空间是定义在线性空间之上的.</u></p>
-<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射: <span
-class="math display">\[
-\cdot:  V\times V\rightarrow R
-\]</span> 则 \(V\) 是一个内积空间.</p>
-<div class="note note-info">
-            <p>定义了内积后, 我们可以讨论向量 (即线性空间的元素) 间的长度和夹角,并进一步讨论正交性等.</p>
-          </div>
-<div class="note note-danger">
-            <p>注意: 内积本身具有自然定义的范数, 即内积可以诱导出范数, \(||x||=\),因此内积空间含于赋范空间.</p>
-          </div>
-<h1 id="度量空间">度量空间</h1>
-<p>度量空间是某个具有距离函数的集合. 该函数定义的是集合内所有元素的距离,
-即集合上的某种度量, 即:</p>
-给定<strong>集合</strong>\(V\), 有映射: <span class="math display">\[
-d:V\times V\rightarrow \mathbf{R}
-\]</span> 满足:
-<p>
-[
-<span class="math display">\[\begin{aligned}
-&amp;d(x,y)\geq0\quad (d(x,y)=0\Leftrightarrow x=0,y=0)\\
-&amp;d(x,y)=d(y,x)\\
-&amp;d(x,y)\leq d(x,z)+d(z,y)
-\end{aligned}\]</span>
-]
-</p>
-<div class="note note-info">
-            <p>注意: 此处并未要求线性结构.</p>
-          </div>
-<div class="note note-danger">
-            <p><strong>注意: 赋范空间一定可以诱导出度量空间,因此赋范空间含于度量空间</strong></p>
-          </div>
-<h1 id="完备空间">完备空间</h1>
-<p>完备空间又称 Cauchy 空间. <u>完备空间是定义在度量空间之上的.</u></p>
-<p>若度量空间 \(M\) 中所有的柯西序列都收敛在 \(M\) 中的一点, 则 \(M\)
-是一个完备空间.</p>
-<h1 id="hilbert空间">Hilbert空间</h1>
-<p>在<strong>内积空间</strong>的基础上增添<strong>完备性条件</strong>,
-即得到<strong>Hilbert空间</strong>.</p>
-<h1 id="总结">总结</h1>
-<p>范数运算+向量空间=(线性)赋范空间</p>
-<p>(线性)赋范空间 + 内积运算=内积空间</p>
-<p>(线性)赋范空间 + 完备性 = Banach 空间</p>
-<p>内积空间 + 完备性 = Hilbert 空间</p>
-<p>内积空间 + 完备性 + 有限维 = Euclidean 空间</p>
-<h1 id="references">References</h1>
-<p>zhihu:</p>
-<p>https://www.zhihu.com/question/332144499/answer/731866608</p>
-<p>https://www.zhihu.com/question/42312263/answer/699451330</p>
-<p>wikipedia:</p>
-<p>https://en.wikipedia.org/wiki/Complete_metric_space</p>
-<p>https://en.wikipedia.org/wiki/Metric_space</p>
-<p>https://en.wikipedia.org/wiki/Cauchy_sequence</p>
-<p>https://en.wikipedia.org/wiki/Cauchy_sequence</p>
-<p>https://en.wikipedia.org/wiki/Cauchy_sequence</p>
-<p>https://en.wikipedia.org/wiki/Normed_vector_space</p>
+<h1 id="进程同步">进程同步</h1>
 
               
             </div>
@@ -379,7 +303,7 @@ d:V\times V\rightarrow \mathbf{R}
     
       <span class="category-chain">
         
-  <a href="/categories/Matrix-Theorem/" class="category-chain-item">Matrix Theorem</a>
+  <a href="/categories/Computer-Science/" class="category-chain-item">Computer Science</a>
   
   
 
@@ -394,7 +318,7 @@ d:V\times V\rightarrow \mathbf{R}
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Math/">#Math</a>
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">#操作系统</a>
       
     </div>
   
@@ -406,15 +330,15 @@ d:V\times V\rightarrow \mathbf{R}
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>空间杂谈</div>
-      <div>http://andrew-rey.github.io/2022/03/20/空间杂谈/</div>
+      <div>操作系统练习</div>
+      <div>http://andrew-rey.github.io/2022/05/09/os-practice/</div>
     </div>
     <div class="license-meta">
       
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 20, 2022</div>
+          <div>May 9, 2022</div>
         </div>
       
       
@@ -444,18 +368,12 @@ d:V\times V\rightarrow \mathbf{R}
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/06/algorithm-FFT/" title="algorithm:FFT">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">algorithm:FFT</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/28/Pattern_Recognition/" title="Pattern Recognition">
-                        <span class="hidden-mobile">Pattern Recognition</span>
+                      <a href="/2022/05/03/SVM/" title="SVM">
+                        <span class="hidden-mobile">SVM</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
