@@ -38,16 +38,10 @@
     
     <categories>
       
-      <category>Computer Science</category>
+      <category>OperatingSystem</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>操作系统</tag>
-      
-    </tags>
     
   </entry>
   
@@ -63,16 +57,10 @@
     
     <categories>
       
-      <category>Artificial Intelligence</category>
+      <category>ML</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>AI</tag>
-      
-    </tags>
     
   </entry>
   
@@ -88,16 +76,10 @@
     
     <categories>
       
-      <category>Computer Science</category>
+      <category>OperatingSystem</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>操作系统</tag>
-      
-    </tags>
     
   </entry>
   
@@ -118,12 +100,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Diary</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -143,12 +119,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Algorithm</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -163,16 +133,10 @@
     
     <categories>
       
-      <category>Matrix Theorem</category>
+      <category>Math</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Math</tag>
-      
-    </tags>
     
   </entry>
   
@@ -188,7 +152,7 @@
     
     <categories>
       
-      <category>Artificial Intelligence</category>
+      <category>ML</category>
       
     </categories>
     
@@ -207,16 +171,10 @@
     
     <categories>
       
-      <category>SEU_Study</category>
+      <category>Web</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>网络</tag>
-      
-    </tags>
     
   </entry>
   
@@ -236,12 +194,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>随笔</tag>
-      
-    </tags>
     
   </entry>
   
