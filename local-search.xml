@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>Database</title>
+    <link href="/2022/07/04/CS/Database/"/>
+    <url>/2022/07/04/CS/Database/</url>
+    
+    <content type="html"><![CDATA[<p>"From Stanford CS186: Introduction to Database System"</p><span id="more"></span>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Compilers</title>
+    <link href="/2022/07/04/CS/Compiler/"/>
+    <url>/2022/07/04/CS/Compiler/</url>
+    
+    <content type="html"><![CDATA[<p>"From Stanford CS143: Compilers"</p><span id="more"></span><h1 id="intro">Intro</h1><h2 id="differences-between-compilers-and-interpreters">Differencesbetween Compilers and Interpreters</h2><p>Compilers: get a new program, <strong>off-line</strong></p><ul><li><strong>input</strong>: your program</li><li><strong>output</strong>: executable pragram (assembling, byte code)<ul><li><strong>input</strong>: data</li><li><strong>output</strong>: result</li></ul></li></ul><figure><img src="compiler1.png" alt="compiler1" /><figcaption aria-hidden="true">compiler1</figcaption></figure><figure><img src="compiler2.png" alt="compiler2" /><figcaption aria-hidden="true">compiler2</figcaption></figure><p>interpreters: get the same program, <strong>on-line</strong> -<strong>input</strong>: your pragram, data - <strong>output</strong>:result</p><figure><img src="interpreter1.png" alt="interpreter1" /><figcaption aria-hidden="true">interpreter1</figcaption></figure><h2 id="struct">Struct</h2><h3 id="lexical-analyzer">Lexical Analyzer</h3><p>The <strong>lexical analyzer</strong> reads the stream of charactersmaking up the source program and groups the characters into meaningfulsequences called <strong>lexeme</strong>. The output is<strong>token</strong>. &lt;<em>token-name, attribute-value</em>&gt;</p><figure><img src="lexeme1.png" alt="lexeme1" /><figcaption aria-hidden="true">lexeme1</figcaption></figure><h3 id="syntax-analyzer-parsing">Syntax Analyzer (Parsing)</h3><p>The <strong>syntax analyzer</strong> use the components of the tokensproduced by the lexical analyzer to create a <strong>tree-like</strong>intermediate representation that depicts the <strong>grammaticalstrucure</strong> of the token stream.</p><p>Interior nodes represent the operations and the children nodesrepresent the arguments of the operation.</p><figure><img src="syntax1.png" alt="syntax1" /><figcaption aria-hidden="true">syntax1</figcaption></figure><h3 id="semantic-analyzer">Semantic Analyzer</h3><p>The <strong>semantic analyzer</strong> uses the syntax tree and theinformation in the symbol table to check the source program for semanticconsistency with language definetion. The important thing is<strong>type checking</strong>. (check the each operation has matchingoperands)</p><ul><li>sometimes exits coercion convension</li></ul><figure><img src="semantic1.png" alt="semantic1" /><figcaption aria-hidden="true">semantic1</figcaption></figure><p>The syntax tree is one form of intermediate representations. Manycompilers generate an explicit low-level or machine-like intermediaterepresentations for easier translation into target code.</p><figure><img src="inter1.png" alt="inter1" /><figcaption aria-hidden="true">inter1</figcaption></figure><ul><li>This is called <em>three-address code</em></li></ul><h3 id="optimizer">Optimizer</h3><p>The <strong>optimizer</strong> is used to imporve the intermediaterepresentation to get better target code.</p><ul><li>Better: faster, shorter or less power</li></ul><figure><img src="opt1.png" alt="opt1" /><figcaption aria-hidden="true">opt1</figcaption></figure><p>The compilers deduce that the conversion from integer to floatingpoint can be done eliminated.</p><h3 id="code-generator">Code Generator</h3><p>The <strong>code generator</strong> maps the intermediaterepresentations of the source program into target code. (If the targetcode is machine language, then the registers or memory locations areselected for each variable used by the program)</p><ul><li>The crucial aspect of the code generator is the judicious assignmentof registers to hold variables.</li></ul><figure><img src="gen1.png" alt="gen1" /><figcaption aria-hidden="true">gen1</figcaption></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>大二暑假</title>
     <link href="/2022/07/02/Life/%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87/"/>
     <url>/2022/07/02/Life/%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87/</url>

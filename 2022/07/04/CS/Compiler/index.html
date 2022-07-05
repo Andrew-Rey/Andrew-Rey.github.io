@@ -16,20 +16,29 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="&quot;一手好牌打得稀烂.&quot; &quot;所以我选择去赌.&quot;">
+    <meta name="description" content="&quot;From Stanford CS143: Compilers&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大二暑假">
-<meta property="og:url" content="http://andrew-rey.github.io/2022/07/02/Life/%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87/index.html">
+<meta property="og:title" content="Compilers">
+<meta property="og:url" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="&quot;一手好牌打得稀烂.&quot; &quot;所以我选择去赌.&quot;">
+<meta property="og:description" content="&quot;From Stanford CS143: Compilers&quot;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-02T11:02:24.000Z">
-<meta property="article:modified_time" content="2022-07-02T11:55:54.988Z">
-<meta property="article:tag" content="flag">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/compiler1.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/compiler2.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/interpreter1.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/lexeme1.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/syntax1.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/semantic1.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/inter1.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/opt1.png">
+<meta property="og:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/gen1.png">
+<meta property="article:published_time" content="2022-07-04T10:17:40.000Z">
+<meta property="article:modified_time" content="2022-07-05T03:54:26.881Z">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://andrew-rey.github.io/2022/07/04/CS/Compiler/compiler1.png">
   
   
-  <title>大二暑假 - Andrew-Rey</title>
+  <title>Compilers - Andrew-Rey</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -174,7 +183,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="大二暑假"></span>
+            <span id="subtitle" data-typed-text="Compilers"></span>
           
         </div>
 
@@ -185,8 +194,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-02 19:02" pubdate>
-          July 2, 2022 pm
+        <time datetime="2022-07-04 18:17" pubdate>
+          July 4, 2022 pm
         </time>
       </span>
     
@@ -197,7 +206,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          802 words
+          1.8k words
         
       </span>
     
@@ -208,7 +217,7 @@
         
         
         
-          7 mins
+          15 mins
         
       </span>
     
@@ -258,56 +267,116 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">大二暑假</h1>
+            <h1 style="display: none">Compilers</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on July 2, 2022 pm
+                    Last updated on July 5, 2022 am
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p>"一手好牌打得稀烂."</p>
-<p>"所以我选择去赌."</p>
+              <p>"From Stanford CS143: Compilers"</p>
 <span id="more"></span>
-<h1 id="复盘这个学期">复盘这个学期</h1>
-<p>总之, 先说一下这个学期的概况吧.</p>
-<p>首先, 2月20号左右来牢里面打了美赛, 拿了个M. 大概三月开学,
-线上了大概2个月. 基本上, 上完一节课就去书院总结一下.
-然后作业也及时写完了. 早上也起得挺早的.</p>
-<p>然后通知要中期汇报了, 开始准备一些材料. 中期汇报完就是国省创答辩.
-这里答辩完是5月吧. 接着需要完成一半的文献综述, ddl好像是5月20号,
-恰逢期中考试和机器学习的CNN作业. 那是最认真的几周. 效率很高.</p>
-<p>这边忙完后好像机器学习又布置了一些作业, 加之前面有一些课没咋听懂
-(线下课, 感觉容易走神), 感觉从那以后有一些力不从心. 毕竟六月初了,
-期末考试即将来临. 这时候模式识别和强化学习开始布置大作业了.
-6月20号要交综述. 人有点麻.</p>
-<p>当然考试周还是来了. 我的考试周持续3周. 复习和大作业验收并行进行.
-但主要还是注重即将结束的ddl. 第一门是强化学习, 自我感觉良好
-(出成绩后差强人意吧), 然后是基本没怎么看的运筹学.
-接着是写模式识别大作业和综述. 马上便是数值分析, 操作系统 (全场最寄,
-复习也看不进什么), 隔两天后是模式识别考试, 接着隔一天机器学习,
-隔一天信号. 也就到了7月1号.</p>
-<p>只是感觉, 再这样下去, 只会越考越烂. 复习的时候感觉只有手在学习,
-大脑根本就没有运作. 然后反复抄写以便训练出肌肉记忆. 要么就是突然发呆,
-百无聊赖.</p>
-<p>我知道, 我这学期肯定完了.</p>
-<h1 id="然后呢">然后呢</h1>
-<p>然后我打算离开人工智能专业, 前往吴院的歧视链底层专业--计算机.
-我觉得需要一些新鲜的东西来刺激我. 可能是我不理解人工智能,
-但我确实无法理解更深. 在表面徘徊不如去找点乐子. 然后计算机就是一片海啊.
-虽然极大的可能性保不了研了, 但我必须去找我感兴趣的方向
-(至少是目前感兴趣) 然后去钻研它们. 就目前而言, 我更希望未来充满不确定,
-以便说服我自己, 机会还有很多. 也就是, 赌.</p>
-<p>当然这个暑假</p>
+<h1 id="intro">Intro</h1>
+<h2 id="differences-between-compilers-and-interpreters">Differences
+between Compilers and Interpreters</h2>
+<p>Compilers: get a new program, <strong>off-line</strong></p>
 <ul>
-<li>国际交流</li>
-<li>自学一些东西</li>
-<li>没了, 没计划了, 也没时间了</li>
+<li><strong>input</strong>: your program</li>
+<li><strong>output</strong>: executable pragram (assembling, byte code)
+<ul>
+<li><strong>input</strong>: data</li>
+<li><strong>output</strong>: result</li>
+</ul></li>
 </ul>
+<figure>
+<img src="compiler1.png" srcset="/img/loading.gif" lazyload alt="compiler1" />
+<figcaption aria-hidden="true">compiler1</figcaption>
+</figure>
+<figure>
+<img src="compiler2.png" srcset="/img/loading.gif" lazyload alt="compiler2" />
+<figcaption aria-hidden="true">compiler2</figcaption>
+</figure>
+<p>interpreters: get the same program, <strong>on-line</strong> -
+<strong>input</strong>: your pragram, data - <strong>output</strong>:
+result</p>
+<figure>
+<img src="interpreter1.png" srcset="/img/loading.gif" lazyload alt="interpreter1" />
+<figcaption aria-hidden="true">interpreter1</figcaption>
+</figure>
+<h2 id="struct">Struct</h2>
+<h3 id="lexical-analyzer">Lexical Analyzer</h3>
+<p>The <strong>lexical analyzer</strong> reads the stream of characters
+making up the source program and groups the characters into meaningful
+sequences called <strong>lexeme</strong>. The output is
+<strong>token</strong>. &lt;<em>token-name, attribute-value</em>&gt;</p>
+<figure>
+<img src="lexeme1.png" srcset="/img/loading.gif" lazyload alt="lexeme1" />
+<figcaption aria-hidden="true">lexeme1</figcaption>
+</figure>
+<h3 id="syntax-analyzer-parsing">Syntax Analyzer (Parsing)</h3>
+<p>The <strong>syntax analyzer</strong> use the components of the tokens
+produced by the lexical analyzer to create a <strong>tree-like</strong>
+intermediate representation that depicts the <strong>grammatical
+strucure</strong> of the token stream.</p>
+<p>Interior nodes represent the operations and the children nodes
+represent the arguments of the operation.</p>
+<figure>
+<img src="syntax1.png" srcset="/img/loading.gif" lazyload alt="syntax1" />
+<figcaption aria-hidden="true">syntax1</figcaption>
+</figure>
+<h3 id="semantic-analyzer">Semantic Analyzer</h3>
+<p>The <strong>semantic analyzer</strong> uses the syntax tree and the
+information in the symbol table to check the source program for semantic
+consistency with language definetion. The important thing is
+<strong>type checking</strong>. (check the each operation has matching
+operands)</p>
+<ul>
+<li>sometimes exits coercion convension</li>
+</ul>
+<figure>
+<img src="semantic1.png" srcset="/img/loading.gif" lazyload alt="semantic1" />
+<figcaption aria-hidden="true">semantic1</figcaption>
+</figure>
+<p>The syntax tree is one form of intermediate representations. Many
+compilers generate an explicit low-level or machine-like intermediate
+representations for easier translation into target code.</p>
+<figure>
+<img src="inter1.png" srcset="/img/loading.gif" lazyload alt="inter1" />
+<figcaption aria-hidden="true">inter1</figcaption>
+</figure>
+<ul>
+<li>This is called <em>three-address code</em></li>
+</ul>
+<h3 id="optimizer">Optimizer</h3>
+<p>The <strong>optimizer</strong> is used to imporve the intermediate
+representation to get better target code.</p>
+<ul>
+<li>Better: faster, shorter or less power</li>
+</ul>
+<figure>
+<img src="opt1.png" srcset="/img/loading.gif" lazyload alt="opt1" />
+<figcaption aria-hidden="true">opt1</figcaption>
+</figure>
+<p>The compilers deduce that the conversion from integer to floating
+point can be done eliminated.</p>
+<h3 id="code-generator">Code Generator</h3>
+<p>The <strong>code generator</strong> maps the intermediate
+representations of the source program into target code. (If the target
+code is machine language, then the registers or memory locations are
+selected for each variable used by the program)</p>
+<ul>
+<li>The crucial aspect of the code generator is the judicious assignment
+of registers to hold variables.</li>
+</ul>
+<figure>
+<img src="gen1.png" srcset="/img/loading.gif" lazyload alt="gen1" />
+<figcaption aria-hidden="true">gen1</figcaption>
+</figure>
 
               
             </div>
@@ -315,34 +384,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Life/" class="category-chain-item">Life</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/flag/">#flag</a>
-      
-    </div>
   
 </div>
 
@@ -352,15 +393,15 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>大二暑假</div>
-      <div>http://andrew-rey.github.io/2022/07/02/Life/大二暑假/</div>
+      <div>Compilers</div>
+      <div>http://andrew-rey.github.io/2022/07/04/CS/Compiler/</div>
     </div>
     <div class="license-meta">
       
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 2, 2022</div>
+          <div>July 4, 2022</div>
         </div>
       
       
@@ -390,9 +431,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/04/CS/Compiler/" title="Compilers">
+                      <a href="/2022/07/04/CS/Database/" title="Database">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Compilers</span>
+                        <span class="hidden-mobile">Database</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -400,8 +441,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/09/OperatingSystem/os-practice/" title="操作系统练习">
-                        <span class="hidden-mobile">操作系统练习</span>
+                      <a href="/2022/07/02/Life/%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87/" title="大二暑假">
+                        <span class="hidden-mobile">大二暑假</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
