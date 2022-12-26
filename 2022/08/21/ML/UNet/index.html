@@ -1,0 +1,773 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=light>
+
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <!-- <link rel="dns-prefetch" href="//cdn.bootcss.com" /> -->
+  <!-- <link rel="dns-prefetch" href="//cdn.mathjax.org" /> -->
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/android-chrome-192x192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="“Semantic segmentation of images, use UNet model.”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Image Semantic Segmentation based on UNet">
+<meta property="og:url" content="https://andrew-rey.github.io/2022/08/21/ML/UNet/index.html">
+<meta property="og:site_name" content="Andrew-Rey">
+<meta property="og:description" content="“Semantic segmentation of images, use UNet model.”">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://andrew-rey.github.io/index_imgs/unet.png">
+<meta property="article:published_time" content="2022-08-21T02:50:30.000Z">
+<meta property="article:modified_time" content="2022-11-23T11:12:45.977Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://andrew-rey.github.io/index_imgs/unet.png">
+  
+  
+  <title>Image Semantic Segmentation based on UNet - Andrew-Rey</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_3696939_jf5k91uu0xi.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"andrew-rey.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":false,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+    
+
+<div class="header-inner" style="height: 80vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>AndrewRey</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg0.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Image Semantic Segmentation based on UNet"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-21 10:50" pubdate>
+          August 21, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          62 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Image Semantic Segmentation based on UNet</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on November 23, 2022 pm
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>“Semantic segmentation of images, use UNet model.”</p>
+<span id="more"></span>
+<h1 id="abstract"><a class="markdownIt-Anchor" href="#abstract"></a> Abstract</h1>
+<p>In this project, we realize an basic UNet model and UNet++ model, then we apply them on image semantic segmentation. We show our basic theory of UNet and an improvement of it, and we provide main code of this program. Finally, we give the result of segmentation images, loss-curve and accuracy-curve on both training and validation set.</p>
+<p>The copyright of this program is owned by our team mentioned on the end of this blog.</p>
+<h1 id="unet-structure"><a class="markdownIt-Anchor" href="#unet-structure"></a> UNet Structure</h1>
+<p>The <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597">paper</a> published in 2015 propose a noval network structure, whose shape is similar with the captal “U”. The idea comes from FCNN. U-Net is one of the classes of “Encoder-Decoder” structure.</p>
+<p><img src="unet-structure.png" srcset="/img/loading.gif" lazyload alt="U-Net Structure" /></p>
+<p>The front half of the network is “encoder”. The input image passes covolutional kernel, and then passes the pooling layer (or other dimension-decreasing layer). The opposite of that is the back part of UNet, the “decoder”. The input of decoder is a sequence of feature maps with highly contracted pixels. The output of the decoder (or the whole network) is an image with the same shape of input image, where each pixel has its own class.</p>
+<p>In this project, we decrease the number of convolutional layers so that there are only two convolutional layers in each convolutional kernel as the dataset includes images with shape <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>128</mn><mo>×</mo><mn>256</mn></mrow><annotation encoding="application/x-tex">128\times 256</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">6</span></span></span></span>.</p>
+<h2 id="operator-definitions"><a class="markdownIt-Anchor" href="#operator-definitions"></a> Operator Definitions</h2>
+<p><strong>Convolutional Kernel:</strong></p>
+<p>We define the basic convolutional kernel as follow:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">self.layer = nn.Sequential(<br>    <span class="hljs-comment"># in_channel, out_channel, kernel_size, stride, padding</span><br>    <span class="hljs-comment"># batch size * channel * height * weight</span><br>    nn.Conv2d(C_in, C_out, kernel_size=(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>), stride=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), padding=<span class="hljs-number">1</span>),  <span class="hljs-comment"># 64 64 128 256</span><br>    nn.BatchNorm2d(C_out),<br>    nn.Dropout(<span class="hljs-number">0.2</span>),<br>    nn.LeakyReLU(),<br><br>    nn.Conv2d(C_out, C_out, kernel_size=(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>), stride=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), padding=<span class="hljs-number">1</span>),  <span class="hljs-comment"># 64 64 128 256</span><br>    nn.BatchNorm2d(C_out),<br>    nn.Dropout(<span class="hljs-number">0.5</span>),<br>    nn.LeakyReLU(),<br></code></pre></td></tr></table></figure>
+<p>It includes two convolution operations.</p>
+<p><strong>Down Sampling Kernel:</strong></p>
+<p>As for downsampling kernel, we replace conditional pooling layer to convolutional layer with stride equaling to 2, which means the shape will be shrunk to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> while remaining the same channels.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">self.Down = nn.Sequential(<br>    nn.Conv2d(C, C, kernel_size=(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>), stride=(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>), padding=<span class="hljs-number">1</span>),  <span class="hljs-comment"># 64 64 64 128</span><br>    nn.LeakyReLU()<br>        )<br></code></pre></td></tr></table></figure>
+<p><strong>Up Sampling Kernel:</strong></p>
+<p>The basic structure of up-sampling contains only one convolutional layer with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1\times 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> convolutional kernel size and half out-channel. The feature map should pass an interpolation layer before getting into the convolutional layer.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, C</span>):<br>    <span class="hljs-built_in">super</span>(UpSampling, self).__init__()<br>    <span class="hljs-comment"># out-channel = 1/2 in-channel</span><br>    self.Up = nn.Conv2d(C, C // <span class="hljs-number">2</span>, kernel_size=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), stride=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x, r</span>):<br>    <span class="hljs-comment"># neighbor interpolation</span><br>    up = F.interpolate(x, scale_factor=<span class="hljs-number">2</span>, mode=<span class="hljs-string">&quot;nearest&quot;</span>)<br>    x = self.Up(up)<br>    <span class="hljs-comment"># concatenate the feature map in encoder and </span><br>    <span class="hljs-comment"># the feature map in corrsponding decoder layer, in channel dimension</span><br>    res = torch.cat((x, r), <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
+<p>The interpolation mode we choose is “nearest”. The function <code>torch.cat(dim=1)</code> is used to concatenate two feature maps in channel dimension.</p>
+<h2 id="network-definition"><a class="markdownIt-Anchor" href="#network-definition"></a> Network Definition</h2>
+<p>Based on the operators defined above, we link these blocks together like UNet structure.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">super</span>(UNet, self).__init__()<br><br>    <span class="hljs-comment"># down sampling</span><br>    self.C1 = Conv(<span class="hljs-number">3</span>, <span class="hljs-number">64</span>)<br>    self.D1 = DownSampling(<span class="hljs-number">64</span>)<br>    self.C2 = Conv(<span class="hljs-number">64</span>, <span class="hljs-number">128</span>)<br>    self.D2 = DownSampling(<span class="hljs-number">128</span>)<br>    self.C3 = Conv(<span class="hljs-number">128</span>, <span class="hljs-number">256</span>)<br>    self.D3 = DownSampling(<span class="hljs-number">256</span>)<br>    self.C4 = Conv(<span class="hljs-number">256</span>, <span class="hljs-number">512</span>)<br>    self.D4 = DownSampling(<span class="hljs-number">512</span>)<br>    self.C5 = Conv(<span class="hljs-number">512</span>, <span class="hljs-number">1024</span>)<br><br>    <span class="hljs-comment"># up sampling</span><br>    self.U1 = UpSampling(<span class="hljs-number">1024</span>)<br>    self.C6 = Conv(<span class="hljs-number">1024</span>, <span class="hljs-number">512</span>)<br>    self.U2 = UpSampling(<span class="hljs-number">512</span>)<br>    self.C7 = Conv(<span class="hljs-number">512</span>, <span class="hljs-number">256</span>)<br>    self.U3 = UpSampling(<span class="hljs-number">256</span>)<br>    self.C8 = Conv(<span class="hljs-number">256</span>, <span class="hljs-number">128</span>)<br>    self.U4 = UpSampling(<span class="hljs-number">128</span>)<br>    self.C9 = Conv(<span class="hljs-number">128</span>, <span class="hljs-number">64</span>)<br><br>    self.C10 = torch.nn.Conv2d(<span class="hljs-number">64</span>, <span class="hljs-number">3</span>, kernel_size=(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>), stride=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), padding=<span class="hljs-number">1</span>)<br>    self.pred = torch.nn.Conv2d(<span class="hljs-number">3</span>, <span class="hljs-number">34</span>, kernel_size=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>), stride=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>))<br>    self.Th = torch.nn.Sigmoid()<br></code></pre></td></tr></table></figure>
+<p>Like U-Net mentioned in that paper, we designed 4 layer deep network.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-comment"># part 1: down sampling, decreasing dimension</span><br>        R1 = self.C1(x)<br>        R2 = self.C2(self.D1(R1))<br>        R3 = self.C3(self.D2(R2))<br>        R4 = self.C4(self.D3(R3))<br>        Y1 = self.C5(self.D4(R4))<br><br>        <span class="hljs-comment"># part 2: up sampling, connect priori knowledge</span><br>        O1 = self.C6(self.U1(Y1, R4))<br>        O2 = self.C7(self.U2(O1, R3))<br>        O3 = self.C8(self.U3(O2, R2))<br>        O4 = self.C9(self.U4(O3, R1))<br><br>        <span class="hljs-comment"># part 3: active function</span><br>        <span class="hljs-keyword">return</span> self.Th(self.pred(self.C10(O4)))<br></code></pre></td></tr></table></figure>
+<p>As you can see, the difference between U-Net and other networks before U-Net is that U-Net conbines the former information from encoder and current information from decoder.</p>
+<h1 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h1>
+<p>During the training process, we want to keep some information of loss values and accuracy values on training set and validation set so that we can analyze the variance.</p>
+<p>In the function named <code>train()</code>, we take <code>optimizer</code> and <code>loss</code> as two parameters used in training process. The outputs of this function are loss and accuracy on both training set and validation set. If we get the data about training set and validation set, we can draw the curves. If both training and validation loss values decrease during training process, we can conclude that our model converges and does not overfit on training set.</p>
+<p>The training code is shown as follow:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">self.model.train()<br><span class="hljs-keyword">for</span> batch <span class="hljs-keyword">in</span> self.train_loader:<br>    batch_num += <span class="hljs-number">1</span><br>    optimizer.zero_grad()<br>    rgbs, segs = batch<br>    s, _, m, n = segs.shape<br>    segs = torch.reshape(segs, (s, m, n))<br>    pred_segs = self.model(rgbs).to(self.device)<br>    loss_val = loss(pred_segs, segs)<br>    loss_val.backward()<br>    optimizer.step()<br></code></pre></td></tr></table></figure>
+<p>The data collecting code can be written as follow:</p>
+<p><strong>Statistic data of training set</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> ... :<br>    <span class="hljs-keyword">with</span> torch.no_grad():<br>        <span class="hljs-keyword">if</span> batch_num % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>:<br>            logging.info(<span class="hljs-string">f&quot;batch num <span class="hljs-subst">&#123;batch_num&#125;</span>, loss <span class="hljs-subst">&#123;loss_val&#125;</span>&quot;</span>)<br>        <span class="hljs-comment"># delete or add comments when needed</span><br>        train_loss += loss_val<br>        <span class="hljs-comment"># statistic valid classified samples</span><br>        total_pix += s * m * n<br>        idx = torch.argmax(pred_segs, dim=<span class="hljs-number">1</span>)<br>        train_valid_pix += torch.eq(idx, segs).<span class="hljs-built_in">sum</span>().<span class="hljs-built_in">float</span>().item()<br>torch.cuda.empty_cache()<br>epoch_acc = train_valid_pix / total_pix<br>train_epoch_loss.append(train_loss / batch_num)<br>train_epoch_acc.append(epoch_acc)<br></code></pre></td></tr></table></figure>
+<p><strong>Statistic data of validation set</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python">self.model.<span class="hljs-built_in">eval</span>()<br><span class="hljs-keyword">with</span> torch.no_grad():<br>    <span class="hljs-keyword">for</span> valid_batch <span class="hljs-keyword">in</span> self.valid_loader:<br>        valid_batch_num += <span class="hljs-number">1</span><br>        rgbs, segs = valid_batch<br>        s, _, m, n = segs.shape<br>        segs = torch.reshape(segs, (s, m, n))<br>        pred_segs = self.model(rgbs).to(self.device)<br>        loss_val = loss(pred_segs, segs)<br>        valid_loss += loss_val<br>        valid_total_pix += s * m * n<br>        idx = torch.argmax(pred_segs, dim=<span class="hljs-number">1</span>)<br>        valid_valid_pix += torch.eq(idx, segs).<span class="hljs-built_in">sum</span>().<span class="hljs-built_in">float</span>().item()<br>epoch_acc = valid_valid_pix / valid_total_pix<br>valid_epoch_loss.append(valid_loss / valid_batch_num)<br>valid_epoch_acc.append(epoch_acc)<br></code></pre></td></tr></table></figure>
+<p>The point you should pay attention to is that you should use <code>with torch.no_grad()</code> before you do some work that have no relation with training process, otherwise your GPU memory will be full or even overflow.</p>
+<h1 id="result"><a class="markdownIt-Anchor" href="#result"></a> Result</h1>
+<p>After a long time training, we get the satisfying result with U-Net model.</p>
+<h2 id="former-model"><a class="markdownIt-Anchor" href="#former-model"></a> Former Model</h2>
+<p>The “former model” infers the U-Net model, and you will see we use other upgraded model named “UNet++” which will be introduced later.</p>
+<p>We output the segmentation results and their uncertainties.</p>
+<p><img src="pic1-unet.png" srcset="/img/loading.gif" lazyload alt="picture 1 result-UNet" /></p>
+<h2 id="model-upgrade"><a class="markdownIt-Anchor" href="#model-upgrade"></a> Model Upgrade</h2>
+<p>For some reasons, we try another U-Net-like model, Nested UNet, namely UNet++. It has a nested convolutional blocks like a pyramid and there is a chain passing connectivity between each convolutional block every layer.</p>
+<p><img src="nested.png" srcset="/img/loading.gif" lazyload alt="Neseted UNet" /></p>
+<p>The black nodes are the same with U-Net model. The green nodes are what Nested UNet newly added. Both green and blue lines are skip pathways that pass connectivities from encoder to decoder.</p>
+<p>The use of Nested UNet gives us a little improvement on final results.</p>
+<p><img src="pic1-nested.png" srcset="/img/loading.gif" lazyload alt="pictrue 1 result-Nested UNet" /></p>
+<h1 id="analysis"><a class="markdownIt-Anchor" href="#analysis"></a> Analysis</h1>
+<h2 id="u-net"><a class="markdownIt-Anchor" href="#u-net"></a> U-Net</h2>
+<p>We analyze the loss value and accuracy on both training and validation set:</p>
+<p><img src="unet_loss.png" srcset="/img/loading.gif" lazyload alt="unet loss" /></p>
+<p>We find that after 100 epochs, the model has not convergenced yet, but the loss on validation decreases to the bottom.</p>
+<p><img src="unet_acc.png" srcset="/img/loading.gif" lazyload alt="unet accuracy" /></p>
+<p>From the accuracy curves, we find that both training set and validation set have increasing accuracy, which means our model does not overfit.</p>
+<h2 id="nested-unet"><a class="markdownIt-Anchor" href="#nested-unet"></a> Nested UNet</h2>
+<p>Meanwhile, we analyze the loss and accuracy of Nested UNet model on both training and validation set.</p>
+<p><img src="nested_loss.png" srcset="/img/loading.gif" lazyload alt="nested loss" /></p>
+<p>We find that Nested UNet has a faster convergency speed than UNet. It uses only about 60 epochs. But to our surprise, we find that Neseted UNet overfit after about only 20 epochs because the validation loss does not decrease anymore.</p>
+<p><img src="nested_acc.png" srcset="/img/loading.gif" lazyload alt="nested accuracy" /></p>
+<p>The performance on validation accuracy stays the same with UNet model.</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ML/" class="category-chain-item">ML</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Image Semantic Segmentation based on UNet</div>
+      <div>https://andrew-rey.github.io/2022/08/21/ML/UNet/</div>
+    </div>
+    <div class="license-meta">
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 21, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/01/Android/AndroidBasic/" title="AndroidBasic">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AndroidBasic</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/10/CS/CMakeTutorial/" title="CMakeTutorial">
+                        <span class="hidden-mobile">CMakeTutorial</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
