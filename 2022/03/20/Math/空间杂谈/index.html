@@ -20,12 +20,12 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="“内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?” “我已经晕了.”">
+    <meta name="description" content="&quot;内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?&quot; &quot;我已经晕了.&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="空间杂谈">
 <meta property="og:url" content="https://andrew-rey.github.io/2022/03/20/Math/%E7%A9%BA%E9%97%B4%E6%9D%82%E8%B0%88/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="“内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?” “我已经晕了.”">
+<meta property="og:description" content="&quot;内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?&quot; &quot;我已经晕了.&quot;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://andrew-rey.github.io/index_imgs/space.jpg">
 <meta property="article:published_time" content="2022-03-19T17:20:10.000Z">
@@ -275,78 +275,86 @@
             
             <div class="markdown-body">
               
-              <p>“内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?”</p>
-<p>“我已经晕了.”</p>
+              <p>"内积空间和度量空间有什么区别? Hilbert空间是什么?
+它与线性空间的关系是什么?"</p>
+<p>"我已经晕了."</p>
 <span id="more"></span>
-<h1 id="数域"><a class="markdownIt-Anchor" href="#数域"></a> 数域</h1>
-<p>\(P\)是包含0, 1的数集, 且对 \(P\)中任意两个数的加减乘除运算封闭, 则称 \(P\)是一个数域.</p>
-<h1 id="线性空间"><a class="markdownIt-Anchor" href="#线性空间"></a> 线性空间</h1>
+<h1 id="数域">数域</h1>
+<p>\(P\)是包含0, 1的数集, 且对 \(P\)中任意两个数的加减乘除运算封闭, 则称
+\(P\)是一个数域.</p>
+<h1 id="线性空间">线性空间</h1>
 <p>在数域的基础上, 我们提出线性空间的概念:</p>
-<p>给定数域 \(P\) , 和集合 \(V\). 有如下映射:</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>+</mo><mo>:</mo><mi>V</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">+:V\times V\rightarrow V
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">+</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>⋅</mo><mo>:</mo><mi>P</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">\cdot:P\times V\rightarrow V
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
-<p>且 (\(V, P, +, \cdot\)) 满足<strong>八条基本性质</strong>, 则\(V\)称为一个线性空间.</p>
-<h1 id="赋范空间"><a class="markdownIt-Anchor" href="#赋范空间"></a> 赋范空间</h1>
+<p>给定数域 \(P\) , 和集合 \(V\). 有如下映射: <span
+class="math display">\[
++:V\times V\rightarrow V
+\]</span> <span class="math display">\[
+\cdot:P\times V\rightarrow V
+\]</span> 且 (\(V, P, +, \)) 满足<strong>八条基本性质</strong>,
+则\(V\)称为一个线性空间.</p>
+<h1 id="赋范空间">赋范空间</h1>
 <p><u>赋范空间是定义在线性空间之上的.</u></p>
-<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>⋅</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>:</mo><mi>V</mi><mo>→</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">||\cdot||:  V\rightarrow R
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span></p>
-<p>且该映射满足: 正定, 齐次, 三角不等式. 则 \(V\) 是一个赋范空间, 其中映射 \(||\cdot||\) 称为范数.</p>
-<h1 id="内积空间"><a class="markdownIt-Anchor" href="#内积空间"></a> 内积空间</h1>
+<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射: <span
+class="math display">\[
+||\cdot||:  V\rightarrow R
+\]</span> 且该映射满足: 正定, 齐次, 三角不等式. 则 \(V\) 是一个赋范空间,
+其中映射 \(||||\) 称为范数.</p>
+<h1 id="内积空间">内积空间</h1>
 <p><u>内积空间是定义在线性空间之上的.</u></p>
-<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>⋅</mo><mo>:</mo><mi>V</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">\cdot:  V\times V\rightarrow R
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span></p>
-<p>则 \(V\) 是一个内积空间.</p>
+<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射: <span
+class="math display">\[
+\cdot:  V\times V\rightarrow R
+\]</span> 则 \(V\) 是一个内积空间.</p>
 <div class="note note-info">
-            <p>定义了内积后, 我们可以讨论向量 (即线性空间的元素) 间的长度和夹角, 并进一步讨论正交性等.</p>
+            <p>定义了内积后, 我们可以讨论向量 (即线性空间的元素) 间的长度和夹角,并进一步讨论正交性等.</p>
           </div>
 <div class="note note-danger">
-            <p>注意: 内积本身具有自然定义的范数, 即内积可以诱导出范数, \(||x||=\sqrt{(x,x)}\), 因此内积空间含于赋范空间.</p>
+            <p>注意: 内积本身具有自然定义的范数, 即内积可以诱导出范数, \(||x||=\),因此内积空间含于赋范空间.</p>
           </div>
-<h1 id="度量空间"><a class="markdownIt-Anchor" href="#度量空间"></a> 度量空间</h1>
-<p>度量空间是某个具有距离函数的集合. 该函数定义的是集合内所有元素的距离, 即集合上的某种度量, 即:</p>
-<p>给定<strong>集合</strong>\(V\), 有映射:</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mo>:</mo><mi>V</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi mathvariant="bold">R</mi></mrow><annotation encoding="application/x-tex">d:V\times V\rightarrow \mathbf{R}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68611em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbf">R</span></span></span></span></span></span></p>
-<p>满足:</p>
-<p>\[
-\begin{aligned}
-&d(x,y)\geq0\quad (d(x,y)=0\Leftrightarrow x=0,y=0)\\
-&d(x,y)=d(y,x)\\
-&d(x,y)\leq d(x,z)+d(z,y)
-\end{aligned}
-\]</p>
+<h1 id="度量空间">度量空间</h1>
+<p>度量空间是某个具有距离函数的集合. 该函数定义的是集合内所有元素的距离,
+即集合上的某种度量, 即:</p>
+给定<strong>集合</strong>\(V\), 有映射: <span class="math display">\[
+d:V\times V\rightarrow \mathbf{R}
+\]</span> 满足:
+<p>
+[
+<span class="math display">\[\begin{aligned}
+&amp;d(x,y)\geq0\quad (d(x,y)=0\Leftrightarrow x=0,y=0)\\
+&amp;d(x,y)=d(y,x)\\
+&amp;d(x,y)\leq d(x,z)+d(z,y)
+\end{aligned}\]</span>
+]
+</p>
 <div class="note note-info">
             <p>注意: 此处并未要求线性结构.</p>
           </div>
 <div class="note note-danger">
-            <p><strong>注意: 赋范空间一定可以诱导出度量空间, 因此赋范空间含于度量空间</strong></p>
+            <p><strong>注意: 赋范空间一定可以诱导出度量空间,因此赋范空间含于度量空间</strong></p>
           </div>
-<h1 id="完备空间"><a class="markdownIt-Anchor" href="#完备空间"></a> 完备空间</h1>
+<h1 id="完备空间">完备空间</h1>
 <p>完备空间又称 Cauchy 空间. <u>完备空间是定义在度量空间之上的.</u></p>
-<p>若度量空间 \(M\) 中所有的柯西序列都收敛在 \(M\) 中的一点, 则 \(M\) 是一个完备空间.</p>
-<h1 id="hilbert空间"><a class="markdownIt-Anchor" href="#hilbert空间"></a> Hilbert空间</h1>
-<p>在<strong>内积空间</strong>的基础上增添<strong>完备性条件</strong>, 即得到<strong>Hilbert空间</strong>.</p>
-<h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
+<p>若度量空间 \(M\) 中所有的柯西序列都收敛在 \(M\) 中的一点, 则 \(M\)
+是一个完备空间.</p>
+<h1 id="hilbert空间">Hilbert空间</h1>
+<p>在<strong>内积空间</strong>的基础上增添<strong>完备性条件</strong>,
+即得到<strong>Hilbert空间</strong>.</p>
+<h1 id="总结">总结</h1>
 <p>范数运算+向量空间=(线性)赋范空间</p>
 <p>(线性)赋范空间 + 内积运算=内积空间</p>
 <p>(线性)赋范空间 + 完备性 = Banach 空间</p>
 <p>内积空间 + 完备性 = Hilbert 空间</p>
 <p>内积空间 + 完备性 + 有限维 = Euclidean 空间</p>
-<h1 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h1>
+<h1 id="references">References</h1>
 <p>zhihu:</p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/332144499/answer/731866608">https://www.zhihu.com/question/332144499/answer/731866608</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/42312263/answer/699451330">https://www.zhihu.com/question/42312263/answer/699451330</a></p>
+<p>https://www.zhihu.com/question/332144499/answer/731866608</p>
+<p>https://www.zhihu.com/question/42312263/answer/699451330</p>
 <p>wikipedia:</p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Complete_metric_space">https://en.wikipedia.org/wiki/Complete_metric_space</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Metric_space">https://en.wikipedia.org/wiki/Metric_space</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cauchy_sequence">https://en.wikipedia.org/wiki/Cauchy_sequence</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cauchy_sequence">https://en.wikipedia.org/wiki/Cauchy_sequence</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cauchy_sequence">https://en.wikipedia.org/wiki/Cauchy_sequence</a></p>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Normed_vector_space">https://en.wikipedia.org/wiki/Normed_vector_space</a></p>
+<p>https://en.wikipedia.org/wiki/Complete_metric_space</p>
+<p>https://en.wikipedia.org/wiki/Metric_space</p>
+<p>https://en.wikipedia.org/wiki/Cauchy_sequence</p>
+<p>https://en.wikipedia.org/wiki/Cauchy_sequence</p>
+<p>https://en.wikipedia.org/wiki/Cauchy_sequence</p>
+<p>https://en.wikipedia.org/wiki/Normed_vector_space</p>
 
               
             </div>

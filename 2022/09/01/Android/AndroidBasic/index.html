@@ -20,12 +20,12 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="“我只是想学kotlin而已” “我不理解”">
+    <meta name="description" content="&quot;我只是想学kotlin而已&quot; &quot;我不理解&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AndroidBasic">
 <meta property="og:url" content="https://andrew-rey.github.io/2022/09/01/Android/AndroidBasic/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="“我只是想学kotlin而已” “我不理解”">
+<meta property="og:description" content="&quot;我只是想学kotlin而已&quot; &quot;我不理解&quot;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://andrew-rey.github.io/index_imgs/android.png">
 <meta property="article:published_time" content="2022-09-01T07:59:05.000Z">
@@ -275,39 +275,51 @@
             
             <div class="markdown-body">
               
-              <p>“我只是想学kotlin而已”</p>
-<p>“我不理解”</p>
+              <p>"我只是想学kotlin而已"</p>
+<p>"我不理解"</p>
 <span id="more"></span>
-<h1 id="android-studio"><a class="markdownIt-Anchor" href="#android-studio"></a> Android Studio</h1>
-<p>一开始用的是Intelij IDEA, 后来觉得Android Studio挺香的. 当然前提是有JDK, Studio的话, 下载很快, 然后安装路径自选, 但是 <strong>注意在提示没有安装SDK的时候, 选择CANCEL</strong>, 安装完成后直接启动它.</p>
-<p>这时候会提示你没有安装SDK, 并且会告诉你安装哪些东西, 只要选择安装路径即可, 等待片刻.</p>
-<p>在<code>create device</code>里面, 可以新建<code>device</code>, 然后我新建了一个和我手机屏幕一样大的安卓虚拟机, 内存之类的看情况选, 没什么感觉.</p>
-<h1 id="组件"><a class="markdownIt-Anchor" href="#组件"></a> 组件</h1>
-<h2 id="activity"><a class="markdownIt-Anchor" href="#activity"></a> Activity</h2>
-<p>用于显示用户界面, 用户通过Activity交互完成相关操作, 一个APP可以有多个Activity</p>
-<h1 id="布局"><a class="markdownIt-Anchor" href="#布局"></a> 布局</h1>
-<h2 id="linear-layout"><a class="markdownIt-Anchor" href="#linear-layout"></a> Linear Layout</h2>
+<h1 id="android-studio">Android Studio</h1>
+<p>一开始用的是Intelij IDEA, 后来觉得Android Studio挺香的.
+当然前提是有JDK, Studio的话, 下载很快, 然后安装路径自选, 但是
+<strong>注意在提示没有安装SDK的时候, 选择CANCEL</strong>,
+安装完成后直接启动它.</p>
+<p>这时候会提示你没有安装SDK, 并且会告诉你安装哪些东西,
+只要选择安装路径即可, 等待片刻.</p>
+<p>在<code>create device</code>里面, 可以新建<code>device</code>,
+然后我新建了一个和我手机屏幕一样大的安卓虚拟机, 内存之类的看情况选,
+没什么感觉.</p>
+<h1 id="组件">组件</h1>
+<h2 id="activity">Activity</h2>
+<p>用于显示用户界面, 用户通过Activity交互完成相关操作,
+一个APP可以有多个Activity</p>
+<h1 id="布局">布局</h1>
+<h2 id="linear-layout">Linear Layout</h2>
 <p>比较常用的属性:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml">android:id<br>android:layout_width<br>android:layout_height<br>android:background<br>android:layout_margin<br>android:layout_padding<br>android:layout_orientation<br>android:gravity  <span class="hljs-comment">&lt;!--相对位置--&gt;</span><br>android:layout_weight  <span class="hljs-comment">&lt;!--将剩余内容平分--&gt;</span><br></code></pre></td></tr></table></figure>
-<h2 id="relative-layout"><a class="markdownIt-Anchor" href="#relative-layout"></a> Relative Layout</h2>
+<h2 id="relative-layout">Relative Layout</h2>
 <p>比较常用的属性:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml">android:layout_toLeftOf<br>androidLlayout_toRightOf<br>android:alignBottom<br>android:alignParentBottom<br>android:layout_below<br></code></pre></td></tr></table></figure>
-<h1 id="控件"><a class="markdownIt-Anchor" href="#控件"></a> 控件</h1>
-<h2 id="text-view"><a class="markdownIt-Anchor" href="#text-view"></a> Text View</h2>
-<p>可以实现 <strong>文字大小, 颜色; 显示不下时使用…; 文字加icon; 中划线, 下划线; 跑马灯</strong></p>
+<h1 id="控件">控件</h1>
+<h2 id="text-view">Text View</h2>
+<p>可以实现 <strong>文字大小, 颜色; 显示不下时使用...; 文字加icon;
+中划线, 下划线; 跑马灯</strong></p>
 <p><code>kotlin</code>实现中划线要重写扩展方法<code>apply()</code></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">my_text_view.apply &#123;<br>    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAGS or Paint.ANTI_ALIAS_FLAG<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="material-button"><a class="markdownIt-Anchor" href="#material-button"></a> Material Button</h2>
+<h2 id="material-button">Material Button</h2>
 <p>谷歌给的<code>Button</code>控件, 继承了之前的<code>Button</code></p>
 <p>需要在<code>app/build.gradle</code>中添加依赖:</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">implementation <span class="hljs-keyword">group</span>: <span class="hljs-string">&#x27;com.google.android.material&#x27;</span>, name: <span class="hljs-string">&#x27;material&#x27;</span>, version: <span class="hljs-string">&#x27;1.4.0&#x27;</span><br></code></pre></td></tr></table></figure>
-<p>还需要更换谷歌它指定的样式主题, 在<code>values/theme.xml</code>中将主题改为</p>
+<p>还需要更换谷歌它指定的样式主题,
+在<code>values/theme.xml</code>中将主题改为</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">Theme.MaterialComponents.Light.NoActionBar<br></code></pre></td></tr></table></figure>
-<p>同步后便可以使用谷歌的<code>MaterialButton</code>, 不过为了修改属性, 用到了<code>app</code>和<code>tool</code>, 因此在相应的<code>activity</code>文件头添加:</p>
+<p>同步后便可以使用谷歌的<code>MaterialButton</code>, 不过为了修改属性,
+用到了<code>app</code>和<code>tool</code>,
+因此在相应的<code>activity</code>文件头添加:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;<br>xmlns:tools=&quot;http://schemas.android.com/tools&quot;<br></code></pre></td></tr></table></figure>
 <p>以示礼貌</p>
 <p><strong>重点</strong></p>
-<p>按钮又不是摆设, 所以要设计相应的页面跳转, 也就是需要实现相应的<code>clickListener</code></p>
+<p>按钮又不是摆设, 所以要设计相应的页面跳转,
+也就是需要实现相应的<code>clickListener</code></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> ...</span><br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">lateinit</span> <span class="hljs-keyword">var</span> mBtn: MaterialButton<br><br>    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> onCreate ...</span><br><br>        mBtn = findViewById(R.id.button_name)<br>        mBtn.setOnClickListener() &#123;<br>            startActivity(Intent(<span class="hljs-keyword">this</span>, OtherActivity::<span class="hljs-keyword">class</span>.java))<br>        &#125;<br></code></pre></td></tr></table></figure>
 <p>接着是颜值比较高的选择栏设计:</p>
 

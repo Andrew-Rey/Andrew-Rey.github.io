@@ -277,9 +277,9 @@
               
               <p>CMake version: 3.x</p>
 <span id="more"></span>
-<h1 id="command-line"><a class="markdownIt-Anchor" href="#command-line"></a> Command Line</h1>
+<h1 id="command-line">Command Line</h1>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># (configure step) create build dir, and generate build/Makefile -&gt; generate Makefile</span><br>cmake -B build<br><br><span class="hljs-comment"># (build step) invoke building system and build the project in different OS -&gt; generate executable file</span><br>cmake --build build -j4<br><br><span class="hljs-comment"># invoke building system to execute target &quot;install&quot;</span><br>cmake --build build --<span class="hljs-keyword">target</span> <span class="hljs-keyword">install</span><br><br><span class="hljs-comment"># define configure variables, only use in configure step</span><br><span class="hljs-comment"># use -D</span><br><span class="hljs-comment"># set build type in configure step, the value will remain when invoked the second time unless delete build dir</span><br>cmake -B build -DCMAKE_BUILD_TYPE=Release<br><br><span class="hljs-comment"># Specify generator (generator: generate build system build rule from CMakeLists.txt)</span><br><span class="hljs-comment"># use -G</span><br><span class="hljs-comment"># generator Ninja, faster than Unix Makefile, generate *.ninja</span><br>cmake -B build -G Ninja<br></code></pre></td></tr></table></figure>
-<h1 id="cmakeliststxt"><a class="markdownIt-Anchor" href="#cmakeliststxt"></a> CMakeLists.txt</h1>
+<h1 id="cmakelists.txt">CMakeLists.txt</h1>
 <p><strong>add source file</strong></p>
 <p>(1). single file: main.cpp</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_executable</span>(main main.cpp)<br></code></pre></td></tr></table></figure>
@@ -297,64 +297,79 @@
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># add all file in current dir and mylib dir</span><br><span class="hljs-keyword">add_executable</span>(main)<br><span class="hljs-keyword">aux_source_directory</span>(. sources)<br><span class="hljs-keyword">aux_source_directory</span>(mylib sources)<br><span class="hljs-keyword">target_sources</span>(main PUBLIC <span class="hljs-variable">$&#123;sources&#125;</span>)<br></code></pre></td></tr></table></figure>
 <p>or use <strong>GLOB_RECURSE</strong> to find all files recursely:</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_executable</span>(main)<br><span class="hljs-keyword">file</span>(GLOB_RECURSE sources CONFIGURE_DEPENDS *.cpp *.h)<br><span class="hljs-keyword">target_sources</span>(main PUBLIC <span class="hljs-variable">$&#123;sources&#125;</span>)<br></code></pre></td></tr></table></figure>
-<p><strong>ERROR</strong>: use GLOB_RECURSE will include *.cpp files in build dir.</p>
-<p><strong>solution</strong>: Add all source files in a dir named src</p>
-<h2 id="configure-variables"><a class="markdownIt-Anchor" href="#configure-variables"></a> Configure variables</h2>
-<p><strong>CMAKE_BUILD_TYPE</strong>: type of build, <strong>Release</strong>, <strong>Debug</strong>, <strong>MinSizeRel</strong> and <strong>RelWithDebInfo</strong>, defualt: none (debug).</p>
+<p><strong>ERROR</strong>: use GLOB_RECURSE will include *.cpp files in
+build dir.</p>
+<p><strong>solution</strong>: Add all source files in a dir named
+src</p>
+<h2 id="configure-variables">Configure variables</h2>
+<p><strong>CMAKE_BUILD_TYPE</strong>: type of build,
+<strong>Release</strong>, <strong>Debug</strong>,
+<strong>MinSizeRel</strong> and <strong>RelWithDebInfo</strong>,
+defualt: none (debug).</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">set</span>(CMAKE_BUILD_TYPE Release)<br></code></pre></td></tr></table></figure>
-<p>set default build type as Release to reach high performance: in the first three lines:</p>
+<p>set default build type as Release to reach high performance: in the
+first three lines:</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">NOT</span> CMAKE_BUILD_TYPE)<br>    <span class="hljs-keyword">set</span>(CMAKE_BUILD_TYPE Release)<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># Specify version of cmake</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.22</span>)<br><br><span class="hljs-comment"># set c++ standard</span><br><span class="hljs-comment"># don&#x27;t modify CMAKE_CXX_FLAGS to add -std=c++17</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)<br><br><span class="hljs-comment"># if use the needed CXX standard defined.</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">ON</span>)  <span class="hljs-comment"># OFF default</span><br><br><span class="hljs-comment"># prevent features GCC only</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_EXTENSIONS <span class="hljs-keyword">OFF</span>)<br><br><span class="hljs-comment"># set project info</span><br><span class="hljs-keyword">project</span>(project_name LANGUAGES language_list(such as C CXX ASM...))<br></code></pre></td></tr></table></figure>
-<h2 id="linkable-library"><a class="markdownIt-Anchor" href="#linkable-library"></a> Linkable library</h2>
+<h2 id="linkable-library">Linkable library</h2>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_executable</span>(main mian.cpp mylib.cpp)<br></code></pre></td></tr></table></figure>
 <p>or generate a static library</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_library</span>(mylib STATIC mylib.cpp)  <span class="hljs-comment"># create libmylib.a</span><br><br><span class="hljs-keyword">add_executable</span>(main main.cpp)<br><br><span class="hljs-keyword">target_link_libraries</span>(main PUBLIC mylib)<br></code></pre></td></tr></table></figure>
 <p>or generate dynamic lib</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_library</span>(mylib SHARED mylib.cpp)<br><br><span class="hljs-keyword">add_executable</span>(main main.cpp)<br><br><span class="hljs-keyword">target_link_libraries</span>(main PUBLIC mylib)<br></code></pre></td></tr></table></figure>
-<p>or use object lib, no *.a file, let CMake remember which objects files are created</p>
+<p>or use object lib, no *.a file, let CMake remember which objects
+files are created</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">add_library</span>(mylib OBJECT mylib.cpp)<br><br><span class="hljs-keyword">add_executable</span>(main main.cpp)<br><br><span class="hljs-keyword">target_link_libraries</span>(main PUBLIC mylib)<br></code></pre></td></tr></table></figure>
-<p>静态库问题: GCC会自行剔除没有引用符号的对象, 此时使用对象库避免, 从而不会自动剔除没引用到的对象文件, 绕开编译器不统一问题. 动态库也可以避免剔除没引用的对象文件, 但引入了运行时链接的麻烦.</p>
+<p>静态库问题: GCC会自行剔除没有引用符号的对象, 此时使用对象库避免,
+从而不会自动剔除没引用到的对象文件, 绕开编译器不统一问题.
+动态库也可以避免剔除没引用的对象文件, 但引入了运行时链接的麻烦.</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># no specify variable in add_library()</span><br><span class="hljs-keyword">set</span>(BUILD_SHARED_LIBS <span class="hljs-keyword">ON</span>)  <span class="hljs-comment"># default OFF</span><br><br><span class="hljs-keyword">add_library</span>(mylib mylib.cpp)<br></code></pre></td></tr></table></figure>
-<p><strong>HINT</strong> 静态库常常被认为直接链接到可执行文件上. 因此在动态库中不要链接静态库. 很呆. 地址会变. 当然<strong>解决方法</strong>是: 要么转化为对象库, 要么让静态库变成地址无关的代码PIC</p>
+<p><strong>HINT</strong> 静态库常常被认为直接链接到可执行文件上.
+因此在动态库中不要链接静态库. 很呆. 地址会变.
+当然<strong>解决方法</strong>是: 要么转化为对象库,
+要么让静态库变成地址无关的代码PIC</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># set global property</span><br><span class="hljs-keyword">set</span>(CMAKE_POSITION_INDEPENDENT_CODE <span class="hljs-keyword">ON</span>)<br><br><span class="hljs-keyword">add_library</span>(otherlib STATIC otherlib.cpp)<br><br><span class="hljs-keyword">add_library</span>(mylib SHARED mylib.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(mylib PUBLIC otherlib)<br><br><span class="hljs-keyword">add_executable</span>(main main.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(main PUBLIC mylib)<br></code></pre></td></tr></table></figure>
 <p>or set local property</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># set local property</span><br><span class="hljs-keyword">add_library</span>(otherlib STATIC otherlib.cpp)<br><span class="hljs-keyword">set_property</span>(<span class="hljs-keyword">TARGET</span> otherlib PROPERTY POSITION_INDEPENDENT_CODE <span class="hljs-keyword">ON</span>)<br><br><span class="hljs-keyword">add_library</span>(mylib SHARED mylib.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(mylib PUBLIC otherlib)<br><br>add_execuable(main main.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(main PUBLIC mylib)<br></code></pre></td></tr></table></figure>
-<h2 id="attributes-of-objects"><a class="markdownIt-Anchor" href="#attributes-of-objects"></a> Attributes of objects</h2>
+<h2 id="attributes-of-objects">Attributes of objects</h2>
 <p>设置单属性: <code>set_property(TARGET ... PROPERTY ...)</code>;</p>
-<p>设置多属性: <code>set_target_properties(file_name PROPERTIES properties_list)</code></p>
-<p><strong>HINT</strong>: 以上命令在<code>add_executable</code>后有效.</p>
-<p>设置全局属性 (改变属性的默认值): <code>set(CMAKE_XXX)</code>, 在<code>add_executable</code>前设置.</p>
+<p>设置多属性:
+<code>set_target_properties(file_name PROPERTIES properties_list)</code></p>
+<p><strong>HINT</strong>:
+以上命令在<code>add_executable</code>后有效.</p>
+<p>设置全局属性 (改变属性的默认值): <code>set(CMAKE_XXX)</code>,
+在<code>add_executable</code>前设置.</p>
 <blockquote>
-<p>如果需要在Windows下面使用动态库 (Windows对动态链接不友好), 则需要在定义和声明添加:<br />
-<strong>Deffinition:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _MSC_VER</span><br>__declspec(dllexport)<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sayy_hello</span><span class="hljs-params">()</span></span>&#123;&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>Declaration:</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _MSC_VER</span><br>__declspec(dllimport)<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">say_hello</span><span class="hljs-params">()</span></span>;<br></code></pre></td></tr></table></figure>
-<p>然后CMakeLists.txt这样写:</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># In Main dir</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.22</span>)<br><span class="hljs-keyword">add_subdirectory</span>(mylib)  <span class="hljs-comment"># add sub module</span><br><span class="hljs-keyword">add_executable</span>(main main.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(main PUBLIC mylib)<br><br><span class="hljs-comment"># In sub module dir</span><br><span class="hljs-keyword">add_library</span>(mylib SHARED mylib.cpp mylib.h)<br></code></pre></td></tr></table></figure>
-<p>然后Windows极有可能会报错: 运行时找不到dll; 原因是dll和exe不在同一目录 (Windows只会查找exe所在目录和PATH).</p>
-<ul>
-<li>把dll添加到PATH环境变量</li>
-<li>或者dll和dll其他的所有依赖dll, 全部拷贝到exe同一目录</li>
-</ul>
+<p>如果需要在Windows下面使用动态库 (Windows对动态链接不友好),
+则需要在定义和声明添加: <strong>Deffinition:</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstdio&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _MSC_VER</span><br>__declspec(dllexport)<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">sayy_hello</span><span class="hljs-params">()</span></span>&#123;&#125;<br></code></pre></td></tr></table></figure>
+<strong>Declaration:</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _MSC_VER</span><br>__declspec(dllimport)<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">say_hello</span><span class="hljs-params">()</span></span>;<br></code></pre></td></tr></table></figure> 然后CMakeLists.txt这样写:
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># In Main dir</span><br><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.22</span>)<br><span class="hljs-keyword">add_subdirectory</span>(mylib)  <span class="hljs-comment"># add sub module</span><br><span class="hljs-keyword">add_executable</span>(main main.cpp)<br><span class="hljs-keyword">target_link_libraries</span>(main PUBLIC mylib)<br><br><span class="hljs-comment"># In sub module dir</span><br><span class="hljs-keyword">add_library</span>(mylib SHARED mylib.cpp mylib.h)<br></code></pre></td></tr></table></figure> 然后Windows极有可能会报错: 运行时找不到dll;
+原因是dll和exe不在同一目录 (Windows只会查找exe所在目录和PATH). -
+把dll添加到PATH环境变量 - 或者dll和dll其他的所有依赖dll,
+全部拷贝到exe同一目录</p>
 <p>这是因为CMake把main放在build下, 而mylib放在build/mylib/mylib.dll</p>
 </blockquote>
-<p>因此重定向输出路径, 改变mylib属性, 让.dll文件输出到 <strong>PROJECT_BINARY_DIR</strong> 里面.</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">set_property</span>(<span class="hljs-keyword">TARGET</span> mylib PROPERTY RUNTIME_OUTPUT_DIRECTORY_(DEBUG | RELEASE | NONE) | ARCHIVE_OUTPUT_DIRECTORY | LIBRARY_OUTPUT_DIRECTORY <span class="hljs-variable">$&#123;PROJECT_BINARY_DIR&#125;</span>)<br></code></pre></td></tr></table></figure>
-<h2 id="externel-library"><a class="markdownIt-Anchor" href="#externel-library"></a> Externel library</h2>
-<p>In Linux: feel free to link externel libraries. (/usr/lib/…) But Windows can’t. Linux can also include head file directly (/usr/include/…).</p>
-<p><strong>HINT:</strong> CMake 的分隔符永远是 “/”, 即使是Windows, CMake会自动转化.</p>
-<p>More general method:</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">find_package</span>(package_name REQUIRED)<br></code></pre></td></tr></table></figure>
+<p>因此重定向输出路径, 改变mylib属性, 让.dll文件输出到
+<strong>PROJECT_BINARY_DIR</strong> 里面. <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">set_property</span>(<span class="hljs-keyword">TARGET</span> mylib PROPERTY RUNTIME_OUTPUT_DIRECTORY_(DEBUG | RELEASE | NONE) | ARCHIVE_OUTPUT_DIRECTORY | LIBRARY_OUTPUT_DIRECTORY <span class="hljs-variable">$&#123;PROJECT_BINARY_DIR&#125;</span>)<br></code></pre></td></tr></table></figure></p>
+<h2 id="externel-library">Externel library</h2>
+<p>In Linux: feel free to link externel libraries. (/usr/lib/...) But
+Windows can't. Linux can also include head file directly
+(/usr/include/...).</p>
+<p><strong>HINT:</strong> CMake 的分隔符永远是 "/", 即使是Windows,
+CMake会自动转化.</p>
+<p>More general method: <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">find_package</span>(package_name REQUIRED)<br></code></pre></td></tr></table></figure></p>
 <p>没听懂, 以后补, 以后也不想补.</p>
-<h2 id="variables-and-outputs"><a class="markdownIt-Anchor" href="#variables-and-outputs"></a> Variables and Outputs</h2>
-<p>output some log infomation when running <code>cmake -B build</code>, used for debugging.</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">message</span>(<span class="hljs-string">&quot;log info&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="variables-and-outputs">Variables and Outputs</h2>
+<p>output some log infomation when running <code>cmake -B build</code>,
+used for debugging. <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">message</span>(<span class="hljs-string">&quot;log info&quot;</span>)<br></code></pre></td></tr></table></figure></p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;status info&quot;</span>)  <span class="hljs-comment"># -- prefix</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">message</span>(WARNING <span class="hljs-string">&quot;warning info&quot;</span>)  <span class="hljs-comment"># yellow</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">message</span>(SEND_ERROR <span class="hljs-string">&quot;error info&quot;</span>)  <span class="hljs-comment"># send error log but continue to run</span><br><br><span class="hljs-keyword">message</span>(FATAL_ERROR <span class="hljs-string">&quot;error info&quot;</span>)  <span class="hljs-comment"># print error and stop running</span><br></code></pre></td></tr></table></figure>
-<h2 id="variable-and-cache"><a class="markdownIt-Anchor" href="#variable-and-cache"></a> Variable and Cache</h2>
-<p>重复执行<code>cmake -B build</code>: 第一次较慢, 将环境的检测存入缓存, 第二次以及以后直接查看缓存内容. 因此某些错误可以通过删除 <strong>./build/CMakeCache.txt</strong>解决. 当然也可以删了整个build文件夹重新编译, 慢一点而已.</p>
+<h2 id="variable-and-cache">Variable and Cache</h2>
+<p>重复执行<code>cmake -B build</code>: 第一次较慢,
+将环境的检测存入缓存, 第二次以及以后直接查看缓存内容.
+因此某些错误可以通过删除 <strong>./build/CMakeCache.txt</strong>解决.
+当然也可以删了整个build文件夹重新编译, 慢一点而已.</p>
 
               
             </div>
