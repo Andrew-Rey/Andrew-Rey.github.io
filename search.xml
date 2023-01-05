@@ -417,48 +417,63 @@ p=lim_{x\rightarrow\infty}xsin (1/x)
   <entry>
     <title>Compiler-zh</title>
     <url>/2022/09/05/CS/Compiler-zh/</url>
-    <content><![CDATA[<p>“编译原理网课”</p>
-<p>“B站大学不用交学费!!!”</p>
+    <content><![CDATA[<p>"编译原理网课"</p>
+<p>"B站大学不用交学费!!!"</p>
 <span id="more"></span>
-<h1 id="引论"><a href="#引论" class="headerlink" title="引论"></a>引论</h1><p><strong>编译</strong>: 由高级语言转化为低级语言</p>
-<p><strong>解释</strong>: 接受高级语言的 <strong>一个语句输入</strong>, 进行解释并执行, 立刻得到执行结果, 然后再接受下一句.</p>
+<h1 id="引论">引论</h1>
+<p><strong>编译</strong>: 由高级语言转化为低级语言</p>
+<p><strong>解释</strong>: 接受高级语言的 <strong>一个语句输入</strong>,
+进行解释并执行, 立刻得到执行结果, 然后再接受下一句.</p>
 <ul>
 <li>不产生目标文件, 直观易懂, 结构简单, 易于人机对话</li>
 <li>但效率低: 没有目标文件, 每次运行相当于要重新解释</li>
 </ul>
 <p><strong>编译的两个转换形式</strong></p>
 <ul>
-<li>编译 - 运行<ul>
+<li>编译 - 运行
+<ul>
 <li>先编译产生机器语言, 生成目标文件(.exe), 在运行时添加参数</li>
-</ul>
-</li>
-<li>编译 - 汇编 - 运行<ul>
-<li>编译后产生汇编语言, 生成目标文件(.obj), 汇编语言汇编后产生机器语言</li>
-</ul>
-</li>
+</ul></li>
+<li>编译 - 汇编 - 运行
+<ul>
+<li>编译后产生汇编语言, 生成目标文件(.obj),
+汇编语言汇编后产生机器语言</li>
+</ul></li>
 </ul>
 <p><strong>编译过程</strong></p>
-<p>源程序 -&gt; Lexical analyzer -&gt; Syntax analyzer -&gt; Semmantic Analyzer -&gt; Intermediate code generation -&gt; Optimization -&gt; Code generation -&gt; Target</p>
+<p>源程序 -&gt; Lexical analyzer -&gt; Syntax analyzer -&gt; Semmantic
+Analyzer -&gt; Intermediate code generation -&gt; Optimization -&gt;
+Code generation -&gt; Target</p>
 <p>symbol table management, error handler</p>
-<h2 id="词法分析-Lexical-Analysis"><a href="#词法分析-Lexical-Analysis" class="headerlink" title="词法分析 Lexical Analysis"></a>词法分析 Lexical Analysis</h2><p>扫描源程序, 识别一个个 <strong>单词lexeme</strong>, 并进行 <strong>分类token</strong> (包括: keyword, constant, identifier, operator, separator). 转化后的格式为 <token-name, attr-value>, 前者为token, 后者为 <strong>指向符号表的指针</strong>.</p>
-<p>描述词法规则的有效工具是 <strong>正规式</strong>和<strong>有限自动机</strong></p>
-<h2 id="语法分析-Syntax-Analysis"><a href="#语法分析-Syntax-Analysis" class="headerlink" title="语法分析 Syntax Analysis"></a>语法分析 Syntax Analysis</h2><p>把单词符号组成各类各类的语法单位, 如短语, 句子, 过程, 程序等</p>
-<p>方法: </p>
+<h2 id="词法分析-lexical-analysis">词法分析 Lexical Analysis</h2>
+<p>扫描源程序, 识别一个个 <strong>单词lexeme</strong>, 并进行
+<strong>分类token</strong> (包括: keyword, constant, identifier,
+operator, separator). 转化后的格式为 &lt;token-name, attr-value&gt;,
+前者为token, 后者为 <strong>指向符号表的指针</strong>.</p>
+<p>描述词法规则的有效工具是
+<strong>正规式</strong>和<strong>有限自动机</strong></p>
+<h2 id="语法分析-syntax-analysis">语法分析 Syntax Analysis</h2>
+<p>把单词符号组成各类各类的语法单位, 如短语, 句子, 过程, 程序等</p>
+<p>方法:</p>
 <ul>
-<li>derive:<ul>
+<li>derive:
+<ul>
 <li>最右推导: 每次将最右的部分按照规则进行转化</li>
 <li>最左推导:</li>
-</ul>
-</li>
-<li>reduce: 推导的逆过程<ul>
+</ul></li>
+<li>reduce: 推导的逆过程
+<ul>
 <li>最左归约: 最右推导的逆过程</li>
 <li>最右归约: 最左推导的逆过程</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>计算机处理方法: <strong>语法树</strong></p>
-<h2 id="语义分析-Semmantic-Ananlysis"><a href="#语义分析-Semmantic-Ananlysis" class="headerlink" title="语义分析 Semmantic Ananlysis"></a>语义分析 Semmantic Ananlysis</h2><p>审查源程序有无语义错误, 为代码生成阶段收集类型信息. 重要的一步是 <strong>类型检查</strong></p>
-<h2 id="中间代码生成-Intermediate-Code-Generation"><a href="#中间代码生成-Intermediate-Code-Generation" class="headerlink" title="中间代码生成 Intermediate Code Generation"></a>中间代码生成 Intermediate Code Generation</h2><p>中间代码设计原则</p>
+<h2 id="语义分析-semmantic-ananlysis">语义分析 Semmantic Ananlysis</h2>
+<p>审查源程序有无语义错误, 为代码生成阶段收集类型信息. 重要的一步是
+<strong>类型检查</strong></p>
+<h2 id="中间代码生成-intermediate-code-generation">中间代码生成
+Intermediate Code Generation</h2>
+<p>中间代码设计原则</p>
 <ul>
 <li>容易生成</li>
 <li>容易翻译为目标代码</li>
@@ -467,317 +482,437 @@ p=lim_{x\rightarrow\infty}xsin (1/x)
 <ul>
 <li>四元式: &lt;运算符, 操作数1, 操作数2, 结果&gt;</li>
 </ul>
-<h2 id="优化-Optimization"><a href="#优化-Optimization" class="headerlink" title="优化 Optimization"></a>优化 Optimization</h2><p>原则: <strong>等价变换</strong></p>
+<h2 id="优化-optimization">优化 Optimization</h2>
+<p>原则: <strong>等价变换</strong></p>
 <p>主要方面: 公共子表达式的提取, 合并已知量, 删除无用语句, 循环优化</p>
-<h2 id="目标代码生成-Code-Generation"><a href="#目标代码生成-Code-Generation" class="headerlink" title="目标代码生成 Code Generation"></a>目标代码生成 Code Generation</h2><p>将经过优化的中间代码转化为特定机器上的低级语言</p>
+<h2 id="目标代码生成-code-generation">目标代码生成 Code Generation</h2>
+<p>将经过优化的中间代码转化为特定机器上的低级语言</p>
 <p>目标代码的形式:</p>
 <ul>
 <li>绝对指令代码: 可立即执行的目标代码, 纯粹的0-1代码.</li>
-<li>汇编指令代码: 汇编语言程序, 需要通过汇编程序汇编后才能运行, 能和物理机隔离.</li>
-<li>可重定位指令代码: 先将各目标模块连接起来, 确定变量, 常数在主存中的位置, 装入主存后才能成为可以运行的绝对指令代码, 而后还需要进行 <strong>链接</strong>.</li>
+<li>汇编指令代码: 汇编语言程序, 需要通过汇编程序汇编后才能运行,
+能和物理机隔离.</li>
+<li>可重定位指令代码: 先将各目标模块连接起来, 确定变量,
+常数在主存中的位置, 装入主存后才能成为可以运行的绝对指令代码,
+而后还需要进行 <strong>链接</strong>.</li>
 </ul>
-<h2 id="表格管理-Symbol-Table-Management"><a href="#表格管理-Symbol-Table-Management" class="headerlink" title="表格管理 Symbol Table Management"></a>表格管理 Symbol Table Management</h2><p>用来记录源程序的各种信息和编译过程中的各种状况.</p>
-<p>与编译前三段有关的表格有: 符号表, 常数表, 标号表, 分程序入口表, 中间代码表<br>&lt;!— </p>
-<h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>information</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>m</td>
-<td>整型, 变量地址</td>
-</tr>
-<tr>
-<td>n</td>
-<td>整型, 变量地址</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="常数表"><a href="#常数表" class="headerlink" title="常数表"></a>常数表</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-</tr>
-<tr>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="标号表"><a href="#标号表" class="headerlink" title="标号表"></a>标号表</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>information</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>xx</td>
-<td>某句话</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>*某句话是在 —&gt;</p>
-<h2 id="错误处理-Error-Handler"><a href="#错误处理-Error-Handler" class="headerlink" title="错误处理 Error Handler"></a>错误处理 Error Handler</h2><p>如果源程序出错, 编译程序应该设法发现错误, 并报告给用户.</p>
-<h2 id="其他概念"><a href="#其他概念" class="headerlink" title="其他概念"></a>其他概念</h2><p><strong>趟/遍 pass</strong>: 将源程序从头到尾扫描一遍, 做相应的加工处理, 并生成相应的中间代码和目标代码. 多遍扫描可以节省内存空间, 提高目标代码质量, 使编译的逻辑结构更清楚, 但编译时间长, 因此 no free launch.</p>
+<h2 id="表格管理-symbol-table-management">表格管理 Symbol Table
+Management</h2>
+<p>用来记录源程序的各种信息和编译过程中的各种状况.</p>
+<p>与编译前三段有关的表格有: 符号表, 常数表, 标号表, 分程序入口表,
+中间代码表 <!-- 
+### 符号表
+
+| name | information |
+|------|-------------|
+| m | 整型, 变量地址 |
+| n | 整型, 变量地址 |
+
+### 常数表
+
+|value|
+|-----|
+|1|
+|4|
+
+### 标号表
+
+|name|information|
+|----|-----------|
+|xx|某句话|
+
+*某句话是在 --></p>
+<h2 id="错误处理-error-handler">错误处理 Error Handler</h2>
+<p>如果源程序出错, 编译程序应该设法发现错误, 并报告给用户.</p>
+<h2 id="其他概念">其他概念</h2>
+<p><strong>趟/遍 pass</strong>: 将源程序从头到尾扫描一遍,
+做相应的加工处理, 并生成相应的中间代码和目标代码.
+多遍扫描可以节省内存空间, 提高目标代码质量, 使编译的逻辑结构更清楚,
+但编译时间长, 因此 no free launch.</p>
 <p>因此在一遍编译中:</p>
 <p>源程序 -&gt; 编译程序 -&gt; 目标代码</p>
 <p><strong>编译程序的编写</strong></p>
 <ul>
 <li>直接用机器语言</li>
-<li>用汇编语言编写, 编译程序的核心部分常用汇编语言编写<ul>
-<li>编译程序怎么生成? 编译程序是用汇编语言编写的, 汇编语言经过汇编后即可生成编译程序(可执行), 再利用这个编译程序将自己的源代码变为目标代码.</li>
-</ul>
-</li>
-<li>用高级语言编写, 普遍采用的方法.<ul>
-<li>例如用C语言写成的编译程序, 则先用C语言的编译器将C源程序编译为exe, 再用于分析其他语言, 也可以是C语言.</li>
-</ul>
-</li>
-<li>自编译<ul>
-<li>先编写一个很小的编译程序的核心, 再由这个核心逐渐去分析, 编译其他代码.</li>
-</ul>
-</li>
+<li>用汇编语言编写, 编译程序的核心部分常用汇编语言编写
+<ul>
+<li>编译程序怎么生成? 编译程序是用汇编语言编写的,
+汇编语言经过汇编后即可生成编译程序(可执行),
+再利用这个编译程序将自己的源代码变为目标代码.</li>
+</ul></li>
+<li>用高级语言编写, 普遍采用的方法.
+<ul>
+<li>例如用C语言写成的编译程序, 则先用C语言的编译器将C源程序编译为exe,
+再用于分析其他语言, 也可以是C语言.</li>
+</ul></li>
+<li>自编译
+<ul>
+<li>先编写一个很小的编译程序的核心, 再由这个核心逐渐去分析,
+编译其他代码.</li>
+</ul></li>
 <li>编译工具: LEX(词法分析), YACC(语法分析)</li>
 <li>移植: 同种语言的编译程序在不同类型的机器之间移植</li>
 </ul>
-<h1 id="编译基础"><a href="#编译基础" class="headerlink" title="编译基础"></a>编译基础</h1><p>高级语言是一个记号系统. </p>
+<h1 id="编译基础">编译基础</h1>
+<p>高级语言是一个记号系统.</p>
 <ul>
 <li>语法</li>
 <li>语义</li>
 </ul>
-<p><strong>语法</strong> 包括 <strong>词法规则</strong> 和 <strong>语法规则</strong></p>
+<p><strong>语法</strong> 包括 <strong>词法规则</strong> 和
+<strong>语法规则</strong></p>
 <ul>
-<li>词法规则: 判断每一个”单词”是否正确, 规定了哪些符号是是单词符号(最基本结构; 常数, 标识符, 基本字, 算符, 界限符等); 用正规式和有限自动机描述和分析</li>
-<li>语法规则: 结合单词是否是语言中的语法单位(表达式), 规定如何用单词形成语法单位, 包括表达式, 子句, 语句, 函数, 过程, 程序等.</li>
+<li>词法规则: 判断每一个"单词"是否正确,
+规定了哪些符号是是单词符号(最基本结构; 常数, 标识符, 基本字, 算符,
+界限符等); 用正规式和有限自动机描述和分析</li>
+<li>语法规则: 结合单词是否是语言中的语法单位(表达式),
+规定如何用单词形成语法单位, 包括表达式, 子句, 语句, 函数, 过程,
+程序等.</li>
 </ul>
-<p><strong>语义</strong> 给出单词符号和语法符号的意义, 大多数编译程序使用基于属性文法的语法制导翻译方法来分析语义.</p>
+<p><strong>语义</strong> 给出单词符号和语法符号的意义,
+大多数编译程序使用基于属性文法的语法制导翻译方法来分析语义.</p>
 <p>重点是正规文法, 上下文无关文法及其对应的有限自动机和下推自动机.</p>
-<h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h2><p><strong>字母表</strong>: 符号的非空有穷集合, 用$V, \Sigma$表示. 所使用的符号均出自字符表.</p>
+<h2 id="一些概念">一些概念</h2>
+<p><strong>字母表</strong>: 符号的非空有穷集合, 用<span
+class="math inline">\(V, \Sigma\)</span>表示.
+所使用的符号均出自字符表.</p>
 <p><strong>符号</strong>: 语言中最基本的不可再分的单位.</p>
-<p><strong>符号串</strong>: 字符表中符号组成的有穷序列. <strong>空串</strong> 用$\epsilon$表示.</p>
+<p><strong>符号串</strong>: 字符表中符号组成的有穷序列.
+<strong>空串</strong> 用<span
+class="math inline">\(\epsilon\)</span>表示.</p>
 <p><strong>句子</strong>: 字母表上符合某种规则构成的串</p>
 <p><strong>语言</strong>: 字母表上句子的集合</p>
 <p>*小写字母表示符号, 大写字母表示集合, 希腊字母表示符号串.</p>
-<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p><strong>连接(乘积)运算</strong></p>
-<script type="math/tex; mode=display">
+<h3 id="运算">运算</h3>
+<p><strong>连接(乘积)运算</strong></p>
+<p><span class="math display">\[
 \begin{aligned}
-  A &= \{\alpha_1, \alpha_2, \cdots\} \\
-  B &= \{\beta_1, \beta_2, \cdots\} \\
-  def:\quad AB &= \{\alpha \beta | \alpha\in A\ and\ \beta\in B\}
-\end{aligned}</script><p>其中$A,B$是串集.<br>规定: $A^0={\epsilon}$. 注意该运算 <strong>非可交换</strong>. 例子: $\alpha$表示<code>if ()</code>, $\beta$表示<code>then()</code>.</p>
+  A &amp;= \{\alpha_1, \alpha_2, \cdots\} \\
+  B &amp;= \{\beta_1, \beta_2, \cdots\} \\
+  def:\quad AB &amp;= \{\alpha \beta | \alpha\in A\ and\ \beta\in B\}
+\end{aligned}
+\]</span> 其中<span class="math inline">\(A,B\)</span>是串集. 规定:
+<span class="math inline">\(A^0=\{\epsilon\}\)</span>. 注意该运算
+<strong>非可交换</strong>. 例子: <span
+class="math inline">\(\alpha\)</span>表示<code>if ()</code>, <span
+class="math inline">\(\beta\)</span>表示<code>then()</code>.</p>
 <p><strong>闭包</strong></p>
-<script type="math/tex; mode=display">
-A^\star=A^0\cup A^1 \cup A^2 \cup \cdots</script><p>由A上所有符号组成的所有串的集合.</p>
+<p><span class="math display">\[
+A^\star=A^0\cup A^1 \cup A^2 \cup \cdots
+\]</span></p>
+<p>由A上所有符号组成的所有串的集合.</p>
 <p><strong>正闭包</strong></p>
-<script type="math/tex; mode=display">
-A^{+} = A^1 \cup A^2 \cup A^3 \cup \cdots = A^\star - {\epsilon}</script><p><strong>文法</strong></p>
+<p><span class="math display">\[
+A^{+} = A^1 \cup A^2 \cup A^3 \cup \cdots = A^\star - {\epsilon}
+\]</span></p>
+<p><strong>文法</strong></p>
 <p>描述语言的语法结构规则</p>
 <ul>
-<li><strong>非终结符</strong>: 出现在规则的左部, 用”&lt;&gt;”括起来或用大写字母表示, 表示一定语法概念的词, 用$V_N$表示</li>
-<li><strong>终结符</strong>: 语言中不可以再分割的字符串, 用$V_T$表示</li>
-<li><strong>开始符号</strong>: 表示所定义的语法范畴的非终结符, 表示该文法中最大的一个语法成分 (?比如说一个句子)</li>
-<li><strong>产生式</strong>: 是用来定义符号串之间关系的一组语法规则, $A\rightarrow \alpha$</li>
-<li><strong>推导</strong>: 推导是从开始符号开始, 通过产生式的右部取代左部, 最终产生语言的一个句子的过程.<ul>
-<li><strong>最左推导</strong>: 每次使用一个规则, 以其右部取代符号串最左的非终结符.</li>
-</ul>
-</li>
-<li><strong>归约</strong>: 推导的逆过程, 从给定的源语言的一个句子开始, 通过规则的左部取代右部, 最终达到开始符号的过程.<ul>
+<li><strong>非终结符</strong>: 出现在规则的左部,
+用"&lt;&gt;"括起来或用大写字母表示, 表示一定语法概念的词, 用<span
+class="math inline">\(V_N\)</span>表示</li>
+<li><strong>终结符</strong>: 语言中不可以再分割的字符串, 用<span
+class="math inline">\(V_T\)</span>表示</li>
+<li><strong>开始符号</strong>: 表示所定义的语法范畴的非终结符,
+表示该文法中最大的一个语法成分 (?比如说一个句子)</li>
+<li><strong>产生式</strong>: 是用来定义符号串之间关系的一组语法规则,
+<span class="math inline">\(A\rightarrow \alpha\)</span></li>
+<li><strong>推导</strong>: 推导是从开始符号开始,
+通过产生式的右部取代左部, 最终产生语言的一个句子的过程.
+<ul>
+<li><strong>最左推导</strong>: 每次使用一个规则,
+以其右部取代符号串最左的非终结符.</li>
+</ul></li>
+<li><strong>归约</strong>: 推导的逆过程, 从给定的源语言的一个句子开始,
+通过规则的左部取代右部, 最终达到开始符号的过程.
+<ul>
 <li><strong>最左归约</strong>: 最常采用</li>
+</ul></li>
+<li><strong>句型</strong>: 从文法的开始符号<span
+class="math inline">\(S\)</span>开始,
+每步推导(包括0步推导)所得到的字符串<span
+class="math inline">\(\alpha\)</span>. 记作<span
+class="math inline">\(S\rightarrow^\star \alpha, where\ \alpha\in (V_N
+\cup V_T)^\star\)</span>
+<ul>
+<li><strong>句子</strong>: 仅含终结符的句型, 若能归约为开始符号,
+则该句子是正确的</li>
+</ul></li>
+<li><strong>语言</strong>: 语言是由开始符号<span
+class="math inline">\(S\)</span>通过1步或1步以上推导所得的句子的集合,
+记为<span
+class="math inline">\(L(G)=\{\alpha|S\rightarrow^+\alpha,\alpha\in
+V_T^*\}\)</span></li>
+<li><strong>文法规则的递归定义</strong>:
+非终结符的定义中包含了非终结符自身</li>
 </ul>
-</li>
-<li><strong>句型</strong>: 从文法的开始符号$S$开始, 每步推导(包括0步推导)所得到的字符串$\alpha$. 记作$S\rightarrow^\star \alpha, where\ \alpha\in (V_N \cup V_T)^\star$<ul>
-<li><strong>句子</strong>: 仅含终结符的句型, 若能归约为开始符号, 则该句子是正确的</li>
-</ul>
-</li>
-<li><strong>语言</strong>: 语言是由开始符号$S$通过1步或1步以上推导所得的句子的集合, 记为$L(G)={\alpha|S\rightarrow^+\alpha,\alpha\in V_T^*}$</li>
-<li><strong>文法规则的递归定义</strong>: 非终结符的定义中包含了非终结符自身</li>
-</ul>
-<h2 id="文法与语言的形式定义"><a href="#文法与语言的形式定义" class="headerlink" title="文法与语言的形式定义"></a>文法与语言的形式定义</h2><p>Chomsky对文法的定义: 文法G是一个四元组$(V_N, V_T, P, S)$, 其中$P$是文法规则的集合, $S$是开始符号</p>
+<h2 id="文法与语言的形式定义">文法与语言的形式定义</h2>
+<p>Chomsky对文法的定义: 文法G是一个四元组<span
+class="math inline">\((V_N, V_T, P, S)\)</span>, 其中<span
+class="math inline">\(P\)</span>是文法规则的集合, <span
+class="math inline">\(S\)</span>是开始符号</p>
 <p><strong>0型文法</strong></p>
-<p>又称短语文法或者无限制文法. $P$中产生式$\alpha\rightarrow\beta,\alpha\in V^+=(V_N\cup V_T)^+$, $\alpha$至少含有一个非终结符,$\beta\in V^\star$.</p>
+<p>又称短语文法或者无限制文法. <span
+class="math inline">\(P\)</span>中产生式<span
+class="math inline">\(\alpha\rightarrow\beta,\alpha\in V^+=(V_N\cup
+V_T)^+\)</span>, <span
+class="math inline">\(\alpha\)</span>至少含有一个非终结符,<span
+class="math inline">\(\beta\in V^\star\)</span>.</p>
 <ul>
 <li>对产生式限制最少</li>
 <li>图灵机</li>
 <li>可递归可枚举</li>
 </ul>
 <p><strong>1型文法</strong></p>
-<p>$P$中产生式$\alpha\rightarrow\beta$, 除可能有$S\rightarrow \epsilon$外均有$|\beta|\geq|\alpha|$, 若有$S\rightarrow\epsilon$, 规定$S$不能出现在产生式的右部.</p>
-<p>等价定义: $P$中产生式$\alpha\rightarrow\beta$除了可能有$S\rightarrow\epsilon$外均有$\alpha S \beta \rightarrow \alpha \gamma \beta, \alpha, \beta \in V^\star, A\in V^n, \gamma\in V^+$.</p>
+<p><span class="math inline">\(P\)</span>中产生式<span
+class="math inline">\(\alpha\rightarrow\beta\)</span>, 除可能有<span
+class="math inline">\(S\rightarrow \epsilon\)</span>外均有<span
+class="math inline">\(|\beta|\geq|\alpha|\)</span>, 若有<span
+class="math inline">\(S\rightarrow\epsilon\)</span>, 规定<span
+class="math inline">\(S\)</span>不能出现在产生式的右部.</p>
+<p>等价定义: <span class="math inline">\(P\)</span>中产生式<span
+class="math inline">\(\alpha\rightarrow\beta\)</span>除了可能有<span
+class="math inline">\(S\rightarrow\epsilon\)</span>外均有<span
+class="math inline">\(\alpha S \beta \rightarrow \alpha \gamma \beta,
+\alpha, \beta \in V^\star, A\in V^n, \gamma\in V^+\)</span>.</p>
 <div class="note note-info">
-            <p>对非终结符进行替换时, 必须考虑上下文, 并且一般不允许替换为$\epsilon$, 除非是开始符号产生$\epsilon$.</p>
+            <p>对非终结符进行替换时, 必须考虑上下文, 并且一般不允许替换为<spanclass="math inline">\(\epsilon\)</span>, 除非是开始符号产生<spanclass="math inline">\(\epsilon\)</span>.</p>
           </div>
 <p><strong>2型文法</strong></p>
-<p>$P$中产生式具有形式$A\rightarrow\beta, A\in V_N, \beta\in V^\star$. 要求产生式左边只有一个非终结符.</p>
+<p><span class="math inline">\(P\)</span>中产生式具有形式<span
+class="math inline">\(A\rightarrow\beta, A\in V_N, \beta\in
+V^\star\)</span>. 要求产生式左边只有一个非终结符.</p>
 <p>不必考虑上下文, 上下文无关文法.</p>
 <p>识别2型文法的自动机称为下推自动机</p>
 <p><strong>3型文法</strong></p>
-<p>$P$中产生式具有形式$A\rightarrow \alpha B, A\rightarrow \alpha$或者$A \rightarrow B\alpha, A\rightarrow \alpha, A,B\in V_N, \alpha\in V_T^\star$. 也称为正规文法, (左|右)线性文法, 识别3型文法的自动机称为有限自动机.</p>
+<p><span class="math inline">\(P\)</span>中产生式具有形式<span
+class="math inline">\(A\rightarrow \alpha B, A\rightarrow
+\alpha\)</span>或者<span class="math inline">\(A \rightarrow B\alpha,
+A\rightarrow \alpha, A,B\in V_N, \alpha\in V_T^\star\)</span>.
+也称为正规文法, (左|右)线性文法, 识别3型文法的自动机称为有限自动机.</p>
 <div class="note note-info">
-            <p>词法分析和语法分析中对产生式的限制: 1)不产生$P\rightarrow P$, 2)产生式中出现的任何非终结符必须有用, 能经过若干步推导出终结符</p>
+            <p>词法分析和语法分析中对产生式的限制: 1)不产生<spanclass="math inline">\(P\rightarrow P\)</span>,2)产生式中出现的任何非终结符必须有用, 能经过若干步推导出终结符</p>
           </div>
 <p><strong>一些例子</strong></p>
-<p><strong>例1</strong> 语言$L={\omega|\omega\in(a,b)^\star$且$\omega$中含有个数相同的$a,b}$, 构造生成该语言的文法:</p>
-<script type="math/tex; mode=display">
+<p><strong>例1</strong> 语言<span
+class="math inline">\(L=\{\omega|\omega\in(a,b)^\star\)</span>且<span
+class="math inline">\(\omega\)</span>中含有个数相同的<span
+class="math inline">\(a,b\}\)</span>, 构造生成该语言的文法:</p>
+<p><span class="math display">\[
 \begin{align*}
-  S&\rightarrow\epsilon \\
-  S&\rightarrow aA\\
-  S&\rightarrow bB\\
-  A&\rightarrow aAA | bS\\
-  B&\rightarrow aS | bBB
-\end{align*}</script><p>解释: 要么以$a$开头, 要么以$b$开头, 后面跟着符号串. 对于符号串$A$, 如果以$b$开头, 则后面跟着$ab$个数相等的符号串, 如果仍然以$a$开头, 此时后面必须还要至少出现两次$b$.</p>
+  S&amp;\rightarrow\epsilon \\
+  S&amp;\rightarrow aA\\
+  S&amp;\rightarrow bB\\
+  A&amp;\rightarrow aAA | bS\\
+  B&amp;\rightarrow aS | bBB
+\end{align*}
+\]</span></p>
+<p>解释: 要么以<span class="math inline">\(a\)</span>开头, 要么以<span
+class="math inline">\(b\)</span>开头, 后面跟着符号串. 对于符号串<span
+class="math inline">\(A\)</span>, 如果以<span
+class="math inline">\(b\)</span>开头, 则后面跟着<span
+class="math inline">\(ab\)</span>个数相等的符号串, 如果仍然以<span
+class="math inline">\(a\)</span>开头, 此时后面必须还要至少出现两次<span
+class="math inline">\(b\)</span>.</p>
 <p>或者</p>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
 \begin{align*}
-  S&\rightarrow\epsilon\\
-  S&\rightarrow aSbS\\
-  S&\rightarrow bSaS
-\end{align*}</script><p>解释: 若以$a$开头, 则在字符串的某个位置必然出现一个$b$, 而这两个$a,b$中间是$ab$个数相等的的字符串, b后面也是$ab$个数相等的符号串.</p>
-<p><strong>例2</strong> 设$L={\omega | \omega\in(0,1)^\star$且$1$的个数为偶数个$}$, 构造生成该语言的文法:</p>
+  S&amp;\rightarrow\epsilon\\
+  S&amp;\rightarrow aSbS\\
+  S&amp;\rightarrow bSaS
+\end{align*}
+\]</span></p>
+<p>解释: 若以<span class="math inline">\(a\)</span>开头,
+则在字符串的某个位置必然出现一个<span class="math inline">\(b\)</span>,
+而这两个<span class="math inline">\(a,b\)</span>中间是<span
+class="math inline">\(ab\)</span>个数相等的的字符串, b后面也是<span
+class="math inline">\(ab\)</span>个数相等的符号串.</p>
+<p><strong>例2</strong> 设<span class="math inline">\(L=\{\omega |
+\omega\in(0,1)^\star\)</span>且<span
+class="math inline">\(1\)</span>的个数为偶数个<span
+class="math inline">\(\}\)</span>, 构造生成该语言的文法:</p>
 <p>可以先列出看一下:</p>
-<script type="math/tex; mode=display">
-\omega\in\{\epsilon, 0, 11, 011, 101, 110,\cdots\}</script><p>然后:</p>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
+\omega\in\{\epsilon, 0, 11, 011, 101, 110,\cdots\}
+\]</span></p>
+<p>然后:</p>
+<p><span class="math display">\[
 \begin{align*}
-  S&\rightarrow\epsilon\\
-  S&\rightarrow 0S\\
-  S&\rightarrow 1A\\
-  A&\rightarrow 1S | 0A
-\end{align*}</script><h2 id="文法的构造与简化"><a href="#文法的构造与简化" class="headerlink" title="文法的构造与简化"></a>文法的构造与简化</h2><h3 id="简化"><a href="#简化" class="headerlink" title="简化"></a>简化</h3><p>同一语言可以产生不同的文法, 选择产生式最少, 最符合语言特征的文法来描述; 有些产生式对推导不起作用, 包括: <strong>推导中永远用不到, 永远导不出终结符的, 形如$P\rightarrow P$的…</strong></p>
+  S&amp;\rightarrow\epsilon\\
+  S&amp;\rightarrow 0S\\
+  S&amp;\rightarrow 1A\\
+  A&amp;\rightarrow 1S | 0A
+\end{align*}
+\]</span></p>
+<h2 id="文法的构造与简化">文法的构造与简化</h2>
+<h3 id="简化">简化</h3>
+<p>同一语言可以产生不同的文法, 选择产生式最少,
+最符合语言特征的文法来描述; 有些产生式对推导不起作用, 包括:
+<strong>推导中永远用不到, 永远导不出终结符的, 形如<span
+class="math inline">\(P\rightarrow P\)</span>的...</strong></p>
 <p><strong>一些例子</strong></p>
 <p><strong>例1</strong> 简化文法:</p>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
 \begin{align*}
-  S&\rightarrow Be\\
-  S&\rightarrow Ee\\
-  A&\rightarrow Ae\\
-  A&\rightarrow e\\
-  A&\rightarrow A\\
-  B&\rightarrow Ce\\
-  B&\rightarrow Af\\
-  C&\rightarrow Cf\\
-  D&\rightarrow f
-\end{align*}</script><p>显然应该保留0236.</p>
-<h3 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h3><p><strong>构造无$\epsilon$产生式的上下文无关文法</strong></p>
-<p>满足: $P$中要么不含有$\epsilon$产生式, 要么只有$S\rightarrow\epsilon$, 且若$S\rightarrow\epsilon$, 则$S$不出现在任何产生式右部.</p>
-<h1 id="语义分析与中间代码生成"><a href="#语义分析与中间代码生成" class="headerlink" title="语义分析与中间代码生成"></a>语义分析与中间代码生成</h1><p><strong>在语法分析的过程中边分析边翻译, 翻译的结果是生成中间代码</strong> </p>
-<p><strong>语法制导翻译</strong>  在语法分析中调用语义翻译程序生成相应的中间代码, 使用CFG来引导对语言的翻译, 面向文法</p>
+  S&amp;\rightarrow Be\\
+  S&amp;\rightarrow Ee\\
+  A&amp;\rightarrow Ae\\
+  A&amp;\rightarrow e\\
+  A&amp;\rightarrow A\\
+  B&amp;\rightarrow Ce\\
+  B&amp;\rightarrow Af\\
+  C&amp;\rightarrow Cf\\
+  D&amp;\rightarrow f
+\end{align*}
+\]</span></p>
+<p>显然应该保留0236.</p>
+<h3 id="构造">构造</h3>
+<p><strong>构造无<span
+class="math inline">\(\epsilon\)</span>产生式的上下文无关文法</strong></p>
+<p>满足: <span class="math inline">\(P\)</span>中要么不含有<span
+class="math inline">\(\epsilon\)</span>产生式, 要么只有<span
+class="math inline">\(S\rightarrow\epsilon\)</span>, 且若<span
+class="math inline">\(S\rightarrow\epsilon\)</span>, 则<span
+class="math inline">\(S\)</span>不出现在任何产生式右部.</p>
+<h1 id="语义分析与中间代码生成">语义分析与中间代码生成</h1>
+<p><strong>在语法分析的过程中边分析边翻译,
+翻译的结果是生成中间代码</strong></p>
+<p><strong>语法制导翻译</strong>
+在语法分析中调用语义翻译程序生成相应的中间代码,
+使用CFG来引导对语言的翻译, 面向文法</p>
 <ul>
 <li>根据产生式右部符号进行翻译</li>
-<li>依据语义子程序<ul>
-<li>语义子程序: 用于改变变量的值, 查填符号表, 发现源程序错误, 产生中间代码</li>
-</ul>
-</li>
-</ul>
-<script type="math/tex; mode=display">
-X \rightarrow \alpha \{语义子程序\}</script><ul>
-<li>具体做法: <strong>为每一个产生式配置一个语义子程序, 当语法分析进行归约或推导时调用相应的语义子程序</strong></li>
-<li>注意: <strong>产生式中同一个符号出现多次, 需要区分, 加上角标</strong></li>
-</ul>
-<script type="math/tex; mode=display">
-E \rightarrow E_1 + E_2</script><ul>
-<li>语义值: <strong>需要为每个文法符号赋予不同的语义值</strong>, 如类型, (符号表) 地址, 代码值 (不是数字), 并且 <strong>只有非终结符才有语义值</strong></li>
-<li>语义栈: 各个符号的语义值放在语义栈中. 产生式进行归约时, 需对右部符号的语义值进行综合, 结果作为左部符号的语义值保存在语义栈中. <strong>语义栈, 符号栈, 状态栈同步变化</strong></li>
-</ul>
-<p><strong>中间代码</strong>  转化为目标代码的中间生成的代码, 容易翻译</p>
+<li>依据语义子程序
 <ul>
-<li>形式<ul>
-<li>四元式: $Operator, Op_1, Op_2, Result$, 两个操作数和结果可以是用户自定义, 也可以是编译时变量. 变量采用的是符号表入口地址.</li>
-<li>三元式: $Operator, Op_1, Op_2$, 三元式本身就是结果, 以三元式的编号区别</li>
-<li>逆波兰式 (后缀表示): $Op_1, Op_2, Operator$, 无括号, 从左到右扫描一遍</li>
+<li>语义子程序: 用于改变变量的值, 查填符号表, 发现源程序错误,
+产生中间代码</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+X \rightarrow \alpha \{语义子程序\}
+\]</span></p>
+<ul>
+<li>具体做法: <strong>为每一个产生式配置一个语义子程序,
+当语法分析进行归约或推导时调用相应的语义子程序</strong></li>
+<li>注意: <strong>产生式中同一个符号出现多次, 需要区分,
+加上角标</strong></li>
+</ul>
+<p><span class="math display">\[
+E \rightarrow E_1 + E_2
+\]</span></p>
+<ul>
+<li>语义值: <strong>需要为每个文法符号赋予不同的语义值</strong>, 如类型,
+(符号表) 地址, 代码值 (不是数字), 并且
+<strong>只有非终结符才有语义值</strong></li>
+<li>语义栈: 各个符号的语义值放在语义栈中. 产生式进行归约时,
+需对右部符号的语义值进行综合, 结果作为左部符号的语义值保存在语义栈中.
+<strong>语义栈, 符号栈, 状态栈同步变化</strong></li>
+</ul>
+<p><strong>中间代码</strong> 转化为目标代码的中间生成的代码,
+容易翻译</p>
+<ul>
+<li>形式
+<ul>
+<li>四元式: <span class="math inline">\(Operator, Op_1, Op_2,
+Result\)</span>, 两个操作数和结果可以是用户自定义, 也可以是编译时变量.
+变量采用的是符号表入口地址.</li>
+<li>三元式: <span class="math inline">\(Operator, Op_1, Op_2\)</span>,
+三元式本身就是结果, 以三元式的编号区别</li>
+<li>逆波兰式 (后缀表示): <span class="math inline">\(Op_1, Op_2,
+Operator\)</span>, 无括号, 从左到右扫描一遍</li>
 <li>树形表示</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="赋值语句-简单变量无数组-的翻译"><a href="#赋值语句-简单变量无数组-的翻译" class="headerlink" title="赋值语句 (简单变量无数组) 的翻译"></a>赋值语句 (简单变量无数组) 的翻译</h2><p><strong>文法</strong>:</p>
-<script type="math/tex; mode=display">
-A \rightarrow i = E \\
-
-E \rightarrow E + E | E * E | -E | (E) | i</script><p><strong>内置函数</strong>:</p>
+<h2 id="赋值语句-简单变量无数组-的翻译">赋值语句 (简单变量无数组)
+的翻译</h2>
+<p><strong>文法</strong>:</p>
+<p>$$ A i = E \</p>
+<p>E E + E | E * E | -E | (E) | i $$</p>
+<p><strong>内置函数</strong>:</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">NEWTEMP  # 产生临时变量<br>ENRTY(i)  # 获取变量i的符号表地址<br>GEN(operator, op1, op2, result)  # 生成四元式中间代码<br></code></pre></td></tr></table></figure>
-<p><strong>语义变量</strong>: </p>
-<script type="math/tex; mode=display">
-E.PLACE</script><ul>
+<p><strong>语义变量</strong>:</p>
+<p><span class="math display">\[
+E.PLACE
+\]</span></p>
+<ul>
 <li>值是某个变量的符号表地址或临时变量的序号</li>
 <li>分析过程需要就建立, 不需要就消亡</li>
 </ul>
 <p><strong>建立语法制导定义 (SDD)</strong>:</p>
-<div class="table-container">
 <table>
+
 <thead>
-<tr>
+<tr class="header">
 <th>产生式</th>
 <th>语义规则 (子程序)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>$A \rightarrow i = E$</td>
-<td>{$GEN(=, E.PLACE, NULL, ENTRY(i))$}</td>
+<tr class="odd">
+<td><span class="math inline">\(A \rightarrow i = E\)</span></td>
+<td>{<span class="math inline">\(GEN(=, E.PLACE, NULL,
+ENTRY(i))\)</span>}</td>
 </tr>
-<tr>
-<td>$E \rightarrow -E_1$</td>
-<td>{$T = NEWTEMP; GEN(@, E_1.PLACE, NULL, T); E.PLACE = T;$}</td>
+<tr class="even">
+<td><span class="math inline">\(E \rightarrow -E_1\)</span></td>
+<td>{<span class="math inline">\(T = NEWTEMP; GEN(@, E_1.PLACE, NULL,
+T); E.PLACE = T;\)</span>}</td>
 </tr>
-<tr>
-<td>$E \rightarrow E_1 * E_2$</td>
-<td>{$T = NEWTEMP; GEN(*, E_1.PLACE, E_2.PLACE, T); E.PLACE = T;$}</td>
+<tr class="odd">
+<td><span class="math inline">\(E \rightarrow E_1 * E_2\)</span></td>
+<td>{<span class="math inline">\(T = NEWTEMP; GEN(*, E_1.PLACE,
+E_2.PLACE, T); E.PLACE = T;\)</span>}</td>
 </tr>
-<tr>
-<td>$E \rightarrow E_1 + E_2$</td>
-<td>{$T = NEWTEMP; GEN(+, E_1.PLACE, E_2.PLACE, T); E.PLACE = T;$}</td>
+<tr class="even">
+<td><span class="math inline">\(E \rightarrow E_1 + E_2\)</span></td>
+<td>{<span class="math inline">\(T = NEWTEMP; GEN(+, E_1.PLACE,
+E_2.PLACE, T); E.PLACE = T;\)</span>}</td>
 </tr>
-<tr>
-<td>$E \rightarrow (E_1)$</td>
-<td>{$E.PLACE = E_1.PLACE$}</td>
+<tr class="odd">
+<td><span class="math inline">\(E \rightarrow (E_1)\)</span></td>
+<td>{<span class="math inline">\(E.PLACE = E_1.PLACE\)</span>}</td>
 </tr>
-<tr>
-<td>$E \rightarrow i$</td>
-<td>{$E.PLACE = ENTRY(i)$}</td>
+<tr class="even">
+<td><span class="math inline">\(E \rightarrow i\)</span></td>
+<td>{<span class="math inline">\(E.PLACE = ENTRY(i)\)</span>}</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>处理混合运算, 如整型与实型运算, 最后的结果为实型</p>
+<h3 id="类型转换">类型转换</h3>
+<p>处理混合运算, 如整型与实型运算, 最后的结果为实型</p>
 <p><strong>语义变量</strong>:</p>
-<script type="math/tex; mode=display">
-E.MODE</script><p><strong>建立语法制导定义 (SDD)</strong>:</p>
-<div class="table-container">
+<p><span class="math display">\[
+E.MODE
+\]</span></p>
+<p><strong>建立语法制导定义 (SDD)</strong>:</p>
 <table>
+
 <thead>
-<tr>
+<tr class="header">
 <th>产生式</th>
 <th>语义规则</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>$E \rightarrow E_1\ op\ E_2$</td>
-<td>{$IF\ E_1.MODE = int\ AND\ E_2.MODE = int\ THEN\ E.MODE = int\ ELSE\ E.MODE = real$}</td>
+<tr class="odd">
+<td><span class="math inline">\(E \rightarrow E_1\ op\ E_2\)</span></td>
+<td>{<span class="math inline">\(IF\ E_1.MODE = int\ AND\ E_2.MODE =
+int\ THEN\ E.MODE = int\ ELSE\ E.MODE = real\)</span>}</td>
 </tr>
 </tbody>
 </table>
-</div>
-<p>例如 $X = Y + I * J$, 其中$X, Y$是实型的, $I, J$是整型的, 四元式为:</p>
-<script type="math/tex; mode=display">
+<p>例如 <span class="math inline">\(X = Y + I * J\)</span>, 其中<span
+class="math inline">\(X, Y\)</span>是实型的, <span
+class="math inline">\(I, J\)</span>是整型的, 四元式为:</p>
+<p><span class="math display">\[
 (*_i, I, J, T_1) \\
 (itr, T_1, NULL, T_2) \\
 (+_r, Y, T_2, T_3) \\
-(=, T_3, NULL, X)</script><p>对运算符也要指出相应的类型.</p>
-<h2 id="布尔表达式的翻译"><a href="#布尔表达式的翻译" class="headerlink" title="布尔表达式的翻译"></a>布尔表达式的翻译</h2>]]></content>
+(=, T_3, NULL, X)
+\]</span></p>
+<p>对运算符也要指出相应的类型.</p>
+<h2 id="布尔表达式的翻译">布尔表达式的翻译</h2>
+]]></content>
       <categories>
         <category>CS</category>
       </categories>
@@ -3785,5 +3920,395 @@ model.</p>
       <categories>
         <category>ML</category>
       </categories>
+  </entry>
+  <entry>
+    <title>语义分析</title>
+    <url>/2023/01/03/CS/Compiler-SemanticAnalysis-zh/</url>
+    <content><![CDATA[<p>"书接上文"</p>
+<span id="more"></span>
+<h1 id="概述">概述</h1>
+<p><strong>语义翻译</strong>: 语义分析和中间代码生成一起实现.</p>
+<p><strong>语法制导翻译</strong>: 在语法分析时实现语义翻译.
+使用上下文无关文法(CFG)来引导对语言的翻译, 是一种面向文法的翻译技术.</p>
+<h2 id="基本思想">基本思想</h2>
+<p><strong>语义属性</strong>: 在CFG中为文法符号设置语义属性,
+表示语法成分对应的语义信息.</p>
+<p>如何计算:</p>
+<ul>
+<li>用文法符号所在的产生式相关联的<strong>语义规则</strong>计算</li>
+</ul>
+<p><strong>语法制导定义(SDD)</strong>:</p>
+<ul>
+<li>将<strong>每个文法符号</strong>和一个<strong>语义属性集合</strong>相关联</li>
+<li>将<strong>每个产生式</strong>和<strong>一组语义规则</strong>相关联,
+这些规则用于计算产生式中各个文法符号的属性值</li>
+<li>注意: 同一个产生式出现相同符号时, 需要以下标区分,
+因为有不同的语义含义</li>
+<li>注意: 语义规则可以是一些 <strong>副作用</strong> 如打印等等</li>
+</ul>
+<p>例子:</p>
+<table>
+<thead>
+<tr class="header">
+<th>产生式</th>
+<th>语义规则</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(D \rightarrow T\ L\)</span></td>
+<td><span class="math inline">\(L.inh = T.type\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T \rightarrow int\)</span></td>
+<td><span class="math inline">\(T.type = int\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T \rightarrow real\)</span></td>
+<td><span class="math inline">\(T.type = real\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L \rightarrow L_1, id\)</span></td>
+<td><span class="math inline">\(L_1.inh = L.inh\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>语法制导翻译方案(SDT)</strong></p>
+<ul>
+<li>在产生式右部嵌入程序片段 (<strong>语义动作</strong>)</li>
+</ul>
+<p>例子:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(D \rightarrow T\ \{L.inh = T.type\}\
+L\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T \rightarrow int\ \{T.type =
+int\}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T \rightarrow real\ \{T.type =
+int\}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L \rightarrow \{L_1.inh = L.inh\}\ L_1,
+id\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>语义动作在产生式的位置决定了动作的执行时刻</strong>:
+例如第一个产生式, 在分析出<span class="math inline">\(T\)</span>后,
+可以根据语义动作, 将后面的<span
+class="math inline">\(L\)</span>的语义属性赋值</p>
+<h2 id="语法制导定义sdd">语法制导定义SDD</h2>
+<p>分为 <strong>综合属性</strong> 和 <strong>继承属性</strong></p>
+<h3 id="综合属性synthesized-attribute">综合属性(Synthesized
+attribute)</h3>
+<p>在分析树上的结点<span class="math inline">\(N\)</span>的
+<strong>非终结符</strong> <span
+class="math inline">\(A\)</span>的综合属性只能通过<span
+class="math inline">\(N\)</span>的<strong>子节点或本身的属性值</strong>来定义.</p>
+<figure>
+<img src="综合属性.png" alt="综合属性例子" />
+<figcaption aria-hidden="true">综合属性例子</figcaption>
+</figure>
+<figure>
+<img src="综合属性2.png" alt="综合属性例子" />
+<figcaption aria-hidden="true">综合属性例子</figcaption>
+</figure>
+<h3 id="继承属性inherited-attribute">继承属性(Inherited attribute)</h3>
+<p>在分析树上的结点<span class="math inline">\(N\)</span>的
+<strong>非终结符</strong> <span
+class="math inline">\(A\)</span>的继承属性只能通过<span
+class="math inline">\(N\)</span>的<strong>父节点,
+兄弟结点或本身结点的属性值</strong>来定义.</p>
+<figure>
+<img src="继承属性.png" alt="继承属性例子" />
+<figcaption aria-hidden="true">继承属性例子</figcaption>
+</figure>
+<figure>
+<img src="继承属性2.png" alt="继承属性例子" />
+<figcaption aria-hidden="true">继承属性例子</figcaption>
+</figure>
+<div class="note note-info">
+            <p>终结符只有综合属性,原因是其综合属性指向的是符号表序号(或者说是词法分析器提供的词法值),不论其父结点怎么变, 终结符的属性都不会变, 因此不能存在继承属性. <spanclass="math inline">\(SDD\)</span>中也没有计算终结符属性值的语义规则.</p>
+          </div>
+<h3 id="注释分析树annotated-parse-tree">注释分析树(Annotated parse
+tree)</h3>
+<p>在分析树中标明语义值.</p>
+<h3 id="sdd的求值顺序">SDD的求值顺序</h3>
+<p>在对语法分析树的一个结点求属性值之前, 应该
+<strong>先求出它所依赖的所有属性值</strong></p>
+<p><strong>依赖图(Dependency graph)</strong></p>
+<ul>
+<li>如果<span class="math inline">\(X.a\)</span>的值
+<strong>依赖于</strong> 属性<span
+class="math inline">\(Y.b\)</span>的值, 则依赖图中有一条
+<strong>从Y.b指向X.a的有向边</strong>. 方便起见, 可以将
+<strong>综合属性放在结点的右边, 继承属性放在左边</strong>.</li>
+<li>注意: 如果语义规则中含有副作用 (即调用了某个函数,
+函数中用到了语义属性), 则为它创建一个 <strong>虚拟结点</strong>,
+如下所示</li>
+</ul>
+<figure>
+<img src="虚拟结点.png" alt="虚拟结点" />
+<figcaption aria-hidden="true">虚拟结点</figcaption>
+</figure>
+<p>可行的求值顺序: <strong>拓扑排序</strong>,
+依赖者的序号大于被依赖者的序号.</p>
+<ul>
+<li>只有综合属性的SDD, 可以按照任意自底向上的顺序计算它们的值</li>
+<li>同时具有综合属性和继承属性的SDD,
+不能保证存在应该顺序对各个结点上的属性进行求值</li>
+<li><strong>依赖图中没有环, 则至少存在一个拓扑排序</strong></li>
+</ul>
+<p>给定一个SDD, 很难确定是否存在某个语法树, 使得依赖图无环, 但存在
+<strong><span class="math inline">\(L\)</span>-属性定义</strong> 和
+<strong><span class="math inline">\(S\)</span>-属性定义</strong>
+保证每个语法分析树都存在求值顺序, 依赖图无环.</p>
+<h3 id="s-属性定义"><span class="math inline">\(S\)</span>-属性定义</h3>
+<p><strong>仅使用综合属性的SDD</strong>, 可以在
+<strong>自底向上</strong> 的语法分析过程中实现</p>
+<h3 id="l-属性定义"><span class="math inline">\(L\)</span>-属性定义</h3>
+<p>在一个产生式所关联的各属性之间, 依赖图的边 <strong>可以从左到右,
+但不能从右到左</strong>. 正式定义为: 一个SDD是<span
+class="math inline">\(L\)</span>-属性定义, 当且仅当它的每个属性要么
+<strong>是一个综合属性</strong> 要么
+<strong>是满足如下条件的继承属性</strong></p>
+<ul>
+<li>假设存在一个产生式<span class="math inline">\(A \rightarrow
+X_1X_2\cdots X_n\)</span>, 其右部符号<span
+class="math inline">\(X_i\)</span>的继承属性仅依赖于
+<ul>
+<li><span class="math inline">\(A\)</span>的继承属性
+(不能依赖于父结点的综合属性,
+因为父结点的综合属性可能依赖子结点的继承属性, 会导致循环依赖)</li>
+<li>产生式中<span class="math inline">\(X_i\)</span>左边的符号的属性
+(包括综合属性和继承属性)</li>
+<li><span class="math inline">\(X_i\)</span>本身的属性, 但<span
+class="math inline">\(X_i\)</span>的全部属性不能在依赖图中形成环路</li>
+</ul></li>
+</ul>
+<div class="note note-info">
+            <p>每个<span class="math inline">\(S\)</span>-属性定义都是<spanclass="math inline">\(L\)</span>-属性定义</p>
+          </div>
+<h2 id="语法制导翻译方案sdt">语法制导翻译方案SDT</h2>
+<ul>
+<li><span class="math inline">\(LR\)</span>分析, <span
+class="math inline">\(SDD\)</span>是<span
+class="math inline">\(S\)</span>属性的</li>
+<li><span class="math inline">\(LL\)</span>分析, <span
+class="math inline">\(SDD\)</span>是<span
+class="math inline">\(L\)</span>属性的</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>人智导论复习</title>
+    <url>/2023/01/05/ML/IntroductionToAI/</url>
+    <content><![CDATA[<p>"复习课的主旨"</p>
+<p>"去看GZQ的PPT"</p>
+<span id="more"></span>
+<h1 id="绪论">绪论</h1>
+<h2 id="什么是人工智能-给出功能模块和方法">什么是人工智能,
+给出功能模块和方法</h2>
+<ul>
+<li>理性的行动的系统
+<ul>
+<li>方法: 理性Agent方法: <strong>Agent</strong> 是某种能够行动的东西.
+<strong>Rational Agent</strong> 可以通过自己的行动获得
+<strong>最佳的结果</strong> 或者 在不确定的情况下获得
+<strong>最佳期望</strong>, 功能有 <strong>能做正确的推论</strong>,
+若没有能证明正确性的事情, 但是必须 <strong>有所行动</strong>.</li>
+<li>部分完成理性行动的方法和推论过程无关 (如反射活动)</li>
+<li>图灵测试</li>
+<li>好处:
+<ul>
+<li>比"思维法则"方法通用, 正确的推论只是实现理性的方法之一</li>
+<li>比人类思维更经得起科学的考验 (可以证伪)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="智能化agent">智能化Agent</h1>
+<h2 id="agent架构-理解agent的任务-环境-评价标准">Agent架构,
+理解Agent的任务, 环境, 评价标准</h2>
+<p><strong>Agent</strong></p>
+<ul>
+<li>通过传感器感知所处的环境, 通过执行器对环境产生作用</li>
+<li>例子 (人类, 机器人, 软件等)</li>
+</ul>
+<figure>
+<img src="agent1.png"
+alt="agent的工作原理, 记住. 里面的&quot;?&quot;表示映射函数" />
+<figcaption aria-hidden="true">agent的工作原理, 记住.
+里面的"?"表示映射函数</figcaption>
+</figure>
+<p><strong>Agent和环境</strong></p>
+<ul>
+<li>感知信息: 任何时刻的感知输入</li>
+<li>感知序列: 所有的输入数据的完整历史</li>
+<li>Agent在任何时刻的行动选择, 取决于到该时刻为止的整个感知序列</li>
+<li>Agent函数: 可以用列表表示, 也需要一些抽象的表示</li>
+</ul>
+<p><strong>性能度量</strong></p>
+<ul>
+<li>Agent成功程度的标准</li>
+</ul>
+<p><strong>理性的判断标准</strong></p>
+<ul>
+<li>PPT, 要记</li>
+</ul>
+<h2 id="agent的类型">Agent的类型</h2>
+<p>不同的Agent区别在于: Agent函数不一样</p>
+<ul>
+<li><strong>先画图, 再解释</strong></li>
+</ul>
+<h3 id="简单反射型agent">简单反射型Agent</h3>
+<p>可以建造一个通用的 <strong>条件-行动</strong> 规则解释器.
+(不包含历史信息, 只根据当天的环境)</p>
+<figure>
+<img src="agent-type-1.png" alt="agent-type-1" />
+<figcaption aria-hidden="true">agent-type-1</figcaption>
+</figure>
+<h3 id="基于模型的反射型agent">基于模型的反射型Agent</h3>
+<p>包含历史信息, 状态信息.</p>
+<figure>
+<img src="agent-type-2.png" alt="agent-type-2" />
+<figcaption aria-hidden="true">agent-type-2</figcaption>
+</figure>
+<h3 id="基于目标的agent">基于目标的Agent</h3>
+<p>不仅需要采用行动, 还需要规定相应的目标.</p>
+<figure>
+<img src="agent-type-3.png" alt="agent-type-3" />
+<figcaption aria-hidden="true">agent-type-3</figcaption>
+</figure>
+<p>判断执行的动作会不会使得自己离目标更近</p>
+<h3 id="基于效用的agent">基于效用的Agent</h3>
+<p>单靠目标难以在多数环境中产生更好的行为, 需要更快, 更安全,
+更可靠等</p>
+<ul>
+<li>效用函数: 描述Agent与状态相关的偏好程度,
+在目标不充分的情况下有助于理性决策
+<ul>
+<li>多目标: 加权</li>
+<li>存在冲突目标: 折中</li>
+</ul></li>
+</ul>
+<figure>
+<img src="agent-type-4.png" alt="agent-type-4" />
+<figcaption aria-hidden="true">agent-type-4</figcaption>
+</figure>
+<h3 id="学习agent">学习Agent</h3>
+<ul>
+<li>学习元件</li>
+<li>执行元件</li>
+<li>评价元件</li>
+<li>问题产生器</li>
+</ul>
+<figure>
+<img src="agent-type-5.png" alt="agent-type-5" />
+<figcaption aria-hidden="true">agent-type-5</figcaption>
+</figure>
+<h1 id="逻辑agent">逻辑Agent</h1>
+<ul>
+<li>命题逻辑的语法</li>
+<li>推理模式, 方法</li>
+<li>怪兽世界的推理 (<span
+class="math inline">\(R_1-R_{10}\)</span>的证明, <span
+class="math inline">\(R_{11}-R_{15}\)</span>将句子转化成合取范式,
+然后基于归结或反证法的证明)</li>
+<li>理解推理规则和公理, 用于命题逻辑的推理</li>
+<li>命题逻辑的连接符及语义</li>
+</ul>
+<h2 id="命题逻辑语法">命题逻辑语法</h2>
+<figure>
+<img src="logic-1.png" alt="logic-1" />
+<figcaption aria-hidden="true">logic-1</figcaption>
+</figure>
+<h2 id="推理模式-推理方法">推理模式, 推理方法</h2>
+<ul>
+<li>画真值表 (不推荐, 繁琐)</li>
+<li>运用公式法则 (重要, 要记)</li>
+</ul>
+<figure>
+<img src="logic-2.png" alt="logic-2" />
+<figcaption aria-hidden="true">logic-2</figcaption>
+</figure>
+<figure>
+<img src="logic-3.png" alt="logic-3" />
+<figcaption aria-hidden="true">logic-3</figcaption>
+</figure>
+<ul>
+<li>归结 :star: 只能取一项进行归结, 不能同时取很多项,
+只用于文字的析取式</li>
+<li>合取范式: 文字析取式的合取形式, CNF, <strong>如何转化</strong></li>
+</ul>
+<h1 id="知识表示">知识表示</h1>
+<ul>
+<li>情景演算, 情景, 流, 前提条件公理 (可能性公理), 效应公理等概念
+(背)</li>
+<li>本体论, 类别, 对象, 举例说明 (背)</li>
+</ul>
+<p>讨论的是 <strong>如何表示世界的事实</strong>,
+着重于在不同领域都会出现的通用概念, 如动作, 时间, 物理对象, 信念,
+表示这样的抽象概念是 <strong>本体论工程(en?)</strong></p>
+<h2 id="本体论工程">本体论工程</h2>
+<p>以高某PPT为准</p>
+<h2 id="类别和对象">类别和对象</h2>
+<p>以高某PPT为准</p>
+<h2 id="动作-情景-事件-流">动作, 情景, 事件, 流</h2>
+<p>对动作结果的推理是基于知识的Agent运作的中心问题</p>
+<h3 id="情景演算本体论">情景演算本体论</h3>
+<figure>
+<img src="情景演算.png" alt="情景演算" />
+<figcaption aria-hidden="true">情景演算</figcaption>
+</figure>
+<p><strong>流 fluent</strong></p>
+<ul>
+<li>使情景从一个变换到下一个的函数和谓词, 如Agent的位置或怪兽的死活</li>
+</ul>
+<p>在定义谓词或函数时, 允许不受时间影响</p>
+<h1 id="概率推理">概率推理</h1>
+<ul>
+<li>贝叶斯网络的定义, 语义</li>
+<li>给定贝叶斯网络, 写出相应的联合概率分布</li>
+<li>针对书中的盗贼警报任务, 理解贝叶斯网络的精确推理,
+并能够在给定证据的情况下进行推理</li>
+</ul>
+<h2 id="贝叶斯网络的定义和语义">贝叶斯网络的定义和语义</h2>
+<p>独立性, 条件独立性, 不确定域中的知识表示</p>
+<ul>
+<li>减少了所需定义的概率数目</li>
+</ul>
+<p>有向图, 结点代表概率信息</p>
+<ul>
+<li>随机变量组成的网络结点</li>
+<li>有向边集合</li>
+<li>每个结点有条件概率 <span class="math inline">\(P(X_i |
+Parents(X_i))\)</span></li>
+<li>无环</li>
+</ul>
+<h1 id="指定简单决策">指定简单决策</h1>
+<ul>
+<li>理解什么是偏好, 效用, 最大期望效用原则 (计算期望)</li>
+<li>理解决策网络, 尤其是网络中的结点类型</li>
+<li>给定网络, 计算不同动作的期望效用, 并选具有最大期望效用的动作</li>
+</ul>
+<h2
+id="在不确定性环境下结合信度和愿望">在不确定性环境下结合信度和愿望</h2>
+<figure>
+<img src="expectation.png" alt="expectation-1" />
+<figcaption aria-hidden="true">expectation-1</figcaption>
+</figure>
+]]></content>
   </entry>
 </search>

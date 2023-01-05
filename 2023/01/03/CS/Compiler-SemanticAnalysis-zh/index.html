@@ -20,21 +20,25 @@
   <meta name="author" content="">
   <meta name="keywords" content="">
   
-    <meta name="description" content="&quot;计划是什么&quot; &quot;墙上的风景 (即答&quot;">
+    <meta name="description" content="&quot;书接上文&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WinterHoliday">
-<meta property="og:url" content="https://andrew-rey.github.io/2022/12/26/Life/WinterHoliday/index.html">
+<meta property="og:title" content="语义分析">
+<meta property="og:url" content="https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/index.html">
 <meta property="og:site_name" content="Andrew-Rey">
-<meta property="og:description" content="&quot;计划是什么&quot; &quot;墙上的风景 (即答&quot;">
+<meta property="og:description" content="&quot;书接上文&quot;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://andrew-rey.github.io/index_imgs/winter.jpg">
-<meta property="article:published_time" content="2022-12-26T02:38:46.000Z">
-<meta property="article:modified_time" content="2022-12-26T05:13:08.470Z">
+<meta property="og:image" content="https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/综合属性.png">
+<meta property="og:image" content="https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/综合属性2.png">
+<meta property="og:image" content="https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/继承属性.png">
+<meta property="og:image" content="https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/继承属性2.png">
+<meta property="og:image" content="https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/虚拟结点.png">
+<meta property="article:published_time" content="2023-01-03T09:42:03.000Z">
+<meta property="article:modified_time" content="2023-01-03T13:55:13.716Z">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://andrew-rey.github.io/index_imgs/winter.jpg">
+<meta name="twitter:image" content="https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/综合属性.png">
   
   
-  <title>WinterHoliday - Andrew-Rey</title>
+  <title>语义分析 - Andrew-Rey</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -179,7 +183,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="WinterHoliday"></span>
+            <span id="subtitle" data-typed-text="语义分析"></span>
           
         </div>
 
@@ -190,8 +194,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-26 10:38" pubdate>
-          December 26, 2022 am
+        <time datetime="2023-01-03 17:42" pubdate>
+          January 3, 2023 pm
         </time>
       </span>
     
@@ -202,7 +206,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          645 words
+          1.8k words
         
       </span>
     
@@ -213,7 +217,7 @@
         
         
         
-          6 mins
+          16 mins
         
       </span>
     
@@ -263,70 +267,200 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">WinterHoliday</h1>
+            <h1 style="display: none">语义分析</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on December 26, 2022 pm
+                    Last updated on January 3, 2023 pm
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <p>"计划是什么"</p>
-<p>"墙上的风景 (即答"</p>
+              <p>"书接上文"</p>
 <span id="more"></span>
-<h1 id="前言">前言</h1>
-<p>首先寒假大概分成三大块吧: <strong>学习, 写代码, 生活</strong>.
-方才一想, 发现寒假要做的事情还挺多的, 比如啥 <strong>编译原理</strong>,
-然后由于提前回家, 考试推迟, 就导致还要
-<strong>准备下学期初的考试</strong>, 然后大作业的话,
-<strong>还有操作系统和数据库的两个大作业</strong>,
-还有那个所谓的<strong>SRTP</strong>要做, 甚至还要
-<strong>准备TOEFL和GRE</strong>, <strong>准备出国的一些事情</strong>,
-接着毕竟已经快大四了, 还要去找一些比较好的点, 复现别人成果也好,
-自己写代码也好, 都要有一些相应的积累, 另外作为一个计算机学生,
-还要修一些必要的课程. 在这闲暇之余, 还希望每天能写一些文字,
-整个假期要看一些电影, 要找同学玩, 要做菜.</p>
-<h1 id="学习">学习</h1>
-<h2 id="编译原理">编译原理</h2>
-<p>这必然是最重要的一部分</p>
+<h1 id="概述">概述</h1>
+<p><strong>语义翻译</strong>: 语义分析和中间代码生成一起实现.</p>
+<p><strong>语法制导翻译</strong>: 在语法分析时实现语义翻译.
+使用上下文无关文法(CFG)来引导对语言的翻译, 是一种面向文法的翻译技术.</p>
+<h2 id="基本思想">基本思想</h2>
+<p><strong>语义属性</strong>: 在CFG中为文法符号设置语义属性,
+表示语法成分对应的语义信息.</p>
+<p>如何计算:</p>
 <ul>
-<li>听网课 (主要看语义分析往后的内容), 看龙书 (整体浏览一遍)</li>
-<li>写一个半成品的编译器 (具体要求都写到某个README里面去了)</li>
+<li>用文法符号所在的产生式相关联的<strong>语义规则</strong>计算</li>
 </ul>
-<h2 id="每周必做">每周必做</h2>
-<p>这里的内容的话, 又多又杂</p>
+<p><strong>语法制导定义(SDD)</strong>:</p>
 <ul>
-<li>复习某些考试课程
+<li>将<strong>每个文法符号</strong>和一个<strong>语义属性集合</strong>相关联</li>
+<li>将<strong>每个产生式</strong>和<strong>一组语义规则</strong>相关联,
+这些规则用于计算产生式中各个文法符号的属性值</li>
+<li>注意: 同一个产生式出现相同符号时, 需要以下标区分,
+因为有不同的语义含义</li>
+<li>注意: 语义规则可以是一些 <strong>副作用</strong> 如打印等等</li>
+</ul>
+<p>例子:</p>
+<table>
+<thead>
+<tr class="header">
+<th>产生式</th>
+<th>语义规则</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(D \rightarrow T\ L\)</span></td>
+<td><span class="math inline">\(L.inh = T.type\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T \rightarrow int\)</span></td>
+<td><span class="math inline">\(T.type = int\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T \rightarrow real\)</span></td>
+<td><span class="math inline">\(T.type = real\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L \rightarrow L_1, id\)</span></td>
+<td><span class="math inline">\(L_1.inh = L.inh\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>语法制导翻译方案(SDT)</strong></p>
 <ul>
-<li>主要是一些非计算机课程, 需要每周花一点时间来做, 包括
-<strong>自动控制原理</strong>, <strong>近代物理 (热学)</strong>.
-人智导论和数据库可以考前一两周的时候复习.</li>
+<li>在产生式右部嵌入程序片段 (<strong>语义动作</strong>)</li>
+</ul>
+<p>例子:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(D \rightarrow T\ \{L.inh = T.type\}\
+L\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T \rightarrow int\ \{T.type =
+int\}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T \rightarrow real\ \{T.type =
+int\}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L \rightarrow \{L_1.inh = L.inh\}\ L_1,
+id\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>语义动作在产生式的位置决定了动作的执行时刻</strong>:
+例如第一个产生式, 在分析出<span class="math inline">\(T\)</span>后,
+可以根据语义动作, 将后面的<span
+class="math inline">\(L\)</span>的语义属性赋值</p>
+<h2 id="语法制导定义sdd">语法制导定义SDD</h2>
+<p>分为 <strong>综合属性</strong> 和 <strong>继承属性</strong></p>
+<h3 id="综合属性synthesized-attribute">综合属性(Synthesized
+attribute)</h3>
+<p>在分析树上的结点<span class="math inline">\(N\)</span>的
+<strong>非终结符</strong> <span
+class="math inline">\(A\)</span>的综合属性只能通过<span
+class="math inline">\(N\)</span>的<strong>子节点或本身的属性值</strong>来定义.</p>
+<figure>
+<img src="综合属性.png" srcset="/img/loading.gif" lazyload alt="综合属性例子" />
+<figcaption aria-hidden="true">综合属性例子</figcaption>
+</figure>
+<figure>
+<img src="综合属性2.png" srcset="/img/loading.gif" lazyload alt="综合属性例子" />
+<figcaption aria-hidden="true">综合属性例子</figcaption>
+</figure>
+<h3 id="继承属性inherited-attribute">继承属性(Inherited attribute)</h3>
+<p>在分析树上的结点<span class="math inline">\(N\)</span>的
+<strong>非终结符</strong> <span
+class="math inline">\(A\)</span>的继承属性只能通过<span
+class="math inline">\(N\)</span>的<strong>父节点,
+兄弟结点或本身结点的属性值</strong>来定义.</p>
+<figure>
+<img src="继承属性.png" srcset="/img/loading.gif" lazyload alt="继承属性例子" />
+<figcaption aria-hidden="true">继承属性例子</figcaption>
+</figure>
+<figure>
+<img src="继承属性2.png" srcset="/img/loading.gif" lazyload alt="继承属性例子" />
+<figcaption aria-hidden="true">继承属性例子</figcaption>
+</figure>
+<div class="note note-info">
+            <p>终结符只有综合属性,原因是其综合属性指向的是符号表序号(或者说是词法分析器提供的词法值),不论其父结点怎么变, 终结符的属性都不会变, 因此不能存在继承属性. <spanclass="math inline">\(SDD\)</span>中也没有计算终结符属性值的语义规则.</p>
+          </div>
+<h3 id="注释分析树annotated-parse-tree">注释分析树(Annotated parse
+tree)</h3>
+<p>在分析树中标明语义值.</p>
+<h3 id="sdd的求值顺序">SDD的求值顺序</h3>
+<p>在对语法分析树的一个结点求属性值之前, 应该
+<strong>先求出它所依赖的所有属性值</strong></p>
+<p><strong>依赖图(Dependency graph)</strong></p>
+<ul>
+<li>如果<span class="math inline">\(X.a\)</span>的值
+<strong>依赖于</strong> 属性<span
+class="math inline">\(Y.b\)</span>的值, 则依赖图中有一条
+<strong>从Y.b指向X.a的有向边</strong>. 方便起见, 可以将
+<strong>综合属性放在结点的右边, 继承属性放在左边</strong>.</li>
+<li>注意: 如果语义规则中含有副作用 (即调用了某个函数,
+函数中用到了语义属性), 则为它创建一个 <strong>虚拟结点</strong>,
+如下所示</li>
+</ul>
+<figure>
+<img src="虚拟结点.png" srcset="/img/loading.gif" lazyload alt="虚拟结点" />
+<figcaption aria-hidden="true">虚拟结点</figcaption>
+</figure>
+<p>可行的求值顺序: <strong>拓扑排序</strong>,
+依赖者的序号大于被依赖者的序号.</p>
+<ul>
+<li>只有综合属性的SDD, 可以按照任意自底向上的顺序计算它们的值</li>
+<li>同时具有综合属性和继承属性的SDD,
+不能保证存在应该顺序对各个结点上的属性进行求值</li>
+<li><strong>依赖图中没有环, 则至少存在一个拓扑排序</strong></li>
+</ul>
+<p>给定一个SDD, 很难确定是否存在某个语法树, 使得依赖图无环, 但存在
+<strong><span class="math inline">\(L\)</span>-属性定义</strong> 和
+<strong><span class="math inline">\(S\)</span>-属性定义</strong>
+保证每个语法分析树都存在求值顺序, 依赖图无环.</p>
+<h3 id="s-属性定义"><span class="math inline">\(S\)</span>-属性定义</h3>
+<p><strong>仅使用综合属性的SDD</strong>, 可以在
+<strong>自底向上</strong> 的语法分析过程中实现</p>
+<h3 id="l-属性定义"><span class="math inline">\(L\)</span>-属性定义</h3>
+<p>在一个产生式所关联的各属性之间, 依赖图的边 <strong>可以从左到右,
+但不能从右到左</strong>. 正式定义为: 一个SDD是<span
+class="math inline">\(L\)</span>-属性定义, 当且仅当它的每个属性要么
+<strong>是一个综合属性</strong> 要么
+<strong>是满足如下条件的继承属性</strong></p>
+<ul>
+<li>假设存在一个产生式<span class="math inline">\(A \rightarrow
+X_1X_2\cdots X_n\)</span>, 其右部符号<span
+class="math inline">\(X_i\)</span>的继承属性仅依赖于
+<ul>
+<li><span class="math inline">\(A\)</span>的继承属性
+(不能依赖于父结点的综合属性,
+因为父结点的综合属性可能依赖子结点的继承属性, 会导致循环依赖)</li>
+<li>产生式中<span class="math inline">\(X_i\)</span>左边的符号的属性
+(包括综合属性和继承属性)</li>
+<li><span class="math inline">\(X_i\)</span>本身的属性, 但<span
+class="math inline">\(X_i\)</span>的全部属性不能在依赖图中形成环路</li>
 </ul></li>
-<li><strong>至少看一部电影</strong></li>
 </ul>
-<h2 id="每天必做">每天必做</h2>
-<p>这里就继续规定一下合理的每天必做的事情</p>
+<div class="note note-info">
+            <p>每个<span class="math inline">\(S\)</span>-属性定义都是<spanclass="math inline">\(L\)</span>-属性定义</p>
+          </div>
+<h2 id="语法制导翻译方案sdt">语法制导翻译方案SDT</h2>
 <ul>
-<li>写代码: 计算机学生每天写点代码不过分吧</li>
-<li><del>矫情文字</del>打卡</li>
-<li>看书 (为啥不写看啥啊, <del>因为好多书要看</del>)</li>
-</ul>
-<h2 id="计算机课程">计算机课程</h2>
-<ul>
-<li>算法</li>
-<li>图形学</li>
-</ul>
-<h2 id="制定一些ddl">制定一些ddl</h2>
-<ul>
-<li>数据库最后的大作业听天由命 (毕竟我不是组长, 但我希望快点写完)</li>
-<li>操作系统最后一个实验 (这东西你不会还想留到明年吧)</li>
-<li>过年前把编译器写<span class="math inline">\(\frac{2}{3}\)</span>
-(写完语义分析, 但理论要全学完)</li>
-<li>开学前能不能把SRTP搞出个什么东西</li>
+<li><span class="math inline">\(LR\)</span>分析, <span
+class="math inline">\(SDD\)</span>是<span
+class="math inline">\(S\)</span>属性的</li>
+<li><span class="math inline">\(LL\)</span>分析, <span
+class="math inline">\(SDD\)</span>是<span
+class="math inline">\(L\)</span>属性的</li>
 </ul>
 
               
@@ -345,7 +479,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Life/" class="category-chain-item">Life</a>
+  <a href="/categories/CS/" class="category-chain-item">CS</a>
   
   
 
@@ -365,15 +499,15 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>WinterHoliday</div>
-      <div>https://andrew-rey.github.io/2022/12/26/Life/WinterHoliday/</div>
+      <div>语义分析</div>
+      <div>https://andrew-rey.github.io/2023/01/03/CS/Compiler-SemanticAnalysis-zh/</div>
     </div>
     <div class="license-meta">
       
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 26, 2022</div>
+          <div>January 3, 2023</div>
         </div>
       
       
@@ -403,9 +537,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/03/CS/Compiler-SemanticAnalysis-zh/" title="语义分析">
+                      <a href="/2023/01/05/ML/IntroductionToAI/" title="人智导论复习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">语义分析</span>
+                        <span class="hidden-mobile">人智导论复习</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -413,8 +547,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/23/CS/OS/" title="Operating System">
-                        <span class="hidden-mobile">Operating System</span>
+                      <a href="/2022/12/26/Life/WinterHoliday/" title="WinterHoliday">
+                        <span class="hidden-mobile">WinterHoliday</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
