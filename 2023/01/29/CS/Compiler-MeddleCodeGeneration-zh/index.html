@@ -13,8 +13,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Abording Information"/><meta name="keywords" content="Life, Abording, Andrew-Rey" /><link rel="alternate" href="/disable" title="Andrew-Rey" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
-<link rel="canonical" href="https://Andrew-Rey.github.io/2023/01/05/Life/Abording/"/>
+<meta name="description" content="中间代码生成"/><meta name="keywords" content="CS, Compiler, Andrew-Rey" /><link rel="alternate" href="/disable" title="Andrew-Rey" ><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.1" />
+<link rel="canonical" href="https://Andrew-Rey.github.io/2023/01/29/CS/Compiler-MeddleCodeGeneration-zh/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" /><script type="text/x-mathjax-config">
     MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
@@ -26,7 +26,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":true};
 </script>
 
-    <title>Abording Information - Andrew-Rey</title>
+    <title>中间代码生成 - Andrew-Rey</title>
   <meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -95,17 +95,17 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Abording Information
+      <h1 class="post-title">中间代码生成
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2023-01-05
+          2023-01-29
         </span><span class="post-author">
           / Andrew-Rey
         </span>
         <span class="post-category">
-            <a href="/categories/Life/">Life</a>
+            <a href="/categories/CS/">CS</a>
             </span>
         </div>
     </header>
@@ -113,58 +113,79 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#useful-websites"><span class="toc-text">Useful(?) Websites</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#the-british"><span class="toc-text">The British</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#durham-university"><span class="toc-text">Durham University</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#university-of-edinburgh"><span class="toc-text">University of Edinburgh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#herior-watt-university"><span class="toc-text">Herior-Watt University</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#the-us"><span class="toc-text">The US</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hong-kong"><span class="toc-text">Hong Kong</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#singapore"><span class="toc-text">Singapore</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#canada"><span class="toc-text">Canada</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#europe"><span class="toc-text">Europe</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="toc-text">声明语句的翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-%E9%9D%9E%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">例子: 非数组局部变量声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">例子: 数组局部变量声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="toc-text">简单赋值语句的翻译</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p>"讲座记录"</p>
+  </div><div class="post-content"><p>"书接上文"</p>
 <span id="more"></span>
-<h1 id="useful-websites">Useful(?) Websites</h1>
+<h2 id="概述">概述</h2>
+<p>本章将介绍各类语句的翻译</p>
+<ul>
+<li>声明语句</li>
+<li>赋值语句</li>
+<li>控制语句</li>
+<li>过程调用语句</li>
+</ul>
+<h2 id="声明语句的翻译">声明语句的翻译</h2>
+<p>收集标识符的<strong>类型信息</strong>,
+为每个标识符分配一个<strong>相对地址</strong></p>
+<p><strong>类型表达式</strong></p>
+<ul>
+<li>基本类型是类型表达式</li>
+<li>可以为类型表达式命名, 类型名是类型表达式</li>
+<li>将类构造符 (type constructor) 作用于类型表达式可以构成新的类型表达式
+<ul>
+<li>数组构造符<code>array</code>: <img src="数组类型构造符.jpg"
+alt="array数组构造符" /></li>
+<li>指针表达式<code>pointer</code>: <code>pointer(T)</code>是类型表达式,
+表示指向类型<code>T</code>的指针类型</li>
+<li>笛卡尔乘积构造符<span class="math inline">\(\times\)</span>:
+两个类型表达式通过<span
+class="math inline">\(\times\)</span>符号运算后仍然是类型表达式</li>
+<li>函数构造符<span class="math inline">\(\rightarrow\)</span>:
+函数参数的类型表达式的笛卡尔乘积<span
+class="math inline">\(\rightarrow\)</span>函数返回值的类型表达式</li>
+<li>记录构造符<code>record</code>: <img src="记录构造符.jpg"
+alt="record记录构造符" /></li>
+</ul></li>
+</ul>
+<p><strong>局部变量的存储分配</strong></p>
+<p>从类型表达式中可以知道 <strong>该类型在运行时刻所需要的存储单元数量
+(类型的宽度 <em>width</em>)</strong> 在 <strong>编译时</strong>,
+可以使用类型的宽度为每一个名字分配一个 <strong>相对地址</strong>
+名字的类型和相对地址保存在相应的 <strong>符号表中</strong></p>
+<p>变量声明语句的 SDT:</p>
 <figure>
-<img src="websites.png" alt="websites" />
-<figcaption aria-hidden="true">websites</figcaption>
+<img src="变量声明语句的SDT.jpg" alt="变量声明语句的SDT" />
+<figcaption aria-hidden="true">变量声明语句的SDT</figcaption>
 </figure>
-<h1 id="the-british">The British</h1>
+<h3 id="例子-非数组局部变量声明">例子: 非数组局部变量声明</h3>
+<p>考虑有输入: <code>real x; int i;</code></p>
 <figure>
-<img src="british-level.png" alt="british-level" />
-<figcaption aria-hidden="true">british-level</figcaption>
+<img src="demo-1.jpg" alt="demo-1" />
+<figcaption aria-hidden="true">demo-1</figcaption>
 </figure>
-<p>越早申请越好</p>
-<h2 id="durham-university">Durham University</h2>
-<h2 id="university-of-edinburgh">University of Edinburgh</h2>
-<h2 id="herior-watt-university">Herior-Watt University</h2>
-<h1 id="the-us">The US</h1>
+<h3 id="例子-数组局部变量声明">例子: 数组局部变量声明</h3>
+<p>考虑有输入: <code>int[2][3]</code></p>
 <figure>
-<img src="fee.png" alt="fee" />
-<figcaption aria-hidden="true">fee</figcaption>
+<img src="demo-2.jpg" alt="demo-2" />
+<figcaption aria-hidden="true">demo-2</figcaption>
 </figure>
+<h2 id="简单赋值语句的翻译">简单赋值语句的翻译</h2>
+<p>主要任务为 <strong>生成对表达式求值的三地址码</strong>,
+赋值语句的基本文法为:</p>
 <figure>
-<img src="US-level.png" alt="US-level" />
-<figcaption aria-hidden="true">US-level</figcaption>
+<img src="赋值语句文法.jpg" alt="赋值语句文法" />
+<figcaption aria-hidden="true">赋值语句文法</figcaption>
 </figure>
-<p>申请直博免学费?</p>
-<p>加拿大备选, 工资不高</p>
-<p><img src="" /></p>
-<p>套磁时会比较尴尬, 老师回面试说科研问题, 最好有实习, 专业方向的经历,
-体现专业能力</p>
-<h1 id="hong-kong">Hong Kong</h1>
+<p>对该文法定义语义规则生成对应的 SDT 如下:</p>
 <figure>
-<img src="HongKong-level.png" alt="HongKong-level" />
-<figcaption aria-hidden="true">HongKong-level</figcaption>
+<img src="赋值语句SDT.jpg" alt="赋值语句SDT" />
+<figcaption aria-hidden="true">赋值语句SDT</figcaption>
 </figure>
-<h1 id="singapore">Singapore</h1>
-<figure>
-<img src="Singapore.png" alt="Singapore-level" />
-<figcaption aria-hidden="true">Singapore-level</figcaption>
-</figure>
-<h1 id="canada">Canada</h1>
-<figure>
-<img src="Canada-level.png" alt="Canada-level" />
-<figcaption aria-hidden="true">Canada-level</figcaption>
-</figure>
-<h1 id="europe">Europe</h1>
-<figure>
-<img src="Europe-level.png" alt="Europe-level" />
-<figcaption aria-hidden="true">Europe-level</figcaption>
-</figure>
+<p>由于这样的操作, 父结点需要赋值子结点的三地址码,
+而子结点需要赋值其子结点的三地址码, 会造成消耗空间大的问题, 因此使用
+<strong>增量翻译</strong>, 即修改<code>gen()</code>函数,
+使得其在生成三地址码后将新的三地址</p>
 
       </div>
       <div class="post-copyright">
@@ -174,7 +195,7 @@
     </p>
     <p class="copyright-item">
       <span>Link: </span>
-      <a href="https://andrew-rey.github.io/2023/01/05/Life/Abording/">https://andrew-rey.github.io/2023/01/05/Life/Abording/</a>
+      <a href="https://andrew-rey.github.io/2023/01/29/CS/Compiler-MeddleCodeGeneration-zh/">https://andrew-rey.github.io/2023/01/29/CS/Compiler-MeddleCodeGeneration-zh/</a>
     </p>
     <p class="copyright-item">
       <span>License: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
@@ -182,17 +203,12 @@
   </div>
       <footer class="post-footer">
         <div class="post-tags">
-            <a href="/tags/Life/">Life</a>
-            <a href="/tags/Abording/">Abording</a>
+            <a href="/tags/CS/">CS</a>
+            <a href="/tags/Compiler/">Compiler</a>
             </div>
         
-        <nav class="post-nav"><a class="prev" href="/2023/01/29/CS/Compiler-MeddleCodeGeneration-zh/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">中间代码生成</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    <a class="next" href="/2023/01/05/ML/IntroductionToAI/">
-        <span class="next-text nav-default">人智导论复习</span>
+        <nav class="post-nav"><a class="next" href="/2023/01/05/Life/Abording/">
+        <span class="next-text nav-default">Abording Information</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>

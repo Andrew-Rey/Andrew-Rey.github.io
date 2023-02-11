@@ -419,6 +419,66 @@ p=lim_{x\rightarrow\infty}xsin (1/x)
       </tags>
   </entry>
   <entry>
+    <title>Android Basic</title>
+    <url>/2022/09/01/Android/AndroidBasic/</url>
+    <content><![CDATA[<p>"我只是想学kotlin而已"</p>
+<p>"我不理解"</p>
+<span id="more"></span>
+<h1 id="android-studio">Android Studio</h1>
+<p>一开始用的是Intelij IDEA, 后来觉得Android Studio挺香的.
+当然前提是有JDK, Studio的话, 下载很快, 然后安装路径自选, 但是
+<strong>注意在提示没有安装SDK的时候, 选择CANCEL</strong>,
+安装完成后直接启动它.</p>
+<p>这时候会提示你没有安装SDK, 并且会告诉你安装哪些东西,
+只要选择安装路径即可, 等待片刻.</p>
+<p>在<code>create device</code>里面, 可以新建<code>device</code>,
+然后我新建了一个和我手机屏幕一样大的安卓虚拟机, 内存之类的看情况选,
+没什么感觉.</p>
+<h1 id="组件">组件</h1>
+<h2 id="activity">Activity</h2>
+<p>用于显示用户界面, 用户通过Activity交互完成相关操作,
+一个APP可以有多个Activity</p>
+<h1 id="布局">布局</h1>
+<h2 id="linear-layout">Linear Layout</h2>
+<p>比较常用的属性:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:id</span><br><span class="line">android:layout_width</span><br><span class="line">android:layout_height</span><br><span class="line">android:background</span><br><span class="line">android:layout_margin</span><br><span class="line">android:layout_padding</span><br><span class="line">android:layout_orientation</span><br><span class="line">android:gravity  <span class="comment">&lt;!--相对位置--&gt;</span></span><br><span class="line">android:layout_weight  <span class="comment">&lt;!--将剩余内容平分--&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="relative-layout">Relative Layout</h2>
+<p>比较常用的属性:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:layout_toLeftOf</span><br><span class="line">androidLlayout_toRightOf</span><br><span class="line">android:alignBottom</span><br><span class="line">android:alignParentBottom</span><br><span class="line">android:layout_below</span><br></pre></td></tr></table></figure>
+<h1 id="控件">控件</h1>
+<h2 id="text-view">Text View</h2>
+<p>可以实现 <strong>文字大小, 颜色; 显示不下时使用...; 文字加icon;
+中划线, 下划线; 跑马灯</strong></p>
+<p><code>kotlin</code>实现中划线要重写扩展方法<code>apply()</code></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">my_text_view.apply &#123;</span><br><span class="line">    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAGS or Paint.ANTI_ALIAS_FLAG</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="material-button">Material Button</h2>
+<p>谷歌给的<code>Button</code>控件, 继承了之前的<code>Button</code></p>
+<p>需要在<code>app/build.gradle</code>中添加依赖:</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="keyword">group</span>: <span class="string">&#x27;com.google.android.material&#x27;</span>, name: <span class="string">&#x27;material&#x27;</span>, version: <span class="string">&#x27;1.4.0&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>还需要更换谷歌它指定的样式主题,
+在<code>values/theme.xml</code>中将主题改为</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">Theme.MaterialComponents.Light.NoActionBar</span><br></pre></td></tr></table></figure>
+<p>同步后便可以使用谷歌的<code>MaterialButton</code>, 不过为了修改属性,
+用到了<code>app</code>和<code>tool</code>,
+因此在相应的<code>activity</code>文件头添加:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br></pre></td></tr></table></figure>
+<p>以示礼貌</p>
+<p><strong>重点</strong></p>
+<p>按钮又不是摆设, 所以要设计相应的页面跳转,
+也就是需要实现相应的<code>clickListener</code></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mBtn: MaterialButton</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> onCreate ...</span></span><br><span class="line"></span><br><span class="line">        mBtn = findViewById(R.id.button_name)</span><br><span class="line">        mBtn.setOnClickListener() &#123;</span><br><span class="line">            startActivity(Intent(<span class="keyword">this</span>, OtherActivity::<span class="keyword">class</span>.java))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>接着是颜值比较高的选择栏设计:</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+        <tag>Android</tag>
+        <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Abording Information</title>
     <url>/2023/01/05/Life/Abording/</url>
     <content><![CDATA[<p>"讲座记录"</p>
@@ -602,131 +662,6 @@ CLion的CMake及时更新还挺好的.</p>
       </tags>
   </entry>
   <entry>
-    <title>Android Basic</title>
-    <url>/2022/09/01/Android/AndroidBasic/</url>
-    <content><![CDATA[<p>"我只是想学kotlin而已"</p>
-<p>"我不理解"</p>
-<span id="more"></span>
-<h1 id="android-studio">Android Studio</h1>
-<p>一开始用的是Intelij IDEA, 后来觉得Android Studio挺香的.
-当然前提是有JDK, Studio的话, 下载很快, 然后安装路径自选, 但是
-<strong>注意在提示没有安装SDK的时候, 选择CANCEL</strong>,
-安装完成后直接启动它.</p>
-<p>这时候会提示你没有安装SDK, 并且会告诉你安装哪些东西,
-只要选择安装路径即可, 等待片刻.</p>
-<p>在<code>create device</code>里面, 可以新建<code>device</code>,
-然后我新建了一个和我手机屏幕一样大的安卓虚拟机, 内存之类的看情况选,
-没什么感觉.</p>
-<h1 id="组件">组件</h1>
-<h2 id="activity">Activity</h2>
-<p>用于显示用户界面, 用户通过Activity交互完成相关操作,
-一个APP可以有多个Activity</p>
-<h1 id="布局">布局</h1>
-<h2 id="linear-layout">Linear Layout</h2>
-<p>比较常用的属性:</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:id</span><br><span class="line">android:layout_width</span><br><span class="line">android:layout_height</span><br><span class="line">android:background</span><br><span class="line">android:layout_margin</span><br><span class="line">android:layout_padding</span><br><span class="line">android:layout_orientation</span><br><span class="line">android:gravity  <span class="comment">&lt;!--相对位置--&gt;</span></span><br><span class="line">android:layout_weight  <span class="comment">&lt;!--将剩余内容平分--&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="relative-layout">Relative Layout</h2>
-<p>比较常用的属性:</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:layout_toLeftOf</span><br><span class="line">androidLlayout_toRightOf</span><br><span class="line">android:alignBottom</span><br><span class="line">android:alignParentBottom</span><br><span class="line">android:layout_below</span><br></pre></td></tr></table></figure>
-<h1 id="控件">控件</h1>
-<h2 id="text-view">Text View</h2>
-<p>可以实现 <strong>文字大小, 颜色; 显示不下时使用...; 文字加icon;
-中划线, 下划线; 跑马灯</strong></p>
-<p><code>kotlin</code>实现中划线要重写扩展方法<code>apply()</code></p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">my_text_view.apply &#123;</span><br><span class="line">    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAGS or Paint.ANTI_ALIAS_FLAG</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="material-button">Material Button</h2>
-<p>谷歌给的<code>Button</code>控件, 继承了之前的<code>Button</code></p>
-<p>需要在<code>app/build.gradle</code>中添加依赖:</p>
-<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">implementation <span class="keyword">group</span>: <span class="string">&#x27;com.google.android.material&#x27;</span>, name: <span class="string">&#x27;material&#x27;</span>, version: <span class="string">&#x27;1.4.0&#x27;</span></span><br></pre></td></tr></table></figure>
-<p>还需要更换谷歌它指定的样式主题,
-在<code>values/theme.xml</code>中将主题改为</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">Theme.MaterialComponents.Light.NoActionBar</span><br></pre></td></tr></table></figure>
-<p>同步后便可以使用谷歌的<code>MaterialButton</code>, 不过为了修改属性,
-用到了<code>app</code>和<code>tool</code>,
-因此在相应的<code>activity</code>文件头添加:</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br></pre></td></tr></table></figure>
-<p>以示礼貌</p>
-<p><strong>重点</strong></p>
-<p>按钮又不是摆设, 所以要设计相应的页面跳转,
-也就是需要实现相应的<code>clickListener</code></p>
-<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mBtn: MaterialButton</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> onCreate ...</span></span><br><span class="line"></span><br><span class="line">        mBtn = findViewById(R.id.button_name)</span><br><span class="line">        mBtn.setOnClickListener() &#123;</span><br><span class="line">            startActivity(Intent(<span class="keyword">this</span>, OtherActivity::<span class="keyword">class</span>.java))</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>接着是颜值比较高的选择栏设计:</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-        <tag>Android</tag>
-        <tag>Software</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WinterHoliday</title>
-    <url>/2022/12/26/Life/WinterHoliday/</url>
-    <content><![CDATA[<p>"计划是什么"</p>
-<p>"墙上的风景 (即答"</p>
-<span id="more"></span>
-<h1 id="前言">前言</h1>
-<p>首先寒假大概分成三大块吧: <strong>学习, 写代码, 生活</strong>.
-方才一想, 发现寒假要做的事情还挺多的, 比如啥 <strong>编译原理</strong>,
-然后由于提前回家, 考试推迟, 就导致还要
-<strong>准备下学期初的考试</strong>, 然后大作业的话,
-<strong>还有操作系统和数据库的两个大作业</strong>,
-还有那个所谓的<strong>SRTP</strong>要做, 甚至还要
-<strong>准备TOEFL和GRE</strong>, <strong>准备出国的一些事情</strong>,
-接着毕竟已经快大四了, 还要去找一些比较好的点, 复现别人成果也好,
-自己写代码也好, 都要有一些相应的积累, 另外作为一个计算机学生,
-还要修一些必要的课程. 在这闲暇之余, 还希望每天能写一些文字,
-整个假期要看一些电影, 要找同学玩, 要做菜.</p>
-<h1 id="学习">学习</h1>
-<h2 id="编译原理">编译原理</h2>
-<p>这必然是最重要的一部分</p>
-<ul>
-<li>听网课 (主要看语义分析往后的内容), 看龙书 (整体浏览一遍)</li>
-<li>写一个半成品的编译器 (具体要求都写到某个README里面去了)</li>
-</ul>
-<h2 id="每周必做">每周必做</h2>
-<p>这里的内容的话, 又多又杂</p>
-<ul>
-<li>复习某些考试课程
-<ul>
-<li>主要是一些非计算机课程, 需要每周花一点时间来做, 包括
-<strong>自动控制原理</strong>, <strong>近代物理 (热学)</strong>.
-人智导论和数据库可以考前一两周的时候复习.</li>
-</ul></li>
-<li><strong>至少看一部电影</strong></li>
-</ul>
-<h2 id="每天必做">每天必做</h2>
-<p>这里就继续规定一下合理的每天必做的事情</p>
-<ul>
-<li>写代码: 计算机学生每天写点代码不过分吧</li>
-<li><del>矫情文字</del>打卡</li>
-<li>看书 (为啥不写看啥啊, <del>因为好多书要看</del>)</li>
-</ul>
-<h2 id="计算机课程">计算机课程</h2>
-<ul>
-<li>算法</li>
-<li>图形学</li>
-</ul>
-<h2 id="制定一些ddl">制定一些ddl</h2>
-<ul>
-<li>数据库最后的大作业听天由命 (毕竟我不是组长, 但我希望快点写完)</li>
-<li>操作系统最后一个实验 (这东西你不会还想留到明年吧)</li>
-<li>过年前把编译器写<span class="math inline">\(\frac{2}{3}\)</span>
-(写完语义分析, 但理论要全学完)</li>
-<li>开学前能不能把SRTP搞出个什么东西</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Life</category>
-      </categories>
-      <tags>
-        <tag>Life</tag>
-        <tag>Schedual</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CMake Tutorial</title>
     <url>/2022/08/10/CS/CMakeTutorial/</url>
     <content><![CDATA[<p>CMake version: 3.x</p>
@@ -830,16 +765,164 @@ used for debugging. <figure class="highlight cmake"><table><tr><td class="code">
       </categories>
   </entry>
   <entry>
+    <title>WinterHoliday</title>
+    <url>/2022/12/26/Life/WinterHoliday/</url>
+    <content><![CDATA[<p>"计划是什么"</p>
+<p>"墙上的风景 (即答"</p>
+<span id="more"></span>
+<h1 id="前言">前言</h1>
+<p>首先寒假大概分成三大块吧: <strong>学习, 写代码, 生活</strong>.
+方才一想, 发现寒假要做的事情还挺多的, 比如啥 <strong>编译原理</strong>,
+然后由于提前回家, 考试推迟, 就导致还要
+<strong>准备下学期初的考试</strong>, 然后大作业的话,
+<strong>还有操作系统和数据库的两个大作业</strong>,
+还有那个所谓的<strong>SRTP</strong>要做, 甚至还要
+<strong>准备TOEFL和GRE</strong>, <strong>准备出国的一些事情</strong>,
+接着毕竟已经快大四了, 还要去找一些比较好的点, 复现别人成果也好,
+自己写代码也好, 都要有一些相应的积累, 另外作为一个计算机学生,
+还要修一些必要的课程. 在这闲暇之余, 还希望每天能写一些文字,
+整个假期要看一些电影, 要找同学玩, 要做菜.</p>
+<h1 id="学习">学习</h1>
+<h2 id="编译原理">编译原理</h2>
+<p>这必然是最重要的一部分</p>
+<ul>
+<li>听网课 (主要看语义分析往后的内容), 看龙书 (整体浏览一遍)</li>
+<li>写一个半成品的编译器 (具体要求都写到某个README里面去了)</li>
+</ul>
+<h2 id="每周必做">每周必做</h2>
+<p>这里的内容的话, 又多又杂</p>
+<ul>
+<li>复习某些考试课程
+<ul>
+<li>主要是一些非计算机课程, 需要每周花一点时间来做, 包括
+<strong>自动控制原理</strong>, <strong>近代物理 (热学)</strong>.
+人智导论和数据库可以考前一两周的时候复习.</li>
+</ul></li>
+<li><strong>至少看一部电影</strong></li>
+</ul>
+<h2 id="每天必做">每天必做</h2>
+<p>这里就继续规定一下合理的每天必做的事情</p>
+<ul>
+<li>写代码: 计算机学生每天写点代码不过分吧</li>
+<li><del>矫情文字</del>打卡</li>
+<li>看书 (为啥不写看啥啊, <del>因为好多书要看</del>)</li>
+</ul>
+<h2 id="计算机课程">计算机课程</h2>
+<ul>
+<li>算法</li>
+<li>图形学</li>
+</ul>
+<h2 id="制定一些ddl">制定一些ddl</h2>
+<ul>
+<li>数据库最后的大作业听天由命 (毕竟我不是组长, 但我希望快点写完)</li>
+<li>操作系统最后一个实验 (这东西你不会还想留到明年吧)</li>
+<li>过年前把编译器写<span class="math inline">\(\frac{2}{3}\)</span>
+(写完语义分析, 但理论要全学完)</li>
+<li>开学前能不能把SRTP搞出个什么东西</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>Life</tag>
+        <tag>Schedual</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>中间代码生成</title>
+    <url>/2023/01/29/CS/Compiler-MeddleCodeGeneration-zh/</url>
+    <content><![CDATA[<p>"书接上文"</p>
+<span id="more"></span>
+<h2 id="概述">概述</h2>
+<p>本章将介绍各类语句的翻译</p>
+<ul>
+<li>声明语句</li>
+<li>赋值语句</li>
+<li>控制语句</li>
+<li>过程调用语句</li>
+</ul>
+<h2 id="声明语句的翻译">声明语句的翻译</h2>
+<p>收集标识符的<strong>类型信息</strong>,
+为每个标识符分配一个<strong>相对地址</strong></p>
+<p><strong>类型表达式</strong></p>
+<ul>
+<li>基本类型是类型表达式</li>
+<li>可以为类型表达式命名, 类型名是类型表达式</li>
+<li>将类构造符 (type constructor) 作用于类型表达式可以构成新的类型表达式
+<ul>
+<li>数组构造符<code>array</code>: <img src="数组类型构造符.jpg"
+alt="array数组构造符" /></li>
+<li>指针表达式<code>pointer</code>: <code>pointer(T)</code>是类型表达式,
+表示指向类型<code>T</code>的指针类型</li>
+<li>笛卡尔乘积构造符<span class="math inline">\(\times\)</span>:
+两个类型表达式通过<span
+class="math inline">\(\times\)</span>符号运算后仍然是类型表达式</li>
+<li>函数构造符<span class="math inline">\(\rightarrow\)</span>:
+函数参数的类型表达式的笛卡尔乘积<span
+class="math inline">\(\rightarrow\)</span>函数返回值的类型表达式</li>
+<li>记录构造符<code>record</code>: <img src="记录构造符.jpg"
+alt="record记录构造符" /></li>
+</ul></li>
+</ul>
+<p><strong>局部变量的存储分配</strong></p>
+<p>从类型表达式中可以知道 <strong>该类型在运行时刻所需要的存储单元数量
+(类型的宽度 <em>width</em>)</strong> 在 <strong>编译时</strong>,
+可以使用类型的宽度为每一个名字分配一个 <strong>相对地址</strong>
+名字的类型和相对地址保存在相应的 <strong>符号表中</strong></p>
+<p>变量声明语句的 SDT:</p>
+<figure>
+<img src="变量声明语句的SDT.jpg" alt="变量声明语句的SDT" />
+<figcaption aria-hidden="true">变量声明语句的SDT</figcaption>
+</figure>
+<h3 id="例子-非数组局部变量声明">例子: 非数组局部变量声明</h3>
+<p>考虑有输入: <code>real x; int i;</code></p>
+<figure>
+<img src="demo-1.jpg" alt="demo-1" />
+<figcaption aria-hidden="true">demo-1</figcaption>
+</figure>
+<h3 id="例子-数组局部变量声明">例子: 数组局部变量声明</h3>
+<p>考虑有输入: <code>int[2][3]</code></p>
+<figure>
+<img src="demo-2.jpg" alt="demo-2" />
+<figcaption aria-hidden="true">demo-2</figcaption>
+</figure>
+<h2 id="简单赋值语句的翻译">简单赋值语句的翻译</h2>
+<p>主要任务为 <strong>生成对表达式求值的三地址码</strong>,
+赋值语句的基本文法为:</p>
+<figure>
+<img src="赋值语句文法.jpg" alt="赋值语句文法" />
+<figcaption aria-hidden="true">赋值语句文法</figcaption>
+</figure>
+<p>对该文法定义语义规则生成对应的 SDT 如下:</p>
+<figure>
+<img src="赋值语句SDT.jpg" alt="赋值语句SDT" />
+<figcaption aria-hidden="true">赋值语句SDT</figcaption>
+</figure>
+<p>由于这样的操作, 父结点需要赋值子结点的三地址码,
+而子结点需要赋值其子结点的三地址码, 会造成消耗空间大的问题, 因此使用
+<strong>增量翻译</strong>, 即修改<code>gen()</code>函数,
+使得其在生成三地址码后将新的三地址</p>
+]]></content>
+      <categories>
+        <category>CS</category>
+      </categories>
+      <tags>
+        <tag>CS</tag>
+        <tag>Compiler</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>语义分析</title>
     <url>/2023/01/03/CS/Compiler-SemanticAnalysis-zh/</url>
     <content><![CDATA[<p>"书接上文"</p>
 <span id="more"></span>
-<h1 id="概述">概述</h1>
+<h2 id="概述">概述</h2>
 <p><strong>语义翻译</strong>: 语义分析和中间代码生成一起实现.</p>
 <p><strong>语法制导翻译</strong>: 在语法分析时实现语义翻译.
 使用上下文无关文法(CFG)来引导对语言的翻译, 是一种面向文法的翻译技术.</p>
 <h2 id="基本思想">基本思想</h2>
-<p><strong>语义属性</strong>: 在CFG中为文法符号设置语义属性,
+<p><strong>语义属性</strong>: 在 CFG 中为文法符号设置语义属性,
 表示语法成分对应的语义信息.</p>
 <p>如何计算:</p>
 <ul>
@@ -914,7 +997,7 @@ id\)</span></td>
 例如第一个产生式, 在分析出<span class="math inline">\(T\)</span>后,
 可以根据语义动作, 将后面的<span
 class="math inline">\(L\)</span>的语义属性赋值</p>
-<h2 id="语法制导定义sdd">语法制导定义SDD</h2>
+<h2 id="语法制导定义-sdd">语法制导定义 SDD</h2>
 <p>分为 <strong>综合属性</strong> 和 <strong>继承属性</strong></p>
 <h3 id="综合属性synthesized-attribute">综合属性(Synthesized
 attribute)</h3>
@@ -953,15 +1036,15 @@ class="math inline">\(SDD\)</span>中也没有计算终结符属性值的语义�
 <h3 id="注释分析树annotated-parse-tree">注释分析树(Annotated parse
 tree)</h3>
 <p>在分析树中标明语义值.</p>
-<h3 id="sdd的求值顺序">SDD的求值顺序</h3>
+<h3 id="sdd-的求值顺序">SDD 的求值顺序</h3>
 <p>在对语法分析树的一个结点求属性值之前, 应该
 <strong>先求出它所依赖的所有属性值</strong></p>
 <p><strong>依赖图(Dependency graph)</strong></p>
 <ul>
 <li>如果<span class="math inline">\(X.a\)</span>的值
 <strong>依赖于</strong> 属性<span
-class="math inline">\(Y.b\)</span>的值, 则依赖图中有一条
-<strong>从Y.b指向X.a的有向边</strong>. 方便起见, 可以将
+class="math inline">\(Y.b\)</span>的值, 则依赖图中有一条 <strong>从 Y.b
+指向 X.a 的有向边</strong>. 方便起见, 可以将
 <strong>综合属性放在结点的右边, 继承属性放在左边</strong>.</li>
 <li>注意: 如果语义规则中含有副作用 (即调用了某个函数,
 函数中用到了语义属性), 则为它创建一个 <strong>虚拟结点</strong>,
@@ -974,21 +1057,21 @@ class="math inline">\(Y.b\)</span>的值, 则依赖图中有一条
 <p>可行的求值顺序: <strong>拓扑排序</strong>,
 依赖者的序号大于被依赖者的序号.</p>
 <ul>
-<li>只有综合属性的SDD, 可以按照任意自底向上的顺序计算它们的值</li>
-<li>同时具有综合属性和继承属性的SDD,
+<li>只有综合属性的 SDD, 可以按照任意自底向上的顺序计算它们的值</li>
+<li>同时具有综合属性和继承属性的 SDD,
 不能保证存在应该顺序对各个结点上的属性进行求值</li>
 <li><strong>依赖图中没有环, 则至少存在一个拓扑排序</strong></li>
 </ul>
-<p>给定一个SDD, 很难确定是否存在某个语法树, 使得依赖图无环, 但存在
+<p>给定一个 SDD, 很难确定是否存在某个语法树, 使得依赖图无环, 但存在
 <strong><span class="math inline">\(L\)</span>-属性定义</strong> 和
 <strong><span class="math inline">\(S\)</span>-属性定义</strong>
 保证每个语法分析树都存在求值顺序, 依赖图无环.</p>
 <h3 id="s-属性定义"><span class="math inline">\(S\)</span>-属性定义</h3>
-<p><strong>仅使用综合属性的SDD</strong>, 可以在
+<p><strong>仅使用综合属性的 SDD</strong>, 可以在
 <strong>自底向上</strong> 的语法分析过程中实现</p>
 <h3 id="l-属性定义"><span class="math inline">\(L\)</span>-属性定义</h3>
 <p>在一个产生式所关联的各属性之间, 依赖图的边 <strong>可以从左到右,
-但不能从右到左</strong>. 正式定义为: 一个SDD是<span
+但不能从右到左</strong>. 正式定义为: 一个 SDD 是<span
 class="math inline">\(L\)</span>-属性定义, 当且仅当它的每个属性要么
 <strong>是一个综合属性</strong> 要么
 <strong>是满足如下条件的继承属性</strong></p>
@@ -1010,7 +1093,8 @@ class="math inline">\(X_i\)</span>的全部属性不能在依赖图中形成环�
 <p>每个<span class="math inline">\(S\)</span>-属性定义都是<span
 class="math inline">\(L\)</span>-属性定义</p>
 <hr />
-<h2 id="语法制导翻译方案sdt">语法制导翻译方案SDT</h2>
+<h2 id="语法制导翻译方案-sdt">语法制导翻译方案 SDT</h2>
+<p>以下两种 SDD 对应的 SDT 可以在语法分析过程中实现</p>
 <ul>
 <li><span class="math inline">\(LR\)</span>分析, <span
 class="math inline">\(SDD\)</span>是<span
@@ -1019,6 +1103,72 @@ class="math inline">\(S\)</span>属性的</li>
 class="math inline">\(SDD\)</span>是<span
 class="math inline">\(L\)</span>属性的</li>
 </ul>
+<p><strong>S-SDD</strong>: 转化为 SDT 时, 将每个语义动作放在产生式的最后
+<strong>L-SDD</strong>: 转化为 SDT 时</p>
+<ul>
+<li>计算继承属性的动作插入到非终结符的前面</li>
+<li>计算综合属性的动作放在产生式的最后</li>
+</ul>
+<h3
+id="在非递归的预测分析过程中进行翻译">在非递归的预测分析过程中进行翻译</h3>
+<p><strong>一个非终结符的继承属性和综合属性在分析过程中的计算时间是不一样的</strong></p>
+<ul>
+<li>继承属性的计算在该非终结符出现之前,
+综合属性的计算在该非终结符的所有子结点分析结束之后</li>
+</ul>
+<p>为非终结符的<strong>综合属性</strong>单独创建一个元素<code>Xsyn</code>,
+存放终结符 X 的综合属性, 此时在分析栈中, 包含三种类型的元素:</p>
+<ul>
+<li><span class="math inline">\(action\)</span>:
+用于存放执行语义动作的代码指针</li>
+<li><span class="math inline">\(A\)</span>: 非终结符<span
+class="math inline">\(A\)</span>的继承属性</li>
+<li><span class="math inline">\(Asyn\)</span>: 非终结符<span
+class="math inline">\(Asyn\)</span>的综合属性</li>
+</ul>
+<p>分析时的基本原则是 <strong>综合记录出栈时,
+要将综合属性值复制给后面<em>特定</em>的语义动作</strong>,
+<strong>变量本身的记录出栈时 (发生推导的时候), 如果含有继承属性,
+则将其值复制给后面的<em>特定</em>语义动作</strong></p>
+<p>具体例子见 <a
+href="https://www.bilibili.com/video/BV1zW411t7YE?p=40&amp;vd_source=698de1256a0048d0fd59d2f1bc3e109b">非递归翻译例子</a></p>
+<h3 id="在递归预测过程中进行翻译">在递归预测过程中进行翻译</h3>
+<p><strong>将每个非终结符实现为一个函数,
+该非终结符的每个继承属性是该函数的一个形参,
+返回值是该非终结符的综合属性</strong></p>
+<figure>
+<img src="递归翻译.jpg" alt="递归翻译" />
+<figcaption aria-hidden="true">递归翻译</figcaption>
+</figure>
+<h3 id="l-属性定义的自底向上翻译">L-属性定义的自底向上翻译</h3>
+<p>自底向上翻译要求翻译动作在 <strong>归约后调用</strong>, 但 L-SDD
+中有一部分语义动作处于产生式的中间, 因此使用自底向上翻译时, 需要添加
+<strong>标记非终结符</strong>, 代表 <strong>产生式中间的语义动作,
+即继承属性对应的语义动作</strong></p>
+<figure>
+<img src="L-属性自底向上-标记非终结符.jpg"
+alt="L-属性自底向上翻译-标记非终结符" />
+<figcaption
+aria-hidden="true">L-属性自底向上翻译-标记非终结符</figcaption>
+</figure>
+<p>其中<span class="math inline">\(M,
+N\)</span>位于实际待求继承属性非终结符的左侧, 因此 <strong><span
+class="math inline">\(M,
+N\)</span>的综合属性是后续非终结符的继承属性</strong></p>
+<blockquote>
+<p>上述文法所对应的<span
+class="math inline">\(SLR\)</span>自动机如下:</p>
+<figure>
+<img src="L-属性自底向上SLR" alt="L-属性自底向上例子-SLR" />
+<figcaption aria-hidden="true">L-属性自底向上例子-SLR</figcaption>
+</figure>
+<p>考虑输入串</p>
+<p><span class="math display">\[
+3 * 5
+\]</span></p>
+<p>具体见视频讲解: <a
+href="https://www.bilibili.com/video/BV1zW411t7YE?p=42&amp;vd_source=698de1256a0048d0fd59d2f1bc3e109b">L-属性自底向上例子</a></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>CS</category>
@@ -1544,205 +1694,6 @@ class="math inline">\(I, J\)</span>是整型的, 四元式为:</p>
         <tag>CS</tag>
         <tag>Compiler</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>人智导论复习</title>
-    <url>/2023/01/05/ML/IntroductionToAI/</url>
-    <content><![CDATA[<p>"复习课的主旨"</p>
-<p>"去看GZQ的PPT"</p>
-<span id="more"></span>
-<h1 id="绪论">绪论</h1>
-<h2 id="什么是人工智能-给出功能模块和方法">什么是人工智能,
-给出功能模块和方法</h2>
-<ul>
-<li>理性的行动的系统
-<ul>
-<li>方法: 理性Agent方法: <strong>Agent</strong> 是某种能够行动的东西.
-<strong>Rational Agent</strong> 可以通过自己的行动获得
-<strong>最佳的结果</strong> 或者 在不确定的情况下获得
-<strong>最佳期望</strong>, 功能有 <strong>能做正确的推论</strong>,
-若没有能证明正确性的事情, 但是必须 <strong>有所行动</strong>.</li>
-<li>部分完成理性行动的方法和推论过程无关 (如反射活动)</li>
-<li>图灵测试</li>
-<li>好处:
-<ul>
-<li>比"思维法则"方法通用, 正确的推论只是实现理性的方法之一</li>
-<li>比人类思维更经得起科学的考验 (可以证伪)</li>
-</ul></li>
-</ul></li>
-</ul>
-<h1 id="智能化agent">智能化Agent</h1>
-<h2 id="agent架构-理解agent的任务-环境-评价标准">Agent架构,
-理解Agent的任务, 环境, 评价标准</h2>
-<p><strong>Agent</strong></p>
-<ul>
-<li>通过传感器感知所处的环境, 通过执行器对环境产生作用</li>
-<li>例子 (人类, 机器人, 软件等)</li>
-</ul>
-<figure>
-<img src="agent1.png"
-alt="agent的工作原理, 记住. 里面的&quot;?&quot;表示映射函数" />
-<figcaption aria-hidden="true">agent的工作原理, 记住.
-里面的"?"表示映射函数</figcaption>
-</figure>
-<p><strong>Agent和环境</strong></p>
-<ul>
-<li>感知信息: 任何时刻的感知输入</li>
-<li>感知序列: 所有的输入数据的完整历史</li>
-<li>Agent在任何时刻的行动选择, 取决于到该时刻为止的整个感知序列</li>
-<li>Agent函数: 可以用列表表示, 也需要一些抽象的表示</li>
-</ul>
-<p><strong>性能度量</strong></p>
-<ul>
-<li>Agent成功程度的标准</li>
-</ul>
-<p><strong>理性的判断标准</strong></p>
-<ul>
-<li>PPT, 要记</li>
-</ul>
-<h2 id="agent的类型">Agent的类型</h2>
-<p>不同的Agent区别在于: Agent函数不一样</p>
-<ul>
-<li><strong>先画图, 再解释</strong></li>
-</ul>
-<h3 id="简单反射型agent">简单反射型Agent</h3>
-<p>可以建造一个通用的 <strong>条件-行动</strong> 规则解释器.
-(不包含历史信息, 只根据当天的环境)</p>
-<figure>
-<img src="agent-type-1.png" alt="agent-type-1" />
-<figcaption aria-hidden="true">agent-type-1</figcaption>
-</figure>
-<h3 id="基于模型的反射型agent">基于模型的反射型Agent</h3>
-<p>包含历史信息, 状态信息.</p>
-<figure>
-<img src="agent-type-2.png" alt="agent-type-2" />
-<figcaption aria-hidden="true">agent-type-2</figcaption>
-</figure>
-<h3 id="基于目标的agent">基于目标的Agent</h3>
-<p>不仅需要采用行动, 还需要规定相应的目标.</p>
-<figure>
-<img src="agent-type-3.png" alt="agent-type-3" />
-<figcaption aria-hidden="true">agent-type-3</figcaption>
-</figure>
-<p>判断执行的动作会不会使得自己离目标更近</p>
-<h3 id="基于效用的agent">基于效用的Agent</h3>
-<p>单靠目标难以在多数环境中产生更好的行为, 需要更快, 更安全,
-更可靠等</p>
-<ul>
-<li>效用函数: 描述Agent与状态相关的偏好程度,
-在目标不充分的情况下有助于理性决策
-<ul>
-<li>多目标: 加权</li>
-<li>存在冲突目标: 折中</li>
-</ul></li>
-</ul>
-<figure>
-<img src="agent-type-4.png" alt="agent-type-4" />
-<figcaption aria-hidden="true">agent-type-4</figcaption>
-</figure>
-<h3 id="学习agent">学习Agent</h3>
-<ul>
-<li>学习元件</li>
-<li>执行元件</li>
-<li>评价元件</li>
-<li>问题产生器</li>
-</ul>
-<figure>
-<img src="agent-type-5.png" alt="agent-type-5" />
-<figcaption aria-hidden="true">agent-type-5</figcaption>
-</figure>
-<h1 id="逻辑agent">逻辑Agent</h1>
-<ul>
-<li>命题逻辑的语法</li>
-<li>推理模式, 方法</li>
-<li>怪兽世界的推理 (<span
-class="math inline">\(R_1-R_{10}\)</span>的证明, <span
-class="math inline">\(R_{11}-R_{15}\)</span>将句子转化成合取范式,
-然后基于归结或反证法的证明)</li>
-<li>理解推理规则和公理, 用于命题逻辑的推理</li>
-<li>命题逻辑的连接符及语义</li>
-</ul>
-<h2 id="命题逻辑语法">命题逻辑语法</h2>
-<figure>
-<img src="logic-1.png" alt="logic-1" />
-<figcaption aria-hidden="true">logic-1</figcaption>
-</figure>
-<h2 id="推理模式-推理方法">推理模式, 推理方法</h2>
-<ul>
-<li>画真值表 (不推荐, 繁琐)</li>
-<li>运用公式法则 (重要, 要记)</li>
-</ul>
-<figure>
-<img src="logic-2.png" alt="logic-2" />
-<figcaption aria-hidden="true">logic-2</figcaption>
-</figure>
-<figure>
-<img src="logic-3.png" alt="logic-3" />
-<figcaption aria-hidden="true">logic-3</figcaption>
-</figure>
-<ul>
-<li>归结 :star: 只能取一项进行归结, 不能同时取很多项,
-只用于文字的析取式</li>
-<li>合取范式: 文字析取式的合取形式, CNF, <strong>如何转化</strong></li>
-</ul>
-<h1 id="知识表示">知识表示</h1>
-<ul>
-<li>情景演算, 情景, 流, 前提条件公理 (可能性公理), 效应公理等概念
-(背)</li>
-<li>本体论, 类别, 对象, 举例说明 (背)</li>
-</ul>
-<p>讨论的是 <strong>如何表示世界的事实</strong>,
-着重于在不同领域都会出现的通用概念, 如动作, 时间, 物理对象, 信念,
-表示这样的抽象概念是 <strong>本体论工程(en?)</strong></p>
-<h2 id="本体论工程">本体论工程</h2>
-<p>以高某PPT为准</p>
-<h2 id="类别和对象">类别和对象</h2>
-<p>以高某PPT为准</p>
-<h2 id="动作-情景-事件-流">动作, 情景, 事件, 流</h2>
-<p>对动作结果的推理是基于知识的Agent运作的中心问题</p>
-<h3 id="情景演算本体论">情景演算本体论</h3>
-<figure>
-<img src="情景演算.png" alt="情景演算" />
-<figcaption aria-hidden="true">情景演算</figcaption>
-</figure>
-<p><strong>流 fluent</strong></p>
-<ul>
-<li>使情景从一个变换到下一个的函数和谓词, 如Agent的位置或怪兽的死活</li>
-</ul>
-<p>在定义谓词或函数时, 允许不受时间影响</p>
-<h1 id="概率推理">概率推理</h1>
-<ul>
-<li>贝叶斯网络的定义, 语义</li>
-<li>给定贝叶斯网络, 写出相应的联合概率分布</li>
-<li>针对书中的盗贼警报任务, 理解贝叶斯网络的精确推理,
-并能够在给定证据的情况下进行推理</li>
-</ul>
-<h2 id="贝叶斯网络的定义和语义">贝叶斯网络的定义和语义</h2>
-<p>独立性, 条件独立性, 不确定域中的知识表示</p>
-<ul>
-<li>减少了所需定义的概率数目</li>
-</ul>
-<p>有向图, 结点代表概率信息</p>
-<ul>
-<li>随机变量组成的网络结点</li>
-<li>有向边集合</li>
-<li>每个结点有条件概率 <span class="math inline">\(P(X_i |
-Parents(X_i))\)</span></li>
-<li>无环</li>
-</ul>
-<h1 id="指定简单决策">指定简单决策</h1>
-<ul>
-<li>理解什么是偏好, 效用, 最大期望效用原则 (计算期望)</li>
-<li>理解决策网络, 尤其是网络中的结点类型</li>
-<li>给定网络, 计算不同动作的期望效用, 并选具有最大期望效用的动作</li>
-</ul>
-<h2
-id="在不确定性环境下结合信度和愿望">在不确定性环境下结合信度和愿望</h2>
-<figure>
-<img src="expectation-1.png" alt="expectation-1" />
-<figcaption aria-hidden="true">expectation-1</figcaption>
-</figure>
-]]></content>
   </entry>
   <entry>
     <title>GAMES101</title>
@@ -2336,6 +2287,205 @@ d:V\times V\rightarrow \mathbf{R}
       <tags>
         <tag>Math</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>人智导论复习</title>
+    <url>/2023/01/05/ML/IntroductionToAI/</url>
+    <content><![CDATA[<p>"复习课的主旨"</p>
+<p>"去看GZQ的PPT"</p>
+<span id="more"></span>
+<h1 id="绪论">绪论</h1>
+<h2 id="什么是人工智能-给出功能模块和方法">什么是人工智能,
+给出功能模块和方法</h2>
+<ul>
+<li>理性的行动的系统
+<ul>
+<li>方法: 理性Agent方法: <strong>Agent</strong> 是某种能够行动的东西.
+<strong>Rational Agent</strong> 可以通过自己的行动获得
+<strong>最佳的结果</strong> 或者 在不确定的情况下获得
+<strong>最佳期望</strong>, 功能有 <strong>能做正确的推论</strong>,
+若没有能证明正确性的事情, 但是必须 <strong>有所行动</strong>.</li>
+<li>部分完成理性行动的方法和推论过程无关 (如反射活动)</li>
+<li>图灵测试</li>
+<li>好处:
+<ul>
+<li>比"思维法则"方法通用, 正确的推论只是实现理性的方法之一</li>
+<li>比人类思维更经得起科学的考验 (可以证伪)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="智能化agent">智能化Agent</h1>
+<h2 id="agent架构-理解agent的任务-环境-评价标准">Agent架构,
+理解Agent的任务, 环境, 评价标准</h2>
+<p><strong>Agent</strong></p>
+<ul>
+<li>通过传感器感知所处的环境, 通过执行器对环境产生作用</li>
+<li>例子 (人类, 机器人, 软件等)</li>
+</ul>
+<figure>
+<img src="agent1.png"
+alt="agent的工作原理, 记住. 里面的&quot;?&quot;表示映射函数" />
+<figcaption aria-hidden="true">agent的工作原理, 记住.
+里面的"?"表示映射函数</figcaption>
+</figure>
+<p><strong>Agent和环境</strong></p>
+<ul>
+<li>感知信息: 任何时刻的感知输入</li>
+<li>感知序列: 所有的输入数据的完整历史</li>
+<li>Agent在任何时刻的行动选择, 取决于到该时刻为止的整个感知序列</li>
+<li>Agent函数: 可以用列表表示, 也需要一些抽象的表示</li>
+</ul>
+<p><strong>性能度量</strong></p>
+<ul>
+<li>Agent成功程度的标准</li>
+</ul>
+<p><strong>理性的判断标准</strong></p>
+<ul>
+<li>PPT, 要记</li>
+</ul>
+<h2 id="agent的类型">Agent的类型</h2>
+<p>不同的Agent区别在于: Agent函数不一样</p>
+<ul>
+<li><strong>先画图, 再解释</strong></li>
+</ul>
+<h3 id="简单反射型agent">简单反射型Agent</h3>
+<p>可以建造一个通用的 <strong>条件-行动</strong> 规则解释器.
+(不包含历史信息, 只根据当天的环境)</p>
+<figure>
+<img src="agent-type-1.png" alt="agent-type-1" />
+<figcaption aria-hidden="true">agent-type-1</figcaption>
+</figure>
+<h3 id="基于模型的反射型agent">基于模型的反射型Agent</h3>
+<p>包含历史信息, 状态信息.</p>
+<figure>
+<img src="agent-type-2.png" alt="agent-type-2" />
+<figcaption aria-hidden="true">agent-type-2</figcaption>
+</figure>
+<h3 id="基于目标的agent">基于目标的Agent</h3>
+<p>不仅需要采用行动, 还需要规定相应的目标.</p>
+<figure>
+<img src="agent-type-3.png" alt="agent-type-3" />
+<figcaption aria-hidden="true">agent-type-3</figcaption>
+</figure>
+<p>判断执行的动作会不会使得自己离目标更近</p>
+<h3 id="基于效用的agent">基于效用的Agent</h3>
+<p>单靠目标难以在多数环境中产生更好的行为, 需要更快, 更安全,
+更可靠等</p>
+<ul>
+<li>效用函数: 描述Agent与状态相关的偏好程度,
+在目标不充分的情况下有助于理性决策
+<ul>
+<li>多目标: 加权</li>
+<li>存在冲突目标: 折中</li>
+</ul></li>
+</ul>
+<figure>
+<img src="agent-type-4.png" alt="agent-type-4" />
+<figcaption aria-hidden="true">agent-type-4</figcaption>
+</figure>
+<h3 id="学习agent">学习Agent</h3>
+<ul>
+<li>学习元件</li>
+<li>执行元件</li>
+<li>评价元件</li>
+<li>问题产生器</li>
+</ul>
+<figure>
+<img src="agent-type-5.png" alt="agent-type-5" />
+<figcaption aria-hidden="true">agent-type-5</figcaption>
+</figure>
+<h1 id="逻辑agent">逻辑Agent</h1>
+<ul>
+<li>命题逻辑的语法</li>
+<li>推理模式, 方法</li>
+<li>怪兽世界的推理 (<span
+class="math inline">\(R_1-R_{10}\)</span>的证明, <span
+class="math inline">\(R_{11}-R_{15}\)</span>将句子转化成合取范式,
+然后基于归结或反证法的证明)</li>
+<li>理解推理规则和公理, 用于命题逻辑的推理</li>
+<li>命题逻辑的连接符及语义</li>
+</ul>
+<h2 id="命题逻辑语法">命题逻辑语法</h2>
+<figure>
+<img src="logic-1.png" alt="logic-1" />
+<figcaption aria-hidden="true">logic-1</figcaption>
+</figure>
+<h2 id="推理模式-推理方法">推理模式, 推理方法</h2>
+<ul>
+<li>画真值表 (不推荐, 繁琐)</li>
+<li>运用公式法则 (重要, 要记)</li>
+</ul>
+<figure>
+<img src="logic-2.png" alt="logic-2" />
+<figcaption aria-hidden="true">logic-2</figcaption>
+</figure>
+<figure>
+<img src="logic-3.png" alt="logic-3" />
+<figcaption aria-hidden="true">logic-3</figcaption>
+</figure>
+<ul>
+<li>归结 :star: 只能取一项进行归结, 不能同时取很多项,
+只用于文字的析取式</li>
+<li>合取范式: 文字析取式的合取形式, CNF, <strong>如何转化</strong></li>
+</ul>
+<h1 id="知识表示">知识表示</h1>
+<ul>
+<li>情景演算, 情景, 流, 前提条件公理 (可能性公理), 效应公理等概念
+(背)</li>
+<li>本体论, 类别, 对象, 举例说明 (背)</li>
+</ul>
+<p>讨论的是 <strong>如何表示世界的事实</strong>,
+着重于在不同领域都会出现的通用概念, 如动作, 时间, 物理对象, 信念,
+表示这样的抽象概念是 <strong>本体论工程(en?)</strong></p>
+<h2 id="本体论工程">本体论工程</h2>
+<p>以高某PPT为准</p>
+<h2 id="类别和对象">类别和对象</h2>
+<p>以高某PPT为准</p>
+<h2 id="动作-情景-事件-流">动作, 情景, 事件, 流</h2>
+<p>对动作结果的推理是基于知识的Agent运作的中心问题</p>
+<h3 id="情景演算本体论">情景演算本体论</h3>
+<figure>
+<img src="情景演算.png" alt="情景演算" />
+<figcaption aria-hidden="true">情景演算</figcaption>
+</figure>
+<p><strong>流 fluent</strong></p>
+<ul>
+<li>使情景从一个变换到下一个的函数和谓词, 如Agent的位置或怪兽的死活</li>
+</ul>
+<p>在定义谓词或函数时, 允许不受时间影响</p>
+<h1 id="概率推理">概率推理</h1>
+<ul>
+<li>贝叶斯网络的定义, 语义</li>
+<li>给定贝叶斯网络, 写出相应的联合概率分布</li>
+<li>针对书中的盗贼警报任务, 理解贝叶斯网络的精确推理,
+并能够在给定证据的情况下进行推理</li>
+</ul>
+<h2 id="贝叶斯网络的定义和语义">贝叶斯网络的定义和语义</h2>
+<p>独立性, 条件独立性, 不确定域中的知识表示</p>
+<ul>
+<li>减少了所需定义的概率数目</li>
+</ul>
+<p>有向图, 结点代表概率信息</p>
+<ul>
+<li>随机变量组成的网络结点</li>
+<li>有向边集合</li>
+<li>每个结点有条件概率 <span class="math inline">\(P(X_i |
+Parents(X_i))\)</span></li>
+<li>无环</li>
+</ul>
+<h1 id="指定简单决策">指定简单决策</h1>
+<ul>
+<li>理解什么是偏好, 效用, 最大期望效用原则 (计算期望)</li>
+<li>理解决策网络, 尤其是网络中的结点类型</li>
+<li>给定网络, 计算不同动作的期望效用, 并选具有最大期望效用的动作</li>
+</ul>
+<h2
+id="在不确定性环境下结合信度和愿望">在不确定性环境下结合信度和愿望</h2>
+<figure>
+<img src="expectation-1.png" alt="expectation-1" />
+<figcaption aria-hidden="true">expectation-1</figcaption>
+</figure>
+]]></content>
   </entry>
   <entry>
     <title>Image Semantic Segmentation based on UNet</title>
