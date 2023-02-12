@@ -113,7 +113,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="toc-text">声明语句的翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-%E9%9D%9E%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">例子: 非数组局部变量声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">例子: 数组局部变量声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="toc-text">简单赋值语句的翻译</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="toc-text">声明语句的翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-%E9%9D%9E%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">例子: 非数组局部变量声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-text">例子: 数组局部变量声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="toc-text">简单赋值语句的翻译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BC%95%E7%94%A8%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="toc-text">数组引用的翻译</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>"书接上文"</p>
 <span id="more"></span>
@@ -185,7 +185,405 @@ alt="record记录构造符" /></li>
 <p>由于这样的操作, 父结点需要赋值子结点的三地址码,
 而子结点需要赋值其子结点的三地址码, 会造成消耗空间大的问题, 因此使用
 <strong>增量翻译</strong>, 即修改<code>gen()</code>函数,
-使得其在生成三地址码后将新的三地址</p>
+使得其在生成三地址码后将新的三地址添加到当前三地址码的最后.</p>
+<figure>
+<img src="增量翻译.jpg" alt="增量翻译SDT" />
+<figcaption aria-hidden="true">增量翻译SDT</figcaption>
+</figure>
+<p>赋值语句的 LR 分析状态机如下:</p>
+<figure>
+<img src="赋值状态机.jpg" alt="赋值状态机" />
+<figcaption aria-hidden="true">赋值状态机</figcaption>
+</figure>
+<hr />
+<p><strong>例子</strong> 翻译 <code>x=(a+b)*c</code></p>
+<p><strong>初始时刻</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>x</code>: id 入栈,
+对应综合属性<code>lexeme=x</code>; 0 状态遇到 id 转移至 2
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>=</code>: <code>=</code>入栈; 2
+状态遇到<code>=</code>转移至 3 状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>(</code>: <code>(</code>入栈; 3
+状态遇到<code>(</code>转移至 6 状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>a</code>: id 入栈,
+对应综合属性<code>lexeme=a</code>; 6 状态遇到 id 转移至 7
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>7</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>+</code>: 由于 7 状态为归约状态,
+且当前读头下为<code>+</code>, 在 产生式 的 FOLLOW 集合中,
+因此可以用产生式 6 进行归约, id 和 7 状态出栈; E 入栈, 执行语义动作, 将
+id 的<code>lexeme</code>赋值给<code>E.addr</code>; 6 状态遇到 E 转移至
+12 状态; <code>+</code>入栈, 12 状态遇到<code>+</code>转移至 9
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>9</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>+</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>b</code>: id 入栈,
+对应综合属性<code>lexeme=b</code>; 9 状态遇到<code>id</code>转移至 7
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>9</th>
+<th>7</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>+</code></td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+<td></td>
+<td><code>b</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>)</code>: 由于 7 状态为归约状态,
+且当前读头下为<code>)</code>, 在 产生式 的 FOLLOW 集合中,
+因此可以用产生式 6 进行归约, id 和 7 状态出栈; E 入栈, 执行语义动作, 将
+id 的<code>lexeme</code>赋值给<code>E.addr</code>; 9 状态遇到 E 转移至
+13 状态; 13 状态为归约状态, 且当前读头下为<code>)</code>, 在产生式的
+FOLLOW 集合中, 因此可以用产生式 2 进行归约, E,<code>+</code>,E
+和对应的状态出栈; E 入栈, 执行语义动作,
+将<code>E.addr</code>设置为中间变量<code>t1</code>,
+并且打印三地址码<code>t1=a+b</code>; 6 状态遇到 E 转移至 12 状态;
+<code>)</code>入栈, 12 状态遇到<code>)</code>转移至 15 状态</strong></p>
+<p>栈 1 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>9</th>
+<th>13</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>+</code></td>
+<td>E</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+<td></td>
+<td><code>b</code></td>
+</tr>
+</tbody>
+</table>
+<p>栈 2 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>15</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>)</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>t1</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>生成代码: <code>t1=a+b</code></p>
+<p><strong>读头指向<code>*</code>: 由于 15 状态为归约状态,
+且当前读头下为<code>*</code>, 在产生式的 FOLLOW 集合中, 可以用产生式 5
+进行归约, <code>(</code>,E,<code>)</code>和对应的状态出栈, 执行语义动作,
+将<code>t1</code>赋值给<code>E.addr</code>; E 入栈, 3 状态遇到 E 转移至
+4 状态; <code>*</code>入栈, 4 状态遇到<code>*</code>转移至 10
+状态</strong></p>
+<p>栈 1 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>t1</code></td>
+</tr>
+</tbody>
+</table>
+<p>栈 2 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>10</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td>E</td>
+<td><code>*</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td><code>t1</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>后续栈操作类似</p>
+<hr />
+<h2 id="数组引用的翻译">数组引用的翻译</h2>
+<p>数组引用翻译的关键是 <strong>确定数组元素的存放地址
+(数组元素的寻址)</strong> 考虑如下的文法:</p>
+<figure>
+<img src="数组赋值.jpg" alt="数组赋值语句" />
+<figcaption aria-hidden="true">数组赋值语句</figcaption>
+</figure>
+<p><strong>数组元素寻址</strong> 主要是计算偏移地址, 计算方式如下:</p>
+<figure>
+<img src="数组元素寻址.jpg" alt="数组元素寻址" />
+<figcaption aria-hidden="true">数组元素寻址</figcaption>
+</figure>
+<p><strong>例子</strong></p>
+<figure>
+<img src="数组元素寻址例子.jpg" alt="数组元素寻址例子" />
+<figcaption aria-hidden="true">数组元素寻址例子</figcaption>
+</figure>
+<p>为数组元素设计三个 <strong>综合属性</strong></p>
+<ul>
+<li><code>L.type</code>: L 生成的数组元素类型, 可以逐层传递,
+计算偏移地址</li>
+<li><code>L.offset</code>:</li>
+</ul>
 
       </div>
       <div class="post-copyright">
