@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Andrew-Rey">
+    
+    <title>
+        
+            【编译原理】中间代码生成 |
+        
+        Notes
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/head_round.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#f8a5c2","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/head_round.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Notes
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【编译原理】中间代码生成</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/head_round.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Andrew-Rey</span>
+                            
+                                <span class="author-label">来自林邑的许先森❤</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-01-29 22:13:58</span>
+        <span class="mobile">2023-01-29 22:13</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-03-01 22:55:52</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/CS/">CS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CS/">CS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Compiler/">Compiler</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>"书接上文"</p>
+<span id="more"></span>
+<h2 id="概述">概述</h2>
+<p>本章将介绍各类语句的翻译</p>
+<ul>
+<li>声明语句</li>
+<li>赋值语句</li>
+<li>控制语句</li>
+<li>过程调用语句</li>
+</ul>
+<h2 id="声明语句的翻译">声明语句的翻译</h2>
+<p>收集标识符的<strong>类型信息</strong>,
+为每个标识符分配一个<strong>相对地址</strong></p>
+<p><strong>类型表达式</strong></p>
+<ul>
+<li>基本类型是类型表达式</li>
+<li>可以为类型表达式命名, 类型名是类型表达式</li>
+<li>将类构造符 (type constructor) 作用于类型表达式可以构成新的类型表达式
+<ul>
+<li>数组构造符<code>array</code>: <img  
+                     lazyload
+                     alt="image"
+                     data-src="数组类型构造符.jpg"
+                     
+alt="array数组构造符" 
+                ></li>
+<li>指针表达式<code>pointer</code>: <code>pointer(T)</code>是类型表达式,
+表示指向类型<code>T</code>的指针类型</li>
+<li>笛卡尔乘积构造符<span class="math inline">\(\times\)</span>:
+两个类型表达式通过<span
+class="math inline">\(\times\)</span>符号运算后仍然是类型表达式</li>
+<li>函数构造符<span class="math inline">\(\rightarrow\)</span>:
+函数参数的类型表达式的笛卡尔乘积<span
+class="math inline">\(\rightarrow\)</span>函数返回值的类型表达式</li>
+<li>记录构造符<code>record</code>: <img  
+                     lazyload
+                     alt="image"
+                     data-src="记录构造符.jpg"
+                     
+alt="record记录构造符" 
+                ></li>
+</ul></li>
+</ul>
+<p><strong>局部变量的存储分配</strong></p>
+<p>从类型表达式中可以知道 <strong>该类型在运行时刻所需要的存储单元数量
+(类型的宽度 <em>width</em>)</strong> 在 <strong>编译时</strong>,
+可以使用类型的宽度为每一个名字分配一个 <strong>相对地址</strong>
+名字的类型和相对地址保存在相应的 <strong>符号表中</strong></p>
+<p>变量声明语句的 SDT:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="变量声明语句的SDT.jpg"
+                      alt="变量声明语句的SDT" 
+                >
+<figcaption aria-hidden="true">变量声明语句的SDT</figcaption>
+</figure>
+<h3 id="例子-非数组局部变量声明">例子: 非数组局部变量声明</h3>
+<p>考虑有输入: <code>real x; int i;</code></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="demo-1.jpg"
+                      alt="demo-1" 
+                >
+<figcaption aria-hidden="true">demo-1</figcaption>
+</figure>
+<h3 id="例子-数组局部变量声明">例子: 数组局部变量声明</h3>
+<p>考虑有输入: <code>int[2][3]</code></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="demo-2.jpg"
+                      alt="demo-2" 
+                >
+<figcaption aria-hidden="true">demo-2</figcaption>
+</figure>
+<h2 id="简单赋值语句的翻译">简单赋值语句的翻译</h2>
+<p>主要任务为 <strong>生成对表达式求值的三地址码</strong>,
+赋值语句的基本文法为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="赋值语句文法.jpg"
+                      alt="赋值语句文法" 
+                >
+<figcaption aria-hidden="true">赋值语句文法</figcaption>
+</figure>
+<p>对该文法定义语义规则生成对应的 SDT 如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="赋值语句SDT.jpg"
+                      alt="赋值语句SDT" 
+                >
+<figcaption aria-hidden="true">赋值语句SDT</figcaption>
+</figure>
+<p>由于这样的操作, 父结点需要赋值子结点的三地址码,
+而子结点需要赋值其子结点的三地址码, 会造成消耗空间大的问题, 因此使用
+<strong>增量翻译</strong>, 即修改<code>gen()</code>函数,
+使得其在生成三地址码后将新的三地址添加到当前三地址码的最后.</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="增量翻译.jpg"
+                      alt="增量翻译SDT" 
+                >
+<figcaption aria-hidden="true">增量翻译SDT</figcaption>
+</figure>
+<p>赋值语句的 LR 分析状态机如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="赋值状态机.jpg"
+                      alt="赋值状态机" 
+                >
+<figcaption aria-hidden="true">赋值状态机</figcaption>
+</figure>
+<hr />
+<p><strong>例子</strong> 翻译 <code>x=(a+b)*c</code></p>
+<p><strong>初始时刻</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>x</code>: id 入栈,
+对应综合属性<code>lexeme=x</code>; 0 状态遇到 id 转移至 2
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>=</code>: <code>=</code>入栈; 2
+状态遇到<code>=</code>转移至 3 状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>(</code>: <code>(</code>入栈; 3
+状态遇到<code>(</code>转移至 6 状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>a</code>: id 入栈,
+对应综合属性<code>lexeme=a</code>; 6 状态遇到 id 转移至 7
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>7</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>+</code>: 由于 7 状态为归约状态,
+且当前读头下为<code>+</code>, 在 产生式 的 FOLLOW 集合中,
+因此可以用产生式 6 进行归约, id 和 7 状态出栈; E 入栈, 执行语义动作, 将
+id 的<code>lexeme</code>赋值给<code>E.addr</code>; 6 状态遇到 E 转移至
+12 状态; <code>+</code>入栈, 12 状态遇到<code>+</code>转移至 9
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>9</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>+</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>b</code>: id 入栈,
+对应综合属性<code>lexeme=b</code>; 9 状态遇到<code>id</code>转移至 7
+状态</strong></p>
+<p>栈状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>9</th>
+<th>7</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>+</code></td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+<td></td>
+<td><code>b</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>读头指向<code>)</code>: 由于 7 状态为归约状态,
+且当前读头下为<code>)</code>, 在 产生式 的 FOLLOW 集合中,
+因此可以用产生式 6 进行归约, id 和 7 状态出栈; E 入栈, 执行语义动作, 将
+id 的<code>lexeme</code>赋值给<code>E.addr</code>; 9 状态遇到 E 转移至
+13 状态; 13 状态为归约状态, 且当前读头下为<code>)</code>, 在产生式的
+FOLLOW 集合中, 因此可以用产生式 2 进行归约, E,<code>+</code>,E
+和对应的状态出栈; E 入栈, 执行语义动作,
+将<code>E.addr</code>设置为中间变量<code>t1</code>,
+并且打印三地址码<code>t1=a+b</code>; 6 状态遇到 E 转移至 12 状态;
+<code>)</code>入栈, 12 状态遇到<code>)</code>转移至 15 状态</strong></p>
+<p>栈 1 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>9</th>
+<th>13</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>+</code></td>
+<td>E</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>a</code></td>
+<td></td>
+<td><code>b</code></td>
+</tr>
+</tbody>
+</table>
+<p>栈 2 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>6</th>
+<th>12</th>
+<th>15</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td><code>(</code></td>
+<td>E</td>
+<td><code>)</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>t1</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>生成代码: <code>t1=a+b</code></p>
+<p><strong>读头指向<code>*</code>: 由于 15 状态为归约状态,
+且当前读头下为<code>*</code>, 在产生式的 FOLLOW 集合中, 可以用产生式 5
+进行归约, <code>(</code>,E,<code>)</code>和对应的状态出栈, 执行语义动作,
+将<code>t1</code>赋值给<code>E.addr</code>; E 入栈, 3 状态遇到 E 转移至
+4 状态; <code>*</code>入栈, 4 状态遇到<code>*</code>转移至 10
+状态</strong></p>
+<p>栈 1 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td></td>
+<td><code>t1</code></td>
+</tr>
+</tbody>
+</table>
+<p>栈 2 状态为</p>
+<table>
+<thead>
+<tr class="header">
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>10</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+<td>id</td>
+<td><code>=</code></td>
+<td>E</td>
+<td><code>*</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><code>x</code></td>
+<td></td>
+<td><code>t1</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>后续栈操作类似</p>
+<hr />
+<h2 id="数组引用的翻译">数组引用的翻译</h2>
+<p>数组引用翻译的关键是 <strong>确定数组元素的存放地址
+(数组元素的寻址)</strong> 考虑如下的文法:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="数组赋值.jpg"
+                      alt="数组赋值语句" 
+                >
+<figcaption aria-hidden="true">数组赋值语句</figcaption>
+</figure>
+<p><strong>数组元素寻址</strong> 主要是计算偏移地址, 计算方式如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="数组元素寻址.jpg"
+                      alt="数组元素寻址" 
+                >
+<figcaption aria-hidden="true">数组元素寻址</figcaption>
+</figure>
+<p><strong>例子</strong></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="数组元素寻址例子.jpg"
+                      alt="数组元素寻址例子" 
+                >
+<figcaption aria-hidden="true">数组元素寻址例子</figcaption>
+</figure>
+<p>为数组元素设计三个 <strong>综合属性</strong></p>
+<ul>
+<li><code>L.type</code>: L 生成的数组元素类型, 可以逐层传递,
+计算偏移地址</li>
+<li><code>L.offset</code>: 计算数组引用的偏移地址, 用于累加<span
+class="math inline">\(i_j\times w_j\)</span></li>
+<li><code>L.array</code>: 数组名在符号表的入口</li>
+</ul>
+<p>如下为数组翻译的SDT</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="数组引用SDT.png"
+                      alt="数组引用SDT" 
+                >
+<figcaption aria-hidden="true">数组引用SDT</figcaption>
+</figure>
+<h2 id="控制流语句的sdt">控制流语句的SDT</h2>
+<p><strong>设计控制流语句的SDT的关键在于弄清楚各个条件的出口以及对应的代码块</strong></p>
+<p>控制流语句的基本文法为 (举例)</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="控制流语句文法.png"
+                      alt="控制流语句文法" 
+                >
+<figcaption aria-hidden="true">控制流语句文法</figcaption>
+</figure>
+<p><strong>在这里需要引入语句的标号: 一个三地址指令对应一个唯一的标号,
+用于控制语句寻找入口和出口</strong></p>
+<p>为文法符号添加 <strong>继承属性</strong>
+(注意继承属性计算的位置是在其文法符号出现之前)</p>
+<ul>
+<li><code>S.next</code>: S代码之后的指令标号</li>
+<li><code>B.true</code>: B为真时转向的指令标号</li>
+<li><code>B.false</code>: B为假时转向的指令标号</li>
+</ul>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="控制流SDT-1.png"
+                      alt="控制流SDT-1" 
+                >
+<figcaption aria-hidden="true">控制流SDT-1</figcaption>
+</figure>
+<p>之所以要设计<code>newlabel()</code>函数是因为需要在文法符号出现前计算其继承属性,
+但此时的对应标号仍然未知, 因此需要一个"占位符";
+而设计<code>label()</code>函数的目的是在合适的位置及时为继承属性赋值.</p>
+<p><strong>注意: 有些时候的跳转指令包含在布尔表达式中,
+在下一节提及</strong></p>
+<h3 id="条件语句">条件语句</h3>
+<p><span class="math display">\[
+S \rightarrow if\ B\ then\ S_1\ else\ S_2
+\]</span></p>
+<p>其代码结构为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="代码结构-1.png"
+                      alt="代码结构-1" 
+                >
+<figcaption aria-hidden="true">代码结构-1</figcaption>
+</figure>
+<p>当B为<code>true</code>的时候进入S1代码块;
+当B为<code>false</code>的时候进入S2代码块;
+<strong>当分支语句对应的代码执行完以后, 其后续待执行代码与S一致
+(出口一致)</strong>, 其SDT如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="条件语句SDT-1.png"
+                      alt="条件语句SDT-1" 
+                >
+<figcaption aria-hidden="true">条件语句SDT-1</figcaption>
+</figure>
+<p>注意在S1分析结束后生成三地址码<code>goto</code>,
+表示<strong>转向某个标号</strong></p>
+<p><span class="math display">\[
+S \rightarrow if\ B\ then S_1
+\]</span></p>
+<p>其代码结构为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="代码结构-2.png"
+                      alt="代码结构-2" 
+                >
+<figcaption aria-hidden="true">代码结构-2</figcaption>
+</figure>
+<p>SDT为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="条件语句SDT-2.png"
+                      alt="条件语句SDT-2" 
+                >
+<figcaption aria-hidden="true">条件语句SDT-2</figcaption>
+</figure>
+<p>这里的三地址码生成隐藏在布尔表达式中.</p>
+<h3 id="循环语句">循环语句</h3>
+<p><span class="math display">\[
+S \rightarrow while\ B\ do\ S
+\]</span></p>
+<p>代码结构如下</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="代码结构-3.png"
+                      alt="代码结构-3" 
+                >
+<figcaption aria-hidden="true">代码结构-3</figcaption>
+</figure>
+<p>B为<code>false</code>的时候与S出口一致, 即结束循环;
+B为<code>true</code>的时候需要执行循环体内部代码; 当循环体内部代码结束后
+<strong>需要重新回到<code>while</code>语句判断布尔条件是否仍然成立,
+因此需要建立一个保存<code>while</code>语句所在标号的属性, 便于跳转,
+也因此在S1执行后需要生成三地址码<code>goto</code></strong></p>
+<p>其SDT为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="循环语句SDT.png"
+                      alt="循环语句SDT" 
+                >
+<figcaption aria-hidden="true">循环语句SDT</figcaption>
+</figure>
+<h2 id="布尔表达式的sdt">布尔表达式的SDT</h2>
+<p>布尔表达式翻译时最重要的是
+<strong>确定布尔表达式的目标跳转地址</strong>,
+这一节和下一节分别介绍一种方法, 这一节的方法主要是使用
+<strong>继承属性</strong>, 下一节的方法主要使用
+<strong>综合属性</strong></p>
+<p>布尔表达式的文法如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="bool-文法-1.png"
+                      alt="bool文法" 
+                >
+<figcaption aria-hidden="true">bool文法</figcaption>
+</figure>
+<p>其中 <strong>不包含</strong> <code>&amp;&amp;, ||, !</code>,
+因为这些运算符会被翻译为 <strong>跳转指令</strong></p>
+<p>其SDT为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="bool-SDT-1.png"
+                      alt="bool-SDT-1" 
+                >
+<figcaption aria-hidden="true">bool-SDT-1</figcaption>
+</figure>
+<p><code>||</code>的代码结构为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="或结构.png"
+                      alt="或结构" 
+                >
+<figcaption aria-hidden="true">或结构</figcaption>
+</figure>
+<p>只要B1和B2中有一个为<code>true</code>则B为<code>true</code></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="或SDT.png"
+                      alt="或SDT" 
+                >
+<figcaption aria-hidden="true">或SDT</figcaption>
+</figure>
+<p><code>&amp;&amp;</code>的代码结构为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="与结构.png"
+                      alt="与结构" 
+                >
+<figcaption aria-hidden="true">与结构</figcaption>
+</figure>
+<p>只要有一个为<code>false</code>, 则B为<code>false</code></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="与SDT.png"
+                      alt="与SDT" 
+                >
+<figcaption aria-hidden="true">与SDT</figcaption>
+</figure>
+<h3 id="综合例子">综合例子</h3>
+<p><strong>任何SDT都可以先建立一个语法分析树,
+然后按照从左到右深度优先的顺序执行语义动作</strong></p>
+<h2 id="布尔表达式的回填-backpatching">布尔表达式的回填
+(backpatching)</h2>
+<p>控制流语句的翻译关键: 跳转语句的目标标号, 但生成跳转指令时,
+目标标号不能确定</p>
+<p>上一节处理布尔表达式的方法中, 将存放标号的地址作为
+<strong>继承属性</strong> 传递至目标标号生成的位置,
+但代码生成后需要再次遍历三地址码, 绑定属性与具体的标号值,
+这样做比较麻烦.</p>
+<p>这一节介绍 <strong>回填 (backpatching)</strong>:
+生成跳转指令时暂时不指定其目标标号, 而是将其放入队列中,
+同一个队列中的所有跳转指令具有相同的目标标号, 待目标标号最终确定时,
+再填充.</p>
+<p>这里的关键点在于, 使用队列统一管理后, 属性是
+<strong>综合属性</strong></p>
+<ul>
+<li><code>B.truelist</code>:
+该列表中的所有目标标号出口就是B为真时的出口</li>
+<li><code>B.falselist</code>:
+该列表中所有目标标号出口就是B为假时的出口</li>
+</ul>
+<p>需要用到的一些函数:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="布尔回填.png"
+                      alt="回填函数" 
+                >
+<figcaption aria-hidden="true">回填函数</figcaption>
+</figure>
+<p>修改后的SDT如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="回填SDT-1.png"
+                      alt="回填SDT-1" 
+                >
+<figcaption aria-hidden="true">回填SDT-1</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="回填SDT-2.png"
+                      alt="回填SDT-2" 
+                >
+<figcaption aria-hidden="true">回填SDT-2</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="回填SDT-3.png"
+                      alt="回填SDT-3" 
+                >
+<figcaption aria-hidden="true">回填SDT-3</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="回填SDT-4.png"
+                      alt="回填SDT-4" 
+                >
+<figcaption aria-hidden="true">回填SDT-4</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="回填SDT-5.png"
+                      alt="回填SDT-5" 
+                >
+<figcaption aria-hidden="true">回填SDT-5</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="回填SDT-6.png"
+                      alt="回填SDT-6" 
+                >
+<figcaption aria-hidden="true">回填SDT-6</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="回填SDT-7.png"
+                      alt="回填SDT-7" 
+                >
+<figcaption aria-hidden="true">回填SDT-7</figcaption>
+</figure>
+<p>最后等所有的出口确定后进行回填</p>
+<h2 id="控制流语句的回填">控制流语句的回填</h2>
+<p>添加综合属性:</p>
+<ul>
+<li><code>S.nextlist</code>:
+该列表中的所有目标标号出口是紧跟在S代码之后的指令的标号.</li>
+</ul>
+<p>SDT修改如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="控制回填SDT-1.png"
+                      alt="控制回填SDT-1" 
+                >
+<figcaption aria-hidden="true">控制回填SDT-1</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="控制回填SDT-2.png"
+                      alt="控制回填SDT-2" 
+                >
+<figcaption aria-hidden="true">控制回填SDT-2</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="控制回填SDT-3.png"
+                      alt="控制回填SDT-3" 
+                >
+<figcaption aria-hidden="true">控制回填SDT-3</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="控制回填SDT-5.png"
+                      alt="控制回填SDT-5" 
+                >
+<figcaption aria-hidden="true">控制回填SDT-5</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="控制回填SDT-6.png"
+                      alt="控制回填SDT-6" 
+                >
+<figcaption aria-hidden="true">控制回填SDT-6</figcaption>
+</figure>
+<h2 id="switch语句的翻译">Switch语句的翻译</h2>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="switch-sdt-1.png"
+                      alt="switch-sdt-1" 
+                >
+<figcaption aria-hidden="true">switch-sdt-1</figcaption>
+</figure>
+<p>可以将每一个<code>case</code>中的判断代码放入一个代码块中</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="switch-sdt-2.png"
+                      alt="switch-sdt-2" 
+                >
+<figcaption aria-hidden="true">switch-sdt-2</figcaption>
+</figure>
+<p>二者的不同点还包括, label 的数量不同, 前者是<span
+class="math inline">\(L_{n-1}\)</span>个, 后者是<span
+class="math inline">\(L_n\)</span>个</p>
+<h2 id="过程调用语句的翻译">过程调用语句的翻译</h2>
+<p>过程调用的文法为:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="call.png"
+                      alt="过程调用" 
+                >
+<figcaption aria-hidden="true">过程调用</figcaption>
+</figure>
+<p>参数列表可以 <strong>统一使用队列存储</strong></p>
+<p>其SDD如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="call-sdd.png"
+                      alt="过程调用SDD" 
+                >
+<figcaption aria-hidden="true">过程调用SDD</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="call-demo.png"
+                      alt="过程调用例子" 
+                >
+<figcaption aria-hidden="true">过程调用例子</figcaption>
+</figure>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">【编译原理】中间代码生成</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2023-01-29 22:13:58</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2023/01/29/CS/Compiler-MeddleCodeGeneration-zh/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CS/">#CS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Compiler/">#Compiler</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/02/13/CS/Compiler-StorageAllocation-zh/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【编译原理】存储分配</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/01/05/Life/Abording/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【讲座纪要】Abording Information</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="nav-number">2.</span> <span class="nav-text">声明语句的翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-%E9%9D%9E%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">例子: 非数组局部变量声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90-%E6%95%B0%E7%BB%84%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">例子: 数组局部变量声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="nav-number">3.</span> <span class="nav-text">简单赋值语句的翻译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%BC%95%E7%94%A8%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="nav-number">4.</span> <span class="nav-text">数组引用的翻译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E8%AF%AD%E5%8F%A5%E7%9A%84sdt"><span class="nav-number">5.</span> <span class="nav-text">控制流语句的SDT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.2.</span> <span class="nav-text">循环语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84sdt"><span class="nav-number">6.</span> <span class="nav-text">布尔表达式的SDT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E4%BE%8B%E5%AD%90"><span class="nav-number">6.1.</span> <span class="nav-text">综合例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%9B%9E%E5%A1%AB-backpatching"><span class="nav-number">7.</span> <span class="nav-text">布尔表达式的回填
+(backpatching)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%9B%9E%E5%A1%AB"><span class="nav-number">8.</span> <span class="nav-text">控制流语句的回填</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="nav-number">9.</span> <span class="nav-text">Switch语句的翻译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BF%BB%E8%AF%91"><span class="nav-number">10.</span> <span class="nav-text">过程调用语句的翻译</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Andrew-Rey</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Andrew-Rey">
+    
+    <title>
+        
+            【人工智能】人智导论复习 |
+        
+        Notes
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/head_round.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#f8a5c2","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/head_round.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Notes
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【人工智能】人智导论复习</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/head_round.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Andrew-Rey</span>
+                            
+                                <span class="author-label">来自林邑的许先森❤</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-01-05 15:54:09</span>
+        <span class="mobile">2023-01-05 15:54</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-03-01 22:55:52</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ML/">ML</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/AI/">AI</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Review/">Review</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>"复习课的主旨"</p>
+<p>"去看GZQ的PPT"</p>
+<span id="more"></span>
+<p><font color='red'>然后Jerry告诉了我一些考题,
+我的评价是"xx"</font></p>
+<h1 id="道听途说的题目归纳">道听途说的题目归纳</h1>
+<blockquote>
+<p><strong>什么是人工智能</strong></p>
+<ul>
+<li>答4个定义, 越多越好</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>默写BN范式</strong></p>
+<ul>
+<li>? 有病</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>考离散里面的等价公式 (包括他们的名称)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>计算贝叶斯, 以及贝叶斯网这个图里面元素的意义</strong></p>
+</blockquote>
+<h1 id="绪论-什么是人工智能-给出功能模块和实现方法">绪论:
+什么是人工智能, 给出功能模块和实现方法</h1>
+<h2 id="基本概念">基本概念</h2>
+<blockquote>
+<ul>
+<li>像人一样思考的系统</li>
+<li>理性地思考的系统</li>
+<li>像人一样行动的系统</li>
+<li>理性的行动的系统</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>理性Agent方法: <strong>Agent</strong> 是某种能够行动的东西.
+<strong>Rational Agent</strong> 可以通过自己的行动获得
+<strong>最佳的结果</strong> 或者在不确定的情况下获得
+<strong>最佳期望</strong></li>
+<li>功能有 <strong>能做正确的推论</strong>, 若没有能证明正确性的事情,
+但是必须 <strong>有所行动</strong>.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>部分完成理性行动的方法和推论过程无关 (如反射活动)</p>
+</blockquote>
+<blockquote>
+<p><strong>图灵测试</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>理性的好处:</strong></p>
+<ul>
+<li>比"思维法则"方法通用, 正确的推论只是实现理性的方法之一</li>
+<li>比人类思维更经得起科学的考验 (可以证伪)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>功能模块</strong>: 也就是说, 作为人工智能,
+你觉得计算机应该需要哪些模块</p>
+<ul>
+<li>自然语言处理: 计算机可以用各种语言成功交流</li>
+<li>知识表示: 储存计算机所知道的信息</li>
+<li>自动推理: 用于回答问题和提取新的结论</li>
+<li>机器学习 (即归纳推理): 能适应新环境, 并能检测和推断新模式</li>
+<li>计算机视觉: 可以感知物体</li>
+<li>机器人技术: 可以操作物体</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>实现方法</strong>: 从组成架构需要哪些模块,
+和训练Agent的途径回答</p>
+<ul>
+<li>组成模块: 传感器, 执行器</li>
+<li>需要编写Agent程序, 获得Agent函数</li>
+<li>可以通过机器学习, 不确定性决策和规划等方法</li>
+</ul>
+</blockquote>
+<h2 id="四种定义">四种定义</h2>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="" />
+1. 像人一样思考的系统</li>
+<li><input type="checkbox" disabled="" checked="" />
+2. 理性思考的系统</li>
+<li><input type="checkbox" disabled="" checked="" />
+3. 像人一样行动的系统</li>
+<li><input type="checkbox" disabled="" checked="" />
+4. 理性行动的系统</li>
+</ul>
+<h2 id="图灵测试-turing-test">图灵测试 (Turing Test)</h2>
+<p>目的是为智能提供一个满足可操作要求的定义</p>
+<ul>
+<li>如果人类在提出一些书面问题后, 计算回答这些问题,
+若无法判断答案是否由人写出, 那么计算机通过了图灵测试
+(对于无法给出定义的题目, 应该给出其评价标准)</li>
+</ul>
+<h2 id="理性-agent-方法">理性 Agent 方法</h2>
+<blockquote>
+<p><strong>Agent</strong></p>
+<p>是某种能够行动的东西, 可以实现自主控制的操作, 感知环境, 持续能力,
+适应变化, 以及有能力承担其他Agent的目标</p>
+<ul>
+<li>要么能做出正确推论, 要么对某件事情有所行动</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Rational Agent</strong></p>
+<p>可以通过自己的行动获得 <strong>最佳的结果</strong>
+或者在不确定的情况下获得 <strong>最佳期望的结果</strong></p>
+<ul>
+<li>比思维法则通用</li>
+<li>比建立在人类行为, 思维基础上的方法更经得起科学发展的检验</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>理性</strong></p>
+<ul>
+<li>完美理性:
+总能做正确的事情，这在复杂环境下是不可行的。但完美理性是分析的出发点，这样可以简化问题</li>
+<li>有限理性: 要求在没有足够计算时间的前提下采取正确的行动</li>
+</ul>
+</blockquote>
+<h1
+id="智能化agent-agent的架构并且要理解agent的任务环境评价标准等">智能化Agent:
+Agent的架构。并且要理解Agent的任务、环境、评价标准等</h1>
+<p>从分析Agent、环境、和它们的关系入手。观察到某些Agent比其它Agent更为出色，从而引出理性Agent的概念：行为表现尽可能好的Agent;
+对环境进行分类, 说明环境对Agent的影响; 给出部分Agent的架构或体系结构</p>
+<h2 id="基本概念-1">基本概念</h2>
+<p>关于智能体, 理性智能体的概念</p>
+<blockquote>
+<p><strong>Agent</strong></p>
+<ul>
+<li>通过<strong>传感器</strong>感知所处的环境,
+通过<strong>执行器</strong>对环境产生作用</li>
+<li>例子 (人类, 机器人, 软件等)</li>
+</ul>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="agent1.png"
+                     
+alt="agent的工作原理, Agent通过传感器、执行器与环境交互。问号表示从感知到动作的映射函数" 
+                >
+<figcaption aria-hidden="true">agent的工作原理,
+Agent通过传感器、执行器与环境交互。问号表示从感知到动作的映射函数</figcaption>
+</figure>
+</blockquote>
+<blockquote>
+<p><strong>Agent和环境</strong></p>
+<ul>
+<li><strong>感知信息</strong>: 任何时刻的感知输入</li>
+<li><strong>感知序列</strong>: 所有的输入数据的完整历史</li>
+<li>Agent在任何时刻的行动选择, 取决于到该时刻为止的整个感知序列</li>
+<li>Agent函数:
+将任意给定感知序列映射到Agent的动作。可以描述Agent的行为。可以用列表表示,
+可以通过实验找出感知序列、并记录Agent的行动，来构造该表。Agent函数是抽象的数学表示。Agent程序是具体实现。该程序在Agent自身的结构上运行</li>
+<li><strong>理性Agent</strong>是做事正确的智能体, 因此需要一些评判标准,
+判断智能体做的正确与否</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>性能度量</strong></p>
+<ul>
+<li>Agent成功程度的标准</li>
+<li>具体而言:
+当把Agent置于一个环境中后，它将针对收到的感知信息产生动作序列。该动作序列引起环境历经一个状态序列。如果该状态序列是想要的，则Agent的性能良好。</li>
+<li>概括来说就是: <strong>智能体在环境中 &gt; 智能体产生动作序列 &gt;
+影响环境 &gt; 环境产生状态序列 &gt;
+判断状态序列是否为期望的</strong></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>理性的判断标准</strong></p>
+<ul>
+<li><strong>PPT, 要记</strong></li>
+<li>定义成功标准的性能度量</li>
+<li>Agent对环境的先验知识</li>
+<li>Agent可以执行的动作</li>
+<li>Agent的感知序列</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>理性Agent的标准严谨定义</strong></p>
+<p>对于每个可能的感知序列，根据已知的感知序列提供的证据(evidence)和Agent内建的先验知识，理性Agent应该选择期望能<strong>使其性能度量最大化</strong>的行动。</p>
+<p><strong>信息收集是理性的重要部分</strong>:
+理性Agent需要经常进行观察</p>
+<p>理性还要求智能体 <strong>从感知的东西中学习</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>理性和全知</strong></p>
+<p>全知的智能体, 知道它的动作产生的实际效果, 并且做出相应的动作</p>
+<p><strong>理性不等于完美</strong>:
+理性是使期望的性能最大化。而完美是使实际的性能最大化</p>
+</blockquote>
+<blockquote>
+<p><strong>函数计算</strong>: 设计者与Agent是分工和合作的关系</p>
+<ul>
+<li>设计阶段: 设计者完成一些计算</li>
+<li>决策阶段: 思考下一步动作时, Agent会做更多的计算</li>
+<li>学习阶段: 从经验中学习的时候, Agent会做更多的计算
+<strong>以决定如何修正自己的行为</strong></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>学习和自主性</strong></p>
+<p>理性Agent是自主的, 会尽可能学习以弥补不全面, 不正确的先验知识.</p>
+<p>学习是Agent自适应性的基础</p>
+</blockquote>
+<p>关于环境的概念</p>
+<blockquote>
+<p><strong>任务环境(PEAS)</strong></p>
+<p>包括 <strong>性能度量Performance, 环境Environment, 执行器Actuators,
+传感器Sensors</strong></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="peas-1.png"
+                      alt="PEAS举例" 
+                >
+<figcaption aria-hidden="true">PEAS举例</figcaption>
+</figure>
+<p>属性集: 完全可观察的、部分可观察的; 确定的、随机的; 情节的、连续的;
+静态的、动态的;离散的、连续的; 单Agent、多Agent</p>
+</blockquote>
+<h2 id="agent的类型">Agent的类型</h2>
+<p>AI的任务是设计Agent程序, 实现感知信息映射到动作的Agent函数. Agent =
+程序 + 体系结构.</p>
+<blockquote>
+<p><strong>Agent程序</strong></p>
+<p>具有相同的框架：从传感器得到当前感知信息作为输入，返回一个动作交给执行器</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="agent1.png"
+                     
+alt="agent的工作原理, Agent通过传感器、执行器与环境交互。问号表示从感知到动作的映射函数" 
+                >
+<figcaption aria-hidden="true">agent的工作原理,
+Agent通过传感器、执行器与环境交互。问号表示从感知到动作的映射函数</figcaption>
+</figure>
+</blockquote>
+<blockquote>
+<p><strong>Agent程序和Agent函数的区别</strong></p>
+<p>程序: 以当前的感知作为输入</p>
+<p>函数: 以整个感知历史作为输入</p>
+</blockquote>
+<blockquote>
+<p><strong>表驱动的Agent</strong></p>
+<p>Agent程序 &gt; 感知新的信息 &gt; 记录感知序列 &gt;
+使用感知序列作为索引，到动作表里查询以决策该做什么 &gt;
+动作表明确表示了Agent程序实现的Agent函数。</p>
+<p>存在的问题: 没空间, 没时间, 没指导.</p>
+</blockquote>
+<p>因此可以对Agent进行一些限制, 以满足日常的需求: 不同的Agent区别在于:
+Agent函数不一样</p>
+<ul>
+<li><strong>先画图, 再解释</strong></li>
+</ul>
+<p><strong>简单反射型Agent</strong> :
+简单反射型Agent基于<strong>当前的感知</strong>选择行动，忽略其余的感知历史。</p>
+<p>可以建造一个通用的 <strong>条件-行动</strong> 规则解释器.
+(不包含历史信息, 只根据<strong>当天</strong>的环境).
+条件-行动规则解释器又称 如果-那么规则, 产生式</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="agent-type-1.png"
+                      alt="agent-type-1" 
+                >
+<figcaption aria-hidden="true">agent-type-1</figcaption>
+</figure>
+<blockquote>
+<p><strong>一些缺点</strong></p>
+<p>只有在<strong>可以仅根据当前感知信息</strong>来完成决策的情况下才能工作。只有环境完全可观察的情况下，即使有少量不可观测的情况也会引起严重问题</p>
+<p>在部分可观察的环境中，简单的反射型Agent可能陷入无限循环</p>
+<p><strong>随机化</strong></p>
+<p>随机化可以部分避免无限循环的问题。随机的简单反射Agent其表现可能胜过确定性的简单反射Agent</p>
+</blockquote>
+<blockquote>
+<p><strong>举例</strong></p>
+<p>人脸识别、语音识别等是简单反射型Agent</p>
+</blockquote>
+<p><strong>基于模型的反射型Agent</strong></p>
+<p>包含历史信息, 状态信息.</p>
+<ul>
+<li>内部状态包括: 世界如何独立于Agent而发展的信息;
+Agent自身的动作如何影响世界的信息</li>
+</ul>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="agent-type-2.png"
+                      alt="agent-type-2" 
+                >
+<figcaption aria-hidden="true">agent-type-2</figcaption>
+</figure>
+<blockquote>
+<p><strong>举例</strong></p>
+<p>深度学习中的LSTM、和注意力机制等属于基于模型的反射型Agent</p>
+</blockquote>
+<p><strong>基于目标的Agent</strong></p>
+<p>不仅需要采用行动, 还需要规定相应的目标.
+既要追踪记录世界的状态，又要记录要达到的目标集，并选择能（最终）达到目标的动作</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="agent-type-3.png"
+                      alt="agent-type-3" 
+                >
+<figcaption aria-hidden="true">agent-type-3</figcaption>
+</figure>
+<p>判断执行的动作会不会使得自己离目标更近</p>
+<blockquote>
+<p><strong>注意基于目标和基于条件-行动规则有根本的不同</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>举例</strong></p>
+<p>路径规划、8数码问题等属于基于目标的Agent</p>
+</blockquote>
+<p><strong>基于效用的Agent</strong></p>
+<p>单靠目标难以在多数环境中产生更好的行为, 需要更快, 更安全, 更可靠等;
+如果一个世界状态比另一个更受偏好，则对Agent来说有更高的效用（utility）</p>
+<blockquote>
+<p><strong>效用函数:</strong> 描述Agent与状态相关的偏好程度,
+在目标不充分的情况下有助于理性决策</p>
+<ul>
+<li>多目标: 加权</li>
+<li>存在冲突目标: 折中</li>
+<li>拥有显式的效用函数的Agent可以做出理性决策</li>
+</ul>
+</blockquote>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="agent-type-4.png"
+                      alt="agent-type-4" 
+                >
+<figcaption aria-hidden="true">agent-type-4</figcaption>
+</figure>
+<blockquote>
+<p><strong>结果的获得</strong></p>
+<p>最佳期望效用是通过计算所有可能结果状态的加权平均值得到，其权值由结果的概率确定</p>
+</blockquote>
+<blockquote>
+<p><strong>举例</strong></p>
+<p>机场选址、雄安新区、高铁路线等决策，属于基于效用Agent</p>
+</blockquote>
+<p><strong>学习Agent</strong></p>
+<ul>
+<li>学习元件: 负责改进, 利用来自评价原件的反馈, 评价Agent做得如何,
+并决定应该如何修改执行元件以在未来做得更好</li>
+<li>执行元件: 负责选择外部动作</li>
+<li>评价元件: 评价Agent做得如何</li>
+<li>问题产生器: 负责提议可以产生新的, 有启发式价值的经验和动作</li>
+</ul>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="agent-type-5.png"
+                      alt="agent-type-5" 
+                >
+<figcaption aria-hidden="true">agent-type-5</figcaption>
+</figure>
+<blockquote>
+<p>例子: 西洋跳棋, 强化学习</p>
+</blockquote>
+<h1 id="逻辑agent">逻辑Agent</h1>
+<ul>
+<li>命题逻辑的语法</li>
+<li>推理模式, 方法</li>
+<li>怪兽世界的推理 (<span
+class="math inline">\(R_1-R_{10}\)</span>的证明, <span
+class="math inline">\(R_{11}-R_{15}\)</span>将句子转化成合取范式,
+然后基于归结或反证法的证明)</li>
+<li>理解推理规则和公理, 用于命题逻辑的推理</li>
+<li>命题逻辑的连接符及语义</li>
+</ul>
+<blockquote>
+<p><strong>什么是逻辑Agent</strong></p>
+<ul>
+<li>研究可表示世界的Agent。采用推理过程以得到关于世界的新表示，并且用这些新表示来推导下一步做什么</li>
+<li>讨论知识的表示与推理过程</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>推理</strong></p>
+<ul>
+<li>可以产生新的知识，可以增强感知能力，尤其在部分可观察的环境中</li>
+<li>只有推理才能够处理部分可观察的环境。推理包括演绎推理、归纳推理等。归纳推理就是机器学习</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>逻辑</strong></p>
+<p>知识库由语句构成; 用 <strong>语法</strong>来表达语句;
+还要定义<strong>语义</strong>,
+语义必须和语句的“含义”有关。语言的语义定义了每个语句关于每个可能世界的真值。</p>
+</blockquote>
+<h2 id="基于知识的agent">基于知识的Agent</h2>
+<p>具有灵活性, 能通过被告知, 主动学习环境的新知识从而快速获得能力,
+并可以通过相关知识以适应环境的变化</p>
+<p>核心构件是 <strong>知识库(Knowledge base, KB)</strong>,
+知识库是<strong>语句(sentence)</strong>的集合.</p>
+<ul>
+<li>知识库的操作有<code>TELL</code>, <code>ASK</code>,
+<code>FOLLOW</code></li>
+</ul>
+<p>每次调用Agent程序, 完成以下内容:</p>
+<ul>
+<li><code>TELL</code>知识库自己的感知内容</li>
+<li><code>ASK</code>知识库应该执行什么动作, 知识库根据当前世界的状态,
+可能动作序列的结果进行推理</li>
+<li>选择动作后, Agent要<code>TELL</code>知识库,
+记录选择的动作并执行</li>
+</ul>
+<p>完全自治的Agent: 为Agent提供某种机制, 使它可以自我学习.
+并且学习得到的知识可以并入知识库, 用于决策.</p>
+<h2 id="怪兽世界-wumpus-world">怪兽世界 (Wumpus World)</h2>
+<blockquote>
+<p><strong>怪兽世界</strong></p>
+<p>由多个房间组成，由通道连接起来的洞穴。在洞穴的某处隐藏着一只怪兽，它会吃掉进入房间的人。Agent可以射杀怪兽，但是只有一只箭。某些房间内有陷阱，人会被陷阱吞噬。但是怪兽除外。因为它太大。某些房间有金子。</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="wumpus.png"
+                      alt="Wumpus World" 
+                >
+<figcaption aria-hidden="true">Wumpus World</figcaption>
+</figure>
+<p>PEAS描述如下:</p>
+<ul>
+<li>性能度量:
+捡到金子得+1000，掉进陷阱-1000，被怪兽吃掉-1000，每采用一个动作-1，用掉箭-10</li>
+<li>环境: 𝟒×𝟒的房间网格。Agent每次都从标号[1,
+1]的方格出发，面向右方。金子和怪兽的位置按均匀分布、随机选择除了起始方格以外的方格。另外，除了起始方格外，任一方格都可能为陷阱，概率为0.2</li>
+<li>执行器:
+Agent可以向前移动、左转90度、右转90度。如果进入陷阱、或有活着怪兽的方格，将死去。进入有死怪兽的方格，是安全的。尽管很臭。如果Agent前方有墙，则向前移动无效。动作Grab可以捡起Agent所处方格的物体。动作Shoot向Agent正对的方向射出一支箭。Agent只有一支箭，因此只有第一个Shoot动作有效。</li>
+<li>传感器:
+Agent有5个传感器，每个可以提供单一信息。在怪兽所在之处、以及与之直接相邻（非对角的）方格内，可以感知到臭气。在于陷阱直接相邻的方格内，可以感知到微风。在金子所处的方格内，可以感知到闪闪金光。当Agent撞到墙时，它感知到撞击。当怪兽被杀死时，它发出嚎叫，在洞穴内的任何地方都可以感知到。</li>
+</ul>
+<p>初始化:</p>
+<p>感知：臭气、微风、金光、撞击、嚎叫</p>
+<p>动作：前移、左转90度、右转90度、捡起物体、射箭</p>
+<p>初始状态：[1, 1]，且是安全的。方向：朝右</p>
+</blockquote>
+<blockquote>
+<p>Agent比较保守, 总是选择已经标注为<code>OK</code>的方格前进</p>
+</blockquote>
+<blockquote>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="wumpus-step1.jpg"
+                     
+alt="怪兽世界中Agent采取的第一步行动。(a)感知到[None, None, None, None, None]后的初始情形。(b)移动一步以后，感知为[None, Breeze, None, None, None]。有微风，意味着相邻单元至少有一个有陷阱。" 
+                >
+<figcaption
+aria-hidden="true">怪兽世界中Agent采取的第一步行动。(a)感知到[None,
+None, None, None, None]后的初始情形。(b)移动一步以后，感知为[None,
+Breeze, None, None,
+None]。有微风，意味着相邻单元至少有一个有陷阱。</figcaption>
+</figure>
+<p>根据[1, 1]没有臭气、微风的事实，Agent可以推断[1, 2]和[2,
+1]都没有危险。用一个OK标注该事实。谨小慎微的Agent将只移动到那些已经明确标志为OK的方格。假设Agent决定向前移动到[2,
+1]</p>
+<p>Agent在[2,
+1]检测到微风，因此在相邻的某个方格中必然有一个陷阱。根据游戏规则，陷阱不可能在[1,
+1]，陷阱必然在[2, 2]、[3, 1]、或两者都有.
+图中符号?表示在这些方格中可能存在陷阱。此刻标注为OK且未被访问的方格仅有一个。因此这个Agent会转身返回[1,
+1]，接着前进到[1, 2]。</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="wumpus-step2.jpg"
+                     
+alt="Agent取得进展的两个后续阶段。(a)第三步移动之后，感知为[Stench, None, None, None, None] 。(b)第五步移动之后，感知为[Stench, Breeze, Glitter, None, None]" 
+                >
+<figcaption
+aria-hidden="true">Agent取得进展的两个后续阶段。(a)第三步移动之后，感知为[Stench,
+None, None, None, None] 。(b)第五步移动之后，感知为[Stench, Breeze,
+Glitter, None, None]</figcaption>
+</figure>
+<p>[1, 2]的新感知为[Stench, None, None, None,
+None]。造成如图7.4(a)所示的知识状态。在[1,
+2]中的臭气意味着附近必定有怪兽。但是根据游戏规则，怪兽不可能在[1,
+1]。而且也不可能在[2, 2]。否则在[2,
+1]时应该可以检测到臭气。因而，能够推断怪兽在[1,
+3]。用符号W!标识。此外[1, 2]中没有微风，暗示着[2,
+2]不存在陷阱。然而已经推断出[2, 2]或[3,
+1]中必定有一个陷阱，因此该陷阱在[3, 1]。</p>
+<p>到目前为止，Agent已经证明[2,
+2]中没有陷阱、没有怪兽，因此它的标注为OK，可以安全地移动过去。将不显示Agent在[2,
+2]的知识状态，只是假设Agent转身并移动到[2, 3]。</p>
+<p>Agent在[2, 3]检测到金光，因此捡起金子、游戏结束。</p>
+</blockquote>
+<blockquote>
+<p>在每种情况下，Agent根据可用的信息得出结论。如果信息正确，那么结论保证是正确的。这是逻辑推理的基本性质。</p>
+</blockquote>
+<h2 id="命题逻辑语法">命题逻辑语法</h2>
+<p><strong>逻辑蕴涵(entailment)</strong>: <span
+class="math inline">\(\alpha \models \beta\)</span></p>
+<ul>
+<li>语句<span class="math inline">\(\alpha\)</span>蕴涵语句<span
+class="math inline">\(\beta\)</span><strong>当且仅当</strong>在<span
+class="math inline">\(\alpha\)</span>为真的每个模型中, <span
+class="math inline">\(\beta\)</span>也为真 (<span
+class="math inline">\(\alpha\)</span>为真, <span
+class="math inline">\(\beta\)</span>也为真)</li>
+<li>模型的意思相当于赋值</li>
+</ul>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="entailment01.jpg"
+                      alt="entailment-例子-1" 
+                >
+<figcaption aria-hidden="true">entailment-例子-1</figcaption>
+</figure>
+<p>对于Agent回到(1,1)后, 一共有8种赋值情况, 其中, <strong>若做0步推导
+(只依靠本身的知识)</strong>, 则只有3种情况使得KB为真,
+若再次基础上提出两个推论:</p>
+<ul>
+<li><span class="math inline">\(\alpha_1=[1,2]\)</span>中无陷阱</li>
+<li><span class="math inline">\(\alpha_2=[2,2]\)</span>中无陷阱</li>
+</ul>
+<p>则有结论: <span class="math inline">\(KB \models \alpha_1\)</span>,
+<span class="math inline">\(KB \nvDash \alpha_2\)</span></p>
+<blockquote>
+<p><strong>逻辑推理和模型检验</strong></p>
+<ul>
+<li>蕴涵和逻辑推理的区别。蕴涵是通过真值表进行推理，也叫模型检验。而逻辑推理是通过推理规则集进推理</li>
+</ul>
+</blockquote>
+<p><strong>推导</strong>: <span class="math inline">\(KB \vdash_i
+\alpha\)</span></p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span>通过推理算法<span
+class="math inline">\(i\)</span>从KB导出</li>
+<li><span class="math inline">\(i\)</span>从KB导出<span
+class="math inline">\(\alpha\)</span></li>
+</ul>
+<blockquote>
+<p><strong>推理的可靠性和完备性</strong></p>
+<ul>
+<li>可靠性: 只导出蕴涵句的推理算法被称为可靠的、或真值保持的推理.
+模型检验在可行的情况下是可靠的过程。</li>
+<li>完备性: 推理算法是完备的。</li>
+</ul>
+</blockquote>
+<h2 id="命题逻辑">命题逻辑</h2>
+<blockquote>
+<p><strong>逻辑连接符</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>连接符</th>
+<th>意义</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\neg\)</span></td>
+<td>非, 否定式</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(\wedge\)</span></td>
+<td>与, 合取式</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\vee\)</span></td>
+<td>或, 析取式</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><span class="math inline">\(\Rightarrow\)</span></td>
+<td>蕴涵式</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\Leftrightarrow\)</span></td>
+<td>当且仅当, 双向蕴涵式</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<blockquote>
+<p><strong>优先级顺序 (从高到低)</strong>: <span
+class="math inline">\(\neg, \wedge, \vee, \Rightarrow,
+\Leftrightarrow\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>命题逻辑的BNF</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Setence -&gt; AtomicSentence | ComplexSentence</span><br><span class="line">AtomicSentence -&gt; True | False | Symbol</span><br><span class="line">Symbol -&gt; [A-Z]</span><br><span class="line">ComplexSentence -&gt; $neg$ Sentence</span><br><span class="line">                |  (Sentence $\wedge$ Sentence)</span><br><span class="line">                |  (Sentence $\vee$ Sentence)</span><br><span class="line">                |  (Sentence $\Rightarrow$ Sentence)</span><br><span class="line">                |  (Sentence $Leftrightarrow$ Sentence)</span><br></pre></td></tr></table></figure>
+<p>括号不能省 (除非依赖优先级)</p>
+<blockquote>
+<p><strong>语义</strong> 用于判定关于特定模型的语句真值的规则</p>
+</blockquote>
+<blockquote>
+<p><strong>真值表</strong></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="logic-1.jpg"
+                      alt="logic-1" 
+                >
+<figcaption aria-hidden="true">logic-1</figcaption>
+</figure>
+</blockquote>
+<blockquote>
+<p><strong>知识库的构建</strong></p>
+<p>考虑怪兽世界: <span class="math inline">\(B_{i,j}\)</span>表示<span
+class="math inline">\((i,j)\)</span>有微风, <span
+class="math inline">\(P_{i,j}\)</span>表示<span
+class="math inline">\((i,j)\)</span>有陷阱, 构建如下的知识库</p>
+<table>
+<thead>
+<tr class="header">
+<th>语句</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(R_1\)</span></td>
+<td><span class="math inline">\(\neg P_{1,2}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R_2\)</span></td>
+<td><span class="math inline">\(B_{1,1} \Leftrightarrow (P_{1,2} \vee
+P_{2,1})\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(R_3\)</span></td>
+<td><span class="math inline">\(B_{2,1} \Leftrightarrow (P_{1,1} \vee
+P_{2,2} \vee P_{3,1})\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R_4\)</span></td>
+<td><span class="math inline">\(\neg B_{1,1}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(R_5\)</span></td>
+<td><span class="math inline">\(B_{2,1}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>于是知识库可以为<span class="math inline">\(R_1 \wedge R_2 \wedge R_3
+\wedge R_4 \wedge R_5\)</span>;
+知识库可以看成单一语句，也可以看成多个语句的合取。只是看问题的角度不同而已</p>
+</blockquote>
+<blockquote>
+<p>逻辑推理的目标是判断某些语句<span
+class="math inline">\(\alpha\)</span>, <span class="math inline">\(KB
+\models \alpha\)</span>是否成立</p>
+</blockquote>
+<h2 id="推理模式-推理方法">推理模式, 推理方法</h2>
+<ul>
+<li>画真值表 (不推荐, 繁琐)</li>
+<li>运用公式法则 (重要, 要记)</li>
+</ul>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="formula.jpg"
+                      alt="formula" 
+                >
+<figcaption aria-hidden="true">formula</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="logic-2.png"
+                      alt="logic-2" 
+                >
+<figcaption aria-hidden="true">logic-2</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="logic-3.png"
+                      alt="logic-3" 
+                >
+<figcaption aria-hidden="true">logic-3</figcaption>
+</figure>
+<blockquote>
+<p><strong>重言式 (合法的)</strong></p>
+<ul>
+<li>在所有的模型中都为真</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>可满足性</strong></p>
+<ul>
+<li>在某些模型中为真</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>反证法</strong></p>
+<p><span class="math inline">\(\alpha \models \beta \Leftrightarrow
+(\alpha \wedge \neg \beta)\)</span>是不可满足的</p>
+</blockquote>
+<blockquote>
+<p><strong>推理模式</strong></p>
+<p>用一些标准模式推导出结论链, 假设横线上方的公式为真,
+推导出下方的东西也为真</p>
+</blockquote>
+<blockquote>
+<p><strong>分离规则(Modus Ponens)</strong></p>
+<p><span class="math inline">\(\frac{\alpha \models \beta,
+\alpha}{\beta}\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>消去规则</strong></p>
+<p><span class="math inline">\(\frac{\alpha \wedge
+\beta}{\alpha}\)</span></p>
+</blockquote>
+<blockquote>
+<p>所有<strong>逻辑等价</strong>都可以作为推理规则</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="logic-example-1.png"
+                      
+                ></p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="logic-example-2.png"
+                      
+                ></p>
+<blockquote>
+<p><strong>证明</strong></p>
+<ul>
+<li>推理规则的应用序列</li>
+<li>有两种证明方法，真值表和推理。显然：真值表是正确且完备的，但效率低。而推理的效率高，但是推理规则集可能正确、但不完备</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>单元归结规则</strong></p>
+<p><span class="math inline">\(\frac{l_1 \vee \cdots \vee l_k \quad
+m}{l_1 \vee \cdots \vee l_{i-1} \vee l_{i+1} \vee \cdots \vee
+l_k}\)</span></p>
+<ul>
+<li>其中 <span class="math inline">\(l_i\)</span>与<span
+class="math inline">\(m\)</span>互补</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>全归结规则(长度为2)</strong></p>
+<p><span class="math inline">\(\frac{l_1 \vee l_2 \quad \neg l_2 \vee
+l_3}{l_1 \vee l_3}\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>归并</strong></p>
+<ul>
+<li>合并文字的多余副本</li>
+<li>即 <span class="math inline">\(A \vee A \Leftrightarrow
+A\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>归结:</strong> 只能取一项进行归结, 不能同时取很多项,
+<strong>只用于文字的析取式</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>合取范式(CNF):</strong> 文字析取式的合取形式, CNF,
+<strong>如何转化</strong></p>
+<ul>
+<li><span class="math inline">\((l_1 \vee \cdots \vee l_{a}) \wedge
+\cdots l_1 \vee \cdots \vee l_{b}) \wedge \cdots\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Horn子句</strong></p>
+<ul>
+<li>最多只有一个正文字</li>
+</ul>
+</blockquote>
+<h1 id="知识表示">知识表示</h1>
+<blockquote>
+<ul>
+<li>情景演算, 情景, 流, 前提条件公理 (可能性公理), 效应公理等概念
+(背)</li>
+<li>本体论, 类别, 对象, 举例说明 (背)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>讨论的是 <strong>如何表示世界的事实</strong>,
+着重于在不同领域都会出现的通用概念, 如动作, 时间, 物理对象, 信念,
+表示这样的抽象概念是 <strong>本体论工程(en?)</strong></p>
+</blockquote>
+<blockquote>
+<p>把世界上的所有事物组织到一个有层次的分类中。着重于不同领域中都会出现的通用概念——事件，时间，物理对象和信念等.
+本体论工程就是表示这些抽象概念。</p>
+</blockquote>
+<h2 id="本体论工程ontology-engineer">本体论工程(Ontology Engineer)</h2>
+<blockquote>
+<p>主要着重于在不同领域都会出现的通用概念，包括表示动作, 时间, 物理对象,
+信念等抽象概念称为 <strong>本体论工程</strong></p>
+<p>可以留下一些占位符, 使任何领域的知识都能填入</p>
+<p>概念的通用框架称为 <strong>上层本体</strong></p>
+<p>可以用树型结构表示, 弧下面的概念是上面概念的一个特殊化</p>
+</blockquote>
+<blockquote>
+<p><strong>专用本体和通用本体的区别</strong></p>
+<ul>
+<li>通用本体应该或多或少应用于专用领域（附加必要的领域特定公理)</li>
+<li>在任何足够苛刻的域，不同领域的知识必须统一起来，因为推理和问题求解可能会同时涉及多个领域</li>
+</ul>
+</blockquote>
+<h2 id="类别和对象">类别和对象</h2>
+<p>将对象组织成类别是知识表示中的重要部分。虽然世界上的相互关系发生在对象层次上，但是多数推理发生在类别层次上,
+<strong>类别和对象是认知世界的基础</strong></p>
+<p>从感知输入推断某些对象的存在，从对象的可感知属性推断其类别归属，然后用这些类别信息对这些对象做出预测。</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="verbs.png"
+                      alt="类别" 
+                >
+<figcaption aria-hidden="true">类别</figcaption>
+</figure>
+<blockquote>
+<p><strong>类别, 子类, 对象和集合论</strong></p>
+<ul>
+<li>对象组织成类别</li>
+<li>类别可以作为另一个类别的对象, 称为子类</li>
+<li>类别可以通过继承来简化和组织知识库</li>
+<li>子类关系将类别用 <strong>分类法 (分类层次)</strong> 组织起来</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>对象, 类别, 属性</strong></p>
+<ul>
+<li>对象是类别的成员</li>
+<li>类别是另一个类别的子类</li>
+<li>一个类别的所用成员拥有某种属性</li>
+<li>类别的成员可以通过某种属性来识别</li>
+<li>一个类别作为整体拥有某种属性</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>不相交</strong></p>
+<ul>
+<li>没有公共成员</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>完全分解</strong></p>
+<ul>
+<li>并集为全集</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>划分</strong></p>
+<ul>
+<li>互不相交且并集为全集</li>
+<li>一个不相交的完全分解称为划分</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>物质成分</strong></p>
+<ul>
+<li>某个对象是另一个对象的一部分</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>部分划分</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>堆</strong></p>
+<ul>
+<li>有确定的部分却没有特定结构的复合对象</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>逻辑最小化</strong></p>
+<p><span class="math inline">\(\forall y (\forall x \in s \Rightarrow
+PartOf(x,y) \Rightarrow PartOf(BunchOf(s), y))\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>事物(Stuff)和物体(Thing)的区别</strong></p>
+<p>事物由大量的原始对象组成, 并且没有明显的个性化, 例子: 黄油,
+黄油的任何一部分仍是黄油, 除非分解成非常小的部分</p>
+<p>物体, 例子: 小狗, 小狗的任何一部分不是小狗</p>
+</blockquote>
+<h2 id="动作-情景-事件-流">动作, 情景, 事件, 流</h2>
+<blockquote>
+<p><strong>动作</strong></p>
+<ul>
+<li>对动作结果的推理是基于知识的Agent运作的中心问题</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>情景</strong></p>
+<ul>
+<li>实施动作产生的状态</li>
+<li>指一些逻辑项，由初始情景（常称为<span
+class="math inline">\(𝑺_𝟎\)</span>）和所有在某个情景上应用一个动作后生成的情景组成</li>
+</ul>
+<p>避免公理的多个副本的明显方法就是简单地在时间轴上进行量化</p>
+</blockquote>
+<blockquote>
+<p><strong>情景演算</strong></p>
+<ul>
+<li>将对时刻的讨论转换为对情景的讨论</li>
+<li>是一种用一阶逻辑，将线性时间的概念用分支情景的概念替换的表达方法</li>
+</ul>
+</blockquote>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="situation.jpg"
+                      alt="情景演算" 
+                >
+<figcaption aria-hidden="true">情景演算</figcaption>
+</figure>
+<blockquote>
+<p><strong>流</strong></p>
+<ul>
+<li>流（fluent）指的是使情景从一个变换到下一个的函数和谓词</li>
+<li>流是函数和谓词，强调情景的变换。情景是流的最后一个参数</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>可能性公理 (前提条件公理 Possibility)</strong></p>
+<ul>
+<li>表述动作的前提, 说明什么时候可以执行该动作</li>
+<li>可能性公理陈述了一个Agent能够在相邻位置间移动，能够在当前位置抓住一块金子，也能够放开它持有的一些金子</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>效应公理 (effect)</strong></p>
+<ul>
+<li>表述某个可能的动作被执行后会发生什么</li>
+<li>如果一个动作是可能的，那么在执行此动作而产生的情景中某些属性（流）会成立</li>
+<li>说明了什么会被改变, 却没说什么东西不变</li>
+</ul>
+</blockquote>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="axiom.png"
+                      alt="公理" 
+                >
+<figcaption aria-hidden="true">公理</figcaption>
+</figure>
+<blockquote>
+<p><strong>框架公理</strong></p>
+<ul>
+<li>需要明确说明哪些一直保持不变</li>
+</ul>
+</blockquote>
+<h1 id="概率推理">概率推理</h1>
+<ul>
+<li>贝叶斯网络的定义, 语义</li>
+<li>给定贝叶斯网络, 写出相应的联合概率分布</li>
+<li>针对书中的盗贼警报任务, 理解贝叶斯网络的精确推理,
+并能够在给定证据的情况下进行推理</li>
+</ul>
+<h2 id="贝叶斯网络的定义和语义">贝叶斯网络的定义和语义</h2>
+<blockquote>
+<p><strong>贝叶斯网络的定义</strong></p>
+<ul>
+<li>有向无环图</li>
+<li>每个节点都标注了定量概率信息</li>
+<li>包含随机变量集组成的网络节点</li>
+<li>包含连接节点的有向边集合</li>
+<li>每个节点都有一个条件概率分布 <span class="math inline">\(P(X_i |
+Parent(X_i))\)</span>, 用来量化父节点对该节点的影响</li>
+</ul>
+</blockquote>
+<p>独立性, 条件独立性, 不确定域中的知识表示</p>
+<blockquote>
+<p><strong>贝叶斯网络的语义</strong></p>
+<ul>
+<li>将贝叶斯网络视为对联合概率分布的表示。用于构造网络</li>
+<li>将其视为对条件依赖性语句集合的编码。用于设计推理过程.
+(条件独立)</li>
+</ul>
+</blockquote>
+<p><span class="math display">\[
+P(x_1, \cdots, x_n) = \prod_{i=1}^n P(x_i | parents(X_i))
+\]</span></p>
+<blockquote>
+<p><strong>例子</strong>
+计算报警器响了，但没有盗贼闯入，也没有发生地震，同时John和Marry都给你打电话的概率。</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="bayes.jpg"
+                     
+alt="一个典型的贝叶斯网络，显示了其拓扑结构和条件概率表（CPT）。在CPT中，字母B、E、A、J、M分别表示Burglary（盗贼）、Earthquake（地震）、Alarm（警报）、JohnCalls（John打电话）、MarryCalls（Marry打电话" 
+                >
+<figcaption
+aria-hidden="true">一个典型的贝叶斯网络，显示了其拓扑结构和条件概率表（CPT）。在CPT中，字母B、E、A、J、M分别表示Burglary（盗贼）、Earthquake（地震）、Alarm（警报）、JohnCalls（John打电话）、MarryCalls（Marry打电话</figcaption>
+</figure>
+<p><span class="math display">\[
+\begin{align}
+p(a,\neg b, \neg e, j ,m) &amp;= p(a | \neg b, \neg e)p(\neg b)p(\neg
+e)p(j | a)p(m | a) \\
+&amp;= 0.001 \times 0.999 \times 0.998 \times 0.9 \times 0.7
+\end{align}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p><strong>条件独立关系</strong></p>
+<ul>
+<li>给定父节点，一个节点与它的非后代节点是条件独立的</li>
+<li>给定一个节点的父节点、子节点、以及子节点的父节点。也就是说，给定它的马尔可夫覆盖（Markov
+blanket），则这个节点和其它所有节点都是条件独立的</li>
+</ul>
+</blockquote>
+<ul>
+<li>减少了所需定义的概率数目</li>
+</ul>
+<blockquote>
+<p><strong>精确推理</strong></p>
+<p>在给定某个已观察事件，也就是一组证据变量的某个赋值后，概率推理系统的基本任务都是要计算一组查询变量的后验概率分布。</p>
+</blockquote>
+<h1 id="指定简单决策">指定简单决策</h1>
+<ul>
+<li>理解什么是偏好, 效用, 最大期望效用原则 (计算期望)</li>
+<li>理解决策网络, 尤其是网络中的结点类型</li>
+<li>给定网络, 计算不同动作的期望效用, 并选具有最大期望效用的动作</li>
+</ul>
+<blockquote>
+<p><strong>效用</strong></p>
+<ul>
+<li>将状态映射到实数的函数</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>效用函数</strong></p>
+<ul>
+<li>在世界状态之间的偏好采用效用函数表示。这个效用函数分配一个数值来表达对某个状态的愿望度。效用与动作的结果概率相结合，提供了每个动作的期望效用</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>偏好</strong></p>
+<ul>
+<li>某个状态的愿望度</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>最大期望效用MEU</strong></p>
+<ul>
+<li>表达指出理性Agent应该选择能最大化该Agent的期望效用的那个动作</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>决策网络</strong></p>
+<ul>
+<li>决策网络表示下述信息：Agent的当前状态、其可能动作、Agent的动作所产生的状态、以及状态的效用</li>
+</ul>
+</blockquote>
+<p><strong>例题</strong></p>
+<p>https://blog.csdn.net/weixin_44340586/article/details/109224994</p>
+<h2
+id="在不确定性环境下结合信度和愿望">在不确定性环境下结合信度和愿望</h2>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="expectation-1.png"
+                      alt="expectation-1" 
+                >
+<figcaption aria-hidden="true">expectation-1</figcaption>
+</figure>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">【人工智能】人智导论复习</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2023-01-05 15:54:09</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2023/01/05/ML/IntroductionToAI/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/ML/">#ML</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/AI/">#AI</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Review/">#Review</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/01/05/Life/Abording/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【讲座纪要】Abording Information</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/01/03/CS/Compiler-SemanticAnalysis-zh/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【编译原理】语义分析</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%93%E5%90%AC%E9%80%94%E8%AF%B4%E7%9A%84%E9%A2%98%E7%9B%AE%E5%BD%92%E7%BA%B3"><span class="nav-number">1.</span> <span class="nav-text">道听途说的题目归纳</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%AA%E8%AE%BA-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD-%E7%BB%99%E5%87%BA%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%92%8C%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">绪论:
+什么是人工智能, 给出功能模块和实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.</span> <span class="nav-text">四种定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95-turing-test"><span class="nav-number">2.3.</span> <span class="nav-text">图灵测试 (Turing Test)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E6%80%A7-agent-%E6%96%B9%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">理性 Agent 方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E5%8C%96agent-agent%E7%9A%84%E6%9E%B6%E6%9E%84%E5%B9%B6%E4%B8%94%E8%A6%81%E7%90%86%E8%A7%A3agent%E7%9A%84%E4%BB%BB%E5%8A%A1%E7%8E%AF%E5%A2%83%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86%E7%AD%89"><span class="nav-number">3.</span> <span class="nav-text">智能化Agent:
+Agent的架构。并且要理解Agent的任务、环境、评价标准等</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">Agent的类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%BB%E8%BE%91agent"><span class="nav-number">4.</span> <span class="nav-text">逻辑Agent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E7%9A%84agent"><span class="nav-number">4.1.</span> <span class="nav-text">基于知识的Agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%AA%E5%85%BD%E4%B8%96%E7%95%8C-wumpus-world"><span class="nav-number">4.2.</span> <span class="nav-text">怪兽世界 (Wumpus World)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E8%AF%AD%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">命题逻辑语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91"><span class="nav-number">4.4.</span> <span class="nav-text">命题逻辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E7%90%86%E6%A8%A1%E5%BC%8F-%E6%8E%A8%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">4.5.</span> <span class="nav-text">推理模式, 推理方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA"><span class="nav-number">5.</span> <span class="nav-text">知识表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E4%BD%93%E8%AE%BA%E5%B7%A5%E7%A8%8Bontology-engineer"><span class="nav-number">5.1.</span> <span class="nav-text">本体论工程(Ontology Engineer)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%88%AB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.2.</span> <span class="nav-text">类别和对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C-%E6%83%85%E6%99%AF-%E4%BA%8B%E4%BB%B6-%E6%B5%81"><span class="nav-number">5.3.</span> <span class="nav-text">动作, 情景, 事件, 流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E6%8E%A8%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">概率推理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%AF%AD%E4%B9%89"><span class="nav-number">6.1.</span> <span class="nav-text">贝叶斯网络的定义和语义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E7%AE%80%E5%8D%95%E5%86%B3%E7%AD%96"><span class="nav-number">7.</span> <span class="nav-text">指定简单决策</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%BB%93%E5%90%88%E4%BF%A1%E5%BA%A6%E5%92%8C%E6%84%BF%E6%9C%9B"><span class="nav-number">7.1.</span> <span class="nav-text">在不确定性环境下结合信度和愿望</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Andrew-Rey</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

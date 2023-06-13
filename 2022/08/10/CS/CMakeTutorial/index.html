@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Andrew-Rey">
+    
+    <title>
+        
+            【C++】CMake Tutorial |
+        
+        Notes
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/head_round.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#f8a5c2","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/head_round.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Notes
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【C++】CMake Tutorial</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/head_round.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Andrew-Rey</span>
+                            
+                                <span class="author-label">来自林邑的许先森❤</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-08-10 12:56:16</span>
+        <span class="mobile">2022-08-10 12:56</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-03-01 22:55:52</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/CS/">CS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/">C++</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Programming/">Programming</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>CMake version: 3.x</p>
+<span id="more"></span>
+<h1 id="command-line">Command Line</h1>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># (configure step) create build dir, and generate build/Makefile -&gt; generate Makefile</span></span><br><span class="line">cmake -B build</span><br><span class="line"></span><br><span class="line"><span class="comment"># (build step) invoke building system and build the project in different OS -&gt; generate executable file</span></span><br><span class="line">cmake --build build -j4</span><br><span class="line"></span><br><span class="line"><span class="comment"># invoke building system to execute target &quot;install&quot;</span></span><br><span class="line">cmake --build build --<span class="keyword">target</span> <span class="keyword">install</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># define configure variables, only use in configure step</span></span><br><span class="line"><span class="comment"># use -D</span></span><br><span class="line"><span class="comment"># set build type in configure step, the value will remain when invoked the second time unless delete build dir</span></span><br><span class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release</span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify generator (generator: generate build system build rule from CMakeLists.txt)</span></span><br><span class="line"><span class="comment"># use -G</span></span><br><span class="line"><span class="comment"># generator Ninja, faster than Unix Makefile, generate *.ninja</span></span><br><span class="line">cmake -B build -G Ninja</span><br></pre></td></tr></table></figure>
+<h1 id="cmakelists.txt">CMakeLists.txt</h1>
+<p><strong>add source file</strong></p>
+<p>(1). single file: main.cpp</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(main)</span><br><span class="line"><span class="keyword">target_sources</span>(main PUBLIC main.cpp)</span><br></pre></td></tr></table></figure>
+<p>(2). multiple files: main.cpp | other.cpp | other.h</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(main)</span><br><span class="line"><span class="keyword">target_sources</span>(main PUBLIC main.cpp other.cpp)</span><br></pre></td></tr></table></figure>
+<p>or <strong>set</strong> a new variable</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(main)</span><br><span class="line"><span class="keyword">set</span>(sources main.cpp other.cpp other.h)  <span class="comment"># other.h can delete</span></span><br><span class="line"><span class="keyword">target_sources</span>(main PUBLIC <span class="variable">$&#123;sources&#125;</span>)</span><br></pre></td></tr></table></figure>
+<p>or use <strong>GLOB</strong> to search all files in current dir</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(main)</span><br><span class="line"><span class="keyword">file</span>(GLOB sources CONFIGURE_DEPENDS *.cpp *.h)  <span class="comment"># add CONFIGURE_DEPENDS to detect any change when next build</span></span><br><span class="line"><span class="keyword">target_sources</span>(main PUBLIC <span class="variable">$&#123;sources&#125;</span>)</span><br></pre></td></tr></table></figure>
+<p>when we have a dir structure:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mylib</span><br><span class="line">  +----*.cpp</span><br><span class="line">  +----*.h</span><br><span class="line">*.cpp</span><br><span class="line">*.h</span><br></pre></td></tr></table></figure>
+<p>no need to write all files:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># add all file in current dir and mylib dir</span></span><br><span class="line"><span class="keyword">add_executable</span>(main)</span><br><span class="line"><span class="keyword">aux_source_directory</span>(. sources)</span><br><span class="line"><span class="keyword">aux_source_directory</span>(mylib sources)</span><br><span class="line"><span class="keyword">target_sources</span>(main PUBLIC <span class="variable">$&#123;sources&#125;</span>)</span><br></pre></td></tr></table></figure>
+<p>or use <strong>GLOB_RECURSE</strong> to find all files recursely:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(main)</span><br><span class="line"><span class="keyword">file</span>(GLOB_RECURSE sources CONFIGURE_DEPENDS *.cpp *.h)</span><br><span class="line"><span class="keyword">target_sources</span>(main PUBLIC <span class="variable">$&#123;sources&#125;</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>ERROR</strong>: use GLOB_RECURSE will include *.cpp files in
+build dir.</p>
+<p><strong>solution</strong>: Add all source files in a dir named
+src</p>
+<h2 id="configure-variables">Configure variables</h2>
+<p><strong>CMAKE_BUILD_TYPE</strong>: type of build,
+<strong>Release</strong>, <strong>Debug</strong>,
+<strong>MinSizeRel</strong> and <strong>RelWithDebInfo</strong>,
+defualt: none (debug).</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(CMAKE_BUILD_TYPE Release)</span><br></pre></td></tr></table></figure>
+<p>set default build type as Release to reach high performance: in the
+first three lines:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">NOT</span> CMAKE_BUILD_TYPE)</span><br><span class="line">    <span class="keyword">set</span>(CMAKE_BUILD_TYPE Release)</span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Specify version of cmake</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.22</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set c++ standard</span></span><br><span class="line"><span class="comment"># don&#x27;t modify CMAKE_CXX_FLAGS to add -std=c++17</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">17</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># if use the needed CXX standard defined.</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="keyword">ON</span>)  <span class="comment"># OFF default</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># prevent features GCC only</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_EXTENSIONS <span class="keyword">OFF</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set project info</span></span><br><span class="line"><span class="keyword">project</span>(project_name LANGUAGES language_list(such as C CXX ASM...))</span><br></pre></td></tr></table></figure>
+<h2 id="linkable-library">Linkable library</h2>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(main mian.cpp mylib.cpp)</span><br></pre></td></tr></table></figure>
+<p>or generate a static library</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(mylib STATIC mylib.cpp)  <span class="comment"># create libmylib.a</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(main PUBLIC mylib)</span><br></pre></td></tr></table></figure>
+<p>or generate dynamic lib</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(mylib SHARED mylib.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(main PUBLIC mylib)</span><br></pre></td></tr></table></figure>
+<p>or use object lib, no *.a file, let CMake remember which objects
+files are created</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_library</span>(mylib OBJECT mylib.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(main PUBLIC mylib)</span><br></pre></td></tr></table></figure>
+<p>静态库问题: GCC会自行剔除没有引用符号的对象, 此时使用对象库避免,
+从而不会自动剔除没引用到的对象文件, 绕开编译器不统一问题.
+动态库也可以避免剔除没引用的对象文件, 但引入了运行时链接的麻烦.</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># no specify variable in add_library()</span></span><br><span class="line"><span class="keyword">set</span>(BUILD_SHARED_LIBS <span class="keyword">ON</span>)  <span class="comment"># default OFF</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add_library</span>(mylib mylib.cpp)</span><br></pre></td></tr></table></figure>
+<p><strong>HINT</strong> 静态库常常被认为直接链接到可执行文件上.
+因此在动态库中不要链接静态库. 很呆. 地址会变.
+当然<strong>解决方法</strong>是: 要么转化为对象库,
+要么让静态库变成地址无关的代码PIC</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set global property</span></span><br><span class="line"><span class="keyword">set</span>(CMAKE_POSITION_INDEPENDENT_CODE <span class="keyword">ON</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_library</span>(otherlib STATIC otherlib.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_library</span>(mylib SHARED mylib.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(mylib PUBLIC otherlib)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(main PUBLIC mylib)</span><br></pre></td></tr></table></figure>
+<p>or set local property</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set local property</span></span><br><span class="line"><span class="keyword">add_library</span>(otherlib STATIC otherlib.cpp)</span><br><span class="line"><span class="keyword">set_property</span>(<span class="keyword">TARGET</span> otherlib PROPERTY POSITION_INDEPENDENT_CODE <span class="keyword">ON</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_library</span>(mylib SHARED mylib.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(mylib PUBLIC otherlib)</span><br><span class="line"></span><br><span class="line">add_execuable(main main.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(main PUBLIC mylib)</span><br></pre></td></tr></table></figure>
+<h2 id="attributes-of-objects">Attributes of objects</h2>
+<p>设置单属性: <code>set_property(TARGET ... PROPERTY ...)</code>;</p>
+<p>设置多属性:
+<code>set_target_properties(file_name PROPERTIES properties_list)</code></p>
+<p><strong>HINT</strong>:
+以上命令在<code>add_executable</code>后有效.</p>
+<p>设置全局属性 (改变属性的默认值): <code>set(CMAKE_XXX)</code>,
+在<code>add_executable</code>前设置.</p>
+<blockquote>
+<p>如果需要在Windows下面使用动态库 (Windows对动态链接不友好),
+则需要在定义和声明添加: <strong>Deffinition:</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _MSC_VER</span></span><br><span class="line">__declspec(dllexport)</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sayy_hello</span><span class="params">()</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<strong>Declaration:</strong> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _MSC_VER</span></span><br><span class="line">__declspec(dllimport)</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">say_hello</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure> 然后CMakeLists.txt这样写:
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># In Main dir</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.22</span>)</span><br><span class="line"><span class="keyword">add_subdirectory</span>(mylib)  <span class="comment"># add sub module</span></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(main PUBLIC mylib)</span><br><span class="line"></span><br><span class="line"><span class="comment"># In sub module dir</span></span><br><span class="line"><span class="keyword">add_library</span>(mylib SHARED mylib.cpp mylib.h)</span><br></pre></td></tr></table></figure> 然后Windows极有可能会报错: 运行时找不到dll;
+原因是dll和exe不在同一目录 (Windows只会查找exe所在目录和PATH). -
+把dll添加到PATH环境变量 - 或者dll和dll其他的所有依赖dll,
+全部拷贝到exe同一目录</p>
+<p>这是因为CMake把main放在build下, 而mylib放在build/mylib/mylib.dll</p>
+</blockquote>
+<p>因此重定向输出路径, 改变mylib属性, 让.dll文件输出到
+<strong>PROJECT_BINARY_DIR</strong> 里面. <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_property</span>(<span class="keyword">TARGET</span> mylib PROPERTY RUNTIME_OUTPUT_DIRECTORY_(DEBUG | RELEASE | NONE) | ARCHIVE_OUTPUT_DIRECTORY | LIBRARY_OUTPUT_DIRECTORY <span class="variable">$&#123;PROJECT_BINARY_DIR&#125;</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="externel-library">Externel library</h2>
+<p>In Linux: feel free to link externel libraries. (/usr/lib/...) But
+Windows can't. Linux can also include head file directly
+(/usr/include/...).</p>
+<p><strong>HINT:</strong> CMake 的分隔符永远是 "/", 即使是Windows,
+CMake会自动转化.</p>
+<p>More general method: <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(package_name REQUIRED)</span><br></pre></td></tr></table></figure></p>
+<p>没听懂, 以后补, 以后也不想补.</p>
+<h2 id="variables-and-outputs">Variables and Outputs</h2>
+<p>output some log infomation when running <code>cmake -B build</code>,
+used for debugging. <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message</span>(<span class="string">&quot;log info&quot;</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message</span>(STATUS <span class="string">&quot;status info&quot;</span>)  <span class="comment"># -- prefix</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message</span>(WARNING <span class="string">&quot;warning info&quot;</span>)  <span class="comment"># yellow</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message</span>(SEND_ERROR <span class="string">&quot;error info&quot;</span>)  <span class="comment"># send error log but continue to run</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">message</span>(FATAL_ERROR <span class="string">&quot;error info&quot;</span>)  <span class="comment"># print error and stop running</span></span><br></pre></td></tr></table></figure>
+<h2 id="variable-and-cache">Variable and Cache</h2>
+<p>重复执行<code>cmake -B build</code>: 第一次较慢,
+将环境的检测存入缓存, 第二次以及以后直接查看缓存内容.
+因此某些错误可以通过删除 <strong>./build/CMakeCache.txt</strong>解决.
+当然也可以删了整个build文件夹重新编译, 慢一点而已.</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">【C++】CMake Tutorial</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2022-08-10 12:56:16</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2022/08/10/CS/CMakeTutorial/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/C/">#C++</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Programming/">#Programming</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2022/08/21/ML/UNet/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【深度学习】Image Semantic Segmentation based on UNet</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/04/06/Algorithm/algorithm-FFT/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【算法】Algorithm-FFT</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#command-line"><span class="nav-number">1.</span> <span class="nav-text">Command Line</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cmakelists.txt"><span class="nav-number">2.</span> <span class="nav-text">CMakeLists.txt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-variables"><span class="nav-number">2.1.</span> <span class="nav-text">Configure variables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linkable-library"><span class="nav-number">2.2.</span> <span class="nav-text">Linkable library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attributes-of-objects"><span class="nav-number">2.3.</span> <span class="nav-text">Attributes of objects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#externel-library"><span class="nav-number">2.4.</span> <span class="nav-text">Externel library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variables-and-outputs"><span class="nav-number">2.5.</span> <span class="nav-text">Variables and Outputs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#variable-and-cache"><span class="nav-number">2.6.</span> <span class="nav-text">Variable and Cache</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Andrew-Rey</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

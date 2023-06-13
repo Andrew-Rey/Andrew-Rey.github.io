@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Andrew-Rey">
+    
+    <title>
+        
+            【编译原理】语义分析 |
+        
+        Notes
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/head_round.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#f8a5c2","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/head_round.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Notes
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【编译原理】语义分析</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/head_round.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Andrew-Rey</span>
+                            
+                                <span class="author-label">来自林邑的许先森❤</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-01-03 17:42:03</span>
+        <span class="mobile">2023-01-03 17:42</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-06-11 13:46:00</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/CS/">CS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CS/">CS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Compiler/">Compiler</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>"书接上文"</p>
+<span id="more"></span>
+<h2 id="概述">概述</h2>
+<p><strong>语义翻译</strong>: 语义分析和中间代码生成一起实现.</p>
+<p><strong>语法制导翻译</strong>: 在语法分析时实现语义翻译.
+使用上下文无关文法(CFG)来引导对语言的翻译, 是一种面向文法的翻译技术.</p>
+<h2 id="基本思想">基本思想</h2>
+<p><strong>语义属性</strong>: 在 CFG 中为文法符号设置语义属性,
+表示语法成分对应的语义信息.</p>
+<p>如何计算:</p>
+<ul>
+<li>用文法符号所在的产生式相关联的<strong>语义规则</strong>计算</li>
+</ul>
+<p><strong>语法制导定义(SDD)</strong>:</p>
+<ul>
+<li>将<strong>每个文法符号</strong>和一个<strong>语义属性集合</strong>相关联</li>
+<li>将<strong>每个产生式</strong>和<strong>一组语义规则</strong>相关联,
+这些规则用于计算产生式中各个文法符号的属性值</li>
+<li>注意: 同一个产生式出现相同符号时, 需要以下标区分,
+因为有不同的语义含义</li>
+<li>注意: 语义规则可以是一些 <strong>副作用</strong> 如打印等等</li>
+</ul>
+<p>例子:</p>
+<table>
+<thead>
+<tr class="header">
+<th>产生式</th>
+<th>语义规则</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(D \rightarrow T\ L\)</span></td>
+<td><span class="math inline">\(L.inh = T.type\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T \rightarrow int\)</span></td>
+<td><span class="math inline">\(T.type = int\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T \rightarrow real\)</span></td>
+<td><span class="math inline">\(T.type = real\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L \rightarrow L_1, id\)</span></td>
+<td><span class="math inline">\(L_1.inh = L.inh\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>语法制导翻译方案(SDT)</strong></p>
+<ul>
+<li>在产生式右部嵌入程序片段 (<strong>语义动作</strong>)</li>
+</ul>
+<p>例子:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(D \rightarrow T\ \{L.inh = T.type\}\
+L\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T \rightarrow int\ \{T.type =
+int\}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T \rightarrow real\ \{T.type =
+int\}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L \rightarrow \{L_1.inh = L.inh\}\ L_1,
+id\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>语义动作在产生式的位置决定了动作的执行时刻</strong>:
+例如第一个产生式, 在分析出<span class="math inline">\(T\)</span>后,
+可以根据语义动作, 将后面的<span
+class="math inline">\(L\)</span>的语义属性赋值</p>
+<h2 id="语法制导定义-sdd">语法制导定义 SDD</h2>
+<p>分为 <strong>综合属性</strong> 和 <strong>继承属性</strong></p>
+<h3 id="综合属性synthesized-attribute">综合属性(Synthesized
+attribute)</h3>
+<p>在分析树上的结点<span class="math inline">\(N\)</span>的
+<strong>非终结符</strong> <span
+class="math inline">\(A\)</span>的综合属性只能通过<span
+class="math inline">\(N\)</span>的<strong>子节点或本身的属性值</strong>来定义.</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="综合属性.png"
+                      alt="综合属性例子" 
+                >
+<figcaption aria-hidden="true">综合属性例子</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="综合属性2.png"
+                      alt="综合属性例子" 
+                >
+<figcaption aria-hidden="true">综合属性例子</figcaption>
+</figure>
+<h3 id="继承属性inherited-attribute">继承属性(Inherited attribute)</h3>
+<p>在分析树上的结点<span class="math inline">\(N\)</span>的
+<strong>非终结符</strong> <span
+class="math inline">\(A\)</span>的继承属性只能通过<span
+class="math inline">\(N\)</span>的<strong>父节点,
+兄弟结点或本身结点的属性值</strong>来定义.</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="继承属性.png"
+                      alt="继承属性例子" 
+                >
+<figcaption aria-hidden="true">继承属性例子</figcaption>
+</figure>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="继承属性2.png"
+                      alt="继承属性例子" 
+                >
+<figcaption aria-hidden="true">继承属性例子</figcaption>
+</figure>
+<hr />
+<p>终结符只有综合属性,
+原因是其综合属性指向的是符号表序号(或者说是词法分析器提供的词法值),
+不论其父结点怎么变, 终结符的属性都不会变, 因此不能存在继承属性. <span
+class="math inline">\(SDD\)</span>中也没有计算终结符属性值的语义规则.</p>
+<hr />
+<h3 id="注释分析树annotated-parse-tree">注释分析树(Annotated parse
+tree)</h3>
+<p>在分析树中标明语义值.</p>
+<h3 id="sdd-的求值顺序">SDD 的求值顺序</h3>
+<p>在对语法分析树的一个结点求属性值之前, 应该
+<strong>先求出它所依赖的所有属性值</strong></p>
+<p><strong>依赖图(Dependency graph)</strong></p>
+<ul>
+<li>如果<span class="math inline">\(X.a\)</span>的值
+<strong>依赖于</strong> 属性<span
+class="math inline">\(Y.b\)</span>的值, 则依赖图中有一条 <strong>从 Y.b
+指向 X.a 的有向边</strong>. 方便起见, 可以将
+<strong>综合属性放在结点的右边, 继承属性放在左边</strong>.</li>
+<li>注意: 如果语义规则中含有副作用 (即调用了某个函数,
+函数中用到了语义属性), 则为它创建一个 <strong>虚拟结点</strong>,
+如下所示</li>
+</ul>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="虚拟结点.png"
+                      alt="虚拟结点" 
+                >
+<figcaption aria-hidden="true">虚拟结点</figcaption>
+</figure>
+<p>可行的求值顺序: <strong>拓扑排序</strong>,
+依赖者的序号大于被依赖者的序号.</p>
+<ul>
+<li>只有综合属性的 SDD, 可以按照任意自底向上的顺序计算它们的值</li>
+<li>同时具有综合属性和继承属性的 SDD,
+不能保证存在应该顺序对各个结点上的属性进行求值</li>
+<li><strong>依赖图中没有环, 则至少存在一个拓扑排序</strong></li>
+</ul>
+<p>给定一个 SDD, 很难确定是否存在某个语法树, 使得依赖图无环, 但存在
+<strong><span class="math inline">\(L\)</span>-属性定义</strong> 和
+<strong><span class="math inline">\(S\)</span>-属性定义</strong>
+保证每个语法分析树都存在求值顺序, 依赖图无环.</p>
+<h3 id="s-属性定义"><span class="math inline">\(S\)</span>-属性定义</h3>
+<p><strong>仅使用综合属性的 SDD</strong>, 可以在
+<strong>自底向上</strong> 的语法分析过程中实现</p>
+<h3 id="l-属性定义"><span class="math inline">\(L\)</span>-属性定义</h3>
+<p>在一个产生式所关联的各属性之间, 依赖图的边 <strong>可以从左到右,
+但不能从右到左</strong>. 正式定义为: 一个 SDD 是<span
+class="math inline">\(L\)</span>-属性定义, 当且仅当它的每个属性要么
+<strong>是一个综合属性</strong> 要么
+<strong>是满足如下条件的继承属性</strong></p>
+<ul>
+<li>假设存在一个产生式<span class="math inline">\(A \rightarrow
+X_1X_2\cdots X_n\)</span>, 其右部符号<span
+class="math inline">\(X_i\)</span>的继承属性仅依赖于
+<ul>
+<li><span class="math inline">\(A\)</span>的继承属性
+(不能依赖于父结点的综合属性,
+因为父结点的综合属性可能依赖子结点的继承属性, 会导致循环依赖)</li>
+<li>产生式中<span class="math inline">\(X_i\)</span>左边的符号的属性
+(包括综合属性和继承属性)</li>
+<li><span class="math inline">\(X_i\)</span>本身的属性, 但<span
+class="math inline">\(X_i\)</span>的全部属性不能在依赖图中形成环路</li>
+</ul></li>
+</ul>
+<hr />
+<p>每个<span class="math inline">\(S\)</span>-属性定义都是<span
+class="math inline">\(L\)</span>-属性定义</p>
+<hr />
+<h2 id="语法制导翻译方案-sdt">语法制导翻译方案 SDT</h2>
+<p>以下两种 SDD 对应的 SDT 可以在语法分析过程中实现</p>
+<ul>
+<li><span class="math inline">\(LR\)</span>分析, <span
+class="math inline">\(SDD\)</span>是<span
+class="math inline">\(S\)</span>属性的</li>
+<li><span class="math inline">\(LL\)</span>分析, <span
+class="math inline">\(SDD\)</span>是<span
+class="math inline">\(L\)</span>属性的</li>
+</ul>
+<p><strong>S-SDD</strong>: 转化为 SDT 时, 将每个语义动作放在产生式的最后
+<strong>L-SDD</strong>: 转化为 SDT 时</p>
+<ul>
+<li>计算继承属性的动作插入到非终结符的前面</li>
+<li>计算综合属性的动作放在产生式的最后</li>
+</ul>
+<h3
+id="在非递归的预测分析过程中进行翻译">在非递归的预测分析过程中进行翻译</h3>
+<p><strong>一个非终结符的继承属性和综合属性在分析过程中的计算时间是不一样的</strong></p>
+<ul>
+<li>继承属性的计算在该非终结符出现之前,
+综合属性的计算在该非终结符的所有子结点分析结束之后</li>
+</ul>
+<p>为非终结符的<strong>综合属性</strong>单独创建一个元素<code>Xsyn</code>,
+存放终结符 X 的综合属性, 此时在分析栈中, 包含三种类型的元素:</p>
+<ul>
+<li><span class="math inline">\(action\)</span>:
+用于存放执行语义动作的代码指针</li>
+<li><span class="math inline">\(A\)</span>: 非终结符<span
+class="math inline">\(A\)</span>的继承属性</li>
+<li><span class="math inline">\(Asyn\)</span>: 非终结符<span
+class="math inline">\(Asyn\)</span>的综合属性</li>
+</ul>
+<p>分析时的基本原则是 <strong>综合记录出栈时,
+要将综合属性值复制给后面<em>特定</em>的语义动作</strong>,
+<strong>变量本身的记录出栈时 (发生推导的时候), 如果含有继承属性,
+则将其值复制给后面的<em>特定</em>语义动作</strong></p>
+<p>具体例子见 <a class="link" 
+ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zW411t7YE?p=40&amp;vd_source=698de1256a0048d0fd59d2f1bc3e109b" >非递归翻译例子<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="在递归预测过程中进行翻译">在递归预测过程中进行翻译</h3>
+<p><strong>将每个非终结符实现为一个函数,
+该非终结符的每个继承属性是该函数的一个形参,
+返回值是该非终结符的综合属性</strong></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="递归翻译.jpg"
+                      alt="递归翻译" 
+                >
+<figcaption aria-hidden="true">递归翻译</figcaption>
+</figure>
+<h3 id="l-属性定义的自底向上翻译">L-属性定义的自底向上翻译</h3>
+<p>自底向上翻译要求翻译动作在 <strong>归约后调用</strong>, 但 L-SDD
+中有一部分语义动作处于产生式的中间, 因此使用自底向上翻译时, 需要添加
+<strong>标记非终结符</strong>, 代表 <strong>产生式中间的语义动作,
+即继承属性对应的语义动作</strong></p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="L-属性自底向上-标记非终结符.jpg"
+                     
+alt="L-属性自底向上翻译-标记非终结符" 
+                >
+<figcaption
+aria-hidden="true">L-属性自底向上翻译-标记非终结符</figcaption>
+</figure>
+<p>其中<span class="math inline">\(M,
+N\)</span>位于实际待求继承属性非终结符的左侧, 因此 <strong><span
+class="math inline">\(M,
+N\)</span>的综合属性是后续非终结符的继承属性</strong></p>
+<blockquote>
+<p>上述文法所对应的<span
+class="math inline">\(SLR\)</span>自动机如下:</p>
+<figure>
+<img  
+                     lazyload
+                     alt="image"
+                     data-src="L-属性自底向上SLR.jpg"
+                      alt="L-属性自底向上例子-SLR" 
+                >
+<figcaption aria-hidden="true">L-属性自底向上例子-SLR</figcaption>
+</figure>
+<p>考虑输入串</p>
+<p><span class="math display">\[
+3 * 5
+\]</span></p>
+<p>具体见视频讲解: <a class="link" 
+ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zW411t7YE?p=42&amp;vd_source=698de1256a0048d0fd59d2f1bc3e109b" >L-属性自底向上例子<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">【编译原理】语义分析</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2023-01-03 17:42:03</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2023/01/03/CS/Compiler-SemanticAnalysis-zh/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CS/">#CS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Compiler/">#Compiler</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/01/05/ML/IntroductionToAI/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【人工智能】人智导论复习</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/10/12/Life/code/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【日常】今天又是码代码的一天呢</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">2.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E5%AE%9A%E4%B9%89-sdd"><span class="nav-number">3.</span> <span class="nav-text">语法制导定义 SDD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E5%90%88%E5%B1%9E%E6%80%A7synthesized-attribute"><span class="nav-number">3.1.</span> <span class="nav-text">综合属性(Synthesized
+attribute)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7inherited-attribute"><span class="nav-number">3.2.</span> <span class="nav-text">继承属性(Inherited attribute)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A%E5%88%86%E6%9E%90%E6%A0%91annotated-parse-tree"><span class="nav-number">3.3.</span> <span class="nav-text">注释分析树(Annotated parse
+tree)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sdd-%E7%9A%84%E6%B1%82%E5%80%BC%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.4.</span> <span class="nav-text">SDD 的求值顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#s-%E5%B1%9E%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="nav-number">3.5.</span> <span class="nav-text">\(S\)-属性定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-%E5%B1%9E%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="nav-number">3.6.</span> <span class="nav-text">\(L\)-属性定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91%E6%96%B9%E6%A1%88-sdt"><span class="nav-number">4.</span> <span class="nav-text">语法制导翻译方案 SDT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E9%9D%9E%E9%80%92%E5%BD%92%E7%9A%84%E9%A2%84%E6%B5%8B%E5%88%86%E6%9E%90%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%BF%BB%E8%AF%91"><span class="nav-number">4.1.</span> <span class="nav-text">在非递归的预测分析过程中进行翻译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E9%80%92%E5%BD%92%E9%A2%84%E6%B5%8B%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%BF%BB%E8%AF%91"><span class="nav-number">4.2.</span> <span class="nav-text">在递归预测过程中进行翻译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#l-%E5%B1%9E%E6%80%A7%E5%AE%9A%E4%B9%89%E7%9A%84%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%BF%BB%E8%AF%91"><span class="nav-number">4.3.</span> <span class="nav-text">L-属性定义的自底向上翻译</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Andrew-Rey</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
