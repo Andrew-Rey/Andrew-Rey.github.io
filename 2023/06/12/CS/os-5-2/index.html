@@ -9,7 +9,7 @@
     
     <title>
         
-            Tag: Blog |
+            【操作系统】HPC &amp; HRI |
         
         Notes
     </title>
@@ -83,7 +83,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/tags"
                             >
                                 TAGS
@@ -138,7 +138,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/tags">TAGS</a>
                 </li>
             
@@ -168,42 +168,240 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="tag-container">
-        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;Blog
-        </div>
-        <div class="tag-post-list">
-            
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[1]</span>
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【操作系统】HPC &amp; HRI</span>
             </div>
-            <ul class="article-list">
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/head_round.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Andrew-Rey</span>
+                            
+                                <span class="author-label">来自林邑的许先森❤</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-12 22:36:21</span>
+        <span class="mobile">2023-06-12 22:36</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-06-13 11:04:57</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/01/11/Life/first/"
-                        >【第一篇博客】Hello World</a>
-                        <span class="article-date">01-11</span>
+                    <li>
+                        <a href="/categories/CS/">CS</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CS/">CS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/OS/">OS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/NJU/">NJU</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
     
 </div>
 
-        </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>“什么样的任务是需要并行/并发的？它们应该如何实现？”</p>
+<span id="more"></span>
+<h2 id="如何写并发程序"><a class="markdownIt-Anchor" href="#如何写并发程序"></a> 如何写并发程序</h2>
+<h3 id="高性能计算"><a class="markdownIt-Anchor" href="#高性能计算"></a> 高性能计算</h3>
+<blockquote>
+<p><strong>高性能计算HPC</strong></p>
+<ul>
+<li>“A technology that harnesses the power of supercomputers or computer clusters to solve complex problems requiring massive computation.” (IBM)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>主要挑战</strong></p>
+<ul>
+<li>计算任务如何分解：<strong>计算图需要容易并行化</strong>，机器-线程两级任务分解
+<ul>
+<li>生产者-消费者解决一切，MPI</li>
+<li>Parallel and distribution computation: numerical methods</li>
+</ul>
+</li>
+<li>线程间如何通信
+<ul>
+<li>通信不仅发生在节点/线程间，还发生在任何共享内存访问</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="数据中心"><a class="markdownIt-Anchor" href="#数据中心"></a> 数据中心</h3>
+<blockquote>
+<p><strong>数据中心</strong></p>
+<ul>
+<li>以数据（存储）为中心</li>
+<li>主要挑战PAC：数据要保持一致(Consistency)，服务要时刻保持可用(Availability)，容忍机器离线(Partition tolerance)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>key-value storage</p>
+<ul>
+<li>线程</li>
+<li>协程（coroutines）：多个可以保存/恢复的执行流；比线程更轻量（完全没有系统调用，也就没有操作系统的状态）</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>线程存在的问题：每个线程会占用相当可观的OS资源（linux kernel线程8Kb）</p>
+<p>协程存在的问题：当一个协程block的时候，其它协都会阻塞</p>
+</blockquote>
+<blockquote>
+<p><strong>Go语言</strong></p>
+</blockquote>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">【操作系统】HPC &amp; HRI</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2023-06-12 22:36:21</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2023/06/12/CS/os-5-2/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
     </div>
-
-    <div class="tag-paginator">
-        <div class="paginator">
-    
-
-    
 </div>
 
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CS/">#CS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/OS/">#OS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/NJU/">#NJU</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/06/13/Algorithm/ds/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">【算法】基本数据结构</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/11/CS/os-5-1/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【操作系统】Synchronization</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%86%99%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text"> 如何写并发程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.</span> <span class="nav-text"> 高性能计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83"><span class="nav-number">1.2.</span> <span class="nav-text"> 数据中心</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
     </div>
 </div>
 
@@ -251,6 +449,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -349,6 +564,14 @@
 
 
 <div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
     
 </div>
 

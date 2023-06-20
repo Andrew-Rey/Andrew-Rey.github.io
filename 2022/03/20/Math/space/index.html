@@ -9,7 +9,7 @@
     
     <title>
         
-            【操作系统】Program |
+            【数学杂记】空间 |
         
         Notes
     </title>
@@ -172,7 +172,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">【操作系统】Program</span>
+                <span class="title-hover-animation">【数学杂记】空间</span>
             </div>
 
             
@@ -194,13 +194,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-05-17 21:39:19</span>
-        <span class="mobile">2023-05-17 21:39</span>
+        <span class="pc">2022-03-20 01:20:10</span>
+        <span class="mobile">2022-03-20 01:20</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-06-11 13:46:00</span>
+        <span class="pc">2023-06-20 11:19:19</span>
     </span>
     
     
@@ -209,7 +209,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/CS/">CS</a>&nbsp;
+                        <a href="/categories/Math/">Math</a>&nbsp;
                     </li>
                 
             </ul>
@@ -221,15 +221,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/CS/">CS</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/OS/">OS</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/NJU/">NJU</a>&nbsp;
+                        <a href="/tags/Math/">Math</a>&nbsp;
                     </li>
                 
             </ul>
@@ -254,55 +246,70 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>“计算机的三大浪漫之一”</p>
+                <p>“内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?”</p>
+<p>“我已经晕了.”</p>
 <span id="more"></span>
-<h2 id="什么是程序"><a class="markdownIt-Anchor" href="#什么是程序"></a> 什么是程序</h2>
-<blockquote>
-<p><strong>源代码视角</strong></p>
-<ul>
-<li>程序也是状态机（数字系统是状态机，程序运行在数字系统上）</li>
-<li>C程序也是状态机 <strong>应该落实到可执行的语句</strong>
-<ul>
-<li>状态 = 栈 + 堆（stack frame的列表，每个frame有PC，全局变量）</li>
-<li>初始状态：main函数执行的第一条语句，全局变量初始化</li>
-<li>迁移：执行一条简单语句（top stack frame的PC的语句），PC++</li>
-<li>函数调用：将栈帧压栈</li>
-<li>函数返回：将栈帧出栈</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<p><strong>二进制视角</strong></p>
-<ul>
-<li>还是状态机，状态 = 内存M + 寄存器R</li>
-<li>操作系统上的程序：所有的指令都只能做计算。这些指令无法使程序停下来。(M,R)-&gt;(M’,R’)，纯计算</li>
-<li>调用操作系统<code>syscall</code>：把（M,R）完全交给操作系统，任其修改，OS可以自己决定返回（M’,R’），可以实现与操作系统中其他对象的交互：读写文件/操作系统状态，改变进程（运行中的状态机）状态（创建进程，销毁自己）</li>
-<li><strong>程序是计算 + <code>syscall</code></strong></li>
-</ul>
-</blockquote>
-<blockquote>
-<p><strong>如何在程序的两个视角之间切换</strong></p>
-<ul>
-<li>编译器Compiler：源代码S（状态机） -&gt; 二进制代码C（状态机），C = compile(S)</li>
-<li>正确的编译（优化）：S与C的可观测行为严格一致（S中不可优化的内容在C中必须一致，包括system calls, volatile, variable loads/stores, termination）。Trivially正确的实现：直接翻译/解释执行S的语义</li>
-</ul>
-</blockquote>
-<blockquote>
-<p><strong>操作系统中的一般程序</strong></p>
-<ul>
-<li>程序 = 计算 -&gt; system -&gt; 计算 -&gt; …</li>
-<li>操作系统收编了所有的软硬件资源，只能用操作系统的允许方式访问系统的对象（能够管理多个状态机）</li>
-<li>【面试题】二进制程序状态机的第一条指令是什么（一个简单的Hello World C程序执行的第一条指令在哪里。）：用gdb -&gt; <code>starti</code>，或者查看进程信息<code>info proc &#123;mappings&#125;</code>（因为它也是状态机，所以有OS给的初始状态）（如果想改的话就去改elf二进制文件）</li>
-<li>【面试题】main函数在执行前、中、后发生了哪些操作系统的API调用。用<code>trace</code>（linux里面的工具是<code>strace</code>）可以查看system call，当然第一句是execve。本质上所有的程序和HelloWorld类似：
-<ul>
-<li>被OS加载：通过另一个进程执行execve设置为初始状态</li>
-<li>状态机执行：进程管理（fork, execve, exit, …），文件/设备管理（open, close, read, write, …），存储管理（mmap, brk, …）</li>
-<li>直到 _exit(exit_group)退出</li>
-</ul>
-</li>
-</ul>
-</blockquote>
+<h1 id="数域"><a class="markdownIt-Anchor" href="#数域"></a> 数域</h1>
+<p>\(P\)是包含0, 1的数集, 且对 \(P\)中任意两个数的加减乘除运算封闭, 则称 \(P\)是一个数域.</p>
+<h1 id="线性空间"><a class="markdownIt-Anchor" href="#线性空间"></a> 线性空间</h1>
+<p>在数域的基础上, 我们提出线性空间的概念:</p>
+<p>给定数域 \(P\) , 和集合 \(V\). 有如下映射:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>+</mo><mo>:</mo><mi>V</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">+:V\times V\rightarrow V
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">+</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>⋅</mo><mo>:</mo><mi>P</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">\cdot:P\times V\rightarrow V
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
+<p>且 (\(V, P, +, \cdot\)) 满足<strong>八条基本性质</strong>, 则\(V\)称为一个线性空间.</p>
+<h1 id="赋范空间"><a class="markdownIt-Anchor" href="#赋范空间"></a> 赋范空间</h1>
+<p><u>赋范空间是定义在线性空间之上的.</u></p>
+<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>⋅</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>:</mo><mi>V</mi><mo>→</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">||\cdot||:  V\rightarrow R
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span></p>
+<p>且该映射满足: 正定, 齐次, 三角不等式. 则 \(V\) 是一个赋范空间, 其中映射 \(||\cdot||\) 称为范数.</p>
+<h1 id="内积空间"><a class="markdownIt-Anchor" href="#内积空间"></a> 内积空间</h1>
+<p><u>内积空间是定义在线性空间之上的.</u></p>
+<p>定义在数域 \(P\) 的线性空间 \(V\) 存在如下映射:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>⋅</mo><mo>:</mo><mi>V</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">\cdot:  V\times V\rightarrow R
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">⋅</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span></p>
+<p>则 \(V\) 是一个内积空间.</p>
+<p>定义了内积后, 我们可以讨论向量 (即线性空间的元素) 间的长度和夹角, 并进一步讨论正交性等.</p>
+<p>注意: 内积本身具有自然定义的范数, 即内积可以诱导出范数, \(||x||=\sqrt{(x,x)}\), 因此内积空间含于赋范空间.</p>
+<h1 id="度量空间"><a class="markdownIt-Anchor" href="#度量空间"></a> 度量空间</h1>
+<p>度量空间是某个具有距离函数的集合. 该函数定义的是集合内所有元素的距离, 即集合上的某种度量, 即:</p>
+<p>给定<strong>集合</strong>\(V\), 有映射:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mo>:</mo><mi>V</mi><mo>×</mo><mi>V</mi><mo>→</mo><mi mathvariant="bold">R</mi></mrow><annotation encoding="application/x-tex">d:V\times V\rightarrow \mathbf{R}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68611em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbf">R</span></span></span></span></span></span></p>
+<p>满足:</p>
+<p>\[
+\begin{aligned}
+&d(x,y)\geq0\quad (d(x,y)=0\Leftrightarrow x=0,y=0)\\
+&d(x,y)=d(y,x)\\
+&d(x,y)\leq d(x,z)+d(z,y)
+\end{aligned}
+\]</p>
+<p>注意: 此处并未要求线性结构.</p>
+<p><strong>注意: 赋范空间一定可以诱导出度量空间, 因此赋范空间含于度量空间</strong></p>
+<h1 id="完备空间"><a class="markdownIt-Anchor" href="#完备空间"></a> 完备空间</h1>
+<p>完备空间又称 Cauchy 空间. <u>完备空间是定义在度量空间之上的.</u></p>
+<p>若度量空间 \(M\) 中所有的柯西序列都收敛在 \(M\) 中的一点, 则 \(M\) 是一个完备空间.</p>
+<h1 id="hilbert空间"><a class="markdownIt-Anchor" href="#hilbert空间"></a> Hilbert空间</h1>
+<p>在<strong>内积空间</strong>的基础上增添<strong>完备性条件</strong>, 即得到<strong>Hilbert空间</strong>.</p>
+<h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
+<p>范数运算+向量空间=(线性)赋范空间</p>
+<p>(线性)赋范空间 + 内积运算=内积空间</p>
+<p>(线性)赋范空间 + 完备性 = Banach 空间</p>
+<p>内积空间 + 完备性 = Hilbert 空间</p>
+<p>内积空间 + 完备性 + 有限维 = Euclidean 空间</p>
+<h1 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h1>
+<p>zhihu:</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/332144499/answer/731866608" >https://www.zhihu.com/question/332144499/answer/731866608<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.zhihu.com/question/42312263/answer/699451330" >https://www.zhihu.com/question/42312263/answer/699451330<i class="fas fa-external-link-alt"></i></a></p>
+<p>wikipedia:</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Complete_metric_space" >https://en.wikipedia.org/wiki/Complete_metric_space<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Metric_space" >https://en.wikipedia.org/wiki/Metric_space<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cauchy_sequence" >https://en.wikipedia.org/wiki/Cauchy_sequence<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cauchy_sequence" >https://en.wikipedia.org/wiki/Cauchy_sequence<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cauchy_sequence" >https://en.wikipedia.org/wiki/Cauchy_sequence<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Normed_vector_space" >https://en.wikipedia.org/wiki/Normed_vector_space<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -312,16 +319,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">Post title</span>: <span class="content">【操作系统】Program</span>
+            <span class="type">Post title</span>: <span class="content">【数学杂记】空间</span>
         </li>
         <li class="post-author">
             <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
         </li>
         <li class="post-time">
-            <span class="type">Create time</span>: <span class="content">2023-05-17 21:39:19</span>
+            <span class="type">Create time</span>: <span class="content">2022-03-20 01:20:10</span>
         </li>
         <li class="post-link">
-            <span class="type">Post link</span>: <span class="content">2023/05/17/CS/os-2/</span>
+            <span class="type">Post link</span>: <span class="content">2022/03/20/Math/space/</span>
         </li>
         <li class="post-license">
             <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
@@ -339,15 +346,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/CS/">#CS</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/OS/">#OS</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/NJU/">#NJU</a>&nbsp;
+                            <a href="/tags/Math/">#Math</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -359,13 +358,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/05/23/CS/os-4/"
+                               href="/2022/04/06/Algorithm/fft/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">【操作系统】Concurrency Program</span>
+                                <span class="post-nav-title-item">【算法】快速傅里叶变换$FFT$</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
@@ -375,10 +374,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/05/17/CS/os-1/"
+                               href="/2022/01/11/Life/first/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">【操作系统】Overview</span>
+                                <span class="post-nav-title-item">【第一篇博客】Hello World</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -397,7 +396,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text"> 什么是程序</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%9F%9F"><span class="nav-number">1.</span> <span class="nav-text"> 数域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4"><span class="nav-number">2.</span> <span class="nav-text"> 线性空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%8B%E8%8C%83%E7%A9%BA%E9%97%B4"><span class="nav-number">3.</span> <span class="nav-text"> 赋范空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4"><span class="nav-number">4.</span> <span class="nav-text"> 内积空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%A6%E9%87%8F%E7%A9%BA%E9%97%B4"><span class="nav-number">5.</span> <span class="nav-text"> 度量空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E5%A4%87%E7%A9%BA%E9%97%B4"><span class="nav-number">6.</span> <span class="nav-text"> 完备空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hilbert%E7%A9%BA%E9%97%B4"><span class="nav-number">7.</span> <span class="nav-text"> Hilbert空间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text"> 总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">9.</span> <span class="nav-text"> References</span></a></li></ol>
     </div>
 </div>
 

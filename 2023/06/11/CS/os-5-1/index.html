@@ -24,7 +24,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#f8a5c2","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":null,"font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#a0c49d","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":"在世间，本就是各人下雪，各人有各人的隐晦与皎洁","font_color":"#faf0e4","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -221,11 +221,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/OS/">OS</a>&nbsp;
+                        <a href="/tags/CS/">CS</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/CS/">CS</a>&nbsp;
+                        | <a href="/tags/OS/">OS</a>&nbsp;
                     </li>
                 
                     <li>
@@ -254,16 +254,14 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>"如何在多处理器上协同多个线程完成任务"</p>
+                <p>“如何在多处理器上协同多个线程完成任务”</p>
 <span id="more"></span>
-<h2 id="线程同步">线程同步</h2>
-<h3 id="生产者消费者问题">生产者消费者问题</h3>
+<h2 id="线程同步"><a class="markdownIt-Anchor" href="#线程同步"></a> 线程同步</h2>
+<h3 id="生产者消费者问题"><a class="markdownIt-Anchor" href="#生产者消费者问题"></a> 生产者消费者问题</h3>
 <blockquote>
 <p><strong>问题描述</strong></p>
 <ul>
-<li>（括号问题形式）两个程序<code>producer</code>和<code>consumer</code>，<code>producer</code>打印左括号，
-<code>consumer</code>打印右括号，打印的括号序列满足
-<strong>嵌套深度不超过n</strong>，<strong>等到有空位再打印左括号</strong>，<strong>等到能匹配才能打印右括号</strong></li>
+<li>（括号问题形式）两个程序<code>producer</code>和<code>consumer</code>，<code>producer</code>打印左括号， <code>consumer</code>打印右括号，打印的括号序列满足 <strong>嵌套深度不超过n</strong>，<strong>等到有空位再打印左括号</strong>，<strong>等到能匹配才能打印右括号</strong></li>
 </ul>
 </blockquote>
 <blockquote>
@@ -276,8 +274,7 @@
 <li>互斥锁是独占的：每个线程都试图去观察缓冲区的资源（锁在争抢的时候不是自旋的，但还是会不断检查缓冲区，浪费CPU资源）</li>
 <li>希望在不满足条件时能够“睡眠”：<code>mutex_unlock_and_sleep(&amp;lk)</code>，直到条件可以被满足时，别的线程将自己唤醒<code>wakeup()</code>，<strong>并且唤醒后立即获得一把锁</strong></li>
 <li><code>wait(cv,mutex)</code>：调用时保证已经获得了<code>mutex</code>，释放<code>mutex</code>、进入睡眠</li>
-<li><code>signal/notify(cv)</code>：由于此时条件变量<code>cv</code>已经获得了一把锁，如果有线程在等待<code>cv</code>，则唤醒
-<strong>其中一个</strong> 线程</li>
+<li><code>signal/notify(cv)</code>：由于此时条件变量<code>cv</code>已经获得了一把锁，如果有线程在等待<code>cv</code>，则唤醒 <strong>其中一个</strong> 线程</li>
 <li><code>broadcast/notifyAll(cv)</code>：唤醒<strong>全部</strong>等待<code>cv</code>的线程</li>
 </ul>
 </blockquote>
@@ -285,8 +282,7 @@
 <p><strong>一个错误例子</strong>：当<code>consumer</code>用<code>signal</code>从等待队列中唤醒某个进程时，可能唤醒的还是<code>consumer</code></p>
 <ul>
 <li>解决办法1：用两个条件变量分别表示唤醒<code>producer</code>还是<code>consumer</code></li>
-<li>解决办法2：将<code>if</code>改为<code>while</code>：当条件不满足时等待锁，被唤醒后
-<strong>会首先检查当前条件是否被满足，因此跳出<code>while</code>后条件一定满足</strong>；将<code>signal</code>改为<code>broadcast</code>：当某个线程条件被满足时，通知所有的线程</li>
+<li>解决办法2：将<code>if</code>改为<code>while</code>：当条件不满足时等待锁，被唤醒后 <strong>会首先检查当前条件是否被满足，因此跳出<code>while</code>后条件一定满足</strong>；将<code>signal</code>改为<code>broadcast</code>：当某个线程条件被满足时，通知所有的线程</li>
 </ul>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先上锁，检查缓冲区是否满：</span></span><br><span class="line"><span class="comment">// 若满，则睡眠等待，直到被唤醒；</span></span><br><span class="line"><span class="comment">// 若不满，则打印，唤醒cv，释放锁</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Tproduce</span><span class="params">()</span> &#123;</span><br><span class="line">  mutex_lock(&amp;lk);</span><br><span class="line">  <span class="keyword">if</span> (count == n) cond_wait(&amp;cv, &amp;lk);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;(&quot;</span>); count++; cond_signal(&amp;cv);</span><br><span class="line">  mutex_unlock(&amp;lk);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Tconsume</span><span class="params">()</span> &#123;</span><br><span class="line">  mutex_lock(&amp;lk);</span><br><span class="line">  <span class="keyword">if</span> (count == <span class="number">0</span>) cond_wait(&amp;cv, &amp;lk);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;)&quot;</span>); count--; cond_signal(&amp;cv);</span><br><span class="line">  mutex_unlock(&amp;lk);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -300,7 +296,7 @@
 <blockquote>
 <p><strong>信号量</strong></p>
 </blockquote>
-<h3 id="哲学家吃饭问题">哲学家吃饭问题</h3>
+<h3 id="哲学家吃饭问题"><a class="markdownIt-Anchor" href="#哲学家吃饭问题"></a> 哲学家吃饭问题</h3>
 <blockquote>
 <p><strong>问题描述</strong></p>
 <ul>
@@ -350,11 +346,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/OS/">#OS</a>&nbsp;
+                            <a href="/tags/CS/">#CS</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/CS/">#CS</a>&nbsp;
+                            <a href="/tags/OS/">#OS</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
@@ -370,7 +366,7 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/06/12/CS/os5-2/"
+                               href="/2023/06/12/CS/os-5-2/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
@@ -408,7 +404,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">线程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">生产者消费者问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%90%83%E9%A5%AD%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">哲学家吃饭问题</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text"> 线程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text"> 生产者消费者问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%90%83%E9%A5%AD%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text"> 哲学家吃饭问题</span></a></li></ol></li></ol>
     </div>
 </div>
 
