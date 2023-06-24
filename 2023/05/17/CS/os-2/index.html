@@ -254,9 +254,9 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>“计算机的三大浪漫之一”</p>
+                <p>"计算机的三大浪漫之一"</p>
 <span id="more"></span>
-<h2 id="什么是程序"><a class="markdownIt-Anchor" href="#什么是程序"></a> 什么是程序</h2>
+<h2 id="什么是程序">什么是程序</h2>
 <blockquote>
 <p><strong>源代码视角</strong></p>
 <ul>
@@ -268,39 +268,45 @@
 <li>迁移：执行一条简单语句（top stack frame的PC的语句），PC++</li>
 <li>函数调用：将栈帧压栈</li>
 <li>函数返回：将栈帧出栈</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </blockquote>
 <blockquote>
 <p><strong>二进制视角</strong></p>
 <ul>
 <li>还是状态机，状态 = 内存M + 寄存器R</li>
-<li>操作系统上的程序：所有的指令都只能做计算。这些指令无法使程序停下来。(M,R)-&gt;(M’,R’)，纯计算</li>
-<li>调用操作系统<code>syscall</code>：把（M,R）完全交给操作系统，任其修改，OS可以自己决定返回（M’,R’），可以实现与操作系统中其他对象的交互：读写文件/操作系统状态，改变进程（运行中的状态机）状态（创建进程，销毁自己）</li>
+<li>操作系统上的程序：所有的指令都只能做计算。这些指令无法使程序停下来。(M,R)-&gt;(M',R')，纯计算</li>
+<li>调用操作系统<code>syscall</code>：把（M,R）完全交给操作系统，任其修改，OS可以自己决定返回（M',R'），可以实现与操作系统中其他对象的交互：读写文件/操作系统状态，改变进程（运行中的状态机）状态（创建进程，销毁自己）</li>
 <li><strong>程序是计算 + <code>syscall</code></strong></li>
 </ul>
 </blockquote>
 <blockquote>
 <p><strong>如何在程序的两个视角之间切换</strong></p>
 <ul>
-<li>编译器Compiler：源代码S（状态机） -&gt; 二进制代码C（状态机），C = compile(S)</li>
-<li>正确的编译（优化）：S与C的可观测行为严格一致（S中不可优化的内容在C中必须一致，包括system calls, volatile, variable loads/stores, termination）。Trivially正确的实现：直接翻译/解释执行S的语义</li>
+<li>编译器Compiler：源代码S（状态机） -&gt; 二进制代码C（状态机），C =
+compile(S)</li>
+<li>正确的编译（优化）：S与C的可观测行为严格一致（S中不可优化的内容在C中必须一致，包括system
+calls, volatile, variable loads/stores,
+termination）。Trivially正确的实现：直接翻译/解释执行S的语义</li>
 </ul>
 </blockquote>
 <blockquote>
 <p><strong>操作系统中的一般程序</strong></p>
 <ul>
-<li>程序 = 计算 -&gt; system -&gt; 计算 -&gt; …</li>
+<li>程序 = 计算 -&gt; system -&gt; 计算 -&gt; ...</li>
 <li>操作系统收编了所有的软硬件资源，只能用操作系统的允许方式访问系统的对象（能够管理多个状态机）</li>
-<li>【面试题】二进制程序状态机的第一条指令是什么（一个简单的Hello World C程序执行的第一条指令在哪里。）：用gdb -&gt; <code>starti</code>，或者查看进程信息<code>info proc &#123;mappings&#125;</code>（因为它也是状态机，所以有OS给的初始状态）（如果想改的话就去改elf二进制文件）</li>
-<li>【面试题】main函数在执行前、中、后发生了哪些操作系统的API调用。用<code>trace</code>（linux里面的工具是<code>strace</code>）可以查看system call，当然第一句是execve。本质上所有的程序和HelloWorld类似：
+<li>【面试题】二进制程序状态机的第一条指令是什么（一个简单的Hello World
+C程序执行的第一条指令在哪里。）：用gdb -&gt;
+<code>starti</code>，或者查看进程信息<code>info proc &#123;mappings&#125;</code>（因为它也是状态机，所以有OS给的初始状态）（如果想改的话就去改elf二进制文件）</li>
+<li>【面试题】main函数在执行前、中、后发生了哪些操作系统的API调用。用<code>trace</code>（linux里面的工具是<code>strace</code>）可以查看system
+call，当然第一句是execve。本质上所有的程序和HelloWorld类似：
 <ul>
 <li>被OS加载：通过另一个进程执行execve设置为初始状态</li>
-<li>状态机执行：进程管理（fork, execve, exit, …），文件/设备管理（open, close, read, write, …），存储管理（mmap, brk, …）</li>
+<li>状态机执行：进程管理（fork, execve, exit,
+...），文件/设备管理（open, close, read, write, ...），存储管理（mmap,
+brk, ...）</li>
 <li>直到 _exit(exit_group)退出</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </blockquote>
 
@@ -397,7 +403,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text"> 什么是程序</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">什么是程序</span></a></li></ol>
     </div>
 </div>
 

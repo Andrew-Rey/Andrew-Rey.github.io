@@ -250,42 +250,82 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>“Semantic segmentation of images, use UNet model.”</p>
+                <p>"Semantic segmentation of images, use UNet model."</p>
 <span id="more"></span>
-<h1 id="abstract"><a class="markdownIt-Anchor" href="#abstract"></a> Abstract</h1>
-<p>In this project, we realize an basic UNet model and UNet++ model, then we apply them on image semantic segmentation. We show our basic theory of UNet and an improvement of it, and we provide main code of this program. Finally, we give the result of segmentation images, loss-curve and accuracy-curve on both training and validation set.</p>
-<p>The copyright of this program is owned by our team mentioned on the end of this blog.</p>
-<h1 id="unet-structure"><a class="markdownIt-Anchor" href="#unet-structure"></a> UNet Structure</h1>
-<p>The <a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597" >paper<i class="fas fa-external-link-alt"></i></a> published in 2015 propose a noval network structure, whose shape is similar with the captal “U”. The idea comes from FCNN. U-Net is one of the classes of “Encoder-Decoder” structure.</p>
-<p><img  
+<h1 id="abstract">Abstract</h1>
+<p>In this project, we realize an basic UNet model and UNet++ model,
+then we apply them on image semantic segmentation. We show our basic
+theory of UNet and an improvement of it, and we provide main code of
+this program. Finally, we give the result of segmentation images,
+loss-curve and accuracy-curve on both training and validation set.</p>
+<p>The copyright of this program is owned by our team mentioned on the
+end of this blog.</p>
+<h1 id="unet-structure">UNet Structure</h1>
+<p>The <a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597" >paper<i class="fas fa-external-link-alt"></i></a> published in
+2015 propose a noval network structure, whose shape is similar with the
+captal "U". The idea comes from FCNN. U-Net is one of the classes of
+"Encoder-Decoder" structure.</p>
+<figure>
+<img  
                      lazyload
                      alt="image"
                      data-src="unet-structure.png"
                       alt="U-Net Structure" 
-                ></p>
-<p>The front half of the network is “encoder”. The input image passes covolutional kernel, and then passes the pooling layer (or other dimension-decreasing layer). The opposite of that is the back part of UNet, the “decoder”. The input of decoder is a sequence of feature maps with highly contracted pixels. The output of the decoder (or the whole network) is an image with the same shape of input image, where each pixel has its own class.</p>
-<p>In this project, we decrease the number of convolutional layers so that there are only two convolutional layers in each convolutional kernel as the dataset includes images with shape <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>128</mn><mo>×</mo><mn>256</mn></mrow><annotation encoding="application/x-tex">128\times 256</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">6</span></span></span></span>.</p>
-<h2 id="operator-definitions"><a class="markdownIt-Anchor" href="#operator-definitions"></a> Operator Definitions</h2>
+                >
+<figcaption aria-hidden="true">U-Net Structure</figcaption>
+</figure>
+<p>The front half of the network is "encoder". The input image passes
+covolutional kernel, and then passes the pooling layer (or other
+dimension-decreasing layer). The opposite of that is the back part of
+UNet, the "decoder". The input of decoder is a sequence of feature maps
+with highly contracted pixels. The output of the decoder (or the whole
+network) is an image with the same shape of input image, where each
+pixel has its own class.</p>
+<p>In this project, we decrease the number of convolutional layers so
+that there are only two convolutional layers in each convolutional
+kernel as the dataset includes images with shape <span
+class="math inline">\(128\times 256\)</span>.</p>
+<h2 id="operator-definitions">Operator Definitions</h2>
 <p><strong>Convolutional Kernel:</strong></p>
 <p>We define the basic convolutional kernel as follow:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">self.layer = nn.Sequential(</span><br><span class="line">    <span class="comment"># in_channel, out_channel, kernel_size, stride, padding</span></span><br><span class="line">    <span class="comment"># batch size * channel * height * weight</span></span><br><span class="line">    nn.Conv2d(C_in, C_out, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">1</span>),  <span class="comment"># 64 64 128 256</span></span><br><span class="line">    nn.BatchNorm2d(C_out),</span><br><span class="line">    nn.Dropout(<span class="number">0.2</span>),</span><br><span class="line">    nn.LeakyReLU(),</span><br><span class="line"></span><br><span class="line">    nn.Conv2d(C_out, C_out, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">1</span>),  <span class="comment"># 64 64 128 256</span></span><br><span class="line">    nn.BatchNorm2d(C_out),</span><br><span class="line">    nn.Dropout(<span class="number">0.5</span>),</span><br><span class="line">    nn.LeakyReLU(),</span><br></pre></td></tr></table></figure>
 <p>It includes two convolution operations.</p>
 <p><strong>Down Sampling Kernel:</strong></p>
-<p>As for downsampling kernel, we replace conditional pooling layer to convolutional layer with stride equaling to 2, which means the shape will be shrunk to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> while remaining the same channels.</p>
+<p>As for downsampling kernel, we replace conditional pooling layer to
+convolutional layer with stride equaling to 2, which means the shape
+will be shrunk to <span class="math inline">\(\frac{1}{2}\)</span> while
+remaining the same channels.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.Down = nn.Sequential(</span><br><span class="line">    nn.Conv2d(C, C, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">2</span>, <span class="number">2</span>), padding=<span class="number">1</span>),  <span class="comment"># 64 64 64 128</span></span><br><span class="line">    nn.LeakyReLU()</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
 <p><strong>Up Sampling Kernel:</strong></p>
-<p>The basic structure of up-sampling contains only one convolutional layer with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>×</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1\times 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> convolutional kernel size and half out-channel. The feature map should pass an interpolation layer before getting into the convolutional layer.</p>
+<p>The basic structure of up-sampling contains only one convolutional
+layer with <span class="math inline">\(1\times 1\)</span> convolutional
+kernel size and half out-channel. The feature map should pass an
+interpolation layer before getting into the convolutional layer.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, C</span>):</span><br><span class="line">    <span class="built_in">super</span>(UpSampling, self).__init__()</span><br><span class="line">    <span class="comment"># out-channel = 1/2 in-channel</span></span><br><span class="line">    self.Up = nn.Conv2d(C, C // <span class="number">2</span>, kernel_size=(<span class="number">1</span>, <span class="number">1</span>), stride=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, r</span>):</span><br><span class="line">    <span class="comment"># neighbor interpolation</span></span><br><span class="line">    up = F.interpolate(x, scale_factor=<span class="number">2</span>, mode=<span class="string">&quot;nearest&quot;</span>)</span><br><span class="line">    x = self.Up(up)</span><br><span class="line">    <span class="comment"># concatenate the feature map in encoder and </span></span><br><span class="line">    <span class="comment"># the feature map in corrsponding decoder layer, in channel dimension</span></span><br><span class="line">    res = torch.cat((x, r), <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<p>The interpolation mode we choose is “nearest”. The function <code>torch.cat(dim=1)</code> is used to concatenate two feature maps in channel dimension.</p>
-<h2 id="network-definition"><a class="markdownIt-Anchor" href="#network-definition"></a> Network Definition</h2>
-<p>Based on the operators defined above, we link these blocks together like UNet structure.</p>
+<p>The interpolation mode we choose is "nearest". The function
+<code>torch.cat(dim=1)</code> is used to concatenate two feature maps in
+channel dimension.</p>
+<h2 id="network-definition">Network Definition</h2>
+<p>Based on the operators defined above, we link these blocks together
+like UNet structure.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">super</span>(UNet, self).__init__()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># down sampling</span></span><br><span class="line">    self.C1 = Conv(<span class="number">3</span>, <span class="number">64</span>)</span><br><span class="line">    self.D1 = DownSampling(<span class="number">64</span>)</span><br><span class="line">    self.C2 = Conv(<span class="number">64</span>, <span class="number">128</span>)</span><br><span class="line">    self.D2 = DownSampling(<span class="number">128</span>)</span><br><span class="line">    self.C3 = Conv(<span class="number">128</span>, <span class="number">256</span>)</span><br><span class="line">    self.D3 = DownSampling(<span class="number">256</span>)</span><br><span class="line">    self.C4 = Conv(<span class="number">256</span>, <span class="number">512</span>)</span><br><span class="line">    self.D4 = DownSampling(<span class="number">512</span>)</span><br><span class="line">    self.C5 = Conv(<span class="number">512</span>, <span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># up sampling</span></span><br><span class="line">    self.U1 = UpSampling(<span class="number">1024</span>)</span><br><span class="line">    self.C6 = Conv(<span class="number">1024</span>, <span class="number">512</span>)</span><br><span class="line">    self.U2 = UpSampling(<span class="number">512</span>)</span><br><span class="line">    self.C7 = Conv(<span class="number">512</span>, <span class="number">256</span>)</span><br><span class="line">    self.U3 = UpSampling(<span class="number">256</span>)</span><br><span class="line">    self.C8 = Conv(<span class="number">256</span>, <span class="number">128</span>)</span><br><span class="line">    self.U4 = UpSampling(<span class="number">128</span>)</span><br><span class="line">    self.C9 = Conv(<span class="number">128</span>, <span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">    self.C10 = torch.nn.Conv2d(<span class="number">64</span>, <span class="number">3</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">1</span>)</span><br><span class="line">    self.pred = torch.nn.Conv2d(<span class="number">3</span>, <span class="number">34</span>, kernel_size=(<span class="number">1</span>, <span class="number">1</span>), stride=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    self.Th = torch.nn.Sigmoid()</span><br></pre></td></tr></table></figure>
-<p>Like U-Net mentioned in that paper, we designed 4 layer deep network.</p>
+<p>Like U-Net mentioned in that paper, we designed 4 layer deep
+network.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># part 1: down sampling, decreasing dimension</span></span><br><span class="line">        R1 = self.C1(x)</span><br><span class="line">        R2 = self.C2(self.D1(R1))</span><br><span class="line">        R3 = self.C3(self.D2(R2))</span><br><span class="line">        R4 = self.C4(self.D3(R3))</span><br><span class="line">        Y1 = self.C5(self.D4(R4))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># part 2: up sampling, connect priori knowledge</span></span><br><span class="line">        O1 = self.C6(self.U1(Y1, R4))</span><br><span class="line">        O2 = self.C7(self.U2(O1, R3))</span><br><span class="line">        O3 = self.C8(self.U3(O2, R2))</span><br><span class="line">        O4 = self.C9(self.U4(O3, R1))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># part 3: active function</span></span><br><span class="line">        <span class="keyword">return</span> self.Th(self.pred(self.C10(O4)))</span><br></pre></td></tr></table></figure>
-<p>As you can see, the difference between U-Net and other networks before U-Net is that U-Net conbines the former information from encoder and current information from decoder.</p>
-<h1 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h1>
-<p>During the training process, we want to keep some information of loss values and accuracy values on training set and validation set so that we can analyze the variance.</p>
-<p>In the function named <code>train()</code>, we take <code>optimizer</code> and <code>loss</code> as two parameters used in training process. The outputs of this function are loss and accuracy on both training set and validation set. If we get the data about training set and validation set, we can draw the curves. If both training and validation loss values decrease during training process, we can conclude that our model converges and does not overfit on training set.</p>
+<p>As you can see, the difference between U-Net and other networks
+before U-Net is that U-Net conbines the former information from encoder
+and current information from decoder.</p>
+<h1 id="code">Code</h1>
+<p>During the training process, we want to keep some information of loss
+values and accuracy values on training set and validation set so that we
+can analyze the variance.</p>
+<p>In the function named <code>train()</code>, we take
+<code>optimizer</code> and <code>loss</code> as two parameters used in
+training process. The outputs of this function are loss and accuracy on
+both training set and validation set. If we get the data about training
+set and validation set, we can draw the curves. If both training and
+validation loss values decrease during training process, we can conclude
+that our model converges and does not overfit on training set.</p>
 <p>The training code is shown as follow:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">self.model.train()</span><br><span class="line"><span class="keyword">for</span> batch <span class="keyword">in</span> self.train_loader:</span><br><span class="line">    batch_num += <span class="number">1</span></span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    rgbs, segs = batch</span><br><span class="line">    s, _, m, n = segs.shape</span><br><span class="line">    segs = torch.reshape(segs, (s, m, n))</span><br><span class="line">    pred_segs = self.model(rgbs).to(self.device)</span><br><span class="line">    loss_val = loss(pred_segs, segs)</span><br><span class="line">    loss_val.backward()</span><br><span class="line">    optimizer.step()</span><br></pre></td></tr></table></figure>
 <p>The data collecting code can be written as follow:</p>
@@ -293,62 +333,100 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ... :</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">if</span> batch_num % <span class="number">5</span> == <span class="number">0</span>:</span><br><span class="line">            logging.info(<span class="string">f&quot;batch num <span class="subst">&#123;batch_num&#125;</span>, loss <span class="subst">&#123;loss_val&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="comment"># delete or add comments when needed</span></span><br><span class="line">        train_loss += loss_val</span><br><span class="line">        <span class="comment"># statistic valid classified samples</span></span><br><span class="line">        total_pix += s * m * n</span><br><span class="line">        idx = torch.argmax(pred_segs, dim=<span class="number">1</span>)</span><br><span class="line">        train_valid_pix += torch.eq(idx, segs).<span class="built_in">sum</span>().<span class="built_in">float</span>().item()</span><br><span class="line">torch.cuda.empty_cache()</span><br><span class="line">epoch_acc = train_valid_pix / total_pix</span><br><span class="line">train_epoch_loss.append(train_loss / batch_num)</span><br><span class="line">train_epoch_acc.append(epoch_acc)</span><br></pre></td></tr></table></figure>
 <p><strong>Statistic data of validation set</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">self.model.<span class="built_in">eval</span>()</span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">for</span> valid_batch <span class="keyword">in</span> self.valid_loader:</span><br><span class="line">        valid_batch_num += <span class="number">1</span></span><br><span class="line">        rgbs, segs = valid_batch</span><br><span class="line">        s, _, m, n = segs.shape</span><br><span class="line">        segs = torch.reshape(segs, (s, m, n))</span><br><span class="line">        pred_segs = self.model(rgbs).to(self.device)</span><br><span class="line">        loss_val = loss(pred_segs, segs)</span><br><span class="line">        valid_loss += loss_val</span><br><span class="line">        valid_total_pix += s * m * n</span><br><span class="line">        idx = torch.argmax(pred_segs, dim=<span class="number">1</span>)</span><br><span class="line">        valid_valid_pix += torch.eq(idx, segs).<span class="built_in">sum</span>().<span class="built_in">float</span>().item()</span><br><span class="line">epoch_acc = valid_valid_pix / valid_total_pix</span><br><span class="line">valid_epoch_loss.append(valid_loss / valid_batch_num)</span><br><span class="line">valid_epoch_acc.append(epoch_acc)</span><br></pre></td></tr></table></figure>
-<p>The point you should pay attention to is that you should use <code>with torch.no_grad()</code> before you do some work that have no relation with training process, otherwise your GPU memory will be full or even overflow.</p>
-<h1 id="result"><a class="markdownIt-Anchor" href="#result"></a> Result</h1>
-<p>After a long time training, we get the satisfying result with U-Net model.</p>
-<h2 id="former-model"><a class="markdownIt-Anchor" href="#former-model"></a> Former Model</h2>
-<p>The “former model” infers the U-Net model, and you will see we use other upgraded model named “UNet++” which will be introduced later.</p>
+<p>The point you should pay attention to is that you should use
+<code>with torch.no_grad()</code> before you do some work that have no
+relation with training process, otherwise your GPU memory will be full
+or even overflow.</p>
+<h1 id="result">Result</h1>
+<p>After a long time training, we get the satisfying result with U-Net
+model.</p>
+<h2 id="former-model">Former Model</h2>
+<p>The "former model" infers the U-Net model, and you will see we use
+other upgraded model named "UNet++" which will be introduced later.</p>
 <p>We output the segmentation results and their uncertainties.</p>
-<p><img  
+<figure>
+<img  
                      lazyload
                      alt="image"
                      data-src="pic1-unet.png"
                       alt="picture 1 result-UNet" 
-                ></p>
-<h2 id="model-upgrade"><a class="markdownIt-Anchor" href="#model-upgrade"></a> Model Upgrade</h2>
-<p>For some reasons, we try another U-Net-like model, Nested UNet, namely UNet++. It has a nested convolutional blocks like a pyramid and there is a chain passing connectivity between each convolutional block every layer.</p>
-<p><img  
+                >
+<figcaption aria-hidden="true">picture 1 result-UNet</figcaption>
+</figure>
+<h2 id="model-upgrade">Model Upgrade</h2>
+<p>For some reasons, we try another U-Net-like model, Nested UNet,
+namely UNet++. It has a nested convolutional blocks like a pyramid and
+there is a chain passing connectivity between each convolutional block
+every layer.</p>
+<figure>
+<img  
                      lazyload
                      alt="image"
                      data-src="nested.png"
                       alt="Neseted UNet" 
-                ></p>
-<p>The black nodes are the same with U-Net model. The green nodes are what Nested UNet newly added. Both green and blue lines are skip pathways that pass connectivities from encoder to decoder.</p>
-<p>The use of Nested UNet gives us a little improvement on final results.</p>
+                >
+<figcaption aria-hidden="true">Neseted UNet</figcaption>
+</figure>
+<p>The black nodes are the same with U-Net model. The green nodes are
+what Nested UNet newly added. Both green and blue lines are skip
+pathways that pass connectivities from encoder to decoder.</p>
+<p>The use of Nested UNet gives us a little improvement on final
+results.</p>
 <!-- ![pictrue 1 result-Nested UNet](pic1-nested.png) -->
-<h1 id="analysis"><a class="markdownIt-Anchor" href="#analysis"></a> Analysis</h1>
-<h2 id="u-net"><a class="markdownIt-Anchor" href="#u-net"></a> U-Net</h2>
-<p>We analyze the loss value and accuracy on both training and validation set:</p>
-<p><img  
+<h1 id="analysis">Analysis</h1>
+<h2 id="u-net">U-Net</h2>
+<p>We analyze the loss value and accuracy on both training and
+validation set:</p>
+<figure>
+<img  
                      lazyload
                      alt="image"
                      data-src="unet_loss.png"
                       alt="unet loss" 
-                ></p>
-<p>We find that after 100 epochs, the model has not convergenced yet, but the loss on validation decreases to the bottom.</p>
-<p><img  
+                >
+<figcaption aria-hidden="true">unet loss</figcaption>
+</figure>
+<p>We find that after 100 epochs, the model has not convergenced yet,
+but the loss on validation decreases to the bottom.</p>
+<figure>
+<img  
                      lazyload
                      alt="image"
                      data-src="unet_acc.png"
                       alt="unet accuracy" 
-                ></p>
-<p>From the accuracy curves, we find that both training set and validation set have increasing accuracy, which means our model does not overfit.</p>
-<h2 id="nested-unet"><a class="markdownIt-Anchor" href="#nested-unet"></a> Nested UNet</h2>
-<p>Meanwhile, we analyze the loss and accuracy of Nested UNet model on both training and validation set.</p>
-<p><img  
+                >
+<figcaption aria-hidden="true">unet accuracy</figcaption>
+</figure>
+<p>From the accuracy curves, we find that both training set and
+validation set have increasing accuracy, which means our model does not
+overfit.</p>
+<h2 id="nested-unet">Nested UNet</h2>
+<p>Meanwhile, we analyze the loss and accuracy of Nested UNet model on
+both training and validation set.</p>
+<figure>
+<img  
                      lazyload
                      alt="image"
                      data-src="nested_loss.png"
                       alt="nested loss" 
-                ></p>
-<p>We find that Nested UNet has a faster convergency speed than UNet. It uses only about 60 epochs. But to our surprise, we find that Neseted UNet overfit after about only 20 epochs because the validation loss does not decrease anymore.</p>
-<p><img  
+                >
+<figcaption aria-hidden="true">nested loss</figcaption>
+</figure>
+<p>We find that Nested UNet has a faster convergency speed than UNet. It
+uses only about 60 epochs. But to our surprise, we find that Neseted
+UNet overfit after about only 20 epochs because the validation loss does
+not decrease anymore.</p>
+<figure>
+<img  
                      lazyload
                      alt="image"
                      data-src="nested_acc.png"
                       alt="nested accuracy" 
-                ></p>
-<p>The performance on validation accuracy stays the same with UNet model.</p>
+                >
+<figcaption aria-hidden="true">nested accuracy</figcaption>
+</figure>
+<p>The performance on validation accuracy stays the same with UNet
+model.</p>
 
             </div>
 
@@ -439,7 +517,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#abstract"><span class="nav-number">1.</span> <span class="nav-text"> Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unet-structure"><span class="nav-number">2.</span> <span class="nav-text"> UNet Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#operator-definitions"><span class="nav-number">2.1.</span> <span class="nav-text"> Operator Definitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network-definition"><span class="nav-number">2.2.</span> <span class="nav-text"> Network Definition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text"> Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#result"><span class="nav-number">4.</span> <span class="nav-text"> Result</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#former-model"><span class="nav-number">4.1.</span> <span class="nav-text"> Former Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-upgrade"><span class="nav-number">4.2.</span> <span class="nav-text"> Model Upgrade</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis"><span class="nav-number">5.</span> <span class="nav-text"> Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u-net"><span class="nav-number">5.1.</span> <span class="nav-text"> U-Net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nested-unet"><span class="nav-number">5.2.</span> <span class="nav-text"> Nested UNet</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unet-structure"><span class="nav-number">2.</span> <span class="nav-text">UNet Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#operator-definitions"><span class="nav-number">2.1.</span> <span class="nav-text">Operator Definitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#network-definition"><span class="nav-number">2.2.</span> <span class="nav-text">Network Definition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#result"><span class="nav-number">4.</span> <span class="nav-text">Result</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#former-model"><span class="nav-number">4.1.</span> <span class="nav-text">Former Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model-upgrade"><span class="nav-number">4.2.</span> <span class="nav-text">Model Upgrade</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#analysis"><span class="nav-number">5.</span> <span class="nav-text">Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u-net"><span class="nav-number">5.1.</span> <span class="nav-text">U-Net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nested-unet"><span class="nav-number">5.2.</span> <span class="nav-text">Nested UNet</span></a></li></ol></li></ol>
     </div>
 </div>
 

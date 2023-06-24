@@ -254,14 +254,16 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>“什么样的任务是需要并行/并发的？它们应该如何实现？”</p>
+                <p>"什么样的任务是需要并行/并发的？它们应该如何实现？"</p>
 <span id="more"></span>
-<h2 id="如何写并发程序"><a class="markdownIt-Anchor" href="#如何写并发程序"></a> 如何写并发程序</h2>
-<h3 id="高性能计算"><a class="markdownIt-Anchor" href="#高性能计算"></a> 高性能计算</h3>
+<h2 id="如何写并发程序">如何写并发程序</h2>
+<h3 id="高性能计算">高性能计算</h3>
 <blockquote>
 <p><strong>高性能计算HPC</strong></p>
 <ul>
-<li>“A technology that harnesses the power of supercomputers or computer clusters to solve complex problems requiring massive computation.” (IBM)</li>
+<li>“A technology that harnesses the power of supercomputers or computer
+clusters to solve complex problems requiring massive computation.”
+(IBM)</li>
 </ul>
 </blockquote>
 <blockquote>
@@ -271,21 +273,20 @@
 <ul>
 <li>生产者-消费者解决一切，MPI</li>
 <li>Parallel and distribution computation: numerical methods</li>
-</ul>
-</li>
+</ul></li>
 <li>线程间如何通信
 <ul>
 <li>通信不仅发生在节点/线程间，还发生在任何共享内存访问</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </blockquote>
-<h3 id="数据中心"><a class="markdownIt-Anchor" href="#数据中心"></a> 数据中心</h3>
+<h3 id="数据中心">数据中心</h3>
 <blockquote>
 <p><strong>数据中心</strong></p>
 <ul>
 <li>以数据（存储）为中心</li>
-<li>主要挑战PAC：数据要保持一致(Consistency)，服务要时刻保持可用(Availability)，容忍机器离线(Partition tolerance)</li>
+<li>主要挑战PAC：数据要保持一致(Consistency)，服务要时刻保持可用(Availability)，容忍机器离线(Partition
+tolerance)</li>
 </ul>
 </blockquote>
 <blockquote>
@@ -296,7 +297,8 @@
 </ul>
 </blockquote>
 <blockquote>
-<p>线程存在的问题：每个线程会占用相当可观的OS资源（linux kernel线程8Kb）</p>
+<p>线程存在的问题：每个线程会占用相当可观的OS资源（linux
+kernel线程8Kb）</p>
 <p>协程存在的问题：当一个协程block的时候，其它协都会阻塞</p>
 </blockquote>
 <blockquote>
@@ -396,7 +398,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%86%99%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text"> 如何写并发程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.</span> <span class="nav-text"> 高性能计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83"><span class="nav-number">1.2.</span> <span class="nav-text"> 数据中心</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%86%99%E5%B9%B6%E5%8F%91%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">如何写并发程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">1.1.</span> <span class="nav-text">高性能计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83"><span class="nav-number">1.2.</span> <span class="nav-text">数据中心</span></a></li></ol></li></ol>
     </div>
 </div>
 
