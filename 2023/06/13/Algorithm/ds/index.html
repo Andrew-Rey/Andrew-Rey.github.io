@@ -200,7 +200,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-06-21 19:52:12</span>
+        <span class="pc">2023-06-24 19:43:20</span>
     </span>
     
     
@@ -428,7 +428,7 @@ class="math inline">\(\alpha\)</span>是阿克曼函数反函数，增长极其�
 <p>在并查集的边上定义某种权值、以及这种权值在路径压缩时产生的运算，从而解决更多的问题</p>
 </blockquote>
 <h3 id="应用">应用</h3>
-<p><a class="link"   target="_blank" rel="noopener" href="https://oi-wiki.org/topic/dsu-app/" >OIWiki<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://oi-wiki.org/topic/dsu-app" >OIWiki<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="堆">堆</h2>
 <h3 id="二叉堆">二叉堆</h3>
 <blockquote>
@@ -538,11 +538,11 @@ class="math inline">\(n/2\)</span>的地方开始调整</li>
 <blockquote>
 <p><strong>均摊复杂度</strong></p>
 <ul>
-<li><code>meld</code>:<span
+<li><code>meld</code>: <span
 class="math inline">\(O(log(n)),O(1),O(2^{2\sqrt{loglogn}})\)</span></li>
-<li><code>delete-min</code>:<span
+<li><code>delete-min</code>: <span
 class="math inline">\(O(log(n))\)</span></li>
-<li><code>decrease-key</code>:<span
+<li><code>decrease-key</code>: <span
 class="math inline">\(O(log(n)),O(2^{2\sqrt{loglogn}})\)</span></li>
 </ul>
 </blockquote>
@@ -585,29 +585,28 @@ class="math inline">\(O(log(n)),O(2^{2\sqrt{loglogn}})\)</span></li>
 </figure>
 <blockquote>
 <p><strong>合并</strong>：合并两个堆时，由于要满足堆性质，先取值较小（小根堆）的那个根作为合并后堆的根节点，然后将这个根的左儿子作为合并后堆的左儿子，递归地合并其右儿子与另一个堆，作为合并后的堆的右儿子。为了满足左偏性质，合并后若左儿子的
-小于右儿子的
-，就交换两个儿子。[原文][https://oi-wiki.org/ds/leftist-tree/#%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C%E5%90%88%E5%B9%B6merge]</p>
+小于右儿子的 ，就交换两个儿子。<a class="link" 
+ target="_blank" rel="noopener" href="https://oi-wiki.org/ds/leftist-tree/#%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C%E5%90%88%E5%B9%B6merge" >原文<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!x || !y) <span class="keyword">return</span> x | y;  <span class="comment">// 若一个堆为空则返回另一个堆</span></span><br><span class="line">  <span class="keyword">if</span> (t[x].val &gt; t[y].val) <span class="built_in">swap</span>(x, y);  <span class="comment">// 取值较小的作为根</span></span><br><span class="line">  t[x].rs = <span class="built_in">merge</span>(t[x].rs, y);          <span class="comment">// 递归合并右儿子与另一个堆</span></span><br><span class="line">  <span class="keyword">if</span> (t[t[x].rs].d &gt; t[t[x].ls].d)</span><br><span class="line">    <span class="built_in">swap</span>(t[x].ls, t[x].rs);   <span class="comment">// 若不满足左偏性质则交换左右儿子</span></span><br><span class="line">  t[x].d = t[t[x].rs].d + <span class="number">1</span>;  <span class="comment">// 更新dist</span></span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="st表">ST表</h2>
 <blockquote>
-<p><strong>可重复贡献问题</strong>
-对于某个运算<code>opt</code>，如果<span class="math inline">\(x\ opt\
-x=x\)</span>，则对应的 <strong>区间查询</strong>
-是一个可重复贡献问题</p>
+<p><strong>可重复贡献问题</strong> 对于某个运算<code>opt</code>，如果
+<span class="math inline">\(x\ opt\ x=x\)</span> ，则对应的
+<strong>区间查询</strong> 是一个可重复贡献问题</p>
 <ul>
 <li>最大值：RMQ问题（区间最大/最小值）</li>
 <li>最大公因数：GCD</li>
 </ul>
 </blockquote>
 <blockquote>
-<p><strong>问题</strong> 给定n个数，有m个询问，每次询问需要给出区间<span
-class="math inline">\([l,r]\)</span>的最大值</p>
+<p><strong>问题</strong> 给定n个数，有m个询问，每次询问需要给出区间
+<span class="math inline">\([l,r]\)</span> 的最大值</p>
 </blockquote>
 <blockquote>
-<p><strong>ST表（Sparse Table）</strong>：可以<span
-class="math inline">\(\Theta(nlog(n))\)</span>预处理，<span
-class="math inline">\(\Theta(1)\)</span>回答询问，不支持修改元素</p>
+<p><strong>ST表（Sparse Table）</strong>：可以 <span
+class="math inline">\(\Theta(nlog(n))\)</span> 预处理，<span
+class="math inline">\(\Theta(1)\)</span> 回答询问，不支持修改元素</p>
 </blockquote>
 
             </div>
