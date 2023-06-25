@@ -29,7 +29,119 @@
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
   </script>
-<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -234,6 +346,14 @@
 
     
     
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>8 Mins</span>
+        </span>
     
     
         <span class="article-pv article-meta-item">
@@ -261,17 +381,12 @@ loss-curve and accuracy-curve on both training and validation set.</p>
 <p>The copyright of this program is owned by our team mentioned on the
 end of this blog.</p>
 <h1 id="unet-structure">UNet Structure</h1>
-<p>The <a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597" >paper<i class="fas fa-external-link-alt"></i></a> published in
+<p>The <a class="link" target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597">paper<i class="fas fa-external-link-alt"></i></a> published in
 2015 propose a noval network structure, whose shape is similar with the
 captal "U". The idea comes from FCNN. U-Net is one of the classes of
 "Encoder-Decoder" structure.</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="unet-structure.png"
-                      alt="U-Net Structure" 
-                >
+<img lazyload alt="U-Net Structure" data-src="unet-structure.png">
 <figcaption aria-hidden="true">U-Net Structure</figcaption>
 </figure>
 <p>The front half of the network is "encoder". The input image passes
@@ -283,8 +398,7 @@ network) is an image with the same shape of input image, where each
 pixel has its own class.</p>
 <p>In this project, we decrease the number of convolutional layers so
 that there are only two convolutional layers in each convolutional
-kernel as the dataset includes images with shape <span
-class="math inline">\(128\times 256\)</span>.</p>
+kernel as the dataset includes images with shape <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="9.553ex" height="1.557ex" role="img" focusable="false" viewbox="0 -666 4222.4 688"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" transform="translate(500,0)"/><path data-c="38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z" transform="translate(1000,0)"/></g><g data-mml-node="mo" transform="translate(1722.2,0)"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"/></g><g data-mml-node="mn" transform="translate(2722.4,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path data-c="35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z" transform="translate(500,0)"/><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z" transform="translate(1000,0)"/></g></g></g></svg></mjx-container></span>.</p>
 <h2 id="operator-definitions">Operator Definitions</h2>
 <p><strong>Convolutional Kernel:</strong></p>
 <p>We define the basic convolutional kernel as follow:</p>
@@ -293,15 +407,15 @@ class="math inline">\(128\times 256\)</span>.</p>
 <p><strong>Down Sampling Kernel:</strong></p>
 <p>As for downsampling kernel, we replace conditional pooling layer to
 convolutional layer with stride equaling to 2, which means the shape
-will be shrunk to <span class="math inline">\(\frac{1}{2}\)</span> while
+will be shrunk to <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.781ex;" xmlns="http://www.w3.org/2000/svg" width="1.795ex" height="2.737ex" role="img" focusable="false" viewbox="0 -864.9 793.6 1209.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mn" transform="translate(220,394) scale(0.707)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/></g><g data-mml-node="mn" transform="translate(220,-345) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><rect width="553.6" height="60" x="120" y="220"/></g></g></g></svg></mjx-container></span> while
 remaining the same channels.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.Down = nn.Sequential(</span><br><span class="line">    nn.Conv2d(C, C, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">2</span>, <span class="number">2</span>), padding=<span class="number">1</span>),  <span class="comment"># 64 64 64 128</span></span><br><span class="line">    nn.LeakyReLU()</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
 <p><strong>Up Sampling Kernel:</strong></p>
 <p>The basic structure of up-sampling contains only one convolutional
-layer with <span class="math inline">\(1\times 1\)</span> convolutional
+layer with <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="5.028ex" height="1.507ex" role="img" focusable="false" viewbox="0 -666 2222.4 666"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/></g><g data-mml-node="mo" transform="translate(722.2,0)"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"/></g><g data-mml-node="mn" transform="translate(1722.4,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/></g></g></g></svg></mjx-container></span> convolutional
 kernel size and half out-channel. The feature map should pass an
 interpolation layer before getting into the convolutional layer.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, C</span>):</span><br><span class="line">    <span class="built_in">super</span>(UpSampling, self).__init__()</span><br><span class="line">    <span class="comment"># out-channel = 1/2 in-channel</span></span><br><span class="line">    self.Up = nn.Conv2d(C, C // <span class="number">2</span>, kernel_size=(<span class="number">1</span>, <span class="number">1</span>), stride=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, r</span>):</span><br><span class="line">    <span class="comment"># neighbor interpolation</span></span><br><span class="line">    up = F.interpolate(x, scale_factor=<span class="number">2</span>, mode=<span class="string">&quot;nearest&quot;</span>)</span><br><span class="line">    x = self.Up(up)</span><br><span class="line">    <span class="comment"># concatenate the feature map in encoder and </span></span><br><span class="line">    <span class="comment"># the feature map in corrsponding decoder layer, in channel dimension</span></span><br><span class="line">    res = torch.cat((x, r), <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, C</span>):</span><br><span class="line">    <span class="built_in">super</span>(UpSampling, self).__init__()</span><br><span class="line">    <span class="comment"># out-channel = 1/2 in-channel</span></span><br><span class="line">    self.Up = nn.Conv2d(C, C // <span class="number">2</span>, kernel_size=(<span class="number">1</span>, <span class="number">1</span>), stride=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, r</span>):</span><br><span class="line">    <span class="comment"># neighbor interpolation</span></span><br><span class="line">    up = F.interpolate(x, scale_factor=<span class="number">2</span>, mode=<span class="string">"nearest"</span>)</span><br><span class="line">    x = self.Up(up)</span><br><span class="line">    <span class="comment"># concatenate the feature map in encoder and </span></span><br><span class="line">    <span class="comment"># the feature map in corrsponding decoder layer, in channel dimension</span></span><br><span class="line">    res = torch.cat((x, r), <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 <p>The interpolation mode we choose is "nearest". The function
 <code>torch.cat(dim=1)</code> is used to concatenate two feature maps in
 channel dimension.</p>
@@ -330,7 +444,7 @@ that our model converges and does not overfit on training set.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">self.model.train()</span><br><span class="line"><span class="keyword">for</span> batch <span class="keyword">in</span> self.train_loader:</span><br><span class="line">    batch_num += <span class="number">1</span></span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    rgbs, segs = batch</span><br><span class="line">    s, _, m, n = segs.shape</span><br><span class="line">    segs = torch.reshape(segs, (s, m, n))</span><br><span class="line">    pred_segs = self.model(rgbs).to(self.device)</span><br><span class="line">    loss_val = loss(pred_segs, segs)</span><br><span class="line">    loss_val.backward()</span><br><span class="line">    optimizer.step()</span><br></pre></td></tr></table></figure>
 <p>The data collecting code can be written as follow:</p>
 <p><strong>Statistic data of training set</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ... :</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">if</span> batch_num % <span class="number">5</span> == <span class="number">0</span>:</span><br><span class="line">            logging.info(<span class="string">f&quot;batch num <span class="subst">&#123;batch_num&#125;</span>, loss <span class="subst">&#123;loss_val&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="comment"># delete or add comments when needed</span></span><br><span class="line">        train_loss += loss_val</span><br><span class="line">        <span class="comment"># statistic valid classified samples</span></span><br><span class="line">        total_pix += s * m * n</span><br><span class="line">        idx = torch.argmax(pred_segs, dim=<span class="number">1</span>)</span><br><span class="line">        train_valid_pix += torch.eq(idx, segs).<span class="built_in">sum</span>().<span class="built_in">float</span>().item()</span><br><span class="line">torch.cuda.empty_cache()</span><br><span class="line">epoch_acc = train_valid_pix / total_pix</span><br><span class="line">train_epoch_loss.append(train_loss / batch_num)</span><br><span class="line">train_epoch_acc.append(epoch_acc)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ... :</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">if</span> batch_num % <span class="number">5</span> == <span class="number">0</span>:</span><br><span class="line">            logging.info(<span class="string">f"batch num <span class="subst">{batch_num}</span>, loss <span class="subst">{loss_val}</span>"</span>)</span><br><span class="line">        <span class="comment"># delete or add comments when needed</span></span><br><span class="line">        train_loss += loss_val</span><br><span class="line">        <span class="comment"># statistic valid classified samples</span></span><br><span class="line">        total_pix += s * m * n</span><br><span class="line">        idx = torch.argmax(pred_segs, dim=<span class="number">1</span>)</span><br><span class="line">        train_valid_pix += torch.eq(idx, segs).<span class="built_in">sum</span>().<span class="built_in">float</span>().item()</span><br><span class="line">torch.cuda.empty_cache()</span><br><span class="line">epoch_acc = train_valid_pix / total_pix</span><br><span class="line">train_epoch_loss.append(train_loss / batch_num)</span><br><span class="line">train_epoch_acc.append(epoch_acc)</span><br></pre></td></tr></table></figure>
 <p><strong>Statistic data of validation set</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">self.model.<span class="built_in">eval</span>()</span><br><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="keyword">for</span> valid_batch <span class="keyword">in</span> self.valid_loader:</span><br><span class="line">        valid_batch_num += <span class="number">1</span></span><br><span class="line">        rgbs, segs = valid_batch</span><br><span class="line">        s, _, m, n = segs.shape</span><br><span class="line">        segs = torch.reshape(segs, (s, m, n))</span><br><span class="line">        pred_segs = self.model(rgbs).to(self.device)</span><br><span class="line">        loss_val = loss(pred_segs, segs)</span><br><span class="line">        valid_loss += loss_val</span><br><span class="line">        valid_total_pix += s * m * n</span><br><span class="line">        idx = torch.argmax(pred_segs, dim=<span class="number">1</span>)</span><br><span class="line">        valid_valid_pix += torch.eq(idx, segs).<span class="built_in">sum</span>().<span class="built_in">float</span>().item()</span><br><span class="line">epoch_acc = valid_valid_pix / valid_total_pix</span><br><span class="line">valid_epoch_loss.append(valid_loss / valid_batch_num)</span><br><span class="line">valid_epoch_acc.append(epoch_acc)</span><br></pre></td></tr></table></figure>
 <p>The point you should pay attention to is that you should use
@@ -345,12 +459,7 @@ model.</p>
 other upgraded model named "UNet++" which will be introduced later.</p>
 <p>We output the segmentation results and their uncertainties.</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="pic1-unet.png"
-                      alt="picture 1 result-UNet" 
-                >
+<img lazyload alt="picture 1 result-UNet" data-src="pic1-unet.png">
 <figcaption aria-hidden="true">picture 1 result-UNet</figcaption>
 </figure>
 <h2 id="model-upgrade">Model Upgrade</h2>
@@ -359,12 +468,7 @@ namely UNet++. It has a nested convolutional blocks like a pyramid and
 there is a chain passing connectivity between each convolutional block
 every layer.</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="nested.png"
-                      alt="Neseted UNet" 
-                >
+<img lazyload alt="Neseted UNet" data-src="nested.png">
 <figcaption aria-hidden="true">Neseted UNet</figcaption>
 </figure>
 <p>The black nodes are the same with U-Net model. The green nodes are
@@ -378,23 +482,13 @@ results.</p>
 <p>We analyze the loss value and accuracy on both training and
 validation set:</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="unet_loss.png"
-                      alt="unet loss" 
-                >
+<img lazyload alt="unet loss" data-src="unet_loss.png">
 <figcaption aria-hidden="true">unet loss</figcaption>
 </figure>
 <p>We find that after 100 epochs, the model has not convergenced yet,
 but the loss on validation decreases to the bottom.</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="unet_acc.png"
-                      alt="unet accuracy" 
-                >
+<img lazyload alt="unet accuracy" data-src="unet_acc.png">
 <figcaption aria-hidden="true">unet accuracy</figcaption>
 </figure>
 <p>From the accuracy curves, we find that both training set and
@@ -404,12 +498,7 @@ overfit.</p>
 <p>Meanwhile, we analyze the loss and accuracy of Nested UNet model on
 both training and validation set.</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="nested_loss.png"
-                      alt="nested loss" 
-                >
+<img lazyload alt="nested loss" data-src="nested_loss.png">
 <figcaption aria-hidden="true">nested loss</figcaption>
 </figure>
 <p>We find that Nested UNet has a faster convergency speed than UNet. It
@@ -417,12 +506,7 @@ uses only about 60 epochs. But to our surprise, we find that Neseted
 UNet overfit after about only 20 epochs because the validation loss does
 not decrease anymore.</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="nested_acc.png"
-                      alt="nested accuracy" 
-                >
+<img lazyload alt="nested accuracy" data-src="nested_acc.png">
 <figcaption aria-hidden="true">nested accuracy</figcaption>
 </figure>
 <p>The performance on validation accuracy stays the same with UNet

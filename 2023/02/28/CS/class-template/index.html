@@ -29,7 +29,119 @@
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
   </script>
-<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -234,6 +346,14 @@
 
     
     
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>8 Mins</span>
+        </span>
     
     
         <span class="article-pv article-meta-item">
@@ -269,7 +389,7 @@
 </ul>
 </blockquote>
 <h2 id="类模板的定义">类模板的定义</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2, Type Arg1&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="comment">// template class definition</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2, Type Arg1&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> {</span><br><span class="line">    <span class="comment">// template class definition</span></span><br><span class="line">};</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>模板参数</strong></p>
 <ul>
@@ -296,7 +416,7 @@
 (即在模板类外定义模板中的成员函数时需要显式写出ID)</p>
 </blockquote>
 <p><strong>一个例子</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> len_;</span><br><span class="line">    <span class="type">int</span> size_;</span><br><span class="line">    T1* elements_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">explicit</span> <span class="built_in">PythonList</span>&lt;T1&gt;(<span class="type">size_t</span> list_len);</span><br><span class="line">    <span class="built_in">PythonList</span>&lt;T1&gt;(<span class="type">const</span> PythonList&lt;T1&gt;&amp; python_list);</span><br><span class="line">    ~<span class="built_in">PythonList</span>();</span><br><span class="line">    T1&amp; <span class="keyword">operator</span>[](<span class="type">size_t</span> index);</span><br><span class="line">    <span class="type">const</span> T1&amp; <span class="keyword">operator</span>[](<span class="type">size_t</span> index) <span class="type">const</span>;</span><br><span class="line">    PythonList&lt;T1&gt;&amp; <span class="keyword">operator</span>=(<span class="type">const</span> PythonList&lt;T1&gt;&amp; rhs_list);</span><br><span class="line">    <span class="function"><span class="type">size_t</span> <span class="title">get_len</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> len_; &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">allocate_double</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span> {</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> len_;</span><br><span class="line">    <span class="type">int</span> size_;</span><br><span class="line">    T1* elements_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">explicit</span> <span class="built_in">PythonList</span>&lt;T1&gt;(<span class="type">size_t</span> list_len);</span><br><span class="line">    <span class="built_in">PythonList</span>&lt;T1&gt;(<span class="type">const</span> PythonList&lt;T1&gt;&amp; python_list);</span><br><span class="line">    ~<span class="built_in">PythonList</span>();</span><br><span class="line">    T1&amp; <span class="keyword">operator</span>[](<span class="type">size_t</span> index);</span><br><span class="line">    <span class="type">const</span> T1&amp; <span class="keyword">operator</span>[](<span class="type">size_t</span> index) <span class="type">const</span>;</span><br><span class="line">    PythonList&lt;T1&gt;&amp; <span class="keyword">operator</span>=(<span class="type">const</span> PythonList&lt;T1&gt;&amp; rhs_list);</span><br><span class="line">    <span class="function"><span class="type">size_t</span> <span class="title">get_len</span><span class="params">()</span> <span class="type">const</span> </span>{ <span class="keyword">return</span> len_; }</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">allocate_double</span><span class="params">()</span></span>;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
 <h2 id="类模板成员函数的定义">类模板成员函数的定义</h2>
 <blockquote>
 <p>若在模板类的内部定义, 实则为 <strong>内联</strong></p>
@@ -311,7 +431,7 @@
 </ul>
 </blockquote>
 <p>例如</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 析构函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::~<span class="built_in">PythonList</span>&lt;T1&gt;() &#123;</span><br><span class="line">    <span class="keyword">delete</span> [] elements_;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::<span class="built_in">PythonList</span>(<span class="type">size_t</span> list_len)</span><br><span class="line">    : <span class="built_in">len_</span>(list_len), <span class="built_in">size_</span>(FOLD * list_len), <span class="built_in">elements_</span>(<span class="keyword">new</span> <span class="built_in">T1</span>(list_len)) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::<span class="built_in">PythonList</span>(<span class="type">const</span> PythonList&lt;T1&gt; &amp;python_list)</span><br><span class="line">    : PythonList&#123;python_list.len_&#125; &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">size_t</span> i&#123;&#125;; i &lt; len_; ++i) &#123;</span><br><span class="line">    elements_[i] = python_list.elements_[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下标运算符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt; T1 &amp;PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) &#123;</span><br><span class="line">  <span class="keyword">if</span> (index &gt;= len_) &#123;</span><br><span class="line">    <span class="keyword">throw</span> std::out_of_range&#123;<span class="string">&quot;Index out of range: &quot;</span> + std::<span class="built_in">to_string</span>(index)&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> elements_[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="type">const</span> T1 &amp;PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) <span class="type">const</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (index &gt;= len_) &#123;</span><br><span class="line">    <span class="keyword">throw</span> std::out_of_range&#123;<span class="string">&quot;Index out of range: &quot;</span> + std::<span class="built_in">to_string</span>(index)&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> elements_[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值运算符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt; PythonList&lt;T1&gt;::<span class="keyword">operator</span>=(<span class="type">const</span> PythonList&lt;T1&gt;&amp; rhs_list) &#123;</span><br><span class="line">    <span class="keyword">if</span> (&amp;rhs_list != <span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="keyword">delete</span> [] elements_;</span><br><span class="line">        len_ = rhs_list.len_;</span><br><span class="line">        size_ = rhs_list.size_;</span><br><span class="line">        elements_ = <span class="keyword">new</span> T1[len_];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">size_t</span> i &#123;&#125;; i &lt; size_; ++i) &#123;</span><br><span class="line">            elements_[i] = rhs_list.elements_[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 析构函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::~<span class="built_in">PythonList</span>&lt;T1&gt;() {</span><br><span class="line">    <span class="keyword">delete</span> [] elements_;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::<span class="built_in">PythonList</span>(<span class="type">size_t</span> list_len)</span><br><span class="line">    : <span class="built_in">len_</span>(list_len), <span class="built_in">size_</span>(FOLD * list_len), <span class="built_in">elements_</span>(<span class="keyword">new</span> <span class="built_in">T1</span>(list_len)) {}</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::<span class="built_in">PythonList</span>(<span class="type">const</span> PythonList&lt;T1&gt; &amp;python_list)</span><br><span class="line">    : PythonList{python_list.len_} {</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">size_t</span> i{}; i &lt; len_; ++i) {</span><br><span class="line">    elements_[i] = python_list.elements_[i];</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下标运算符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt; T1 &amp;PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) {</span><br><span class="line">  <span class="keyword">if</span> (index &gt;= len_) {</span><br><span class="line">    <span class="keyword">throw</span> std::out_of_range{<span class="string">"Index out of range: "</span> + std::<span class="built_in">to_string</span>(index)};</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">return</span> elements_[index];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="type">const</span> T1 &amp;PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) <span class="type">const</span> {</span><br><span class="line">  <span class="keyword">if</span> (index &gt;= len_) {</span><br><span class="line">    <span class="keyword">throw</span> std::out_of_range{<span class="string">"Index out of range: "</span> + std::<span class="built_in">to_string</span>(index)};</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">return</span> elements_[index];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值运算符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt; PythonList&lt;T1&gt;::<span class="keyword">operator</span>=(<span class="type">const</span> PythonList&lt;T1&gt;&amp; rhs_list) {</span><br><span class="line">    <span class="keyword">if</span> (&amp;rhs_list != <span class="keyword">this</span>) {</span><br><span class="line">        <span class="keyword">delete</span> [] elements_;</span><br><span class="line">        len_ = rhs_list.len_;</span><br><span class="line">        size_ = rhs_list.size_;</span><br><span class="line">        elements_ = <span class="keyword">new</span> T1[len_];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">size_t</span> i {}; i &lt; size_; ++i) {</span><br><span class="line">            elements_[i] = rhs_list.elements_[i];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>第一行说明该函数为模板函数; 在限定成员函数时,
 作用域需要带上模板ID</p>
@@ -331,10 +451,10 @@
 </blockquote>
 <p><strong>传统方法:
 用<code>const</code>实现非<code>const</code></strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">T1&amp; PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">const_cast</span>&lt;T1&amp;&gt;(<span class="keyword">static_cast</span>&lt;<span class="type">const</span> PythonList&lt;T1&gt;&amp;&gt;(*<span class="keyword">this</span>) [index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">T1&amp; PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) {</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">const_cast</span>&lt;T1&amp;&gt;(<span class="keyword">static_cast</span>&lt;<span class="type">const</span> PythonList&lt;T1&gt;&amp;&gt;(*<span class="keyword">this</span>) [index]);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p><strong>C++17:
 <code>std::as_const()</code>(utility头文件)</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">T1&amp; PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">const_cast</span>&lt;T1&amp;&gt;(std::<span class="built_in">as_const</span>(*<span class="keyword">this</span>)[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">T1&amp; PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) {</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">const_cast</span>&lt;T1&amp;&gt;(std::<span class="built_in">as_const</span>(*<span class="keyword">this</span>)[index]);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h3 id="异常安全性">异常安全性</h3>
 <ol type="1">
 <li>在赋值运算符重载的时候, 由于使用了<code>new</code>,
@@ -344,8 +464,7 @@
 <blockquote>
 <p>当声明了<code>noexcept</code>后, 表示代码内部不发生异常,
 使得编译器能做更多的优化,
-例如大部分析构都隐式声明了<code>noexcept</code> cppreference <a class="link" 
- target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/noexcept" >noexcept<i class="fas fa-external-link-alt"></i></a></p>
+例如大部分析构都隐式声明了<code>noexcept</code> cppreference <a class="link" target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/noexcept">noexcept<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <blockquote>
 <p>在以上的赋值运算符中使用 <strong>复制后交换</strong></p>
@@ -359,7 +478,7 @@
 </ul>
 </blockquote>
 <h2 id="类模板实例化">类模板实例化</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PythonList&lt;<span class="type">double</span>&gt; data &#123;<span class="number">10</span>&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PythonList&lt;<span class="type">double</span>&gt; data {<span class="number">10</span>};</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>编译器只编译程序使用的成员函数,
 不会为某个模板参数的实例而一次性编译整个类</strong>:
@@ -379,7 +498,7 @@
 <li><strong>当作常量</strong></li>
 </ul>
 </blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="type">size_t</span> size&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> &#123;</span><br><span class="line">    <span class="comment">// definition</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 还有一些比较无语的</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, T1 value&gt; ... <span class="comment">// 此时T1只能是模板的非类型参数所允许的类型</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="type">size_t</span> size&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> {</span><br><span class="line">    <span class="comment">// definition</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="comment">// 还有一些比较无语的</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, T1 value&gt; ... <span class="comment">// 此时T1只能是模板的非类型参数所允许的类型</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>注意</strong></p>
 <p>只有模板参数完全相同的情况下, 编译器才不会再次编译模板类;
@@ -417,14 +536,14 @@
 </blockquote>
 <p><strong>全特化</strong></p>
 <p>即规定模板实现的所有模板参数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span>&lt;<span class="type">const</span> <span class="type">char</span>*&gt;&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span>&lt;<span class="type">const</span> <span class="type">char</span>*&gt;{};</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>特化的定义必须放在原有的定义或声明后面.
 因为<strong>指定了所有参数</strong>, 所以是 <strong>全特化</strong></p>
 </blockquote>
 <p><strong>偏特化</strong></p>
 <p>即只规定模板参数列表中的一部分模板参数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;Type value&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span>&lt;<span class="type">const</span> <span class="type">char</span>*, value&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;Type value&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span>&lt;<span class="type">const</span> <span class="type">char</span>*, value&gt; {};</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>template</code>后的参数列表包含的是为这个模板特化的实例所指定的参数,
 即<strong>实例化时需要指定</strong><code>value</code></p>
@@ -436,7 +555,7 @@
 <p>例如下面代码: <code>template</code>的第一个参数仍是<code>T1</code>,
 但模板名后面可以跟着<code>T*</code></p>
 </blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, Type value&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>&lt;T1*, value&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, Type value&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>&lt;T1*, value&gt; {};</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>特化的选择</strong></p>
 <p>当匹配给定特化的每个实参匹配多个特化时, 编译器会选择
@@ -446,18 +565,12 @@
 则A比B更特殊 (A含于B)</li>
 </ul>
 </blockquote>
-<h2
-id="在类模板中使用static_assert">在类模板中使用<code>static_assert()</code></h2>
+<h2 id="在类模板中使用static_assert">在类模板中使用<code>static_assert()</code></h2>
 <p><code>static_assert()</code>接受两个参数,
 第一个参数为<code>false</code>时, 输出第二个参数指定的消息.
 第一个实参使用type_traits.h中的模板</p>
 <figure>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="type_traits.jpg"
-                      alt="type_traits" 
-                >
+<img lazyload alt="type_traits" data-src="type_traits.jpg">
 <figcaption aria-hidden="true">type_traits</figcaption>
 </figure>
 <h2 id="类模板的友元">类模板的友元</h2>

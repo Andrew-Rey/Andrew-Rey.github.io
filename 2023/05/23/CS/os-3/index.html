@@ -29,7 +29,119 @@
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
   </script>
-<meta name="generator" content="Hexo 6.1.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 <body>
@@ -238,6 +350,14 @@
 
     
     
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>621 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+        </span>
     
     
         <span class="article-pv article-meta-item">
@@ -273,8 +393,7 @@ frames链表，但是共享全局变量和堆。处理器每次选择其中一�
 </ul></li>
 <li>最早的并发程序：系统调用的代码（操作系统）</li>
 </ul>
-<p><a class="link" 
- target="_blank" rel="noopener" href="https://jyywiki.cn/pages/OS/2022/demos/thread.h" >jyy的线程库<i class="fas fa-external-link-alt"></i></a>，编译时要加上<code>-lpthread</code></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://jyywiki.cn/pages/OS/2022/demos/thread.h">jyy的线程库<i class="fas fa-external-link-alt"></i></a>，编译时要加上<code>-lpthread</code></p>
 </blockquote>
 <p>创建一个线程：</p>
 <ul>
@@ -282,13 +401,13 @@ frames链表，但是共享全局变量和堆。处理器每次选择其中一�
 <li>语义：在状态机中<strong>新增stack
 frame链表</strong>并初始化为<code>fn(tid)</code></li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">create</span><span class="params">(<span class="type">void</span> *fn)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(tptr - tpool &lt; NTHREAD);</span><br><span class="line">  *tptr = (<span class="keyword">struct</span> thread) &#123;</span><br><span class="line">    .id = tptr - tpool + <span class="number">1</span>,</span><br><span class="line">    .status = T_LIVE,</span><br><span class="line">    .entry = fn,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">pthread_create</span>(&amp;(tptr-&gt;thread), <span class="literal">NULL</span>, wrapper, tptr);</span><br><span class="line">  ++tptr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">create</span><span class="params">(<span class="type">void</span> *fn)</span> </span>{</span><br><span class="line">  <span class="built_in">assert</span>(tptr - tpool &lt; NTHREAD);</span><br><span class="line">  *tptr = (<span class="keyword">struct</span> thread) {</span><br><span class="line">    .id = tptr - tpool + <span class="number">1</span>,</span><br><span class="line">    .status = T_LIVE,</span><br><span class="line">    .entry = fn,</span><br><span class="line">  };</span><br><span class="line">  <span class="built_in">pthread_create</span>(&amp;(tptr-&gt;thread), <span class="literal">NULL</span>, wrapper, tptr);</span><br><span class="line">  ++tptr;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>等待线程结束：</p>
 <ul>
 <li><strong>等待</strong>所有运行线程的<code>fn</code>返回</li>
 <li>在有其他线程未执行完时死循环，否则返回（<code>while(other threads not return);</code>）</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">join</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NTHREAD; i++) &#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">thread</span> *t = &amp;tpool[i];</span><br><span class="line">    <span class="keyword">if</span> (t-&gt;status == T_LIVE) &#123;</span><br><span class="line">      <span class="built_in">pthread_join</span>(t-&gt;thread, <span class="literal">NULL</span>);</span><br><span class="line">      t-&gt;status = T_DEAD;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">join</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; NTHREAD; i++) {</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">thread</span> *t = &amp;tpool[i];</span><br><span class="line">    <span class="keyword">if</span> (t-&gt;status == T_LIVE) {</span><br><span class="line">      <span class="built_in">pthread_join</span>(t-&gt;thread, <span class="literal">NULL</span>);</span><br><span class="line">      t-&gt;status = T_DEAD;</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong><u>如何理解【等待】</u></strong></p>
 <p>当某一个状态执行的线程
@@ -391,13 +510,13 @@ T1，则回到当前原状态，直到所有其他进程都返回了。</p>
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/06/11/CS/os-5/"
+                               href="/2023/05/23/CS/os-4/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">【操作系统】Mutual Exclusion</span>
+                                <span class="post-nav-title-item">【操作系统】Concurrency Program</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
@@ -407,10 +526,10 @@ T1，则回到当前原状态，直到所有其他进程都返回了。</p>
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/05/23/CS/os-4/"
+                               href="/2023/05/17/CS/os-2/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">【操作系统】Concurrency Program</span>
+                                <span class="post-nav-title-item">【操作系统】Program</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
