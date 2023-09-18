@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Andrew-Rey">
+    
+    <title>
+        
+            【从零开始的C++】IDE安装和配置 |
+        
+        云边有个小卖部
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/head_round.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#a0c49d","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":"在世间，本就是各人下雪，各人有各人的隐晦与皎洁","font_color":"#faf0e4","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/head_round.png">
+                </a>
+            
+            <a class="logo-title" href="/">
+               云边有个小卖部
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【从零开始的C++】IDE安装和配置</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/head_round.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Andrew-Rey</span>
+                            
+                                <span class="author-label">来自林邑的许先森❤</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-09-19 00:54:18</span>
+        <span class="mobile">2023-09-19 00:54</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-09-19 02:23:35</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/CS/">CS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CS/">CS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/C/">C++</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8A%A9%E6%95%99/">助教</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>"第0节课"</p>
+<span id="more"></span>
+<blockquote>
+<p>前前言：只适用于Windows</p>
+</blockquote>
+<blockquote>
+<p>前言：建议使用VisualStudio2019，可以有一个舒适的coding环境<del>（来自个人偏见）</del>，当然DEV-C++的优点在于简单方便，VS有点笨重了</p>
+<ul>
+<li>欢迎大家折腾VSCode，可以熟悉CMake构建工程</li>
+<li>初学还是建议VisualStudio</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>啥是IDE</strong></p>
+<ul>
+<li>IDE：Integrated Development Environment，集成开发环境</li>
+<li>集成了 <strong>编辑器（理解为打字的界面）</strong>、
+<strong>编译</strong>、 <strong>调试</strong>等主要功能</li>
+<li>当然也集成了一些代码高亮、自动补全等功能</li>
+<li>目的是提高coding体验</li>
+</ul>
+</blockquote>
+<h3 id="准备工作">准备工作</h3>
+<ul>
+<li>在SEU文档云（群里面的链接）里面下载想用的IDE安装包</li>
+<li><strong>不要下载到C盘（选择安装路径时，点击“浏览”，然后选择除了C盘以外的盘进行安装）</strong>
+<ul>
+<li>比如下载到D:/LoveCpp/vs这个路径下面</li>
+</ul></li>
+<li>貌似VisualStudio2010也在网盘里面（就是那个2G多的文件，可以不用下载，以后特殊情况可能用到，但问题不大）</li>
+</ul>
+<h3 id="visualstudio2019安装和配置">VisualStudio2019安装和配置</h3>
+<blockquote>
+<p>对应压缩包 <code>vs_enterprise__2019.zip</code></p>
+</blockquote>
+<p>可以参考网站：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/InnerPeaceHQ/article/details/121716088">这个<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li>解压，文件夹里面是这个东西</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695057304137.png">
+<figcaption aria-hidden="true">1695057304137</figcaption>
+</figure>
+<ul>
+<li>管理员权限运行即可（会有对话框，同意即可）</li>
+<li>运行后会有一个VS的弹窗，点击继续即可</li>
+<li>继续后出现如下界面</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695057447568.png">
+<figcaption aria-hidden="true">1695057447568</figcaption>
+</figure>
+<ul>
+<li>下面开始安装C++环境</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695057753734.png">
+<figcaption aria-hidden="true">1695057753734</figcaption>
+</figure>
+<ul>
+<li>点击安装后只需要耐心等待（下面那个VS不用管，那是我之前装的）</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695057843665.png">
+<figcaption aria-hidden="true">1695057843665</figcaption>
+</figure>
+<ul>
+<li><strong>安装完成后需要重启</strong></li>
+</ul>
+<blockquote>
+<p>重启后，安装完成，可以在开始目录/搜索框中找到VS，打开即可</p>
+</blockquote>
+<figure>
+<img lazyload alt="image" data-src="1695058038603.png">
+<figcaption aria-hidden="true">1695058038603</figcaption>
+</figure>
+<ul>
+<li>如果出现了登陆界面，可以选择以后再说，也可以用微软账户登陆</li>
+</ul>
+<p><strong>恭喜你，到此为止，你已经成功安装了VisualStudio2019！！！</strong></p>
+<h3 id="dev-c安装">Dev-C++安装</h3>
+<blockquote>
+<p>对应文件 <code>Dev-Cpp 5.11 TDM-GCC 4.9.2 Setup.exe</code></p>
+</blockquote>
+<ul>
+<li>直接运行exe可执行文件，得到如下界面，并选择English点击OK</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695058487870.png">
+<figcaption aria-hidden="true">1695058487870</figcaption>
+</figure>
+<ul>
+<li>然后会出现一个协议，想看就看一下，点击I Agree</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695058532086.png">
+<figcaption aria-hidden="true">1695058532086</figcaption>
+</figure>
+<ul>
+<li>出现下图，直接继续Next</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695058637180.png">
+<figcaption aria-hidden="true">1695058637180</figcaption>
+</figure>
+<ul>
+<li>选择Browse浏览，选择一个除了C盘以外的路径安装，然后点击Install安装</li>
+<li>安装完成后点击Finish，然后打开DEV-C++</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1695058832613.png">
+<figcaption aria-hidden="true">1695058832613</figcaption>
+</figure>
+<ul>
+<li>语言选择简体中文，其它默认即可</li>
+</ul>
+<p><strong>恭喜你成功安装了Dev-C++！！！</strong></p>
+<h3 id="hello-world第一个程序">Hello World!——第一个程序</h3>
+<blockquote>
+<p><strong>一件重要的事情</strong></p>
+<ul>
+<li>在除了C盘的其它盘（比如D盘）创建一个文件夹，专门用于存放C++项目，比如下面这个文件结构：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-D:</span><br><span class="line">  |</span><br><span class="line">  +-CppProjects</span><br><span class="line">        |</span><br><span class="line">        +-project0</span><br><span class="line">        |    |</span><br><span class="line">        |    +-some-project-files...</span><br><span class="line">        +-project1</span><br><span class="line">        +-project2</span><br><span class="line">        +-...</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="在visualstudio2019里面写代码">在VisualStudio2019里面写代码！</h4>
+<blockquote>
+<p>强烈建议看这个<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/BaoITcore/article/details/129440505">教程<i class="fas fa-external-link-alt"></i></a>，一定要注意，选择项目位置的时候选用
+<strong>我们在上面两行中创建的文件夹（不是教程中的C盘路径），路径中不能含有中文（不然以后会出现一些神秘的错误）</strong></p>
+<ul>
+<li>示例位置：D:/CppProjects/project0</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>所以是不是输出了HelloWorld呢？</p>
+</blockquote>
+<h4 id="在dev-c里面写代码">在DEV-C++里面写代码！</h4>
+<blockquote>
+<p>建议看这个<a class="link" target="_blank" rel="noopener" href="http://c.biancheng.net/view/462.html">教程<i class="fas fa-external-link-alt"></i></a>，里面的代码使用与上面VS教程中一样的代码，并将保存的文件命名为
+<code>xxx.cpp</code>（也就是以cpp为后缀）</p>
+</blockquote>
+<h3 id="觉得不好玩">觉得不好玩？</h3>
+<p>不如把下面这几个代码贴过去看看？</p>
+<blockquote>
+<p>快速排序算法</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">hhh</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; &amp;a, <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> i = left;</span><br><span class="line">  <span class="keyword">auto</span> j = right;</span><br><span class="line">  <span class="keyword">auto</span> key = a[left];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(i != j) &#123;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j &amp;&amp; a[j] &gt;= key) j--;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j &amp;&amp; a[i] &lt;= key) i++;</span><br><span class="line">    std::<span class="built_in">swap</span>(a[i], a[j]);</span><br><span class="line">  &#125;</span><br><span class="line">  std::<span class="built_in">swap</span>(a[left], a[i]);                                </span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qs</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; &amp;a, <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( left &gt;= right ) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">auto</span> i = <span class="built_in">hhh</span>(a, left, right);</span><br><span class="line">  <span class="built_in">qs</span>(a, left, i - <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">qs</span>(a, i + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pr</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> v: a) &#123;</span><br><span class="line">    std::cout &lt;&lt; v &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  std::vector&lt;<span class="type">int</span>&gt; vec &#123;<span class="number">5</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">20</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-5</span>, <span class="number">-10</span>&#125;;</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;former array is:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">  <span class="built_in">pr</span>(vec);</span><br><span class="line">  <span class="built_in">qs</span>(vec, <span class="number">0</span>, vec.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;now array is:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">  <span class="built_in">pr</span>(vec);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出结果是这样的：</p>
+<figure>
+<img lazyload alt="image" data-src="1695061391905.png">
+<figcaption aria-hidden="true">1695061391905</figcaption>
+</figure>
+<p>可以看见原本凌乱的数组被从小到大排好了序</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">Post title</span>: <span class="content">【从零开始的C++】IDE安装和配置</span>
+        </li>
+        <li class="post-author">
+            <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
+        </li>
+        <li class="post-time">
+            <span class="type">Create time</span>: <span class="content">2023-09-19 00:54:18</span>
+        </li>
+        <li class="post-link">
+            <span class="type">Post link</span>: <span class="content">2023/09/19/CS/Tutorial-0/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CS/">#CS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/C/">#C++</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%8A%A9%E6%95%99/">#助教</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/09/06/Math/PerlinNoise/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【Noise】Perlin Noise</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#visualstudio2019%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">VisualStudio2019安装和配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dev-c%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">Dev-C++安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hello-world%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">Hello World!——第一个程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8visualstudio2019%E9%87%8C%E9%9D%A2%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">4.1.</span> <span class="nav-text">在VisualStudio2019里面写代码！</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8dev-c%E9%87%8C%E9%9D%A2%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">4.2.</span> <span class="nav-text">在DEV-C++里面写代码！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%89%E5%BE%97%E4%B8%8D%E5%A5%BD%E7%8E%A9"><span class="nav-number">5.</span> <span class="nav-text">觉得不好玩？</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Andrew-Rey</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+</html>
