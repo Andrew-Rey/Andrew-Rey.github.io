@@ -200,7 +200,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-09-19 02:23:35</span>
+        <span class="pc">2023-09-19 02:31:22</span>
     </span>
     
     
@@ -225,11 +225,11 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/C/">C++</a>&nbsp;
+                        | <a href="/tags/%E5%8A%A9%E6%95%99/">助教</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/%E5%8A%A9%E6%95%99/">助教</a>&nbsp;
+                        | <a href="/tags/C/">C++</a>&nbsp;
                     </li>
                 
             </ul>
@@ -408,13 +408,16 @@
 <blockquote>
 <p>快速排序算法</p>
 </blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">hhh</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; &amp;a, <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> i = left;</span><br><span class="line">  <span class="keyword">auto</span> j = right;</span><br><span class="line">  <span class="keyword">auto</span> key = a[left];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(i != j) &#123;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j &amp;&amp; a[j] &gt;= key) j--;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j &amp;&amp; a[i] &lt;= key) i++;</span><br><span class="line">    std::<span class="built_in">swap</span>(a[i], a[j]);</span><br><span class="line">  &#125;</span><br><span class="line">  std::<span class="built_in">swap</span>(a[left], a[i]);                                </span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qs</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; &amp;a, <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( left &gt;= right ) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">auto</span> i = <span class="built_in">hhh</span>(a, left, right);</span><br><span class="line">  <span class="built_in">qs</span>(a, left, i - <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">qs</span>(a, i + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pr</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> v: a) &#123;</span><br><span class="line">    std::cout &lt;&lt; v &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  std::vector&lt;<span class="type">int</span>&gt; vec &#123;<span class="number">5</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">20</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-5</span>, <span class="number">-10</span>&#125;;</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;former array is:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">  <span class="built_in">pr</span>(vec);</span><br><span class="line">  <span class="built_in">qs</span>(vec, <span class="number">0</span>, vec.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;now array is:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">  <span class="built_in">pr</span>(vec);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">hhh</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; &amp;a, <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> i = left;</span><br><span class="line">  <span class="keyword">auto</span> j = right;</span><br><span class="line">  <span class="keyword">auto</span> key = a[left];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(i != j) &#123;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j &amp;&amp; a[j] &gt;= key) j--;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j &amp;&amp; a[i] &lt;= key) i++;</span><br><span class="line">    std::<span class="built_in">swap</span>(a[i], a[j]);</span><br><span class="line">  &#125;</span><br><span class="line">  std::<span class="built_in">swap</span>(a[left], a[i]);                              </span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qs</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; &amp;a, <span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>( left &gt;= right ) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">auto</span> i = <span class="built_in">hhh</span>(a, left, right);</span><br><span class="line">  <span class="built_in">qs</span>(a, left, i - <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">qs</span>(a, i + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pr</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> v: a) &#123;</span><br><span class="line">    std::cout &lt;&lt; v &lt;&lt; <span class="string">&quot;, &quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  std::vector&lt;<span class="type">int</span>&gt; vec &#123;<span class="number">5</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">20</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-5</span>, <span class="number">-10</span>&#125;;</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;former array is:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">  <span class="built_in">pr</span>(vec);</span><br><span class="line">  <span class="built_in">qs</span>(vec, <span class="number">0</span>, vec.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;now array is:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">  <span class="built_in">pr</span>(vec);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>输出结果是这样的：</p>
 <figure>
 <img lazyload alt="image" data-src="1695061391905.png">
 <figcaption aria-hidden="true">1695061391905</figcaption>
 </figure>
-<p>可以看见原本凌乱的数组被从小到大排好了序</p>
+<p>可以看见原本凌乱的数组被从小到大排好了序。</p>
+<blockquote>
+<p>感兴趣的话可以查看<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/MAKISE004/p/16909610.html">这个博客<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
 
             </div>
 
@@ -455,11 +458,11 @@
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/C/">#C++</a>&nbsp;
+                            <a href="/tags/%E5%8A%A9%E6%95%99/">#助教</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/%E5%8A%A9%E6%95%99/">#助教</a>&nbsp;
+                            <a href="/tags/C/">#C++</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -671,9 +674,24 @@
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

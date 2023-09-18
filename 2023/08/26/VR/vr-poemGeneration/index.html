@@ -235,7 +235,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>817 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>821 Words</span>
         </span>
     
     
@@ -260,13 +260,18 @@
 
                 <p>“练手项目（内心惊恐”</p>
 <span id="more"></span>
-<h2 id="todo-list"><a class="markdownIt-Anchor" href="#todo-list"></a> TODO List</h2>
-<ul>
-<li>[ ] 优化场景的光照</li>
-<li>[ ] 优化人物/动物的行为</li>
-<li>[ ] 优化语言输入中的数据库匹配</li>
-<li>[ ] 添加主角本体</li>
-<li>[ ] 优化/丰富NPC/场景交互</li>
+<h2 id="todo-list">TODO List</h2>
+<ul class="task-list">
+<li><input type="checkbox" disabled>
+优化场景的光照</li>
+<li><input type="checkbox" disabled>
+优化人物/动物的行为</li>
+<li><input type="checkbox" disabled>
+优化语言输入中的数据库匹配</li>
+<li><input type="checkbox" disabled>
+添加主角本体</li>
+<li><input type="checkbox" disabled>
+优化/丰富NPC/场景交互</li>
 </ul>
 <p>整体的思路</p>
 <ul>
@@ -280,16 +285,14 @@
 <li>模型的选择</li>
 <li>数据集的构建（第一周实践后发现有部分古诗词原文有注释，和录音不能很好匹配，需要手动调整）</li>
 <li>关键词如何匹配（语音识别后如何快速将识别结果和关键词进行匹配，由于中文一个读音有多种对应的汉字，如何进行匹配）</li>
-</ul>
-</li>
+</ul></li>
 <li>场景生成模块
 <ul>
 <li><strong>不会真要为每一首诗单独创建一个场景吧！</strong></li>
 <li>目前的方案是把场景分为主要场景和次要场景，主要场景根据诗词里面的特色单独人工搭建，次要场景随机生成</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="第三周"><a class="markdownIt-Anchor" href="#第三周"></a> 第三周</h2>
+<h2 id="第三周">第三周</h2>
 <blockquote>
 <p>用Perlin Noise生成随机heightMap再生成地形</p>
 </blockquote>
@@ -303,52 +306,56 @@
 <p>实现区域划分和不同起伏程度</p>
 <ul>
 <li>区域划分的参数用结构体保存 -&gt; 以后转为解析出来的对应数据</li>
-<li>起伏程度 -&gt; 改变柏林噪声中的随机梯度的模（或者改变内积以后的值）</li>
+<li>起伏程度 -&gt;
+改变柏林噪声中的随机梯度的模（或者改变内积以后的值）</li>
 </ul>
 </blockquote>
 <p>demo演示</p>
-<h2 id="第二周"><a class="markdownIt-Anchor" href="#第二周"></a> 第二周</h2>
+<h2 id="第二周">第二周</h2>
 <p>项目框架</p>
-<p><img lazyload alt="image" data-src="1693908290231.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1693908290231.png">
+<figcaption aria-hidden="true">1693908290231</figcaption>
+</figure>
 <ul>
 <li>任务1：原模型转化为low poly模型
 <ul>
-<li>使用插件（LowPoly Mesh Generator）将模型逐个转化（已完成）并保存为prefab</li>
+<li>使用插件（LowPoly Mesh
+Generator）将模型逐个转化（已完成）并保存为prefab</li>
 <li>初步对预制体进行分类</li>
-</ul>
-</li>
+</ul></li>
 <li>任务2：json生成地形（思路是语音识别的结果保存为json格式，然后根据json参数生成场景；目前先实现地形生成）
 <ul>
 <li>手动生成：尝试了LowPoly Terrain Generator插件</li>
 <li>代码生成：解析json数据-&gt;读取Terrain有关的参数-&gt;<strong>根据不同的mode生成不同的HeightMap</strong>-&gt;将HeightMap用于插件内的成员变量-&gt;在自己的脚本里面调用插件
 <ul>
 <li>难点是如何生成HeightMap，目前考虑的是先生成png形式的HeightMap，例如</li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img lazyload alt="image" data-src="1693906658523.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1693906658523.png">
+<figcaption aria-hidden="true">1693906658523</figcaption>
+</figure>
 <p>在unity内生成的地形如下</p>
-<p><img lazyload alt="image" data-src="1693907088483.png"></p>
-<h2 id="第一周"><a class="markdownIt-Anchor" href="#第一周"></a> 第一周</h2>
+<figure>
+<img lazyload alt="image" data-src="1693907088483.png">
+<figcaption aria-hidden="true">1693907088483</figcaption>
+</figure>
+<h2 id="第一周">第一周</h2>
 <ul>
-<li>
-<p>寻找语音识别模型</p>
+<li><p>寻找语音识别模型</p>
 <ul>
 <li>流式语音处理</li>
 <li>对中文准确率高</li>
 <li>最好是预训练的，可以将进行古诗文/语音的适配</li>
-</ul>
-</li>
-<li>
-<p>学习/熟悉Unity的VR开发</p>
+</ul></li>
+<li><p>学习/熟悉Unity的VR开发</p>
 <ul>
 <li>先了解了无设备开发</li>
 <li>在连接设备的情况下如何进行开发（目前找到了网课讲解SteamVR和HTCVive）</li>
 <li>场景的搭建（之前在实验室主机上面查看了整个项目的场景，配色偏暗，想修改，但是不是当务之急）</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p><strong>目前做的事情</strong></p>
 <ul>
@@ -357,10 +364,12 @@
 <ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://arxiv.org/pdf/2102.01547.pdf">论文<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/349586567">讲解<i class="fas fa-external-link-alt"></i></a></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p><img lazyload alt="image" data-src="1693294494575.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1693294494575.png">
+<figcaption aria-hidden="true">1693294494575</figcaption>
+</figure>
 <ul>
 <li>浅学了一下Unity的VR开发（没有借设备，只是听课）</li>
 </ul>
@@ -454,7 +463,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#todo-list"><span class="nav-number">1.</span> <span class="nav-text"> TODO List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%91%A8"><span class="nav-number">2.</span> <span class="nav-text"> 第三周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%91%A8"><span class="nav-number">3.</span> <span class="nav-text"> 第二周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%91%A8"><span class="nav-number">4.</span> <span class="nav-text"> 第一周</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#todo-list"><span class="nav-number">1.</span> <span class="nav-text">TODO List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%91%A8"><span class="nav-number">2.</span> <span class="nav-text">第三周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%91%A8"><span class="nav-number">3.</span> <span class="nav-text">第二周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%91%A8"><span class="nav-number">4.</span> <span class="nav-text">第一周</span></a></li></ol>
     </div>
 </div>
 
@@ -631,9 +640,24 @@
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

@@ -256,7 +256,7 @@
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Tue Sep 19 2023 02:23:35 GMT+0800">
+            <span class="home-article-date" data-updated="Tue Sep 19 2023 02:31:22 GMT+0800">
                 2023-09-19
             </span>
         </span>
@@ -285,12 +285,12 @@
                     
                         <li>
                             | 
-                            <a href="/tags/C/">C++</a>&nbsp;
+                            <a href="/tags/%E5%8A%A9%E6%95%99/">助教</a>&nbsp;
                         </li>
                     
                         <li>
                             | 
-                            <a href="/tags/%E5%8A%A9%E6%95%99/">助教</a>&nbsp;
+                            <a href="/tags/C/">C++</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -663,9 +663,24 @@ SteamVR Plugin
 
 <div class="post-scripts">
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
