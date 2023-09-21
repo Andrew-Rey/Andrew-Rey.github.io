@@ -239,7 +239,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>893 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>852 Words</span>
         </span>
     
     
@@ -265,12 +265,13 @@
                 <p>“程序化内容生成——地形/材质等的程序化生成”</p>
 <p>——关于一些剑走偏锋的项目历程</p>
 <span id="more"></span>
-<h3 id="perlin-noise"><a class="markdownIt-Anchor" href="#perlin-noise"></a> Perlin Noise</h3>
+<h3 id="perlin-noise">Perlin Noise</h3>
 <blockquote>
 <p>about the Perlin noise: <a class="link" target="_blank" rel="noopener" href="https://rtouti.github.io/graphics/perlin-noise-algorithm">ref<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <blockquote>
-<p>4 types of noise that are similar and that are often confused with one another</p>
+<p>4 types of noise that are similar and that are often confused with
+one another</p>
 <ul>
 <li>classic Perlin noise</li>
 <li>improved Perlin noise</li>
@@ -283,7 +284,8 @@
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mapping a 2D position to a random number range from -1 to 1</span></span><br><span class="line"><span class="keyword">var</span> perlinValue = PerlinNoise(<span class="built_in">float</span> x, <span class="built_in">float</span> y);</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>for texture: x, y stand for pixel position, but multiplied by a small number called the frequency</p>
+<p>for texture: x, y stand for pixel position, but multiplied by a small
+number called the frequency</p>
 </blockquote>
 <ul>
 <li><strong>Parameters</strong>
@@ -291,95 +293,157 @@
 <li>frequency of 2D waves</li>
 <li>amplitude of 2D waves</li>
 <li>octaves: the amount of waves to be generated</li>
-<li>persistence: amount of change in size between one curve and the next</li>
+<li>persistence: amount of change in size between one curve and the
+next</li>
 <li>offset: provide variation in the output</li>
 <li>height scale: scaling factor to accentuate the output generated</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <blockquote>
-<p><strong>Property</strong><br>
-if 2 inputs are near to each other, the results of the noise function will be near to each other too.</p>
+<p><strong>Property</strong> if 2 inputs are near to each other, the
+results of the noise function will be near to each other too.</p>
 <ul>
 <li>guarantee continuity</li>
 </ul>
 </blockquote>
-<h4 id="generation"><a class="markdownIt-Anchor" href="#generation"></a> Generation</h4>
+<h4 id="generation">Generation</h4>
 <ul>
-<li>given a 2D grid as following, the input of Perlin noise is each pixel.</li>
+<li>given a 2D grid as following, the input of Perlin noise is each
+pixel.</li>
 </ul>
-<p><img lazyload alt="image" data-src="1695262810353.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1695262810353.png">
+<figcaption aria-hidden="true">1695262810353</figcaption>
+</figure>
 <ul>
-<li>assign each gird point a random constant vector. (note: <code>gridVector[4]</code>)</li>
-<li>get the vectors pointing from the grid point to the input point(target pixel). (note: <code>inputVector[4]</code>)</li>
-<li>for each of the 4 corners of the square where the target pixel lies, calculate the dot products: <code>for i in range(4): calculate dot(gridVector[i], inputVector[i])</code>
+<li>assign each gird point a random constant vector. (note:
+<code>gridVector[4]</code>)</li>
+<li>get the vectors pointing from the grid point to the input
+point(target pixel). (note: <code>inputVector[4]</code>)</li>
+<li>for each of the 4 corners of the square where the target pixel lies,
+calculate the dot products:
+<code>for i in range(4): calculate dot(gridVector[i], inputVector[i])</code>
 <ul>
-<li>the dot product means the effects corners value to target pixels</li>
+<li>the dot product means the effects corners value to target
+pixels</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p><img lazyload alt="image" data-src="1695264135606.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1695264135606.png">
+<figcaption aria-hidden="true">1695264135606</figcaption>
+</figure>
 <ul>
-<li>interpolate between those 4 values and the result is the value of the target pixel.</li>
+<li>interpolate between those 4 values and the result is the value of
+the target pixel.</li>
 </ul>
 <blockquote>
-<p>difference between Perlin noise and value noise:<br>
-Perlin noise use <strong>dot product</strong> between 2 vectors to get 4 corners’ values while value noise use a pseudo-random number.</p>
+<p>difference between Perlin noise and value noise: Perlin noise use
+<strong>dot product</strong> between 2 vectors to get 4 corners' values
+while value noise use a pseudo-random number.</p>
 </blockquote>
-<h4 id="discussion"><a class="markdownIt-Anchor" href="#discussion"></a> Discussion</h4>
+<h4 id="discussion">Discussion</h4>
 <blockquote>
 <p><strong>gradient constant vectors</strong></p>
 <ul>
-<li><strong>why we need permutation table(noted as <code>P</code>) &amp; gradient table(noted as <code>G</code>)</strong>: P is used to <em>select</em> a random gradient from G. P provides randomness and repeatability(???)4</li>
-<li><strong>how to generate a permutation table</strong>: the core is <em>double</em> and <em>shuffle</em>. we have known that permutation table is used to select a gradient from gradient table and one gradient is defined by (x,y) (which is the grid point position). so one tuple (x,y) defines one permutation value. so the size of permutation table is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>×</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">len(X)\times len(Y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span></span></span></span> (<em>double</em>). to guarantee the randomness, we can do shuffle for <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>−</mo><mn>255</mn></mrow><annotation encoding="application/x-tex">0-255</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">5</span></span></span></span>. the code to generate permutation table is (where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>=</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">len(X) = len(Y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span></span></span></span>):</li>
+<li><strong>why we need permutation table(noted as <code>P</code>) &amp;
+gradient table(noted as <code>G</code>)</strong>: P is used to
+<em>select</em> a random gradient from G. P provides randomness and
+repeatability(???)4</li>
+<li><strong>how to generate a permutation table</strong>: the core is
+<em>double</em> and <em>shuffle</em>. we have known that permutation
+table is used to select a gradient from gradient table and one gradient
+is defined by (x,y) (which is the grid point position). so one tuple
+(x,y) defines one permutation value. so the size of permutation table is
+<span class="math inline">\(len(X)\times len(Y)\)</span>
+(<em>double</em>). to guarantee the randomness, we can do shuffle for
+<span class="math inline">\(0-255\)</span>. the code to generate
+permutation table is (where <span class="math inline">\(len(X) =
+len(Y)\)</span>):</li>
 </ul>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> permutationTable = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span> * len(X)];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len(X); i += <span class="number">1</span>) permutationTable[i] = i;</span><br><span class="line">permutationTable = Shuffle(permutationTable);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len(X); i += <span class="number">1</span>) permutationTable[len(X) + i] = permutationTable[i];</span><br><span class="line"><span class="comment">// visit the table given (x,y)</span></span><br><span class="line"><span class="keyword">var</span> valueTopRight = P[P[x+<span class="number">1</span>]+y+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> valueTopLeft = P[P[x]+y+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> valueBottomRight = P[P[x+<span class="number">1</span>]+y];</span><br><span class="line"><span class="keyword">var</span> valueBottomLeft = P[P[x]+y];</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>how to generate a gradient table</strong>: use 4 constant vectors: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mi>f</mi><mo separator="true">,</mo><mn>1</mn><mi>f</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mo stretchy="false">(</mo><mn>1</mn><mi>f</mi><mo separator="true">,</mo><mo>−</mo><mn>1</mn><mi>f</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><mi>f</mi><mo separator="true">,</mo><mn>1</mn><mi>f</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><mi>f</mi><mo separator="true">,</mo><mo>−</mo><mn>1</mn><mi>f</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1f,1f), (1f, -1f), (-1f, 1f), (-1f, -1f)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mclose">)</span></span></span></span>. so just do modulo with the permutation value given (x,y) can get one gradient vector.</li>
+<li><strong>how to generate a gradient table</strong>: use 4 constant
+vectors: <span class="math inline">\((1f,1f), (1f, -1f), (-1f, 1f),
+(-1f, -1f)\)</span>. so just do modulo with the permutation value given
+(x,y) can get one gradient vector.</li>
 </ul>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Vector2 <span class="title">GetConstantVector</span>(<span class="params">v</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> v % <span class="number">4</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: <span class="keyword">return</span> Vector2(<span class="number">1f</span>,<span class="number">1f</span>);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">return</span> Vector2(<span class="number">1f</span>,<span class="number">-1f</span>);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="keyword">return</span> Vector2(<span class="number">-1f</span>,<span class="number">1f</span>);</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">return</span> Vector2(<span class="number">-1f</span>,<span class="number">-1f</span>);</span><br><span class="line">    <span class="literal">default</span>: <span class="keyword">throw</span> undefined error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
 <p><strong>interpolation</strong></p>
 <ul>
-<li><strong>how to interpotate between such 4 values</strong>: 4 values (a1,a2,b1,b2), firstly interpolate between a1 and a2 which produces v1, secondly interpolate between b1 and b2 which produces v2, finally interpolate v1 and v2 which produces v, the interpolated value.</li>
-<li><strong>which interpolation function should be used</strong>: if we use linear interplation to get our <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span></span></span></span> in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>p</mi></msub><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><mi>t</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mn>2</mn></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v_p = a_1 + t (a_2 - a_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.73333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, there will be a “hard transition” between 3 points (x=0,1,2, while y=2,0,1.5)</li>
+<li><strong>how to interpotate between such 4 values</strong>: 4 values
+(a1,a2,b1,b2), firstly interpolate between a1 and a2 which produces v1,
+secondly interpolate between b1 and b2 which produces v2, finally
+interpolate v1 and v2 which produces v, the interpolated value.</li>
+<li><strong>which interpolation function should be used</strong>: if we
+use linear interplation to get our <span class="math inline">\(t\)</span> in <span class="math inline">\(v_p =
+a_1 + t (a_2 - a_1)\)</span>, there will be a "hard transition" between
+3 points (x=0,1,2, while y=2,0,1.5)</li>
 </ul>
-<p><img lazyload alt="image" data-src="1695314437553.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1695314437553.png">
+<figcaption aria-hidden="true">1695314437553</figcaption>
+</figure>
 <p>but if we use an unlinear method, it will be smoothed</p>
-<p><img lazyload alt="image" data-src="1695314441924.png"></p>
-<p>the normally used interpolation function is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><msup><mi>t</mi><mn>5</mn></msup><mo>−</mo><mn>15</mn><msup><mi>t</mi><mn>4</mn></msup><mo>+</mo><mn>10</mn><msup><mi>t</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">6t^5 - 15t^4 + 10t^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>, the image is:</p>
-<p><img lazyload alt="image" data-src="1695314653794.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1695314441924.png">
+<figcaption aria-hidden="true">1695314441924</figcaption>
+</figure>
+<p>the normally used interpolation function is <span class="math inline">\(6t^5 - 15t^4 + 10t^3\)</span>, the image is:</p>
+<figure>
+<img lazyload alt="image" data-src="1695314653794.png">
+<figcaption aria-hidden="true">1695314653794</figcaption>
+</figure>
 </blockquote>
 <blockquote>
 <p><strong>frequency</strong></p>
 <ul>
-<li><strong>what dose frequency means in Perlin noise</strong>: consider this situation: what is the interpolate value when our target pixel happens to be the bottom left grid point? ZERO. because the inputVector is zero and thus all dot products are zero. to solve ths issue, we generallt multiply the inputs target pixel by <em>a small value called frequency</em>.</li>
+<li><strong>what dose frequency means in Perlin noise</strong>: consider
+this situation: what is the interpolate value when our target pixel
+happens to be the bottom left grid point? ZERO. because the inputVector
+is zero and thus all dot products are zero. to solve ths issue, we
+generallt multiply the inputs target pixel by <em>a small value called
+frequency</em>.</li>
 </ul>
 </blockquote>
 <blockquote>
 <p><strong>amplitude</strong></p>
 <ul>
-<li><strong>what dose amplitude means in Perlin noise</strong>: this will be used in following section. amplitude is the multiplier before one item.</li>
+<li><strong>what dose amplitude means in Perlin noise</strong>: this
+will be used in following section. amplitude is the multiplier before
+one item.</li>
 </ul>
 </blockquote>
 <blockquote>
 <p><strong>octave</strong></p>
 <ul>
-<li><strong>what dose octave means in Perlin noise</strong>: this will also be used in following section. when one layer has a frequency that is double the frequency of the previous layer, this layer is called an octave.</li>
+<li><strong>what dose octave means in Perlin noise</strong>: this will
+also be used in following section. when one layer has a frequency that
+is double the frequency of the previous layer, this layer is called an
+octave.</li>
 </ul>
 </blockquote>
-<h4 id="more"><a class="markdownIt-Anchor" href="#more"></a> More?</h4>
+<h4 id="more">More?</h4>
 <blockquote>
 <p><strong>FBM: Fractal brownian motion</strong></p>
-<p><img lazyload alt="image" data-src="1695315613281.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1695315613281.png">
+<figcaption aria-hidden="true">1695315613281</figcaption>
+</figure>
 <p>obviously, the left is better.</p>
 <ul>
-<li>the left image uses FBM to simulate the terrains in real world. but…how?</li>
+<li>the left image uses FBM to simulate the terrains in real world.
+but...how?</li>
 </ul>
-<p><img lazyload alt="image" data-src="1695317070446.png"></p>
+<figure>
+<img lazyload alt="image" data-src="1695317070446.png">
+<figcaption aria-hidden="true">1695317070446</figcaption>
+</figure>
 <ul>
-<li>so the high frequencies and low amplitudes generate more details than just one single layer, we can keep changing the frequencies and amplitudes in a for-loop, and add them together.</li>
+<li>so the high frequencies and low amplitudes generate more details
+than just one single layer, we can keep changing the frequencies and
+amplitudes in a for-loop, and add them together.</li>
 </ul>
 </blockquote>
 
@@ -461,7 +525,7 @@ Perlin noise use <strong>dot product</strong> between 2 vectors to get 4 corners
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#perlin-noise"><span class="nav-number">1.</span> <span class="nav-text"> Perlin Noise</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#generation"><span class="nav-number">1.1.</span> <span class="nav-text"> Generation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#discussion"><span class="nav-number">1.2.</span> <span class="nav-text"> Discussion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more"><span class="nav-number">1.3.</span> <span class="nav-text"> More?</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#perlin-noise"><span class="nav-number">1.</span> <span class="nav-text">Perlin Noise</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#generation"><span class="nav-number">1.1.</span> <span class="nav-text">Generation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#discussion"><span class="nav-number">1.2.</span> <span class="nav-text">Discussion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more"><span class="nav-number">1.3.</span> <span class="nav-text">More?</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -638,9 +702,24 @@ Perlin noise use <strong>dot product</strong> between 2 vectors to get 4 corners
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
