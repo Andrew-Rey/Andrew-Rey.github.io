@@ -177,23 +177,6 @@
     
         <section class="archive-item">
             <div class="archive-item-header">
-                <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[1]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2023/06/13/Algorithm/ds/"
-                        >【算法】基本数据结构</a>
-                        <span class="article-date">06-13</span>
-                    </li>
-                
-            </ul>
-        </section>
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
                 <span class="archive-year">2022</span>
                 <span class="archive-year-post-count">[1]</span>
             </div>
@@ -202,7 +185,7 @@
                     <li class="article-item">
                         <a class="article-title"
                            href="/2022/04/06/Algorithm/fft/"
-                        >【算法】快速傅里叶变换$FFT$</a>
+                        >算法 | 快速傅里叶变换FFT</a>
                         <span class="article-date">04-06</span>
                     </li>
                 
@@ -367,9 +350,24 @@
 
 <div class="post-scripts">
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

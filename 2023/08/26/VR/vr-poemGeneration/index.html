@@ -200,7 +200,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-10-08 15:45:01</span>
+        <span class="pc">2023-10-11 21:09:47</span>
     </span>
     
     
@@ -235,7 +235,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>913 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1k Words</span>
         </span>
     
     
@@ -288,10 +288,29 @@
 </ul></li>
 <li>场景生成模块
 <ul>
-<li><strong>不会真要为每一首诗单独创建一个场景吧！</strong></li>
+<li>不会真要为每一首诗单独创建一个场景吧</li>
 <li>目前的方案是把场景分为主要场景和次要场景，主要场景根据诗词里面的特色单独人工搭建，次要场景随机生成</li>
 </ul></li>
 </ul>
+<h2 id="第五六周">第五/六周</h2>
+<blockquote>
+<p><strong>主要还是重构代码的工作</strong>：发现了一些更利于扩展的项目结构
+<strong>问题</strong></p>
+<ul>
+<li>由近及远生成内容</li>
+<li>作用于全局的内容、作用于局部的内容生成方式不同</li>
+<li>地形的功能划分（山地、丘陵、平原、湖泊）</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>论文</strong></p>
+<ul>
+<li>IEEE VR：<a class="link" target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3197517.3201294">Towards Virtual
+Reality Infinite Walking: Dynamic Saccadic Redirection<i class="fas fa-external-link-alt"></i></a>(ACM
+Transactions on Graphics, 2018), <a class="link" target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3385956.3422091">An Open Framework
+for Infinite Walking With Saccadic Redirection<i class="fas fa-external-link-alt"></i></a>(ARST)</li>
+</ul>
+</blockquote>
 <h2 id="第四周">第四周</h2>
 <blockquote>
 <p><strong>重写了地形生成的代码</strong></p>
@@ -444,13 +463,13 @@ Generator）将模型逐个转化（已完成）并保存为prefab</li>
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/08/27/Unity/SteamVR/"
+                               href="/2023/09/21/Math/PerlinNoise/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">【SteamVR】自学</span>
+                                <span class="post-nav-title-item">PCG | Perlin Noise</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
@@ -482,7 +501,7 @@ Generator）将模型逐个转化（已完成）并保存为prefab</li>
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#todo-list"><span class="nav-number">1.</span> <span class="nav-text">TODO List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%91%A8"><span class="nav-number">2.</span> <span class="nav-text">第四周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%91%A8"><span class="nav-number">3.</span> <span class="nav-text">第三周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%91%A8"><span class="nav-number">4.</span> <span class="nav-text">第二周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%91%A8"><span class="nav-number">5.</span> <span class="nav-text">第一周</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#todo-list"><span class="nav-number">1.</span> <span class="nav-text">TODO List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E5%85%AD%E5%91%A8"><span class="nav-number">2.</span> <span class="nav-text">第五&#x2F;六周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E5%91%A8"><span class="nav-number">3.</span> <span class="nav-text">第四周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E5%91%A8"><span class="nav-number">4.</span> <span class="nav-text">第三周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%91%A8"><span class="nav-number">5.</span> <span class="nav-text">第二周</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%91%A8"><span class="nav-number">6.</span> <span class="nav-text">第一周</span></a></li></ol>
     </div>
 </div>
 
@@ -659,9 +678,24 @@ Generator）将模型逐个转化（已完成）并保存为prefab</li>
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
