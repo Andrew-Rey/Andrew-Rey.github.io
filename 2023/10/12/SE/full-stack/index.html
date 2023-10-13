@@ -200,7 +200,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-10-12 23:29:59</span>
+        <span class="pc">2023-10-13 20:13:15</span>
     </span>
     
     
@@ -243,12 +243,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>736 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.7k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
         </span>
     
     
@@ -266,13 +266,15 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="full-stack-quick-start">Full-Stack Quick Start</h1>
-<p>SpringBoot + Vue development</p>
+                <p>SpringBoot + Vue development</p>
 <ul>
 <li>JavaEE: SpringBoot + MyBatis Plus</li>
 <li>Web front end: Vue + ElementUI</li>
 </ul>
-<hr>
+<span id="more"></span>
+<blockquote>
+
+</blockquote>
 <h2 id="configure-environment">configure environment</h2>
 <ul>
 <li>jdk</li>
@@ -494,6 +496,207 @@ handling data such as
 conflict with method parameters</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoController</span> &#123;</span><br><span class="line">  <span class="meta">@RequestMapping(value=&quot;/demo&quot;, method=RequestMethod.GET)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">myDemo</span><span class="params">(<span class="meta">@RequestParam(&quot;nickname&quot;, required = false)</span> String nickname, String phone)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;nickname: &quot;</span> + nickname + <span class="string">&quot; phone: &quot;</span> + phone;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="static-resources-visit">static resources visit</h3>
+<ul>
+<li>put self static resources here</li>
+<li>visit by <code>http://localhost:8080/test.png</code></li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1697173796277.png">
+<figcaption aria-hidden="true">1697173796277</figcaption>
+</figure>
+<ul>
+<li>modify static path pattern: add
+<code>spring.mvc.static-path-pattern=/images/**</code> to
+<code>application.properties</code></li>
+</ul>
+<h3 id="upload-files">upload files</h3>
+<ul>
+<li>front end form
+<ul>
+<li>modify <code>enctype="multipart/form-data"</code>, otherwise can't
+upload files</li>
+</ul></li>
+<li><code>tomcat</code> limits the size of files by default:
+<ul>
+<li>single file &lt; <code>1MB</code></li>
+<li>single request &lt; <code>10MB</code></li>
+<li>modify the size</li>
+</ul></li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.servlet.multipart.max-file-size</span>=<span class="string">10MB</span></span><br><span class="line"><span class="attr">spring.servlet.multipart.max-request-size</span>=<span class="string">10MB</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>receiver data-type: <code>MultipartFile</code></li>
+<li>receiver writing method: <code>transferTo</code></li>
+</ul>
+<p><strong>attention:</strong> the parameter name should be same with
+front end form name</p>
+<h3 id="interceptor">interceptor</h3>
+<blockquote>
+<p>situation: use every function after login judge login state in ANY
+controller -&gt; code repeating extract to intercepter</p>
+</blockquote>
+<ul>
+<li><p>authority checking</p></li>
+<li><p>performance monitoring</p></li>
+<li><p>general behaviour: reading cookie to get user information and put
+it to request</p></li>
+<li><p>Springboot interface: <code>HandlerInterceptor</code></p>
+<ul>
+<li><code>preHandle</code></li>
+<li><code>postHandle</code></li>
+<li><code>afterCompletion</code></li>
+</ul></li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1697177213073.png">
+<figcaption aria-hidden="true">1697177213073</figcaption>
+</figure>
+<p><strong>how to define</strong></p>
+<ul>
+<li>extend from system <code>HandlerInterceptor</code></li>
+<li>override parents' method used, usually <code>preHandle</code></li>
+<li>register interceptor</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in com.example.demo.interceptor.LonginInterceptor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LoginInterceptor&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in com.example.demo.config.WebConfig</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> &#123;</span><br><span class="line">        <span class="comment">// interceptor for the path /user/**</span></span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> <span class="title class_">LoginInterceptor</span>()).addPathPatterns(<span class="string">&quot;/user/**&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="build-restful-serve">build RESTful serve</h2>
+<ul>
+<li><p>framework rule</p></li>
+<li><p>popular website software service framework designing
+style</p></li>
+<li><p>basic rule, style</p></li>
+<li><p>every URI maps a kind of resource</p></li>
+<li><p><code>GET</code> for acquiring resources, <code>POST</code> for
+creating/updating resources, <code>PUT</code> for updating resources,
+<code>DELETE</code> for deleting resources</p></li>
+</ul>
+<p><strong>HTTP method</strong></p>
+<figure>
+<img lazyload alt="image" data-src="1697178943507.png">
+<figcaption aria-hidden="true">1697178943507</figcaption>
+</figure>
+<ul>
+<li>just a <strong>style</strong>, not standard requirements</li>
+</ul>
+<p><strong>HTTP state code</strong></p>
+<ul>
+<li>1xx: info</li>
+<li>2xx: success</li>
+<li>3xx: redirection</li>
+<li>4xx: client error</li>
+<li>5xx: server error</li>
+</ul>
+<p><strong>how to write RESTful API</strong></p>
+<ul>
+<li>use tags</li>
+<li>for RESTful framework: every address corresponds a resource, so URI
+is suggested to be no-verb, pure nouns, and these nouns should
+conrresponds to database's sheet
+<ul>
+<li>pass parameters using address: <code>@PathVariable in id</code></li>
+</ul></li>
+</ul>
+<p><strong>Swagger</strong></p>
+<ul>
+<li>generate API document
+<ul>
+<li>description</li>
+<li>debugging</li>
+<li>dynamically</li>
+</ul></li>
+<li>configuration:</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!--in pow.xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.mvc.pathmatch.matching-strategy</span>=<span class="string">ant_path_matcher</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>visit: <code>http://localhost:8080/swagger-ui.html</code></li>
+</ul>
+<p><strong>use swagger notation(tag) add methods docs</strong></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://linkis.apache.org/zh-CN/docs/latest/development/swwager/">swagger
+tag usage<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li>swagger convinent front end developer to look up the apis</li>
+<li>another important thing: swagger page can send requests to debug the
+apis</li>
+</ul>
+<blockquote>
+<p><strong>recommend</strong> springboot 3.0+ is recommended to use
+<code>springdoc</code></p>
+</blockquote>
+<h2 id="mybatis-plus-db-configuration">MyBatis Plus (DB
+configuration)</h2>
+<p><strong>ORM</strong></p>
+<ul>
+<li>Object relation mapping
+<ul>
+<li>handle OOP objects -&gt; DB storage or DB storage -&gt; OOP
+objects</li>
+</ul></li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1697182386692.png">
+<figcaption aria-hidden="true">1697182386692</figcaption>
+</figure>
+<ul>
+<li>MyBatis: ORM frame</li>
+<li>MyBatis-Plus: simpified MyBatis
+<ul>
+<li>use component: <code>mapper</code></li>
+<li>db-related operations: in <code>mapper</code> package</li>
+</ul></li>
+</ul>
+<p><strong>configuration</strong></p>
+<ul>
+<li>add dependencies(<code>pow.xml</code>)
+<ul>
+<li>mybatis-plus</li>
+<li>mysql</li>
+<li>connection pool</li>
+</ul></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--		mybatis-plus dependency--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--		mysql driver--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--		sql connection pool--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>global configuration(<code>application.properties</code>)</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.datasource.type</span>=<span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="attr">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/mydb?userSSL=false</span></span><br><span class="line"><span class="attr">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">spring.datasource.password</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">mybatis-plus.configuration.log-impl</span>=<span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>create MySQL data DB, schema and Tables</li>
+</ul>
+<figure>
+<img lazyload alt="image" data-src="1697187931126.png">
+<figcaption aria-hidden="true">1697187931126</figcaption>
+</figure>
+<ul>
+<li><p>add tags on Activation Class (main class):
+<code>@MapperScan("com.example.demo.mapper")</code>, scan mapper
+packages before running</p></li>
+<li><p>create mapper interface, and implemented by MyBatis (use
+<code>@Mapper</code> tag on the interface, meaning this is a component,
+it will use Dynamic Proxy to instanciate an object with
+<code>@Autowired</code>. And all sql sentences are finished by
+tags)</p></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    <span class="comment">// add declarations, impl by Mybatis</span></span><br><span class="line">    <span class="comment">// query all users</span></span><br><span class="line">    <span class="comment">// find in user db (named mydb), configured in application.properties</span></span><br><span class="line">    <span class="meta">@Select(&quot;select * from user&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">query</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// return type stand for the number of records be inserted</span></span><br><span class="line">    <span class="meta">@Insert(&quot;insert into user values (#&#123;id&#125;, #&#123;username&#125;, #&#123;password&#125;, #&#123;gender&#125;)&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">insert</span><span class="params">(User user)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for a more simply form, namely use MyBatis-Plus, that's all:
+<ul>
+<li>attention that the class name should be the same with your database
+table name, unless you use <a class="link" target="_blank" rel="noopener" href="https://baomidou.com/pages/223848/#tablename">tags<i class="fas fa-external-link-alt"></i></a></li>
+</ul></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>use the mapper to edit database data
+<ul>
+<li>create controller <code>UserController</code> (we have created
+<code>User</code> entity before)</li>
+</ul></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/user&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">query</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.query();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/user&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">insert</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">state</span> <span class="operator">=</span> userMapper.insert(user);</span><br><span class="line">        <span class="keyword">if</span> (state &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;insert fail&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;insert success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>where <code>@Autowired</code> is an injection method, which helps to
+instanciate UserMapper</li>
+</ul>
 
             </div>
 
@@ -577,7 +780,8 @@ conflict with method parameters</li>
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#full-stack-quick-start"><span class="nav-number">1.</span> <span class="nav-text">Full-Stack Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-environment"><span class="nav-number">1.1.</span> <span class="nav-text">configure environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot"><span class="nav-number">1.2.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot-1"><span class="nav-number">1.3.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coding-springboot"><span class="nav-number">1.4.</span> <span class="nav-text">coding springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-development"><span class="nav-number">1.5.</span> <span class="nav-text">web development</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#controller"><span class="nav-number">1.5.1.</span> <span class="nav-text">controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-mapping"><span class="nav-number">1.5.2.</span> <span class="nav-text">router mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameters-passing"><span class="nav-number">1.5.3.</span> <span class="nav-text">parameters passing</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-environment"><span class="nav-number">1.</span> <span class="nav-text">configure environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot"><span class="nav-number">2.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot-1"><span class="nav-number">3.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coding-springboot"><span class="nav-number">4.</span> <span class="nav-text">coding springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-development"><span class="nav-number">5.</span> <span class="nav-text">web development</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#controller"><span class="nav-number">5.1.</span> <span class="nav-text">controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-mapping"><span class="nav-number">5.2.</span> <span class="nav-text">router mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameters-passing"><span class="nav-number">5.3.</span> <span class="nav-text">parameters passing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static-resources-visit"><span class="nav-number">5.4.</span> <span class="nav-text">static resources visit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upload-files"><span class="nav-number">5.5.</span> <span class="nav-text">upload files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interceptor"><span class="nav-number">5.6.</span> <span class="nav-text">interceptor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-restful-serve"><span class="nav-number">6.</span> <span class="nav-text">build RESTful serve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-plus-db-configuration"><span class="nav-number">7.</span> <span class="nav-text">MyBatis Plus (DB
+configuration)</span></a></li></ol>
     </div>
 </div>
 
