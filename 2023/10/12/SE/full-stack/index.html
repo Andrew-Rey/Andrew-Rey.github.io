@@ -11,7 +11,7 @@
         
             Full Stack | Quick Start |
         
-        云边有个小卖部
+        Andrew-Rey
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -24,7 +24,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#a0c49d","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":"醒时相交欢，醉后各分散","font_color":"#faf0e4","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#a0c49d","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":null,"font_color":"#faf0e4","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
@@ -58,7 +58,7 @@
                 </a>
             
             <a class="logo-title" href="/">
-               云边有个小卖部
+               Andrew-Rey
             </a>
         </div>
 
@@ -200,7 +200,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-10-13 20:13:15</span>
+        <span class="pc">2023-10-26 13:28:59</span>
     </span>
     
     
@@ -243,12 +243,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.7k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.1k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>12 Mins</span>
         </span>
     
     
@@ -697,6 +697,58 @@ table name, unless you use <a class="link" target="_blank" rel="noopener" href="
 <li>where <code>@Autowired</code> is an injection method, which helps to
 instanciate UserMapper</li>
 </ul>
+<h2 id="axios">Axios</h2>
+<blockquote>
+<p>a frame of front-end requesting - front-end needs data, browser sends
+HTTP requests to server to fetch data, Vue bonds data - based on
+<code>Ajax</code>, <code>promise</code> - use
+<code>XMLHttpRequests</code> to send web requests, convert
+<code>json</code> data automatically <code>npm install axios</code></p>
+</blockquote>
+<p><a class="link" target="_blank" rel="noopener" href="https://axios-http.com/docs/intro">帮助文档<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="send-web-requests">send web requests</h3>
+<p><strong>send <code>GET</code> requests</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;/user?ID=12345&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// handle successful situations</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// handle failures</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// always execute</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the same with:</span></span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;/user&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">params</span>: &#123;</span><br><span class="line">      <span class="attr">ID</span>: <span class="number">12345</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// handle successful situations</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// handle failures</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// always execute</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>send <code>POST</code> requests</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// request body is the second parameter</span></span><br><span class="line">axios.<span class="title function_">post</span>(<span class="string">&#x27;/user&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">firstName</span>: <span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">    <span class="attr">lastName</span>: <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// handle successful situations</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// handle failures</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// always execute</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="when-to-send-requests">when to send requests</h3>
+<p><code>created:function()&#123;&#125;</code>: invoked when creating the
+components</p>
+<p><code>mounted:function()&#123;&#125;</code>: invoked when mounting the
+components</p>
+<p><strong>cross-domain</strong></p>
+<ul>
+<li>usually appears in front-back end separation projects</li>
+<li><strong>same-origin-policy</strong>: the basic and core security
+function of browsers
+<ul>
+<li>same-origin, i.e. same-domain, where two page have the same
+protocol, host and port</li>
+</ul></li>
+<li><strong>cross-domain</strong>: request url appears when any of
+protocol, host and port is different from current page url
+<ul>
+<li>can't read cross-domain cookies</li>
+<li>can't send <code>Ajax</code> requests to cross-domain addresses</li>
+</ul></li>
+<li><strong>authorization</strong> to solve cross-domain questions
+<ul>
+<li>CORS(cross-origin resource sharing): designed by W3C</li>
+<li>simple requests/complex requests</li>
+<li>back-end server realize CORS interfaces</li>
+</ul></li>
+</ul>
+<p>for single controller: <code>@CrossOrigin</code></p>
+<p>for global controler: add configuration class</p>
+<ul>
+<li>send requests when the component is created:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// use arrow function: &quot;this&quot; points to parents&#x27; &quot;this&quot;, able to visit parameters of parents &quot;tableData&quot;</span></span><br><span class="line"><span class="attr">created</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  axios.<span class="title function_">get</span>(<span class="string">&quot;http://localhost:8088/user/findAll&quot;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tableData</span> = response.<span class="property">data</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">tableData</span>: []</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>set base url</strong></p>
+<ul>
+<li><code>axios.defualts.baseURL = 'http://api.com'</code></li>
+<li><code>app.config.globalProperties.$http = axios</code></li>
+</ul>
 
             </div>
 
@@ -773,7 +825,7 @@ instanciate UserMapper</li>
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/10/10/VR/paper-look-through/"
+                               href="/2023/10/10/Papers/paper-look-through/"
                             >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">Paper Reading | Top Transactions and Top Conferences</span>
@@ -796,7 +848,7 @@ instanciate UserMapper</li>
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-environment"><span class="nav-number">1.</span> <span class="nav-text">configure environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot"><span class="nav-number">2.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot-1"><span class="nav-number">3.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coding-springboot"><span class="nav-number">4.</span> <span class="nav-text">coding springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-development"><span class="nav-number">5.</span> <span class="nav-text">web development</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#controller"><span class="nav-number">5.1.</span> <span class="nav-text">controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-mapping"><span class="nav-number">5.2.</span> <span class="nav-text">router mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameters-passing"><span class="nav-number">5.3.</span> <span class="nav-text">parameters passing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static-resources-visit"><span class="nav-number">5.4.</span> <span class="nav-text">static resources visit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upload-files"><span class="nav-number">5.5.</span> <span class="nav-text">upload files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interceptor"><span class="nav-number">5.6.</span> <span class="nav-text">interceptor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-restful-serve"><span class="nav-number">6.</span> <span class="nav-text">build RESTful serve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-plus-db-configuration"><span class="nav-number">7.</span> <span class="nav-text">MyBatis Plus (DB
-configuration)</span></a></li></ol>
+configuration)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios"><span class="nav-number">8.</span> <span class="nav-text">Axios</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#send-web-requests"><span class="nav-number">8.1.</span> <span class="nav-text">send web requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-to-send-requests"><span class="nav-number">8.2.</span> <span class="nav-text">when to send requests</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -808,7 +860,7 @@ configuration)</span></a></li></ol>
 
                 
             </div>
-
+ 
         </div>
 
         <div class="page-main-content-bottom">
@@ -973,24 +1025,9 @@ configuration)</span></a></li></ol>
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div>
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
