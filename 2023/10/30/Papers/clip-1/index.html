@@ -276,12 +276,15 @@
 <span id="more"></span>
 <p><strong>abstract</strong></p>
 <ul>
-<li>之前的视觉模型训练：先有一个<strong>固定的、提前定义好的物体类别</strong>集合，模型去预测这些定义好的类别来完成训练。
+<li>
+<p>之前的视觉模型训练：先有一个<strong>固定的、提前定义好的物体类别</strong>集合，模型去预测这些定义好的类别来完成训练。</p>
 <ul>
 <li>收集数据集简单，模型训练简单</li>
 <li>有限制的监督信号，限制了模型本身的泛化性</li>
-</ul></li>
-<li>CLIP
+</ul>
+</li>
+<li>
+<p>CLIP</p>
 <ul>
 <li>直接从自然语言得到监督信号</li>
 <li>范围广，语言描述过的物体就可以被识别到</li>
@@ -294,18 +297,25 @@
 <li>能扩展到新的任务</li>
 <li>大多数迁移效果好</li>
 <li><a class="link" target="_blank" rel="noopener" href="https://github.com/openai/CLIP">开源了预训练模型，只公开了推理的代码，未公开预训练代码<i class="fas fa-external-link-alt"></i></a></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p><strong>my focus</strong></p>
 <ul>
-<li>text2image
+<li>
+<p>text2image</p>
 <ul>
 <li>Downstream task</li>
 <li>forzen clip model and train generator</li>
 <li>encode text</li>
-</ul></li>
-<li>text: poems</li>
-<li>images: height maps, grey-scale</li>
+</ul>
+</li>
+<li>
+<p>text: poems</p>
+</li>
+<li>
+<p>images: height maps, grey-scale</p>
+</li>
 </ul>
 
             </div>
@@ -582,9 +592,24 @@
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

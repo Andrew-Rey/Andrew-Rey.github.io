@@ -239,7 +239,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>213 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>210 Words</span>
         </span>
     
     
@@ -262,84 +262,75 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>"a glance of RuoYi-vue framework"</p>
+                <p>“a glance of RuoYi-vue framework”</p>
 <p><a class="link" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HT4y1d7oA/?spm_id_from=333.337.top_right_bar_window_history.content.click&amp;vd_source=698de1256a0048d0fd59d2f1bc3e109b">ref<i class="fas fa-external-link-alt"></i></a></p>
 <span id="more"></span>
-<h2 id="configuration">configuration</h2>
+<h2 id="configuration"><a class="markdownIt-Anchor" href="#configuration"></a> configuration</h2>
 <ul>
 <li>mysql configuration
 <ul>
 <li>use datagrip, run scrips in <code>sql/*.sql</code></li>
 <li>construct tables</li>
 <li>!!IMPORTANT!! use <code>utf8</code> when creating your database</li>
-<li>edit configuration file
-<code>ruoyi-admin/src/main/resources/application-druid.yml</code> to
-your database</li>
-</ul></li>
+<li>edit configuration file <code>ruoyi-admin/src/main/resources/application-druid.yml</code> to your database</li>
+</ul>
+</li>
 <li>start redis server
 <ul>
 <li>in cmd: <code>redis-server</code></li>
-<li>edit configuration file
-<code>ruoyi-admin/src/main/resources/application.yml</code> to your
-server port</li>
-</ul></li>
+<li>edit configuration file <code>ruoyi-admin/src/main/resources/application.yml</code> to your server port</li>
+</ul>
+</li>
 <li>start back-end
 <ul>
-<li>in <code>ruoyi-admin/</code> find <code>RuoYiApplication.java</code>
-and run it</li>
+<li>in <code>ruoyi-admin/</code> find <code>RuoYiApplication.java</code> and run it</li>
 <li>success when visiting <code>http://localhost:8080</code></li>
-</ul></li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1699079331780.png">
-<figcaption aria-hidden="true">1699079331780</figcaption>
-</figure>
+</li>
+</ul>
+<p><img lazyload alt="image" data-src="1699079331780.png"></p>
 <ul>
 <li>start front-end
 <ul>
 <li>download the dependencies</li>
 <li>in <code>ruoyi-ui/</code></li>
 <li><code>npm run dev</code></li>
-</ul></li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1699079479931.png">
-<figcaption aria-hidden="true">1699079479931</figcaption>
-</figure>
+</li>
+</ul>
+<p><img lazyload alt="image" data-src="1699079479931.png"></p>
 <blockquote>
-<p>success when the validation code image appears -&gt;
-front-back-end</p>
+<p>success when the validation code image appears -&gt; front-back-end</p>
 </blockquote>
-<h2 id="validation-code">validation code</h2>
+<h2 id="validation-code"><a class="markdownIt-Anchor" href="#validation-code"></a> validation code</h2>
 <blockquote>
 <p>the first interactions between front and back</p>
 </blockquote>
 <blockquote>
-<p>back-end generate a expr: such as <code>1+1=2</code> generate
-<code>1+1=?@2</code>, where <code>@</code> divides question and anwser -
-give <code>1+1=?</code> to front - store <code>2</code> in redis
-(会给前端传一份以确定是哪个key，放在隐藏域，用户提交表单) - confirm user
-input and redis anwser</p>
+<p>back-end generate a expr: such as <code>1+1=2</code> generate <code>1+1=?@2</code>, where <code>@</code> divides question and anwser</p>
+<ul>
+<li>give <code>1+1=?</code> to front</li>
+<li>store <code>2</code> in redis (会给前端传一份以确定是哪个key，放在隐藏域，用户提交表单)</li>
+<li>confirm user input and redis anwser</li>
+</ul>
 </blockquote>
-<h3 id="front-end">front-end</h3>
+<h3 id="front-end"><a class="markdownIt-Anchor" href="#front-end"></a> front-end</h3>
 <ul>
 <li>cross-field
 <ul>
 <li>反向代理，映射到后端</li>
-</ul></li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1699081297521.png">
-<figcaption aria-hidden="true">1699081297521</figcaption>
-</figure>
+</li>
+</ul>
+<p><img lazyload alt="image" data-src="1699081297521.png"></p>
 <ul>
 <li>将<code>/dev-api</code>替换为空，再映射到<code>8080</code>
 <ul>
-<li>例如：<code>http://localhost:80/dev-api/captchaImage</code> -&gt;
-<code>http://localhost:8080/captchaImage</code></li>
-</ul></li>
+<li>例如：<code>http://localhost:80/dev-api/captchaImage</code> -&gt; <code>http://localhost:8080/captchaImage</code></li>
 </ul>
-<h3 id="back-end">back-end</h3>
+</li>
+</ul>
+<h3 id="back-end"><a class="markdownIt-Anchor" href="#back-end"></a> back-end</h3>
 
             </div>
 
@@ -434,7 +425,7 @@ input and redis anwser</p>
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configuration"><span class="nav-number">1.</span> <span class="nav-text">configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#validation-code"><span class="nav-number">2.</span> <span class="nav-text">validation code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#front-end"><span class="nav-number">2.1.</span> <span class="nav-text">front-end</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#back-end"><span class="nav-number">2.2.</span> <span class="nav-text">back-end</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configuration"><span class="nav-number">1.</span> <span class="nav-text"> configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#validation-code"><span class="nav-number">2.</span> <span class="nav-text"> validation code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#front-end"><span class="nav-number">2.1.</span> <span class="nav-text"> front-end</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#back-end"><span class="nav-number">2.2.</span> <span class="nav-text"> back-end</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -611,9 +602,24 @@ input and redis anwser</p>
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

@@ -270,26 +270,29 @@
 <p>项目的可维护性和可复用性，项目规范，团队开发</p>
 </blockquote>
 <span id="more"></span>
-<h2 id="单一职责原则">单一职责原则</h2>
+<h2 id="单一职责原则"><a class="markdownIt-Anchor" href="#单一职责原则"></a> 单一职责原则</h2>
 <blockquote>
-<p>一个对象应该只包含单一职责，并且该职责被完整地封装在一个类中 -
-用于控制类的粒度大小</p>
+<p>一个对象应该只包含单一职责，并且该职责被完整地封装在一个类中</p>
+<ul>
+<li>用于控制类的粒度大小</li>
+</ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">People</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>(): <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">riding</span>(): <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">cooking</span>(): <span class="keyword">pass</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <ul>
 <li>臃肿：修改任意行为都会修改<code>People</code>类</li>
-<li><code>People</code>拥有
-<strong>不止一个引起它变化的原因</strong></li>
+<li><code>People</code>拥有 <strong>不止一个引起它变化的原因</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Programmer</span>(<span class="title class_ inherited__">object</span>): <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rider</span>(<span class="title class_ inherited__">object</span>): <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Chef</span>(<span class="title class_ inherited__">object</span>): <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>类的
-<strong>粒度更细</strong>，根据不同业务划分，采用单一职责原则，高内聚低耦合</li>
+<li>类的 <strong>粒度更细</strong>，根据不同业务划分，采用单一职责原则，高内聚低耦合</li>
 </ul>
-<h2 id="开闭原则">开闭原则</h2>
+<h2 id="开闭原则"><a class="markdownIt-Anchor" href="#开闭原则"></a> 开闭原则</h2>
 <blockquote>
-<p>软件实体应当对扩展开放，对修改关闭 - 扩展开放：对提供方而言 -
-修改关闭：对调用方而言</p>
+<p>软件实体应当对扩展开放，对修改关闭</p>
+<ul>
+<li>扩展开放：对提供方而言</li>
+<li>修改关闭：对调用方而言</li>
+</ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="comment"># define abstract class or interface</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IProgrammer</span>(metaclass=ABCMeta):</span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>(): <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">JavaProgrammer</span>(<span class="title class_ inherited__">IProgrammer</span>): </span><br><span class="line">    <span class="comment"># override</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>():</span><br><span class="line">        java()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonProgrammer</span>(<span class="title class_ inherited__">IProgrammer</span>):</span><br><span class="line">    <span class="comment"># override</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>():</span><br><span class="line">        python()</span><br></pre></td></tr></table></figure>
 <ul>
@@ -297,26 +300,29 @@
 <ul>
 <li>扩展开放：开放了统一的接口<code>coding</code>，不同程序员自由决定如何编程</li>
 <li>修改关闭：具体程序员如何重写<code>coding</code>是自己负责，不受别人干扰</li>
-</ul></li>
 </ul>
-<h2 id="里氏替换原则">里氏替换原则</h2>
+</li>
+</ul>
+<h2 id="里氏替换原则"><a class="markdownIt-Anchor" href="#里氏替换原则"></a> 里氏替换原则</h2>
 <blockquote>
-<p>所有引用基类的地方必须能透明使用其子类的对象（子类能扩展父类的功能）
--
-子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法（既然是继承于父类，子类已经不具有父类的原本行为了，如果有这样的需求，一是可以取消继承，二是可以重新写一个方法）
-- 子类可以增加自己特有的方法 -
-当子类方法重载父类方法时，方法的前置条件（入参）要比父类更加宽松 -
-当子类方法重载父类方法时，方法的后置条件（返回值）要比父类更加严格或一样</p>
+<p>所有引用基类的地方必须能透明使用其子类的对象（子类能扩展父类的功能）</p>
+<ul>
+<li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法（既然是继承于父类，子类已经不具有父类的原本行为了，如果有这样的需求，一是可以取消继承，二是可以重新写一个方法）</li>
+<li>子类可以增加自己特有的方法</li>
+<li>当子类方法重载父类方法时，方法的前置条件（入参）要比父类更加宽松</li>
+<li>当子类方法重载父类方法时，方法的后置条件（返回值）要比父类更加严格或一样</li>
+</ul>
 </blockquote>
-<h2 id="依赖倒转原则">依赖倒转原则</h2>
+<h2 id="依赖倒转原则"><a class="markdownIt-Anchor" href="#依赖倒转原则"></a> 依赖倒转原则</h2>
 <blockquote>
-<p>高层模块不依赖于底层模块，它们都应该依赖抽线。抽象不应依赖于细节，细节应该依赖于抽象
-- Spring框架</p>
+<p>高层模块不依赖于底层模块，它们都应该依赖抽线。抽象不应依赖于细节，细节应该依赖于抽象</p>
+<ul>
+<li>Spring框架</li>
+</ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserMapper</span>(<span class="title class_ inherited__">object</span>): </span><br><span class="line">    <span class="comment"># use CRUD</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="comment"># use methods in UserMapper</span></span><br><span class="line">    user_mapper = UserMapper()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserController</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="comment"># use methods in UserService</span></span><br><span class="line">    user_service = UserService()</span><br></pre></td></tr></table></figure>
 <ul>
-<li>上述代码结构好，但是如果底层逻辑（例如<code>UserService</code>）发生改变，则上层逻辑也要跟着改变，层次分明但
-<strong>耦合度高</strong></li>
+<li>上述代码结构好，但是如果底层逻辑（例如<code>UserService</code>）发生改变，则上层逻辑也要跟着改变，层次分明但 <strong>耦合度高</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserMapper</span>(metaclass=ABCMeta): </span><br><span class="line">    <span class="comment"># provides abstract interfaces only</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserMapperImpl</span>(<span class="title class_ inherited__">UserMapper</span>):</span><br><span class="line">    <span class="comment"># implements interfaces of UserMapper</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span>(metaclass=ABCMeta):</span><br><span class="line">    <span class="comment"># provides abstract interfaces only</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserServiceImpl</span>(<span class="title class_ inherited__">UserService</span>):</span><br><span class="line">    <span class="comment"># use dependency injection to instantiate UserMapper such as:</span></span><br><span class="line">    self.user_mapper = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_user_mapper</span>(<span class="params">user_mapper: UserMapper</span>): <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserController</span>():</span><br><span class="line">    <span class="comment"># use dependency injection to instantiate UserService such as:</span></span><br><span class="line">    self.user_service = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_user_service</span>(<span class="params">user_service: UserService</span>): <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -325,32 +331,45 @@
 <li>使用了 <strong>依赖注入</strong></li>
 <li>降低了类之间的耦合度</li>
 </ul>
-<h2 id="接口隔离原则">接口隔离原则</h2>
+<h2 id="接口隔离原则"><a class="markdownIt-Anchor" href="#接口隔离原则"></a> 接口隔离原则</h2>
 <blockquote>
-<p>客户端不应依赖那些它不需要的接口 - 对接口的细化 -
-定义接口时要注意接口的粒度</p>
+<p>客户端不应依赖那些它不需要的接口</p>
+<ul>
+<li>对接口的细化</li>
+<li>定义接口时要注意接口的粒度</li>
+</ul>
 </blockquote>
-<h2 id="合成复用原则">合成复用原则</h2>
+<h2 id="合成复用原则"><a class="markdownIt-Anchor" href="#合成复用原则"></a> 合成复用原则</h2>
 <blockquote>
-<p>优先使用对象组合，而不是通过继承来达到复用的目的 - 核心是委派 -
-在一个新的对象里面使用一些已有的对象，使之成为新对象的一部分，新的对象通过向这些对象的委派达到已有功能复用的目的</p>
+<p>优先使用对象组合，而不是通过继承来达到复用的目的</p>
+<ul>
+<li>核心是委派</li>
+<li>在一个新的对象里面使用一些已有的对象，使之成为新对象的一部分，新的对象通过向这些对象的委派达到已有功能复用的目的</li>
+</ul>
 </blockquote>
 <ul>
-<li>继承可以实现复用，但
+<li>
+<p>继承可以实现复用，但</p>
 <ul>
 <li>耦合度高</li>
 <li>子类得到父类细节（某些字段或方法），不安全</li>
-</ul></li>
-<li>组合实现复用
+</ul>
+</li>
+<li>
+<p>组合实现复用</p>
 <ul>
 <li>考虑函数传参，用的时候才传参</li>
 <li>考虑成为成员变量，构造时指定</li>
-</ul></li>
 </ul>
-<h2 id="迪米特法则最少知识原则">迪米特法则/最少知识原则</h2>
+</li>
+</ul>
+<h2 id="迪米特法则最少知识原则"><a class="markdownIt-Anchor" href="#迪米特法则最少知识原则"></a> 迪米特法则/最少知识原则</h2>
 <blockquote>
-<p>每一个软件单位对其它单位都只有最少的知识，而且局限于那些与本单位密切相关的软件单位
-- 一个模块与其它模块交互越少越好 - 降低耦合度</p>
+<p>每一个软件单位对其它单位都只有最少的知识，而且局限于那些与本单位密切相关的软件单位</p>
+<ul>
+<li>一个模块与其它模块交互越少越好</li>
+<li>降低耦合度</li>
+</ul>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">main_task</span>():</span><br><span class="line">    my_secret = Secret()</span><br><span class="line">    test = Test()</span><br><span class="line">    <span class="comment"># test_start may need one of the property of Secret</span></span><br><span class="line">    test.test_start(my_secret)</span><br><span class="line"></span><br><span class="line"><span class="comment"># in Test</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_start</span>(<span class="params">my_secret: Secret</span>):</span><br><span class="line">    <span class="built_in">print</span>(my_secret.sth)</span><br></pre></td></tr></table></figure>
 <ul>
@@ -454,7 +473,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">单一职责原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">开闭原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">里氏替换原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text">依赖倒转原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="nav-number">5.</span> <span class="nav-text">接口隔离原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="nav-number">6.</span> <span class="nav-text">合成复用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99%E6%9C%80%E5%B0%91%E7%9F%A5%E8%AF%86%E5%8E%9F%E5%88%99"><span class="nav-number">7.</span> <span class="nav-text">迪米特法则&#x2F;最少知识原则</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text"> 单一职责原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text"> 开闭原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text"> 里氏替换原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text"> 依赖倒转原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="nav-number">5.</span> <span class="nav-text"> 接口隔离原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="nav-number">6.</span> <span class="nav-text"> 合成复用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99%E6%9C%80%E5%B0%91%E7%9F%A5%E8%AF%86%E5%8E%9F%E5%88%99"><span class="nav-number">7.</span> <span class="nav-text"> 迪米特法则&#x2F;最少知识原则</span></a></li></ol>
     </div>
 </div>
 
@@ -631,9 +650,24 @@
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

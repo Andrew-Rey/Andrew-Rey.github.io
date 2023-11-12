@@ -250,7 +250,7 @@
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <h3 id="welcome-to-my-site">Welcome to my Site</h3>
+                        <h3 id="welcome-to-my-site"><a class="markdownIt-Anchor" href="#welcome-to-my-site"></a> Welcome to my Site</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seu.chien_shiung_wu <span class="keyword">as</span> csw</span><br><span class="line"></span><br><span class="line">profile = csw.register(<span class="string">&quot;Andrew-Rey&quot;</span>).time(<span class="string">&quot;2020-9&quot;</span>)</span><br><span class="line"></span><br><span class="line">profile.study = <span class="string">&quot;cs-vr&quot;</span></span><br><span class="line">profile.current_work = [<span class="string">&quot;poem2scene&quot;</span>]</span><br><span class="line">profile.published = []  <span class="comment"># but will be more and more</span></span><br><span class="line"></span><br><span class="line">csw.graduate(profile).time(<span class="string">&quot;2024-6&quot;</span>)</span><br></pre></td></tr></table></figure>
                     
                 </div>
@@ -308,14 +308,7 @@
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <p>"...Introductory books on programming tend to contain lots of
-materials about the authors' favorate application discipline: puzzles,
-mathematics, physics, music and so on. <strong>Such material is natural
-because programming is obviously useful in all these areas, but it also
-dstracts from the essential elements of programming.</strong> Hence, we
-have made every attempt to minimize the use of knowledge from other
-areas so that <strong>we can focus on what computer science can teach
-you about computational problems solving.</strong>"</p>
+                        <p>“…Introductory books on programming tend to contain lots of materials about the authors’ favorate application discipline: puzzles, mathematics, physics, music and so on. <strong>Such material is natural because programming is obviously useful in all these areas, but it also dstracts from the essential elements of programming.</strong> Hence, we have made every attempt to minimize the use of knowledge from other areas so that <strong>we can focus on what computer science can teach you about computational problems solving.</strong>”</p>
                     
                 </div>
 
@@ -382,12 +375,9 @@ you about computational problems solving.</strong>"</p>
 unity3d based
 htc vive
 
-framework
+ framework
 
-
-1699165642361
-
-A simple framework of...
+A simple framework of this project is shown ab...
                     
                 </div>
 
@@ -419,12 +409,12 @@ A simple framework of...
                     
                         <li>
                             
-                            <a href="/tags/Unity3D/">Unity3D</a>&nbsp;
+                            <a href="/tags/Project/">Project</a>&nbsp;
                         </li>
                     
                         <li>
                             | 
-                            <a href="/tags/Project/">Project</a>&nbsp;
+                            <a href="/tags/Unity3D/">Unity3D</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -449,7 +439,7 @@ A simple framework of...
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <p>"a glance of RuoYi-vue framework"</p>
+                        <p>“a glance of RuoYi-vue framework”</p>
 <p><a class="link" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HT4y1d7oA/?spm_id_from=333.337.top_right_bar_window_history.content.click&amp;vd_source=698de1256a0048d0fd59d2f1bc3e109b">ref<i class="fas fa-external-link-alt"></i></a></p>
                     
                 </div>
@@ -743,9 +733,24 @@ A simple framework of...
 
 <div class="post-scripts">
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

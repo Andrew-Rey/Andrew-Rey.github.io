@@ -221,11 +221,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Unity3D/">Unity3D</a>&nbsp;
+                        <a href="/tags/Project/">Project</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/Project/">Project</a>&nbsp;
+                        | <a href="/tags/Unity3D/">Unity3D</a>&nbsp;
                     </li>
                 
             </ul>
@@ -235,7 +235,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>625 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>618 Words</span>
         </span>
     
     
@@ -263,121 +263,87 @@
 <li>unity3d based</li>
 <li>htc vive</li>
 </ul>
-<h2 id="framework">framework</h2>
-<figure>
-<img lazyload alt="image" data-src="1699165642361.png">
-<figcaption aria-hidden="true">1699165642361</figcaption>
-</figure>
-<p>A simple framework of this project is shown above (maybe the
-<em>light theme</em> is reccomended to check the diagram). A simple idea
-is that the generated contents can be divided into <code>layer</code>s,
-and we want to controll the generation processes of layers. Such as we
-firstly generate <code>terrain</code> layer and define its materials and
-textures later in biome layer. The benefits is that the layers are
-generated in a more dynamic way: materials and textures are not
-specified in advance, but generated according to not only the texts but
-also the terrain layer. And so as the later layers.</p>
-<h2 id="terrain">terrain</h2>
+<h2 id="framework"><a class="markdownIt-Anchor" href="#framework"></a> framework</h2>
+<p><img lazyload alt="image" data-src="1699165642361.png"></p>
+<p>A simple framework of this project is shown above (maybe the <em>light theme</em> is reccomended to check the diagram). A simple idea is that the generated contents can be divided into <code>layer</code>s, and we want to controll the generation processes of layers. Such as we firstly generate <code>terrain</code> layer and define its materials and textures later in biome layer. The benefits is that the layers are generated in a more dynamic way: materials and textures are not specified in advance, but generated according to not only the texts but also the terrain layer. And so as the later layers.</p>
+<h2 id="terrain"><a class="markdownIt-Anchor" href="#terrain"></a> terrain</h2>
 <ul>
 <li>default: noise based</li>
 <li>text: ai based</li>
 </ul>
-<h3 id="noise-based-terrain">noise based terrain</h3>
-<p>It is known that <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Perlin_noise">Perlin noise<i class="fas fa-external-link-alt"></i></a> has a
-excellent perfromation in terrain/ocean wave/textures generation. And
-the mainly noise we used in this project is Perlin noise, but we used
-<strong>2 layers</strong>, which can simulate more abundant
-terrains.</p>
+<h3 id="noise-based-terrain"><a class="markdownIt-Anchor" href="#noise-based-terrain"></a> noise based terrain</h3>
+<p>It is known that <a class="link" target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Perlin_noise">Perlin noise<i class="fas fa-external-link-alt"></i></a> has a excellent perfromation in terrain/ocean wave/textures generation. And the mainly noise we used in this project is Perlin noise, but we used <strong>2 layers</strong>, which can simulate more abundant terrains.</p>
 <p>The terrain layer generation parameters are shown as follow.</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// global configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span>           <span class="built_in">int</span>    HeightMapRandomSeed        = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span>           <span class="built_in">int</span>    HeightMapLength            = <span class="number">256</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">int</span>[]  HeightMapSampleFrequencies = &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">16</span>&#125;;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span>           <span class="built_in">float</span>  HeightMapScaler            = <span class="number">5f</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span>           <span class="built_in">int</span>    TerrainLayerLength         = <span class="number">512</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span>           <span class="built_in">float</span>  TerrainLayerMaxHeight      = <span class="number">1000f</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span>           <span class="built_in">string</span> TerrainNodeName            = <span class="string">&quot;TerrainNode&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span>           <span class="built_in">string</span> TerrainLayerName           = <span class="string">&quot;TerrainLayer&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>For one noise layer case, we use simplex noise based on Perlin noise
-(namely overlay multiple <em>octaves</em> on the base noise). The result
-is show in the image.</p>
-<figure>
-<img lazyload alt="image" data-src="image.png">
-<figcaption aria-hidden="true">one-layer noise</figcaption>
-</figure>
-<p>We can see the result is realisitic in a way. However, the problem is
-that, there are less reasonable places the our world. This generated
-scene is more "noise", but our world has more terrain types such as
-"plane". So we designed a two-layer noises to generate terrain and it
-has a more reasonable result. Here is the image.</p>
-<figure>
-<img lazyload alt="image" data-src="1699168066108.png">
-<figcaption aria-hidden="true">two-layer noise</figcaption>
-</figure>
-<p>For two-layer case, we controll the amplitudes of the "mountains"
-using a strategy (by default, we use 1-frequency and 1-octave Perlin
-noise). And the variance of terrain is more smooth and more "not
-random".</p>
-<h2 id="scheduleprogress">schedule/progress</h2>
-<p><strong>23-11-07</strong> target:</p>
+<p>For one noise layer case, we use simplex noise based on Perlin noise (namely overlay multiple <em>octaves</em> on the base noise). The result is show in the image.</p>
+<p><img lazyload alt="image" data-src="image.png"></p>
+<p>We can see the result is realisitic in a way. However, the problem is that, there are less reasonable places the our world. This generated scene is more “noise”, but our world has more terrain types such as “plane”. So we designed a two-layer noises to generate terrain and it has a more reasonable result. Here is the image.</p>
+<p><img lazyload alt="image" data-src="1699168066108.png"></p>
+<p>For two-layer case, we controll the amplitudes of the “mountains” using a strategy (by default, we use 1-frequency and 1-octave Perlin noise). And the variance of terrain is more smooth and more “not random”.</p>
+<h2 id="scheduleprogress"><a class="markdownIt-Anchor" href="#scheduleprogress"></a> schedule/progress</h2>
+<p><strong>23-11-07</strong><br>
+target:</p>
 <ul>
 <li>add start ui (simple version: v_1)
 <ul>
-<li><a class="link" target="_blank" rel="noopener" href="https://learn.unity.com/tutorial/creating-a-vr-menu-2019-2?uv=2019.4#">learn
-the vr ui<i class="fas fa-external-link-alt"></i></a></li>
-<li>use button-click to change scene (from start-scene to
-main-scene)</li>
-</ul></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://learn.unity.com/tutorial/creating-a-vr-menu-2019-2?uv=2019.4#">learn the vr ui<i class="fas fa-external-link-alt"></i></a></li>
+<li>use button-click to change scene (from start-scene to main-scene)</li>
+</ul>
+</li>
 <li>realize terrain real-time loading
 <ul>
 <li>define chunks</li>
 <li>generate base map (defaultly include 16 by 16 chunks)</li>
-<li>load chunk around the player (load 9 chunks and player is in the
-center chunk)
+<li>load chunk around the player (load 9 chunks and player is in the center chunk)
 <ul>
 <li>check per-frame</li>
-</ul></li>
+</ul>
+</li>
 <li>finish <code>MapLoader</code></li>
 <li>finish <code>BaseMap</code></li>
 <li>modified the map generation steps
 <ul>
-<li>when firstly load the game, generate whole resources used in the map
-(height gradient meshes, amplitude gradient mesh, biome, decorations,
-...), store them to resource file (why do we use this method -- dynamic
-loading and promising the continuity between chunks)</li>
+<li>when firstly load the game, generate whole resources used in the map (height gradient meshes, amplitude gradient mesh, biome, decorations, …), store them to resource file (why do we use this method – dynamic loading and promising the continuity between chunks)</li>
 <li>generate chunks around the player, based on the gradient data</li>
-<li>if enter a brand new area, load the gradient data and generate
-chunks</li>
-</ul></li>
-</ul></li>
+<li>if enter a brand new area, load the gradient data and generate chunks</li>
 </ul>
-<p><strong>23-11-08</strong> target:</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>23-11-08</strong><br>
+target:</p>
 <ul>
-<li>continue to complete the <code>MapLoader</code> and
-<code>BaseMap</code>
+<li>continue to complete the <code>MapLoader</code> and <code>BaseMap</code>
 <ul>
 <li>generate <code>BaseMap</code> and divide it into chunks</li>
 <li>store data into files</li>
-</ul></li>
+</ul>
+</li>
 <li>clear up thinking
 <ul>
-<li>base-map has the total attributes of map, including terrain, biome,
-building and weather properties</li>
-<li>for the generation of base-map: just generate the related data and
-store them into files</li>
-<li>base-map-loader is used to load data and generate details of maps
-around the player</li>
-<li>every chunk is a smaller map, which means base-map is a
-data-struct</li>
-<li>chunk is also a game object, the parents node of terrain and the
-decorations on it</li>
-</ul></li>
+<li>base-map has the total attributes of map, including terrain, biome, building and weather properties</li>
+<li>for the generation of base-map: just generate the related data and store them into files</li>
+<li>base-map-loader is used to load data and generate details of maps around the player</li>
+<li>every chunk is a smaller map, which means base-map is a data-struct</li>
+<li>chunk is also a game object, the parents node of terrain and the decorations on it</li>
 </ul>
-<p><strong>23-11-10</strong> target:</p>
+</li>
+</ul>
+<p><strong>23-11-10</strong><br>
+target:</p>
 <ul>
-<li>rewrite <code>TerrainLayer</code> and <code>TerrainNode</code> and
-<code>HeightMap</code>
+<li>rewrite <code>TerrainLayer</code> and <code>TerrainNode</code> and <code>HeightMap</code>
 <ul>
 <li>support <em>chunk-like</em> terrains</li>
-<li>provide more interfaces <em>to get the middle result or
-data</em></li>
-</ul></li>
-<li>the whole project is ready to be in a mass...
+<li>provide more interfaces <em>to get the middle result or data</em></li>
+</ul>
+</li>
+<li>the whole project is ready to be in a mass…
 <ul>
 <li>arrange project structure</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
             </div>
@@ -415,11 +381,11 @@ data</em></li>
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Unity3D/">#Unity3D</a>&nbsp;
+                            <a href="/tags/Project/">#Project</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/Project/">#Project</a>&nbsp;
+                            <a href="/tags/Unity3D/">#Unity3D</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -469,7 +435,7 @@ data</em></li>
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#framework"><span class="nav-number">1.</span> <span class="nav-text">framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#terrain"><span class="nav-number">2.</span> <span class="nav-text">terrain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#noise-based-terrain"><span class="nav-number">2.1.</span> <span class="nav-text">noise based terrain</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scheduleprogress"><span class="nav-number">3.</span> <span class="nav-text">schedule&#x2F;progress</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#framework"><span class="nav-number">1.</span> <span class="nav-text"> framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#terrain"><span class="nav-number">2.</span> <span class="nav-text"> terrain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#noise-based-terrain"><span class="nav-number">2.1.</span> <span class="nav-text"> noise based terrain</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scheduleprogress"><span class="nav-number">3.</span> <span class="nav-text"> schedule&#x2F;progress</span></a></li></ol>
     </div>
 </div>
 
@@ -646,9 +612,24 @@ data</em></li>
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

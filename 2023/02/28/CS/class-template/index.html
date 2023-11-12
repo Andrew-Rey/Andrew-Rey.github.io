@@ -370,7 +370,7 @@ mjx-container[display="true"] + br {
             <div class="article-content keep-markdown-body">
                 
 
-                <p>"C++17类模板"</p>
+                <p>“C++17类模板”</p>
 <span id="more"></span>
 <blockquote>
 <p>编译器用于创建类的模板: 自动生成类</p>
@@ -382,50 +382,49 @@ mjx-container[display="true"] + br {
 <blockquote>
 <p>实例</p>
 <ul>
-<li>编译器从类模板中生成的类, 在第一次使用模板类型声明变量是,
-会创建类模板的一个实例, 以后定义同类型的变量时,
-会使用已创建的第一个实例. 在创建类模板时, 也可以不同时声明变量.</li>
+<li>编译器从类模板中生成的类, 在第一次使用模板类型声明变量是, 会创建类模板的一个实例, 以后定义同类型的变量时, 会使用已创建的第一个实例. 在创建类模板时, 也可以不同时声明变量.</li>
 <li>数据的组织 <strong>独立于</strong> 对象类型</li>
 </ul>
 </blockquote>
-<h2 id="类模板的定义">类模板的定义</h2>
+<h2 id="类模板的定义"><a class="markdownIt-Anchor" href="#类模板的定义"></a> 类模板的定义</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2, Type Arg1&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> {</span><br><span class="line">    <span class="comment">// template class definition</span></span><br><span class="line">};</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>模板参数</strong></p>
 <ul>
 <li><strong>类型参数</strong> <code>typename</code>
 <ul>
-<li>实参总是类型: <code>int</code>, <code>float</code>...</li>
-</ul></li>
+<li>实参总是类型: <code>int</code>, <code>float</code>…</li>
+</ul>
+</li>
 <li><strong>非类型参数</strong> <code>Type</code>
 <ul>
-<li>实参是整数类型的字面量: <code>200</code>, <code>10</code>...</li>
+<li>实参是整数类型的字面量: <code>200</code>, <code>10</code>…</li>
 <li>整数常量表达式</li>
 <li>指向对象的指针或引用, 函数指针或空指针</li>
-</ul></li>
+</ul>
+</li>
 <li><strong>模板</strong>
 <ul>
 <li>实参是类模板的一个实例</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </blockquote>
 <blockquote>
 <p>在模板定义中, 不需要使用完整的ID, 例如构造函数</p>
 <p><code>ClassName&lt;T1&gt;();</code>可以写成<code>ClassName();</code></p>
-<p>不过在模板体的外部标识模板, 则必须使用模板ID
-(即在模板类外定义模板中的成员函数时需要显式写出ID)</p>
+<p>不过在模板体的外部标识模板, 则必须使用模板ID (即在模板类外定义模板中的成员函数时需要显式写出ID)</p>
 </blockquote>
 <p><strong>一个例子</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span> {</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> len_;</span><br><span class="line">    <span class="type">int</span> size_;</span><br><span class="line">    T1* elements_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">explicit</span> <span class="built_in">PythonList</span>&lt;T1&gt;(<span class="type">size_t</span> list_len);</span><br><span class="line">    <span class="built_in">PythonList</span>&lt;T1&gt;(<span class="type">const</span> PythonList&lt;T1&gt;&amp; python_list);</span><br><span class="line">    ~<span class="built_in">PythonList</span>();</span><br><span class="line">    T1&amp; <span class="keyword">operator</span>[](<span class="type">size_t</span> index);</span><br><span class="line">    <span class="type">const</span> T1&amp; <span class="keyword">operator</span>[](<span class="type">size_t</span> index) <span class="type">const</span>;</span><br><span class="line">    PythonList&lt;T1&gt;&amp; <span class="keyword">operator</span>=(<span class="type">const</span> PythonList&lt;T1&gt;&amp; rhs_list);</span><br><span class="line">    <span class="function"><span class="type">size_t</span> <span class="title">get_len</span><span class="params">()</span> <span class="type">const</span> </span>{ <span class="keyword">return</span> len_; }</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">allocate_double</span><span class="params">()</span></span>;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
-<h2 id="类模板成员函数的定义">类模板成员函数的定义</h2>
+<h2 id="类模板成员函数的定义"><a class="markdownIt-Anchor" href="#类模板成员函数的定义"></a> 类模板成员函数的定义</h2>
 <blockquote>
 <p>若在模板类的内部定义, 实则为 <strong>内联</strong></p>
 </blockquote>
 <blockquote>
 <p><strong>如何理解该语法</strong></p>
 <ul>
-<li>类模板的成员函数的外部定义本身就是函数模板,
-即使成员函数不依赖类型参数.</li>
+<li>类模板的成员函数的外部定义本身就是函数模板, 即使成员函数不依赖类型参数.</li>
 <li>若函数没有在类内定义, 则它需要一个模板定义.</li>
 <li>定义函数模板中的参数列表必须与类模板参数列表相同.</li>
 </ul>
@@ -433,81 +432,63 @@ mjx-container[display="true"] + br {
 <p>例如</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 析构函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::~<span class="built_in">PythonList</span>&lt;T1&gt;() {</span><br><span class="line">    <span class="keyword">delete</span> [] elements_;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::<span class="built_in">PythonList</span>(<span class="type">size_t</span> list_len)</span><br><span class="line">    : <span class="built_in">len_</span>(list_len), <span class="built_in">size_</span>(FOLD * list_len), <span class="built_in">elements_</span>(<span class="keyword">new</span> <span class="built_in">T1</span>(list_len)) {}</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt;::<span class="built_in">PythonList</span>(<span class="type">const</span> PythonList&lt;T1&gt; &amp;python_list)</span><br><span class="line">    : PythonList{python_list.len_} {</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">size_t</span> i{}; i &lt; len_; ++i) {</span><br><span class="line">    elements_[i] = python_list.elements_[i];</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下标运算符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt; T1 &amp;PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) {</span><br><span class="line">  <span class="keyword">if</span> (index &gt;= len_) {</span><br><span class="line">    <span class="keyword">throw</span> std::out_of_range{<span class="string">"Index out of range: "</span> + std::<span class="built_in">to_string</span>(index)};</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">return</span> elements_[index];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line"><span class="type">const</span> T1 &amp;PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) <span class="type">const</span> {</span><br><span class="line">  <span class="keyword">if</span> (index &gt;= len_) {</span><br><span class="line">    <span class="keyword">throw</span> std::out_of_range{<span class="string">"Index out of range: "</span> + std::<span class="built_in">to_string</span>(index)};</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">return</span> elements_[index];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值运算符</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">PythonList&lt;T1&gt; PythonList&lt;T1&gt;::<span class="keyword">operator</span>=(<span class="type">const</span> PythonList&lt;T1&gt;&amp; rhs_list) {</span><br><span class="line">    <span class="keyword">if</span> (&amp;rhs_list != <span class="keyword">this</span>) {</span><br><span class="line">        <span class="keyword">delete</span> [] elements_;</span><br><span class="line">        len_ = rhs_list.len_;</span><br><span class="line">        size_ = rhs_list.size_;</span><br><span class="line">        elements_ = <span class="keyword">new</span> T1[len_];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">size_t</span> i {}; i &lt; size_; ++i) {</span><br><span class="line">            elements_[i] = rhs_list.elements_[i];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>第一行说明该函数为模板函数; 在限定成员函数时,
-作用域需要带上模板ID</p>
-<p>有时候需要<strong>提供自己的拷贝构造(或析构)</strong>,
-因为涉及到动态内存分配时, 默认拷贝构造(或析构)有可能会出现负面效应</p>
-<p>在赋值重载时, 需要 <strong>检查左右操作数是否相等</strong>,
-否则会释放<code>this</code>指向的对象后再进行复制.</p>
+<p>第一行说明该函数为模板函数; 在限定成员函数时, 作用域需要带上模板ID</p>
+<p>有时候需要<strong>提供自己的拷贝构造(或析构)</strong>, 因为涉及到动态内存分配时, 默认拷贝构造(或析构)有可能会出现负面效应</p>
+<p>在赋值重载时, 需要 <strong>检查左右操作数是否相等</strong>, 否则会释放<code>this</code>指向的对象后再进行复制.</p>
 </blockquote>
-<h3 id="代码重复">代码重复</h3>
+<h3 id="代码重复"><a class="markdownIt-Anchor" href="#代码重复"></a> 代码重复</h3>
 <blockquote>
-<p>在上述的定义中,
-<code>const</code>的重载和非<code>const</code>的重载模板函数代码重复,
-代码重复不利于后续的维护</p>
+<p>在上述的定义中, <code>const</code>的重载和非<code>const</code>的重载模板函数代码重复, 代码重复不利于后续的维护</p>
 <ul>
 <li>对抗重复的方法: <strong>函数, 模板, 基类</strong></li>
 </ul>
 </blockquote>
-<p><strong>传统方法:
-用<code>const</code>实现非<code>const</code></strong></p>
+<p><strong>传统方法: 用<code>const</code>实现非<code>const</code></strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">T1&amp; PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) {</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">const_cast</span>&lt;T1&amp;&gt;(<span class="keyword">static_cast</span>&lt;<span class="type">const</span> PythonList&lt;T1&gt;&amp;&gt;(*<span class="keyword">this</span>) [index]);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p><strong>C++17:
-<code>std::as_const()</code>(utility头文件)</strong></p>
+<p><strong>C++17: <code>std::as_const()</code>(utility头文件)</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1&gt;</span><br><span class="line">T1&amp; PythonList&lt;T1&gt;::<span class="keyword">operator</span>[](<span class="type">size_t</span> index) {</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">const_cast</span>&lt;T1&amp;&gt;(std::<span class="built_in">as_const</span>(*<span class="keyword">this</span>)[index]);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<h3 id="异常安全性">异常安全性</h3>
-<ol type="1">
-<li>在赋值运算符重载的时候, 由于使用了<code>new</code>,
-可能会出现<code>std::bad_alloc</code>异常</li>
+<h3 id="异常安全性"><a class="markdownIt-Anchor" href="#异常安全性"></a> 异常安全性</h3>
+<ol>
+<li>在赋值运算符重载的时候, 由于使用了<code>new</code>, 可能会出现<code>std::bad_alloc</code>异常</li>
 <li>在<code>elements_[i] = rhs_list.elements_[i];</code>可能会出现关于类型<code>T1</code>的赋值异常</li>
 </ol>
 <blockquote>
-<p>当声明了<code>noexcept</code>后, 表示代码内部不发生异常,
-使得编译器能做更多的优化,
-例如大部分析构都隐式声明了<code>noexcept</code> cppreference <a class="link" target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/noexcept">noexcept<i class="fas fa-external-link-alt"></i></a></p>
+<p>当声明了<code>noexcept</code>后, 表示代码内部不发生异常, 使得编译器能做更多的优化, 例如大部分析构都隐式声明了<code>noexcept</code> cppreference <a class="link" target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/noexcept">noexcept<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <blockquote>
 <p>在以上的赋值运算符中使用 <strong>复制后交换</strong></p>
 </blockquote>
-<h3 id="定义模板类注意">定义模板类注意</h3>
+<h3 id="定义模板类注意"><a class="markdownIt-Anchor" href="#定义模板类注意"></a> 定义模板类注意</h3>
 <blockquote>
 <ul>
-<li>成员函数模板与类模板的定义放在同一个文件中: 当编译器生成类模板时,
-需要去使用函数模板, 所以在使用模板的源文件中,
-这些成员函数的定义必须可用.</li>
+<li>成员函数模板与类模板的定义放在同一个文件中: 当编译器生成类模板时, 需要去使用函数模板, 所以在使用模板的源文件中, 这些成员函数的定义必须可用.</li>
 </ul>
 </blockquote>
-<h2 id="类模板实例化">类模板实例化</h2>
+<h2 id="类模板实例化"><a class="markdownIt-Anchor" href="#类模板实例化"></a> 类模板实例化</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PythonList&lt;<span class="type">double</span>&gt; data {<span class="number">10</span>};</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><strong>编译器只编译程序使用的成员函数,
-不会为某个模板参数的实例而一次性编译整个类</strong>:
-例如上述代码编译后的类中只有构造函数和析构函数.</p>
+<p><strong>编译器只编译程序使用的成员函数, 不会为某个模板参数的实例而一次性编译整个类</strong>: 例如上述代码编译后的类中只有构造函数和析构函数.</p>
 </blockquote>
 <blockquote>
-<p>声明对象类型的指针 <strong>不会</strong> 创建模板实例:
-<code>PythonList&lt;std::string&gt;* data_p;</code></p>
+<p>声明对象类型的指针 <strong>不会</strong> 创建模板实例: <code>PythonList&lt;std::string&gt;* data_p;</code></p>
 </blockquote>
-<h2 id="非类型的类模板参数">非类型的类模板参数</h2>
+<h2 id="非类型的类模板参数"><a class="markdownIt-Anchor" href="#非类型的类模板参数"></a> 非类型的类模板参数</h2>
 <blockquote>
 <p>主要用于定义指定容器有效的值, 如数组的维数</p>
 <ul>
-<li><strong>非类型参数只能是整数类型 (<code>size_t</code>,
-<code>long</code>), 枚举类型, 对象的指针或引用, 函数的指针或引用,
-类成员的指针</strong></li>
+<li><strong>非类型参数只能是整数类型 (<code>size_t</code>, <code>long</code>), 枚举类型, 对象的指针或引用, 函数的指针或引用, 类成员的指针</strong></li>
 <li><strong>当作常量</strong></li>
 </ul>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="type">size_t</span> size&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span> {</span><br><span class="line">    <span class="comment">// definition</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="comment">// 还有一些比较无语的</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, T1 value&gt; ... <span class="comment">// 此时T1只能是模板的非类型参数所允许的类型</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>注意</strong></p>
-<p>只有模板参数完全相同的情况下, 编译器才不会再次编译模板类;
-任意一个不同, 编译器都会认为是不同的类, 后果是代码膨胀</p>
+<p>只有模板参数完全相同的情况下, 编译器才不会再次编译模板类; 任意一个不同, 编译器都会认为是不同的类, 后果是代码膨胀</p>
 <ul>
 <li>解决方法 (待定)</li>
 </ul>
 </blockquote>
-<h2 id="模板参数的默认值">模板参数的默认值</h2>
+<h2 id="模板参数的默认值"><a class="markdownIt-Anchor" href="#模板参数的默认值"></a> 模板参数的默认值</h2>
 <blockquote>
 <p>与函数的默认参数类似</p>
 <ul>
@@ -517,70 +498,55 @@ mjx-container[display="true"] + br {
 </ul>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1 = <span class="type">int</span>, <span class="type">int</span> value = <span class="number">10</span>&gt; ...</span><br></pre></td></tr></table></figure>
-<h2 id="模板的显式实例化">模板的显式实例化</h2>
+<h2 id="模板的显式实例化"><a class="markdownIt-Anchor" href="#模板的显式实例化"></a> 模板的显式实例化</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> <span class="keyword">class</span> <span class="title class_">ClassName</span>&lt;T1, <span class="number">10</span>, ...&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>编译器会从模板中实例化所有的成员函数, 无论是否调用</p>
 </blockquote>
-<h2 id="类模板特化">类模板特化</h2>
-<p>模板的使用中有时候只对 <strong>某些类型</strong> 有用,
-而不支持其他类型; 因此使用 <strong>特化</strong> 来处理某些特殊情况.</p>
-<p>例如整型变量的相等和浮点型的比较并不相同,
-这时可以使用模板的特化来处理.</p>
+<h2 id="类模板特化"><a class="markdownIt-Anchor" href="#类模板特化"></a> 类模板特化</h2>
+<p>模板的使用中有时候只对 <strong>某些类型</strong> 有用, 而不支持其他类型; 因此使用 <strong>特化</strong> 来处理某些特殊情况.</p>
+<p>例如整型变量的相等和浮点型的比较并不相同, 这时可以使用模板的特化来处理.</p>
 <blockquote>
 <p>对于类模板中的成员函数:</p>
 <ul>
-<li>如果成员函数是在类模板的外部定义的, 而不是在类模板体中定义的,
-则可以提供函数模板的特化</li>
+<li>如果成员函数是在类模板的外部定义的, 而不是在类模板体中定义的, 则可以提供函数模板的特化</li>
 </ul>
 </blockquote>
 <p><strong>全特化</strong></p>
 <p>即规定模板实现的所有模板参数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span>&lt;<span class="type">const</span> <span class="type">char</span>*&gt;{};</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>特化的定义必须放在原有的定义或声明后面.
-因为<strong>指定了所有参数</strong>, 所以是 <strong>全特化</strong></p>
+<p>特化的定义必须放在原有的定义或声明后面. 因为<strong>指定了所有参数</strong>, 所以是 <strong>全特化</strong></p>
 </blockquote>
 <p><strong>偏特化</strong></p>
 <p>即只规定模板参数列表中的一部分模板参数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;Type value&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonList</span>&lt;<span class="type">const</span> <span class="type">char</span>*, value&gt; {};</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p><code>template</code>后的参数列表包含的是为这个模板特化的实例所指定的参数,
-即<strong>实例化时需要指定</strong><code>value</code></p>
-<p>模板名后面的尖括号指定原有类模板定义中的参数如何特化.
-<strong>该参数列表必须与原来未特化的类模板个数相同</strong></p>
+<p><code>template</code>后的参数列表包含的是为这个模板特化的实例所指定的参数, 即<strong>实例化时需要指定</strong><code>value</code></p>
+<p>模板名后面的尖括号指定原有类模板定义中的参数如何特化. <strong>该参数列表必须与原来未特化的类模板个数相同</strong></p>
 </blockquote>
 <blockquote>
 <p><strong>指针类型的偏特化</strong></p>
-<p>例如下面代码: <code>template</code>的第一个参数仍是<code>T1</code>,
-但模板名后面可以跟着<code>T*</code></p>
+<p>例如下面代码: <code>template</code>的第一个参数仍是<code>T1</code>, 但模板名后面可以跟着<code>T*</code></p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, Type value&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>&lt;T1*, value&gt; {};</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>特化的选择</strong></p>
-<p>当匹配给定特化的每个实参匹配多个特化时, 编译器会选择
-<strong>最特殊</strong> 的一个特化.</p>
+<p>当匹配给定特化的每个实参匹配多个特化时, 编译器会选择 <strong>最特殊</strong> 的一个特化.</p>
 <ul>
-<li>特殊是指有多个匹配, 如果符合A特化, 也符合B特化, 但反过来不行时,
-则A比B更特殊 (A含于B)</li>
+<li>特殊是指有多个匹配, 如果符合A特化, 也符合B特化, 但反过来不行时, 则A比B更特殊 (A含于B)</li>
 </ul>
 </blockquote>
-<h2 id="在类模板中使用static_assert">在类模板中使用<code>static_assert()</code></h2>
-<p><code>static_assert()</code>接受两个参数,
-第一个参数为<code>false</code>时, 输出第二个参数指定的消息.
-第一个实参使用type_traits.h中的模板</p>
-<figure>
-<img lazyload alt="type_traits" data-src="type_traits.jpg">
-<figcaption aria-hidden="true">type_traits</figcaption>
-</figure>
-<h2 id="类模板的友元">类模板的友元</h2>
+<h2 id="在类模板中使用static_assert"><a class="markdownIt-Anchor" href="#在类模板中使用static_assert"></a> 在类模板中使用<code>static_assert()</code></h2>
+<p><code>static_assert()</code>接受两个参数, 第一个参数为<code>false</code>时, 输出第二个参数指定的消息. 第一个实参使用type_traits.h中的模板</p>
+<p><img lazyload alt="type_traits" data-src="type_traits.jpg"></p>
+<h2 id="类模板的友元"><a class="markdownIt-Anchor" href="#类模板的友元"></a> 类模板的友元</h2>
 <p>对于友元函数和友元类的情况与一般情况相同</p>
 <blockquote>
 <p><strong>模板友元</strong></p>
 <ul>
 <li>类模板的参数列表一般包含定义友元模板的所有参数</li>
-<li>如果类模板的一些参数在友元模板中没有,
-则友元模板的实例会用于类模板的几个实例</li>
+<li>如果类模板的一些参数在友元模板中没有, 则友元模板的实例会用于类模板的几个实例</li>
 <li>普通类若有友元模板, 则友元的每一个实例都是这个类的友元</li>
 </ul>
 </blockquote>
@@ -674,7 +640,7 @@ mjx-container[display="true"] + br {
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">类模板的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">类模板成员函数的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%87%8D%E5%A4%8D"><span class="nav-number">2.1.</span> <span class="nav-text">代码重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text">异常安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF%E7%B1%BB%E6%B3%A8%E6%84%8F"><span class="nav-number">2.3.</span> <span class="nav-text">定义模板类注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">类模板实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">非类型的类模板参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">模板参数的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%98%BE%E5%BC%8F%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">模板的显式实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%89%B9%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">类模板特化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%AD%E4%BD%BF%E7%94%A8static_assert"><span class="nav-number">8.</span> <span class="nav-text">在类模板中使用static_assert()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%8F%8B%E5%85%83"><span class="nav-number">9.</span> <span class="nav-text">类模板的友元</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text"> 类模板的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text"> 类模板成员函数的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%87%8D%E5%A4%8D"><span class="nav-number">2.1.</span> <span class="nav-text"> 代码重复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-number">2.2.</span> <span class="nav-text"> 异常安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF%E7%B1%BB%E6%B3%A8%E6%84%8F"><span class="nav-number">2.3.</span> <span class="nav-text"> 定义模板类注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text"> 类模板实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%B1%BB%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text"> 非类型的类模板参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text"> 模板参数的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%98%BE%E5%BC%8F%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text"> 模板的显式实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%89%B9%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text"> 类模板特化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%B1%BB%E6%A8%A1%E6%9D%BF%E4%B8%AD%E4%BD%BF%E7%94%A8static_assert"><span class="nav-number">8.</span> <span class="nav-text"> 在类模板中使用static_assert()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%8F%8B%E5%85%83"><span class="nav-number">9.</span> <span class="nav-text"> 类模板的友元</span></a></li></ol>
     </div>
 </div>
 
@@ -851,9 +817,24 @@ mjx-container[display="true"] + br {
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

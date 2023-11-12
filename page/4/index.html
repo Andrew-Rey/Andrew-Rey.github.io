@@ -354,7 +354,7 @@ mjx-container[display="true"] + br {
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <p>"对称，万变不离其中"</p>
+                        <p>“对称，万变不离其中”</p>
                     
                 </div>
 
@@ -416,9 +416,8 @@ mjx-container[display="true"] + br {
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <p>"内积空间和度量空间有什么区别? Hilbert空间是什么?
-它与线性空间的关系是什么?"</p>
-<p>"我已经晕了."</p>
+                        <p>“内积空间和度量空间有什么区别? Hilbert空间是什么? 它与线性空间的关系是什么?”</p>
+<p>“我已经晕了.”</p>
                     
                 </div>
 
@@ -475,10 +474,8 @@ mjx-container[display="true"] + br {
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <h2 id="finished-my-first-blog">Finished! My First Blog!</h2>
-<p>After a long time deploying my blog webpage and a lot of other
-borthering settings, I finally finished it! I mean, FINALLY!!!
-:laughing: :laughing: :laughing:</p>
+                        <h2 id="finished-my-first-blog"><a class="markdownIt-Anchor" href="#finished-my-first-blog"></a> Finished! My First Blog!</h2>
+<p>After a long time deploying my blog webpage and a lot of other borthering settings, I finally finished it! I mean, FINALLY!!! 😆 😆 😆</p>
                     
                 </div>
 
@@ -688,9 +685,24 @@ borthering settings, I finally finished it! I mean, FINALLY!!!
 
 <div class="post-scripts">
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

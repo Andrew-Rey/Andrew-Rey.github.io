@@ -271,11 +271,8 @@
 <li>JavaEE: SpringBoot + MyBatis Plus</li>
 <li>Web front end: Vue + ElementUI</li>
 </ul>
-<span id="more"></span>
-<blockquote>
-
-</blockquote>
-<h2 id="configure-environment">configure environment</h2>
+<span id="more"></span>>
+<h2 id="configure-environment"><a class="markdownIt-Anchor" href="#configure-environment"></a> configure environment</h2>
 <ul>
 <li>jdk</li>
 <li>IDE: JetBrain IDEA</li>
@@ -284,7 +281,8 @@
 <li>projects auto build</li>
 <li>dependencies manegement</li>
 <li>standard development structure</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p><strong>maven usage</strong></p>
 <ul>
@@ -292,11 +290,8 @@
 <li>(optional) configure mirrors</li>
 <li>configure self downloaded maven with IDEA</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697109448690.png">
-<figcaption aria-hidden="true">1697109448690</figcaption>
-</figure>
-<h2 id="springboot">springboot</h2>
+<p><img lazyload alt="image" data-src="1697109448690.png"></p>
+<h2 id="springboot"><a class="markdownIt-Anchor" href="#springboot"></a> springboot</h2>
 <ul>
 <li>intro
 <ul>
@@ -305,19 +300,22 @@
 <li>embedded server(Tomcat, Jetty; no war file, just jar)</li>
 <li>simplify maven configuration</li>
 <li>pure Java</li>
-</ul></li>
 </ul>
-<h2 id="springboot-1">springboot</h2>
+</li>
+</ul>
+<h2 id="springboot-2"><a class="markdownIt-Anchor" href="#springboot-2"></a> springboot</h2>
 <ul>
 <li>SSM
 <ul>
 <li>Spring, Spring mvc, MyBatis</li>
 <li>difficult to configure</li>
-</ul></li>
+</ul>
+</li>
 <li>adv
 <ul>
 <li>quickly, simplely</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p><strong>initialize Springboot</strong></p>
 <ul>
@@ -326,43 +324,36 @@
 <li>Spring Initializer(maven based infact)
 <ul>
 <li>fill project information(group id &amp; artifact id)</li>
-<li>generate project on the <a class="link" target="_blank" rel="noopener" href="https://start.spring.io/">web<i class="fas fa-external-link-alt"></i></a>,
-download it and load in</li>
+<li>generate project on the <a class="link" target="_blank" rel="noopener" href="https://start.spring.io/">web<i class="fas fa-external-link-alt"></i></a>, download it and load in</li>
 <li>select jdk</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p><strong>initialize Springboot</strong></p>
 <ul>
 <li>choose Maven project</li>
 <li>choose springboot version</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697114528195.png">
-<figcaption aria-hidden="true">1697114528195</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697114528195.png"></p>
 <p><strong>initialize Springboot</strong></p>
 <ul>
 <li>configure project information</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697114538516.png">
-<figcaption aria-hidden="true">1697114538516</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697114538516.png"></p>
 <p><strong>initialize Springboot</strong></p>
 <ul>
 <li>add dependencies (web app, choose spring web)</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697114557959.png">
-<figcaption aria-hidden="true">1697114557959</figcaption>
-</figure>
-<h2 id="coding-springboot">coding springboot</h2>
+<p><img lazyload alt="image" data-src="1697114557959.png"></p>
+<h2 id="coding-springboot"><a class="markdownIt-Anchor" href="#coding-springboot"></a> coding springboot</h2>
 <ul>
 <li>backend project: receive requests from brower
 <ul>
 <li>use Components</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoController</span>&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>coding springboot</strong></p>
@@ -374,207 +365,186 @@ download it and load in</li>
 <ul>
 <li>start the project(yes, no additional code in <code>main</code>)</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697116224333.png">
-<figcaption aria-hidden="true">1697116224333</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697116224333.png"></p>
 <p><strong>hot deployment</strong></p>
 <ul>
-<li>normal case: every time you modify the code, restart the
-project</li>
-<li>need hot-deployment
+<li>
+<p>normal case: every time you modify the code, restart the project</p>
+</li>
+<li>
+<p>need hot-deployment</p>
 <ul>
 <li>spring-boot-devtools component
 <ul>
-<li>listen the variations of classpath, trigger <code>Restart</code>
-class loader to reload the class</li>
-<li>not every change needs to restart app (static res, view templates),
-use <code>spring.devtools.restart.exclude</code> to exclude the
-dirs/files</li>
-</ul></li>
-</ul></li>
-<li>add <code>dev-tools</code> dependency in <code>pow.xml</code></li>
+<li>listen the variations of classpath, trigger <code>Restart</code> class loader to reload the class</li>
+<li>not every change needs to restart app (static res, view templates), use <code>spring.devtools.restart.exclude</code> to exclude the dirs/files</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>add <code>dev-tools</code> dependency in <code>pow.xml</code></p>
+</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>add properties in <code>application.properties</code></li>
 </ul>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.devtools.restart.enabled</span> = <span class="string">true</span></span><br><span class="line"><span class="attr">spring.devtools.restart.additional-paths</span> = <span class="string">src/main/java</span></span><br><span class="line"><span class="attr">spring-devtools.restart.additional.exclude</span> = <span class="string">static/**</span></span><br></pre></td></tr></table></figure>
-<h2 id="web-development">web development</h2>
+<h2 id="web-development"><a class="markdownIt-Anchor" href="#web-development"></a> web development</h2>
 <ul>
-<li>basic
+<li>
+<p>basic</p>
 <ul>
-<li><a class="link" target="_blank" rel="noopener" href="https://github.com/febobo/web-interview/issues/145">request
-methods<i class="fas fa-external-link-alt"></i></a>: <code>get</code> request: usualy send request using address
-bar, only for aquiring resources; <code>post</code> request: commit
-entity to pointed resources, which changes the state or has sideffects
-on server, more secure (however both unsecure on the view of data
-transmition, using <code>https</code> to encrypt)</li>
+<li><a class="link" target="_blank" rel="noopener" href="https://github.com/febobo/web-interview/issues/145">request methods<i class="fas fa-external-link-alt"></i></a>: <code>get</code> request: usualy send request using address bar, only for aquiring resources; <code>post</code> request: commit entity to pointed resources, which changes the state or has sideffects on server, more secure (however both unsecure on the view of data transmition, using <code>https</code> to encrypt)</li>
 <li>entity: usually the object</li>
-</ul></li>
-<li>spring-boot-starter-web: springboot provides an integrated frame of
-mvc, json, tomcat
+</ul>
+</li>
+<li>
+<p>spring-boot-starter-web: springboot provides an integrated frame of mvc, json, tomcat</p>
 <ul>
 <li>webmvc: basic frame</li>
 <li>json: data parser</li>
 <li>tomcat: container dependency</li>
 <li><strong>auto-configure when ticking spring web</strong></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="controller">controller</h3>
+<h3 id="controller"><a class="markdownIt-Anchor" href="#controller"></a> controller</h3>
 <ul>
-<li>Springboot provides <code>@Controller</code> and
-<code>@RestController</code> tags
+<li>Springboot provides <code>@Controller</code> and <code>@RestController</code> tags
 <ul>
 <li>receive &amp; handle HTTP requests</li>
-<li><code>@Controller</code> tag: when requesting <strong>page</strong>
-and <strong>data</strong>, usually with <code>Thymeleaf</code> template
-engine (<em>no seperation between front and back ends</em>)</li>
-<li><code>@RestController</code> tag: when requesting <strong>only
-data</strong>, usually converting object into json formmat in default
-when return</li>
-</ul></li>
+<li><code>@Controller</code> tag: when requesting <strong>page</strong> and <strong>data</strong>, usually with <code>Thymeleaf</code> template engine (<em>no seperation between front and back ends</em>)</li>
+<li><code>@RestController</code> tag: when requesting <strong>only data</strong>, usually converting object into json formmat in default when return</li>
+</ul>
+</li>
 </ul>
 <p><strong>MVC frame</strong></p>
-<figure>
-<img lazyload alt="image" data-src="1697121109192.png">
-<figcaption aria-hidden="true">1697121109192</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697121109192.png"></p>
 <ul>
-<li>controller receives users' requests, fetches data from model and
-reture data to view</li>
+<li>controller receives users’ requests, fetches data from model and reture data to view</li>
 </ul>
-<h3 id="router-mapping">router mapping</h3>
+<h3 id="router-mapping"><a class="markdownIt-Anchor" href="#router-mapping"></a> router mapping</h3>
 <ul>
 <li>receive user requests</li>
-<li><code>@RequestMapping</code> tag: URL router mapping, defines http
-request-mapping rule, can be added on controller class or method
+<li><code>@RequestMapping</code> tag: URL router mapping, defines http request-mapping rule, can be added on controller class or method
 <ul>
 <li>for class: whole router mapping will add this mapping rule</li>
 <li>for method: only the method itself</li>
 <li>properties:
 <ul>
-<li><code>value</code>: url path, supports url templates, reg-expr,
-<code>@RequestMapping("/user")</code></li>
-<li><code>method</code>: http request methods (get, post), also use:
-<code>@GetMapping, @PostMapping</code></li>
-<li><code>consumes</code>: content-type for requests, e.g.
-application/json</li>
+<li><code>value</code>: url path, supports url templates, reg-expr, <code>@RequestMapping(&quot;/user&quot;)</code></li>
+<li><code>method</code>: http request methods (get, post), also use: <code>@GetMapping, @PostMapping</code></li>
+<li><code>consumes</code>: content-type for requests, e.g. application/json</li>
 <li><code>producer</code>: content-type for resposes (html, json)</li>
-<li><code>params, headers</code>: requests parameters and requests
-header</li>
-</ul></li>
-</ul></li>
+<li><code>params, headers</code>: requests parameters and requests header</li>
 </ul>
-<h3 id="parameters-passing">parameters passing</h3>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="parameters-passing"><a class="markdownIt-Anchor" href="#parameters-passing"></a> parameters passing</h3>
 <ul>
-<li>get parameters, such as
-<code>http://localhost:8080/demo?nickname=zhangsan</code> passing
-<code>zhangsan</code> to param: <code>nickname</code></li>
-<li><code>@RequestParam</code> tag: receiving parameters from http
-requests body or QueryString of url, omitted when request-parameter's
-name is the same with controller method</li>
-<li><code>@PathVariable</code> tag: handle dynamic url, the value of url
-can be the parameters of controller handler</li>
-<li><code>@RequestBody</code> tag: receives parameters from requestBody,
-handling data such as
-<code>application/json, application/xml</code></li>
+<li>get parameters, such as <code>http://localhost:8080/demo?nickname=zhangsan</code> passing <code>zhangsan</code> to param: <code>nickname</code></li>
+<li><code>@RequestParam</code> tag: receiving parameters from http requests body or QueryString of url, omitted when request-parameter’s name is the same with controller method</li>
+<li><code>@PathVariable</code> tag: handle dynamic url, the value of url can be the parameters of controller handler</li>
+<li><code>@RequestBody</code> tag: receives parameters from requestBody, handling data such as <code>application/json, application/xml</code></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoController</span> &#123;</span><br><span class="line">  <span class="meta">@RequestMapping(value=&quot;/demo&quot;, method=RequestMethod.GET)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">myDemo</span><span class="params">(String nickname, String phone)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;nickname: &quot;</span> + nickname + <span class="string">&quot; phone: &quot;</span> + phone;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>my request:
-<code>http://localhost:8080/demo?nickname=xr&amp;phone=123</code></li>
+<li>my request: <code>http://localhost:8080/demo?nickname=xr&amp;phone=123</code></li>
 <li>output:</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697123584376.png">
-<figcaption aria-hidden="true">1697123584376</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697123584376.png"></p>
 <ul>
-<li>now parameter mapping handles the situation where request-parameters
-conflict with method parameters</li>
+<li>now parameter mapping handles the situation where request-parameters conflict with method parameters</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoController</span> &#123;</span><br><span class="line">  <span class="meta">@RequestMapping(value=&quot;/demo&quot;, method=RequestMethod.GET)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">myDemo</span><span class="params">(<span class="meta">@RequestParam(&quot;nickname&quot;, required = false)</span> String nickname, String phone)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;nickname: &quot;</span> + nickname + <span class="string">&quot; phone: &quot;</span> + phone;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="static-resources-visit">static resources visit</h3>
+<h3 id="static-resources-visit"><a class="markdownIt-Anchor" href="#static-resources-visit"></a> static resources visit</h3>
 <ul>
 <li>put self static resources here</li>
 <li>visit by <code>http://localhost:8080/test.png</code></li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697173796277.png">
-<figcaption aria-hidden="true">1697173796277</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697173796277.png"></p>
 <ul>
-<li>modify static path pattern: add
-<code>spring.mvc.static-path-pattern=/images/**</code> to
-<code>application.properties</code></li>
+<li>modify static path pattern: add <code>spring.mvc.static-path-pattern=/images/**</code> to <code>application.properties</code></li>
 </ul>
-<h3 id="upload-files">upload files</h3>
+<h3 id="upload-files"><a class="markdownIt-Anchor" href="#upload-files"></a> upload files</h3>
 <ul>
 <li>front end form
 <ul>
-<li>modify <code>enctype="multipart/form-data"</code>, otherwise can't
-upload files</li>
-</ul></li>
+<li>modify <code>enctype=&quot;multipart/form-data&quot;</code>, otherwise can’t upload files</li>
+</ul>
+</li>
 <li><code>tomcat</code> limits the size of files by default:
 <ul>
 <li>single file &lt; <code>1MB</code></li>
 <li>single request &lt; <code>10MB</code></li>
 <li>modify the size</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.servlet.multipart.max-file-size</span>=<span class="string">10MB</span></span><br><span class="line"><span class="attr">spring.servlet.multipart.max-request-size</span>=<span class="string">10MB</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>receiver data-type: <code>MultipartFile</code></li>
 <li>receiver writing method: <code>transferTo</code></li>
 </ul>
-<p><strong>attention:</strong> the parameter name should be same with
-front end form name</p>
-<h3 id="interceptor">interceptor</h3>
+<p><strong>attention:</strong> the parameter name should be same with front end form name</p>
+<h3 id="interceptor"><a class="markdownIt-Anchor" href="#interceptor"></a> interceptor</h3>
 <blockquote>
-<p>situation: use every function after login judge login state in ANY
-controller -&gt; code repeating extract to intercepter</p>
+<p>situation: use every function after login<br>
+judge login state in ANY controller -&gt; code repeating<br>
+extract to intercepter</p>
 </blockquote>
 <ul>
-<li><p>authority checking</p></li>
-<li><p>performance monitoring</p></li>
-<li><p>general behaviour: reading cookie to get user information and put
-it to request</p></li>
-<li><p>Springboot interface: <code>HandlerInterceptor</code></p>
+<li>
+<p>authority checking</p>
+</li>
+<li>
+<p>performance monitoring</p>
+</li>
+<li>
+<p>general behaviour: reading cookie to get user information and put it to request</p>
+</li>
+<li>
+<p>Springboot interface: <code>HandlerInterceptor</code></p>
 <ul>
 <li><code>preHandle</code></li>
 <li><code>postHandle</code></li>
 <li><code>afterCompletion</code></li>
-</ul></li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697177213073.png">
-<figcaption aria-hidden="true">1697177213073</figcaption>
-</figure>
+</li>
+</ul>
+<p><img lazyload alt="image" data-src="1697177213073.png"></p>
 <p><strong>how to define</strong></p>
 <ul>
 <li>extend from system <code>HandlerInterceptor</code></li>
-<li>override parents' method used, usually <code>preHandle</code></li>
+<li>override parents’ method used, usually <code>preHandle</code></li>
 <li>register interceptor</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in com.example.demo.interceptor.LonginInterceptor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LoginInterceptor&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in com.example.demo.config.WebConfig</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> &#123;</span><br><span class="line">        <span class="comment">// interceptor for the path /user/**</span></span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> <span class="title class_">LoginInterceptor</span>()).addPathPatterns(<span class="string">&quot;/user/**&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="build-restful-serve">build RESTful serve</h2>
+<h2 id="build-restful-serve"><a class="markdownIt-Anchor" href="#build-restful-serve"></a> build RESTful serve</h2>
 <ul>
-<li><p>framework rule</p></li>
-<li><p>popular website software service framework designing
-style</p></li>
-<li><p>basic rule, style</p></li>
-<li><p>every URI maps a kind of resource</p></li>
-<li><p><code>GET</code> for acquiring resources, <code>POST</code> for
-creating/updating resources, <code>PUT</code> for updating resources,
-<code>DELETE</code> for deleting resources</p></li>
+<li>
+<p>framework rule</p>
+</li>
+<li>
+<p>popular website software service framework designing style</p>
+</li>
+<li>
+<p>basic rule, style</p>
+</li>
+<li>
+<p>every URI maps a kind of resource</p>
+</li>
+<li>
+<p><code>GET</code> for acquiring resources, <code>POST</code> for creating/updating resources, <code>PUT</code> for updating resources, <code>DELETE</code> for deleting resources</p>
+</li>
 </ul>
 <p><strong>HTTP method</strong></p>
-<figure>
-<img lazyload alt="image" data-src="1697178943507.png">
-<figcaption aria-hidden="true">1697178943507</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697178943507.png"></p>
 <ul>
 <li>just a <strong>style</strong>, not standard requirements</li>
 </ul>
@@ -589,22 +559,25 @@ creating/updating resources, <code>PUT</code> for updating resources,
 <p><strong>how to write RESTful API</strong></p>
 <ul>
 <li>use tags</li>
-<li>for RESTful framework: every address corresponds a resource, so URI
-is suggested to be no-verb, pure nouns, and these nouns should
-conrresponds to database's sheet
+<li>for RESTful framework: every address corresponds a resource, so URI is suggested to be no-verb, pure nouns, and these nouns should conrresponds to database’s sheet
 <ul>
 <li>pass parameters using address: <code>@PathVariable in id</code></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p><strong>Swagger</strong></p>
 <ul>
-<li>generate API document
+<li>
+<p>generate API document</p>
 <ul>
 <li>description</li>
 <li>debugging</li>
 <li>dynamically</li>
-</ul></li>
-<li>configuration:</li>
+</ul>
+</li>
+<li>
+<p>configuration:</p>
+</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!--in pow.xml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring.mvc.pathmatch.matching-strategy</span>=<span class="string">ant_path_matcher</span></span><br></pre></td></tr></table></figure>
@@ -612,38 +585,33 @@ conrresponds to database's sheet
 <li>visit: <code>http://localhost:8080/swagger-ui.html</code></li>
 </ul>
 <p><strong>use swagger notation(tag) add methods docs</strong></p>
-<p><a class="link" target="_blank" rel="noopener" href="https://linkis.apache.org/zh-CN/docs/latest/development/swwager/">swagger
-tag usage<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://linkis.apache.org/zh-CN/docs/latest/development/swwager/">swagger tag usage<i class="fas fa-external-link-alt"></i></a></p>
 <ul>
 <li>swagger convinent front end developer to look up the apis</li>
-<li>another important thing: swagger page can send requests to debug the
-apis</li>
+<li>another important thing: swagger page can send requests to debug the apis</li>
 </ul>
 <blockquote>
-<p><strong>recommend</strong> springboot 3.0+ is recommended to use
-<code>springdoc</code></p>
+<p><strong>recommend</strong><br>
+springboot 3.0+ is recommended to use <code>springdoc</code></p>
 </blockquote>
-<h2 id="mybatis-plus-db-configuration">MyBatis Plus (DB
-configuration)</h2>
+<h2 id="mybatis-plus-db-configuration"><a class="markdownIt-Anchor" href="#mybatis-plus-db-configuration"></a> MyBatis Plus (DB configuration)</h2>
 <p><strong>ORM</strong></p>
 <ul>
 <li>Object relation mapping
 <ul>
-<li>handle OOP objects -&gt; DB storage or DB storage -&gt; OOP
-objects</li>
-</ul></li>
+<li>handle OOP objects -&gt; DB storage or DB storage -&gt; OOP objects</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697182386692.png">
-<figcaption aria-hidden="true">1697182386692</figcaption>
-</figure>
+</li>
+</ul>
+<p><img lazyload alt="image" data-src="1697182386692.png"></p>
 <ul>
 <li>MyBatis: ORM frame</li>
 <li>MyBatis-Plus: simpified MyBatis
 <ul>
 <li>use component: <code>mapper</code></li>
 <li>db-related operations: in <code>mapper</code> package</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p><strong>configuration</strong></p>
 <ul>
@@ -652,7 +620,8 @@ objects</li>
 <li>mybatis-plus</li>
 <li>mysql</li>
 <li>connection pool</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--		mybatis-plus dependency--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--		mysql driver--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--		sql connection pool--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -662,81 +631,75 @@ objects</li>
 <ul>
 <li>create MySQL data DB, schema and Tables</li>
 </ul>
-<figure>
-<img lazyload alt="image" data-src="1697187931126.png">
-<figcaption aria-hidden="true">1697187931126</figcaption>
-</figure>
+<p><img lazyload alt="image" data-src="1697187931126.png"></p>
 <ul>
-<li><p>add tags on Activation Class (main class):
-<code>@MapperScan("com.example.demo.mapper")</code>, scan mapper
-packages before running</p></li>
-<li><p>create mapper interface, and implemented by MyBatis (use
-<code>@Mapper</code> tag on the interface, meaning this is a component,
-it will use Dynamic Proxy to instanciate an object with
-<code>@Autowired</code>. And all sql sentences are finished by
-tags)</p></li>
+<li>
+<p>add tags on Activation Class (main class): <code>@MapperScan(&quot;com.example.demo.mapper&quot;)</code>, scan mapper packages before running</p>
+</li>
+<li>
+<p>create mapper interface, and implemented by MyBatis (use <code>@Mapper</code> tag on the interface, meaning this is a component, it will use Dynamic Proxy to instanciate an object with <code>@Autowired</code>. And all sql sentences are finished by tags)</p>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    <span class="comment">// add declarations, impl by Mybatis</span></span><br><span class="line">    <span class="comment">// query all users</span></span><br><span class="line">    <span class="comment">// find in user db (named mydb), configured in application.properties</span></span><br><span class="line">    <span class="meta">@Select(&quot;select * from user&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">query</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// return type stand for the number of records be inserted</span></span><br><span class="line">    <span class="meta">@Insert(&quot;insert into user values (#&#123;id&#125;, #&#123;username&#125;, #&#123;password&#125;, #&#123;gender&#125;)&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">insert</span><span class="params">(User user)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>for a more simply form, namely use MyBatis-Plus, that's all:
+<li>for a more simply form, namely use MyBatis-Plus, that’s all:
 <ul>
-<li>attention that the class name should be the same with your database
-table name, unless you use <a class="link" target="_blank" rel="noopener" href="https://baomidou.com/pages/223848/#tablename">tags<i class="fas fa-external-link-alt"></i></a></li>
-</ul></li>
+<li>attention that the class name should be the same with your database table name, unless you use <a class="link" target="_blank" rel="noopener" href="https://baomidou.com/pages/223848/#tablename">tags<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;User&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>use the mapper to edit database data
 <ul>
-<li>create controller <code>UserController</code> (we have created
-<code>User</code> entity before)</li>
-</ul></li>
+<li>create controller <code>UserController</code> (we have created <code>User</code> entity before)</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/user&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">query</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userMapper.query();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/user&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">insert</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">state</span> <span class="operator">=</span> userMapper.insert(user);</span><br><span class="line">        <span class="keyword">if</span> (state &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;insert fail&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;insert success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>where <code>@Autowired</code> is an injection method, which helps to
-instanciate UserMapper</li>
+<li>where <code>@Autowired</code> is an injection method, which helps to instanciate UserMapper</li>
 </ul>
-<h2 id="axios">Axios</h2>
+<h2 id="axios"><a class="markdownIt-Anchor" href="#axios"></a> Axios</h2>
 <blockquote>
-<p>a frame of front-end requesting - front-end needs data, browser sends
-HTTP requests to server to fetch data, Vue bonds data - based on
-<code>Ajax</code>, <code>promise</code> - use
-<code>XMLHttpRequests</code> to send web requests, convert
-<code>json</code> data automatically <code>npm install axios</code></p>
+<p>a frame of front-end requesting</p>
+<ul>
+<li>front-end needs data, browser sends HTTP requests to server to fetch data, Vue bonds data</li>
+<li>based on <code>Ajax</code>, <code>promise</code></li>
+<li>use <code>XMLHttpRequests</code> to send web requests, convert <code>json</code> data automatically<br>
+<code>npm install axios</code></li>
+</ul>
 </blockquote>
 <p><a class="link" target="_blank" rel="noopener" href="https://axios-http.com/docs/intro">帮助文档<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="send-web-requests">send web requests</h3>
+<h3 id="send-web-requests"><a class="markdownIt-Anchor" href="#send-web-requests"></a> send web requests</h3>
 <p><strong>send <code>GET</code> requests</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;/user?ID=12345&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// handle successful situations</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// handle failures</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// always execute</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// the same with:</span></span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;/user&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">params</span>: &#123;</span><br><span class="line">      <span class="attr">ID</span>: <span class="number">12345</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// handle successful situations</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// handle failures</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// always execute</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 <p><strong>send <code>POST</code> requests</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// request body is the second parameter</span></span><br><span class="line">axios.<span class="title function_">post</span>(<span class="string">&#x27;/user&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">firstName</span>: <span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">    <span class="attr">lastName</span>: <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// handle successful situations</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// handle failures</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// always execute</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="when-to-send-requests">when to send requests</h3>
-<p><code>created:function()&#123;&#125;</code>: invoked when creating the
-components</p>
-<p><code>mounted:function()&#123;&#125;</code>: invoked when mounting the
-components</p>
+<h3 id="when-to-send-requests"><a class="markdownIt-Anchor" href="#when-to-send-requests"></a> when to send requests</h3>
+<p><code>created:function()&#123;&#125;</code>: invoked when creating the components</p>
+<p><code>mounted:function()&#123;&#125;</code>: invoked when mounting the components</p>
 <p><strong>cross-domain</strong></p>
 <ul>
 <li>usually appears in front-back end separation projects</li>
-<li><strong>same-origin-policy</strong>: the basic and core security
-function of browsers
+<li><strong>same-origin-policy</strong>: the basic and core security function of browsers
 <ul>
-<li>same-origin, i.e. same-domain, where two page have the same
-protocol, host and port</li>
-</ul></li>
-<li><strong>cross-domain</strong>: request url appears when any of
-protocol, host and port is different from current page url
+<li>same-origin, i.e. same-domain, where two page have the same protocol, host and port</li>
+</ul>
+</li>
+<li><strong>cross-domain</strong>: request url appears when any of protocol, host and port is different from current page url
 <ul>
-<li>can't read cross-domain cookies</li>
-<li>can't send <code>Ajax</code> requests to cross-domain addresses</li>
-</ul></li>
+<li>can’t read cross-domain cookies</li>
+<li>can’t send <code>Ajax</code> requests to cross-domain addresses</li>
+</ul>
+</li>
 <li><strong>authorization</strong> to solve cross-domain questions
 <ul>
 <li>CORS(cross-origin resource sharing): designed by W3C</li>
 <li>simple requests/complex requests</li>
 <li>back-end server realize CORS interfaces</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>for single controller: <code>@CrossOrigin</code></p>
 <p>for global controler: add configuration class</p>
@@ -847,8 +810,7 @@ protocol, host and port is different from current page url
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-environment"><span class="nav-number">1.</span> <span class="nav-text">configure environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot"><span class="nav-number">2.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot-1"><span class="nav-number">3.</span> <span class="nav-text">springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coding-springboot"><span class="nav-number">4.</span> <span class="nav-text">coding springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-development"><span class="nav-number">5.</span> <span class="nav-text">web development</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#controller"><span class="nav-number">5.1.</span> <span class="nav-text">controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-mapping"><span class="nav-number">5.2.</span> <span class="nav-text">router mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameters-passing"><span class="nav-number">5.3.</span> <span class="nav-text">parameters passing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static-resources-visit"><span class="nav-number">5.4.</span> <span class="nav-text">static resources visit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upload-files"><span class="nav-number">5.5.</span> <span class="nav-text">upload files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interceptor"><span class="nav-number">5.6.</span> <span class="nav-text">interceptor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-restful-serve"><span class="nav-number">6.</span> <span class="nav-text">build RESTful serve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-plus-db-configuration"><span class="nav-number">7.</span> <span class="nav-text">MyBatis Plus (DB
-configuration)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios"><span class="nav-number">8.</span> <span class="nav-text">Axios</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#send-web-requests"><span class="nav-number">8.1.</span> <span class="nav-text">send web requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-to-send-requests"><span class="nav-number">8.2.</span> <span class="nav-text">when to send requests</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#configure-environment"><span class="nav-number">1.</span> <span class="nav-text"> configure environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot"><span class="nav-number">2.</span> <span class="nav-text"> springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot-2"><span class="nav-number">3.</span> <span class="nav-text"> springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#coding-springboot"><span class="nav-number">4.</span> <span class="nav-text"> coding springboot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web-development"><span class="nav-number">5.</span> <span class="nav-text"> web development</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#controller"><span class="nav-number">5.1.</span> <span class="nav-text"> controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-mapping"><span class="nav-number">5.2.</span> <span class="nav-text"> router mapping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parameters-passing"><span class="nav-number">5.3.</span> <span class="nav-text"> parameters passing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static-resources-visit"><span class="nav-number">5.4.</span> <span class="nav-text"> static resources visit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upload-files"><span class="nav-number">5.5.</span> <span class="nav-text"> upload files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interceptor"><span class="nav-number">5.6.</span> <span class="nav-text"> interceptor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-restful-serve"><span class="nav-number">6.</span> <span class="nav-text"> build RESTful serve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-plus-db-configuration"><span class="nav-number">7.</span> <span class="nav-text"> MyBatis Plus (DB configuration)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios"><span class="nav-number">8.</span> <span class="nav-text"> Axios</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#send-web-requests"><span class="nav-number">8.1.</span> <span class="nav-text"> send web requests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-to-send-requests"><span class="nav-number">8.2.</span> <span class="nav-text"> when to send requests</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -1025,9 +987,24 @@ configuration)</span></a></li><li class="nav-item nav-level-2"><a class="nav-lin
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

@@ -292,7 +292,7 @@ mjx-container[display="true"] + br {
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <p>"项目负责人对用户需求的理解程度，在很大程度上决定了项目的成败"</p>
+                        <p>“项目负责人对用户需求的理解程度，在很大程度上决定了项目的成败”</p>
                     
                 </div>
 
@@ -428,10 +428,9 @@ mjx-container[display="true"] + br {
                 <div class="home-article-content keep-markdown-body">
                     
                         
-Character Controller
+ Character Controller
 
-角色控制器不同于刚体+碰撞体，但角色控制器可以控制角色的移动并进行碰撞检测。不过神奇的地方在于被它绑定的角色并不会受到力的作用，角色只有在
-Move函数里面才能进行运动（当然会受到碰撞检测的制约）...
+角色控制器不同于刚体+碰撞体，但角色控制器可以控制角色的移动并进行碰撞检测。不过神奇的地方在于被它绑定的角色并不会受到力的作用，角色只有在 Move函数里面才能进行运动（当然会受到碰撞检测的制约）。然后...
                     
                 </div>
 
@@ -498,7 +497,7 @@ Move函数里面才能进行运动（当然会受到碰撞检测的制约）...
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <p>"C++17类模板"</p>
+                        <p>“C++17类模板”</p>
                     
                 </div>
 
@@ -560,7 +559,7 @@ Move函数里面才能进行运动（当然会受到碰撞检测的制约）...
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        <p>"Semantic segmentation of images, use UNet model."</p>
+                        <p>“Semantic segmentation of images, use UNet model.”</p>
                     
                 </div>
 
@@ -774,9 +773,24 @@ Move函数里面才能进行运动（当然会受到碰撞检测的制约）...
 
 <div class="post-scripts">
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

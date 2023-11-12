@@ -272,22 +272,20 @@
 <span id="more"></span>
 <blockquote>
 <ul>
-<li>肯特·贝克和沃德·坎宁安：建筑设计思想 -&gt;
-Smalltalk的图形用户接口生成</li>
+<li>肯特·贝克和沃德·坎宁安：建筑设计思想 -&gt; Smalltalk的图形用户接口生成</li>
 <li>Erich Gamma改为适用于软件开发</li>
-<li>James Coplien致力于C++开发，Advanced C++ Idioms</li>
-<li>Gang of Four (Erich Gamma, Richard Helm, Ralph Johnson, John
-Vlissides) 出版 Design Patterns - Elements of Reusable Object-Oriented
-Software</li>
+<li>James Coplien致力于C<ins>开发，Advanced C</ins> Idioms</li>
+<li>Gang of Four (Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides) 出版 Design Patterns - Elements of Reusable Object-Oriented Software</li>
 </ul>
 </blockquote>
 <p><a class="link" target="_blank" rel="noopener" href="https://itbaima.net/document">ref<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="工厂方法模式">工厂方法模式</h2>
+<h2 id="工厂方法模式"><a class="markdownIt-Anchor" href="#工厂方法模式"></a> 工厂方法模式</h2>
 <blockquote>
-<p>创建对象时，不直接使用<code>new</code>来创建对象，而是使用工厂方法模式
--
-程序中使用大量的<code>new</code>时，当某个对象/构造方法发生变化时，难以维护
-- 将频繁出现的对象创建，封装到一个工厂类中</p>
+<p>创建对象时，不直接使用<code>new</code>来创建对象，而是使用工厂方法模式</p>
+<ul>
+<li>程序中使用大量的<code>new</code>时，当某个对象/构造方法发生变化时，难以维护</li>
+<li>将频繁出现的对象创建，封装到一个工厂类中</li>
+</ul>
 </blockquote>
 <p><strong>简单工厂模式</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FruitFactory</span>() &#123;</span><br><span class="line">    <span class="keyword">public</span> Fruit <span class="title function_">getFruit</span><span class="params">(ID id)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (id == <span class="number">0</span>) &#123;<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Apple</span>();&#125;</span><br><span class="line">        <span class="keyword">if</span> (id == <span class="number">1</span>) &#123;<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Peach</span>();&#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -297,7 +295,8 @@ Software</li>
 <ul>
 <li><code>FruitFactory</code>提供给调用方使用，应该对修改关闭，即不要修改工厂代码</li>
 <li>但是提供方可以对扩展开放</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p><strong>工厂方法模式</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">FruitFactory</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Fruit</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> T <span class="title function_">getFruit</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppleFactory</span> <span class="keyword">extends</span> <span class="title class_">FruitFactory</span>&lt;Apple&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Apple <span class="title function_">getFruit</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Apple</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
@@ -305,11 +304,11 @@ Software</li>
 <li>如果新增了新对象，调用方只需要自己添加对应的工厂并继承最高的工厂即可</li>
 <li>使用者只需要关心如何使用对象，工厂屏蔽了对象的创建细节</li>
 </ul>
-<h2 id="抽象工厂模式">抽象工厂模式</h2>
+<h2 id="抽象工厂模式"><a class="markdownIt-Anchor" href="#抽象工厂模式"></a> 抽象工厂模式</h2>
 <blockquote>
 <p>工厂方法模式只适用于简单对象，如果需要许多的产品族时会显得乏力</p>
 </blockquote>
-<h2 id="建造者模式">建造者模式</h2>
+<h2 id="建造者模式"><a class="markdownIt-Anchor" href="#建造者模式"></a> 建造者模式</h2>
 <ul>
 <li><code>builder</code></li>
 <li>如果一个对象构造时用的参数过多，可以使用<code>builder</code>优雅地完成构造</li>
@@ -326,16 +325,19 @@ Software</li>
 <ul>
 <li>还包括 <strong>协调者模式</strong></li>
 </ul>
-<h2 id="单例模式">单例模式</h2>
+<h2 id="单例模式"><a class="markdownIt-Anchor" href="#单例模式"></a> 单例模式</h2>
 <blockquote>
 <p>一个类始终只有一个实例对象/直接使用类的静态方法</p>
 </blockquote>
 <ul>
-<li>饿汉式单例
+<li>
+<p>饿汉式单例</p>
 <ul>
 <li>类加载时将对象创建好</li>
-</ul></li>
-<li>懒汉式单例
+</ul>
+</li>
+<li>
+<p>懒汉式单例</p>
 <ul>
 <li>延迟加载，需要时才创建</li>
 <li>线程不安全
@@ -344,15 +346,21 @@ Software</li>
 <li>在创建实例的方法上加锁<code>synchronized</code>（但高并发效率较低）</li>
 <li>可以在判断实例是否创建的<code>if</code>语句内加锁</li>
 <li><code>volatile</code>保证线程可见</li>
-</ul></li>
-</ul></li>
-<li>懒汉式+饿汉式</li>
-<li>在懒汉式的内部创建内部类
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>懒汉式+饿汉式</p>
+</li>
+<li>
+<p>在懒汉式的内部创建内部类</p>
 <ul>
 <li>由静态内部类持有单例对象，根据类加载特性，仅使用外层类时，不会对静态内部类进行初始化</li>
-</ul></li>
 </ul>
-<h2 id="原型模式">原型模式</h2>
+</li>
+</ul>
+<h2 id="原型模式"><a class="markdownIt-Anchor" href="#原型模式"></a> 原型模式</h2>
 <blockquote>
 <p>原型对象作为模板，通过复制该对象来创建新对象</p>
 </blockquote>
@@ -371,7 +379,8 @@ Software</li>
 <li>重写<code>clone</code>方法</li>
 <li>内层对象依然是引用的复制，用<code>==</code>进行地址比较</li>
 <li>应该在<code>clone</code>中处理成员变量</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
             </div>
@@ -471,7 +480,7 @@ Software</li>
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">工厂方法模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">抽象工厂模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">建造者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">原型模式</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text"> 工厂方法模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text"> 抽象工厂模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text"> 建造者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text"> 单例模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text"> 原型模式</span></a></li></ol>
     </div>
 </div>
 
@@ -648,9 +657,24 @@ Software</li>
             <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
         
     
-</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</div>
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
