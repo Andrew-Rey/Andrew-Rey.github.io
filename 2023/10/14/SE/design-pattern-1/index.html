@@ -1,673 +1,540 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="Andrew-Rey">
-    
-    <title>
-        
-            Design Pattern | 面向对象设计原则 |
-        
-        Andrew-Rey
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="shortcut icon" href="/images/head_round.png">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {}
-    KEEP.hexo_config = {"hostname":"andrew-rey.github.io","root":"/","language":"en","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#a0c49d","logo":"/images/head_round.png","favicon":"/images/head_round.png","avatar":"/images/head_round.png","font_size":"16px","font_family":"Songti","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://yuanxiapi.cn/api/bing/","description":null,"font_color":"#faf0e4","hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["来自林邑的许先森❤"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
-    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
-    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
-    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Design Pattern | OOD | Andrew-Rey</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CS,SE,Java,Design Pattern," />
+  
+
+  <meta name="description" content="项目的可维护性和可复用性，项目规范，团队开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design Pattern | OOD">
+<meta property="og:url" content="https://andrew-rey.github.io/2023/10/14/SE/design-pattern-1/index.html">
+<meta property="og:site_name" content="Andrew-Rey">
+<meta property="og:description" content="项目的可维护性和可复用性，项目规范，团队开发">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-14T14:51:29.000Z">
+<meta property="article:modified_time" content="2023-11-12T13:00:19.014Z">
+<meta property="article:tag" content="CS">
+<meta property="article:tag" content="SE">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Design Pattern">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/head_round.png">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/site.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
   </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
 <meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
-
 <body>
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="progress-bar-container">
-    
 
-    
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">🌈</span>
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+<link rel="stylesheet" href="/css/prism.css">
+
+<div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">🌈</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            Archives
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/categories/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            Categories
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/tags/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            Tags
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            About
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
 </div>
 
 
-<main class="page-container">
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="toc-text">单一职责原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="toc-text">开闭原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="toc-text">里氏替换原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99"><span class="toc-text">依赖倒转原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="toc-text">接口隔离原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="toc-text">合成复用原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99%E6%9C%80%E5%B0%91%E7%9F%A5%E8%AF%86%E5%8E%9F%E5%88%99"><span class="toc-text">迪米特法则&#x2F;最少知识原则</span></a></li></ol>
+  </div>
 
-    
 
-    <div class="page-main-content">
 
-        <div class="page-main-content-top">
-            
-<header class="header-wrapper">
+<div class="content content-post CENTER">
+   <article id="post-SE/design-pattern-1" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Design Pattern | OOD</h1>
 
-    <div class="header-content">
-        <div class="left">
-            
-                <a class="logo-image" href="/">
-                    <img src="/images/head_round.png">
-                </a>
-            
-            <a class="logo-title" href="/">
-               Andrew-Rey
-            </a>
-        </div>
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2023.10.14</span>
+      </span>
 
-        <div class="right">
-            <div class="pc">
-                <ul class="menu-list">
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/"
-                            >
-                                HOME
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/archives"
-                            >
-                                ARCHIVES
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/tags"
-                            >
-                                TAGS
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/categories"
-                            >
-                                CATEGORIES
-                            </a>
-                        </li>
-                    
-                        <li class="menu-item">
-                            <a class=""
-                               href="/about"
-                            >
-                                ABOUT
-                            </a>
-                        </li>
-                    
-                    
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
-                
-                <div class="icon-item menu-bar">
-                    <div class="menu-bar-middle"></div>
-                </div>
-            </div>
-        </div>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/SE/">SE</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
     </div>
+  </header>
 
-    <div class="header-drawer">
-        <ul class="drawer-menu-list">
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/">HOME</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/archives">ARCHIVES</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/tags">TAGS</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/categories">CATEGORIES</a>
-                </li>
-            
-                <li class="drawer-menu-item flex-center">
-                    <a class=""
-                       href="/about">ABOUT</a>
-                </li>
-            
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="page-main-content-middle">
-
-            <div class="main-content">
-
-                
-                    <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            <div class="article-title">
-                <span class="title-hover-animation">Design Pattern | 面向对象设计原则</span>
-            </div>
-
-            
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/images/head_round.png">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">Andrew-Rey</span>
-                            
-                                <span class="author-label">来自林邑的许先森❤</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            
-<div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        
-            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
-        
-        <span class="pc">2023-10-14 22:51:29</span>
-        <span class="mobile">2023-10-14 22:51</span>
-    </span>
+  <div class="article-content">
     
-        <span class="article-update-date article-meta-item">
-        <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-10-15 11:24:18</span>
-    </span>
-    
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/SE/">SE</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/CS/">CS</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/SE/">SE</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Java/">Java</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Design-Pattern/">Design Pattern</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k Words</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
-        </span>
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content keep-markdown-body">
-                
-
-                <blockquote>
+      <blockquote>
 <p>项目的可维护性和可复用性，项目规范，团队开发</p>
 </blockquote>
 <span id="more"></span>
-<h2 id="单一职责原则"><a class="markdownIt-Anchor" href="#单一职责原则"></a> 单一职责原则</h2>
+<h2 id="单一职责原则">单一职责原则</h2>
 <blockquote>
-<p>一个对象应该只包含单一职责，并且该职责被完整地封装在一个类中</p>
-<ul>
-<li>用于控制类的粒度大小</li>
-</ul>
+<p>一个对象应该只包含单一职责，并且该职责被完整地封装在一个类中 -
+用于控制类的粒度大小</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">People</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>(): <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">riding</span>(): <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">cooking</span>(): <span class="keyword">pass</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">People</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">coding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span>
+    <span class="token keyword">def</span> <span class="token function">riding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span>
+    <span class="token keyword">def</span> <span class="token function">cooking</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>臃肿：修改任意行为都会修改<code>People</code>类</li>
-<li><code>People</code>拥有 <strong>不止一个引起它变化的原因</strong></li>
+<li><code>People</code>拥有
+<strong>不止一个引起它变化的原因</strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Programmer</span>(<span class="title class_ inherited__">object</span>): <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rider</span>(<span class="title class_ inherited__">object</span>): <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Chef</span>(<span class="title class_ inherited__">object</span>): <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Programmer</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span>
+<span class="token keyword">class</span> <span class="token class-name">Rider</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span>
+<span class="token keyword">class</span> <span class="token class-name">Chef</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>类的 <strong>粒度更细</strong>，根据不同业务划分，采用单一职责原则，高内聚低耦合</li>
+<li>类的
+<strong>粒度更细</strong>，根据不同业务划分，采用单一职责原则，高内聚低耦合</li>
 </ul>
-<h2 id="开闭原则"><a class="markdownIt-Anchor" href="#开闭原则"></a> 开闭原则</h2>
+<h2 id="开闭原则">开闭原则</h2>
 <blockquote>
-<p>软件实体应当对扩展开放，对修改关闭</p>
-<ul>
-<li>扩展开放：对提供方而言</li>
-<li>修改关闭：对调用方而言</li>
-</ul>
+<p>软件实体应当对扩展开放，对修改关闭 - 扩展开放：对提供方而言 -
+修改关闭：对调用方而言</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="comment"># define abstract class or interface</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IProgrammer</span>(metaclass=ABCMeta):</span><br><span class="line"><span class="meta">    @abstractmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>(): <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">JavaProgrammer</span>(<span class="title class_ inherited__">IProgrammer</span>): </span><br><span class="line">    <span class="comment"># override</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>():</span><br><span class="line">        java()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonProgrammer</span>(<span class="title class_ inherited__">IProgrammer</span>):</span><br><span class="line">    <span class="comment"># override</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">coding</span>():</span><br><span class="line">        python()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> abc <span class="token keyword">import</span> ABCMeta<span class="token punctuation">,</span> abstractmethod
+
+<span class="token comment"># define abstract class or interface</span>
+<span class="token keyword">class</span> <span class="token class-name">IProgrammer</span><span class="token punctuation">(</span>metaclass<span class="token operator">=</span>ABCMeta<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@abstractmethod</span>
+    <span class="token keyword">def</span> <span class="token function">coding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span>
+
+<span class="token keyword">class</span> <span class="token class-name">JavaProgrammer</span><span class="token punctuation">(</span>IProgrammer<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+    <span class="token comment"># override</span>
+    <span class="token keyword">def</span> <span class="token function">coding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        java<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PythonProgrammer</span><span class="token punctuation">(</span>IProgrammer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># override</span>
+    <span class="token keyword">def</span> <span class="token function">coding</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        python<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>将不同程序员写代码抽象为一个统一的接口/抽象类，不进行实现
 <ul>
 <li>扩展开放：开放了统一的接口<code>coding</code>，不同程序员自由决定如何编程</li>
 <li>修改关闭：具体程序员如何重写<code>coding</code>是自己负责，不受别人干扰</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="里氏替换原则"><a class="markdownIt-Anchor" href="#里氏替换原则"></a> 里氏替换原则</h2>
+<h2 id="里氏替换原则">里氏替换原则</h2>
 <blockquote>
-<p>所有引用基类的地方必须能透明使用其子类的对象（子类能扩展父类的功能）</p>
-<ul>
-<li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法（既然是继承于父类，子类已经不具有父类的原本行为了，如果有这样的需求，一是可以取消继承，二是可以重新写一个方法）</li>
-<li>子类可以增加自己特有的方法</li>
-<li>当子类方法重载父类方法时，方法的前置条件（入参）要比父类更加宽松</li>
-<li>当子类方法重载父类方法时，方法的后置条件（返回值）要比父类更加严格或一样</li>
-</ul>
+<p>所有引用基类的地方必须能透明使用其子类的对象（子类能扩展父类的功能）
+-
+子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法（既然是继承于父类，子类已经不具有父类的原本行为了，如果有这样的需求，一是可以取消继承，二是可以重新写一个方法）
+- 子类可以增加自己特有的方法 -
+当子类方法重载父类方法时，方法的前置条件（入参）要比父类更加宽松 -
+当子类方法重载父类方法时，方法的后置条件（返回值）要比父类更加严格或一样</p>
 </blockquote>
-<h2 id="依赖倒转原则"><a class="markdownIt-Anchor" href="#依赖倒转原则"></a> 依赖倒转原则</h2>
+<h2 id="依赖倒转原则">依赖倒转原则</h2>
 <blockquote>
-<p>高层模块不依赖于底层模块，它们都应该依赖抽线。抽象不应依赖于细节，细节应该依赖于抽象</p>
-<ul>
-<li>Spring框架</li>
-</ul>
+<p>高层模块不依赖于底层模块，它们都应该依赖抽线。抽象不应依赖于细节，细节应该依赖于抽象
+- Spring框架</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserMapper</span>(<span class="title class_ inherited__">object</span>): </span><br><span class="line">    <span class="comment"># use CRUD</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="comment"># use methods in UserMapper</span></span><br><span class="line">    user_mapper = UserMapper()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserController</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="comment"># use methods in UserService</span></span><br><span class="line">    user_service = UserService()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">UserMapper</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 
+    <span class="token comment"># use CRUD</span>
+    <span class="token keyword">pass</span>
+<span class="token keyword">class</span> <span class="token class-name">UserService</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># use methods in UserMapper</span>
+    user_mapper <span class="token operator">=</span> UserMapper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">UserController</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># use methods in UserService</span>
+    user_service <span class="token operator">=</span> UserService<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>上述代码结构好，但是如果底层逻辑（例如<code>UserService</code>）发生改变，则上层逻辑也要跟着改变，层次分明但 <strong>耦合度高</strong></li>
+<li>上述代码结构好，但是如果底层逻辑（例如<code>UserService</code>）发生改变，则上层逻辑也要跟着改变，层次分明但
+<strong>耦合度高</strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> abc <span class="keyword">import</span> ABCMeta, abstractmethod</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserMapper</span>(metaclass=ABCMeta): </span><br><span class="line">    <span class="comment"># provides abstract interfaces only</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserMapperImpl</span>(<span class="title class_ inherited__">UserMapper</span>):</span><br><span class="line">    <span class="comment"># implements interfaces of UserMapper</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span>(metaclass=ABCMeta):</span><br><span class="line">    <span class="comment"># provides abstract interfaces only</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserServiceImpl</span>(<span class="title class_ inherited__">UserService</span>):</span><br><span class="line">    <span class="comment"># use dependency injection to instantiate UserMapper such as:</span></span><br><span class="line">    self.user_mapper = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_user_mapper</span>(<span class="params">user_mapper: UserMapper</span>): <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserController</span>():</span><br><span class="line">    <span class="comment"># use dependency injection to instantiate UserService such as:</span></span><br><span class="line">    self.user_service = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_user_service</span>(<span class="params">user_service: UserService</span>): <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> abc <span class="token keyword">import</span> ABCMeta<span class="token punctuation">,</span> abstractmethod
+
+<span class="token keyword">class</span> <span class="token class-name">UserMapper</span><span class="token punctuation">(</span>metaclass<span class="token operator">=</span>ABCMeta<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+    <span class="token comment"># provides abstract interfaces only</span>
+    <span class="token keyword">pass</span>
+<span class="token keyword">class</span> <span class="token class-name">UserMapperImpl</span><span class="token punctuation">(</span>UserMapper<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># implements interfaces of UserMapper</span>
+    <span class="token keyword">pass</span>
+<span class="token keyword">class</span> <span class="token class-name">UserService</span><span class="token punctuation">(</span>metaclass<span class="token operator">=</span>ABCMeta<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># provides abstract interfaces only</span>
+    <span class="token keyword">pass</span>
+<span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span><span class="token punctuation">(</span>UserService<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># use dependency injection to instantiate UserMapper such as:</span>
+    self<span class="token punctuation">.</span>user_mapper <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token keyword">def</span> <span class="token function">set_user_mapper</span><span class="token punctuation">(</span>user_mapper<span class="token punctuation">:</span> UserMapper<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span>
+<span class="token keyword">class</span> <span class="token class-name">UserController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># use dependency injection to instantiate UserService such as:</span>
+    self<span class="token punctuation">.</span>user_service <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token keyword">def</span> <span class="token function">set_user_service</span><span class="token punctuation">(</span>user_service<span class="token punctuation">:</span> UserService<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">pass</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>如果修改了底层逻辑（例如<code>UserService</code>），只需要修改其实现类（<code>UserServiceImpl</code>）即可，上层逻辑由依赖注入完成</li>
 <li>上层只需要知道接口中定义了什么方法然后使用即可，具体操作内容由接口的实现类完成</li>
 <li>使用了 <strong>依赖注入</strong></li>
 <li>降低了类之间的耦合度</li>
 </ul>
-<h2 id="接口隔离原则"><a class="markdownIt-Anchor" href="#接口隔离原则"></a> 接口隔离原则</h2>
+<h2 id="接口隔离原则">接口隔离原则</h2>
 <blockquote>
-<p>客户端不应依赖那些它不需要的接口</p>
-<ul>
-<li>对接口的细化</li>
-<li>定义接口时要注意接口的粒度</li>
-</ul>
+<p>客户端不应依赖那些它不需要的接口 - 对接口的细化 -
+定义接口时要注意接口的粒度</p>
 </blockquote>
-<h2 id="合成复用原则"><a class="markdownIt-Anchor" href="#合成复用原则"></a> 合成复用原则</h2>
+<h2 id="合成复用原则">合成复用原则</h2>
 <blockquote>
-<p>优先使用对象组合，而不是通过继承来达到复用的目的</p>
-<ul>
-<li>核心是委派</li>
-<li>在一个新的对象里面使用一些已有的对象，使之成为新对象的一部分，新的对象通过向这些对象的委派达到已有功能复用的目的</li>
-</ul>
+<p>优先使用对象组合，而不是通过继承来达到复用的目的 - 核心是委派 -
+在一个新的对象里面使用一些已有的对象，使之成为新对象的一部分，新的对象通过向这些对象的委派达到已有功能复用的目的</p>
 </blockquote>
 <ul>
-<li>
-<p>继承可以实现复用，但</p>
+<li>继承可以实现复用，但
 <ul>
 <li>耦合度高</li>
 <li>子类得到父类细节（某些字段或方法），不安全</li>
-</ul>
-</li>
-<li>
-<p>组合实现复用</p>
+</ul></li>
+<li>组合实现复用
 <ul>
 <li>考虑函数传参，用的时候才传参</li>
 <li>考虑成为成员变量，构造时指定</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="迪米特法则最少知识原则"><a class="markdownIt-Anchor" href="#迪米特法则最少知识原则"></a> 迪米特法则/最少知识原则</h2>
+<h2 id="迪米特法则最少知识原则">迪米特法则/最少知识原则</h2>
 <blockquote>
-<p>每一个软件单位对其它单位都只有最少的知识，而且局限于那些与本单位密切相关的软件单位</p>
-<ul>
-<li>一个模块与其它模块交互越少越好</li>
-<li>降低耦合度</li>
-</ul>
+<p>每一个软件单位对其它单位都只有最少的知识，而且局限于那些与本单位密切相关的软件单位
+- 一个模块与其它模块交互越少越好 - 降低耦合度</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">main_task</span>():</span><br><span class="line">    my_secret = Secret()</span><br><span class="line">    test = Test()</span><br><span class="line">    <span class="comment"># test_start may need one of the property of Secret</span></span><br><span class="line">    test.test_start(my_secret)</span><br><span class="line"></span><br><span class="line"><span class="comment"># in Test</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_start</span>(<span class="params">my_secret: Secret</span>):</span><br><span class="line">    <span class="built_in">print</span>(my_secret.sth)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">main_task</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    my_secret <span class="token operator">=</span> Secret<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    test <span class="token operator">=</span> Test<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># test_start may need one of the property of Secret</span>
+    test<span class="token punctuation">.</span>test_start<span class="token punctuation">(</span>my_secret<span class="token punctuation">)</span>
+
+<span class="token comment"># in Test</span>
+<span class="token keyword">def</span> <span class="token function">test_start</span><span class="token punctuation">(</span>my_secret<span class="token punctuation">:</span> Secret<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>my_secret<span class="token punctuation">.</span>sth<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>test_start</code>参数改为<code>sth: Something</code>减少与其它功能模块的交互</li>
 </ul>
 
-            </div>
-
-            
-                <div class="post-copyright-info">
-                    
-<div class="article-copyright-info-container">
-    <ul class="copyright-info-content">
-        <li class="post-title">
-            <span class="type">Post title</span>: <span class="content">Design Pattern | 面向对象设计原则</span>
-        </li>
-        <li class="post-author">
-            <span class="type">Post author</span>: <span class="content">Andrew-Rey</span>
-        </li>
-        <li class="post-time">
-            <span class="type">Create time</span>: <span class="content">2023-10-14 22:51:29</span>
-        </li>
-        <li class="post-link">
-            <span class="type">Post link</span>: <span class="content">2023/10/14/SE/design-pattern-1/</span>
-        </li>
-        <li class="post-license">
-            <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
-        </li>
-    </ul>
-    <div class="copy-copyright-info flex-center tooltip" data-content="Copy copyright info" data-offset-y="-2px">
-        <i class="fa-solid fa-copy"></i>
-    </div>
-</div>
-
-                </div>
-            
-
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/CS/">#CS</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/SE/">#SE</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/Java/">#Java</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/Design-Pattern/">#Design Pattern</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
-
-            
-                <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/10/15/SE/design-pattern-2/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">Design Pattern | 创建型</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                            </a>
-                        </div>
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                               rel="next"
-                               href="/2023/10/12/SE/full-stack/"
-                            >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Full Stack | Quick Start</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                                <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-            
-        </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text"> 单一职责原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text"> 开闭原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text"> 里氏替换原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text"> 依赖倒转原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="nav-number">5.</span> <span class="nav-text"> 接口隔离原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="nav-number">6.</span> <span class="nav-text"> 合成复用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99%E6%9C%80%E5%B0%91%E7%9F%A5%E8%AF%86%E5%8E%9F%E5%88%99"><span class="nav-number">7.</span> <span class="nav-text"> 迪米特法则&#x2F;最少知识原则</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
-    </div>
-</div>
-
-
-                
-            </div>
- 
-        </div>
-
-        <div class="page-main-content-bottom">
-            
-<footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-                <span>2022</span> -
-            
-            2023
-            
-                &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">Andrew-Rey</a>
-            
-        </div>
-        
-            <script async 
-                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
-                
-                
-                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
-                
-            </div>
-        
-        <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
-        </div>
-        
-        
-    </div>
-</footer>
-
-        </div>
-    </div>
-
     
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
+  </div>
 
-        <!-- go comment -->
-        
-    </ul>
-</div>
+</article>
 
-        </div>
-    
 
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
-        <li class="tools-item tool-font-adjust-plus flex-center">
-            <i class="fas fa-search-plus"></i>
-        </li>
+   
 
-        <li class="tools-item tool-font-adjust-minus flex-center">
-            <i class="fas fa-search-minus"></i>
-        </li>
+   
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
-            <i class="fas fa-moon"></i>
-        </li>
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2023/10/12/SE/full-stack/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2023/10/15/SE/design-pattern-2/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
 
-        <!-- rss -->
-        
 
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
 
-        <li class="tools-item tool-scroll-to-bottom flex-center">
-            <i class="fas fa-arrow-down"></i>
-        </li>
-    </ul>
 
-    <ul class="exposed-tools-list">
-        <li class="tools-item tool-toggle-show flex-center">
-            <i class="fas fa-cog fa-spin"></i>
-        </li>
-        
-    </ul>
-</div>
-
-    </div>
-
-    <div class="zoom-in-image-mask">
-    <img class="zoom-in-image">
 </div>
 
 
-    
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="close-popup-btn">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-</main>
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
-
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
-
-
-<div class="post-scripts">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
-        
-            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
-        
-        
-            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
-        
-    
-</div>
-
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script>
+    $(".article-content img").wrap(function() {
+        return '<a data-fancybox href="' + $(this).attr("src") + '"/>';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              Archives
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/categories/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              Categories
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/tags/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              Tags
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              About
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
 </body>
 </html>
