@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Papers | PARSeq | Andrew-Rey</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Paper,STR," />
+  
+
+  <meta name="description" content="STR 的方法里面经常会使用自回归的语言模型（ARLM），当然考虑到自回归的一些缺点和局限性，也有人采用外置的语言模型。但是外置的语言模型（external LM）是条件独立的（conditional independence），有时会将正确的预测结果修正为错误的结果。本文提出的PARSeq（Permuted Autoregressive Sequence）模型使用了Permutation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Papers | PARSeq">
+<meta property="og:url" content="https://andrew-rey.github.io/2023/12/11/Papers/parseq/index.html">
+<meta property="og:site_name" content="Andrew-Rey">
+<meta property="og:description" content="STR 的方法里面经常会使用自回归的语言模型（ARLM），当然考虑到自回归的一些缺点和局限性，也有人采用外置的语言模型。但是外置的语言模型（external LM）是条件独立的（conditional independence），有时会将正确的预测结果修正为错误的结果。本文提出的PARSeq（Permuted Autoregressive Sequence）模型使用了Permutation">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://andrew-rey.github.io/2023/12/11/Papers/parseq/1703145646187.png">
+<meta property="article:published_time" content="2023-12-11T05:58:48.000Z">
+<meta property="article:modified_time" content="2023-12-21T09:17:01.715Z">
+<meta property="article:tag" content="Paper">
+<meta property="article:tag" content="STR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://andrew-rey.github.io/2023/12/11/Papers/parseq/1703145646187.png">
+
+  
+
+  
+    <link rel="icon" href="/images/head_round.png">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/site.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body>
+
+
+  
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><span id="toolbox-mobile" class="toolbox-mobile">🌈</span>
+  
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+<link rel="stylesheet" href="/css/prism.css">
+
+<div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">🌈</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            Archives
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/categories/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            Categories
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/tags/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            Tags
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="ROUND_RECT"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            About
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts List</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-work"><span class="toc-text">Related Work</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#permuted-autoregressive-sequence-models"><span class="toc-text">Permuted Autoregressive
+Sequence Models</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Papers/parseq" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Papers | PARSeq</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2023.12.11</span>
+      </span>
+
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Paper/">Paper</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>STR
+的方法里面经常会使用自回归的语言模型（ARLM），当然考虑到自回归的一些缺点和局限性，也有人采用外置的语言模型。但是外置的语言模型（external
+LM）是条件独立的（conditional
+independence），有时会将正确的预测结果修正为错误的结果。本文提出的PARSeq（Permuted
+Autoregressive Sequence）模型使用了Permutation Language Modeling和Weight
+Sharing来集成自回归语言模型。</p>
+<span id="more"></span>
+<p><a target="_blank" rel="noopener" href="https://github.com/baudm/parseq">代码</a>，<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2207.06966">论文</a></p>
+<h2 id="introduction">Introduction</h2>
+<p>本文先介绍了什么是STR任务并说明该任务成果的应用场景和当前问题，并提出
+<strong>STR任务在某些情况下不能仅仅依靠image
+features来做推理，而是要依赖一定的language
+semantics</strong>。STR网络中内置的语言模型一般是自回归的，不仅能够处理语言特征还能联合地处理图像特征。通常的自回归策略是<u>根据过去的时刻的预测值来预测当前时刻的值</u>：
+<span class="math inline">\(P(\mathbf{y} | \mathbf{x})=\prod_{t=1}^{T}
+P(y_t | \mathbf{y}_{&lt;t}, \mathbf{x})\)</span> （其中 <span class="math inline">\(\mathbf{y}\)</span> 是一个长度为<span class="math inline">\(T\)</span>的文本序列， <span class="math inline">\(\mathbf{x}\)</span>
+是图像）。这样的自回归策略有两个缺点：</p>
+<ul>
+<li>单向性：文本序列的预测要么从左到右，要么从右到左。预测结果和顺序有一定的关系。</li>
+<li>推理的时候，输出的序列顺序和训练是一样的。</li>
+</ul>
+<p>为了解决“单向”的问题，有人提出了 <strong>ABINet</strong>
+的模型，它主要使用掩码的方式，在注意力层多加了一层掩码：<span class="math inline">\(P(\mathbf{y} | \mathbf{x}) = \prod_{t=1}^{T}P(y_t
+| \mathbf{x})\)</span>，其中 <span class="math inline">\(P(\mathbf{y}) =
+\prod_{t=1}^{T}P(y_t | \mathbf{y}_{t\neq
+1})\)</span>，即在预测某个字符时，将其做掩码，用其余字符对掩码字符进行预测，这样的好处是能够
+<strong>利用双向</strong> 的字符特征。但是在 ABINet 中，作者采用的是
+independent LM，可以单独训练，不依赖于 image model，用于 <em>纠正</em>
+image model 的错误。但是当语言模型本身的预测结果就是错误的，又何谈
+<em>纠错</em> 呢？于是为了利用image和text两种特征，ABINet 的作者又加了
+fusion 模块，但本文作者认为这种方式带来了巨大的参数数量。</p>
+<p>看了序列模型的综述，本文发现目前比较常用的、研究较多的一类模型是
+<em>序列生成模型</em>，作者认为可以将这些模型结合context-free和context-aware后泛化在STR任务中。并且能将
+<em>外部</em> 的语言模型转化为 <em>内部</em> 的。本文着重关注的是
+Permutation Language Model
+(PLM)，后续本文会说明是如何改进PLM，让其更加适用于STR。本文提到：<em>PLM模型可以看作是自回归的一种泛化，能够使用
+<strong>共享的结构和权值集成</strong>
+多个自回归模型</em>。如下图所示</p>
+<figure>
+<img src="/2023/12/11/Papers/parseq/1703145646187.png" alt="permiutation">
+<figcaption aria-hidden="true">permiutation</figcaption>
+</figure>
+<p>本文类似这种方式，提出了用于STR任务的PARSeq（Permuted Autoregressive
+Sequence）模型，并且表现还不错。</p>
+<h2 id="related-work">Related Work</h2>
+<p>本文在这一节主要从三个方面来总结STR的工作，分别是context-free STR,
+context-aware STR 和 generation from sequence model。</p>
+<ul>
+<li>context-free
+STR：直接从图片中预测字符串，每一个字符是概率独立的。缺点是low
+robust，于是大家开始利用语言模型来指导图片文本的识别</li>
+<li>context-ware
+STR：在图片的文字识别中加入语言模型作为指导，但是会出现两种方式：一种是所谓的external
+LM，也就是直接使用现有的语言模型，主要用于通过集成、迭代等方式提升预测的准去率；一种是internal
+LM，主要是跟着自己的模型一起训练。不过对于后者，传统的做法是使用monotonic
+and standard AR训练方式，PARSeq使用的是PLM方式。</li>
+<li>generation from sequence model：
+<ul>
+<li>autoregressive (one token at a time)</li>
+<li>non-regressive (all token predicted at once)</li>
+</ul></li>
+</ul>
+<h2 id="permuted-autoregressive-sequence-models">Permuted Autoregressive
+Sequence Models</h2>
+<p>在这一节中，会像大部分论文一样采用三段论：先介绍整体的模型架构，再介绍训练的方式，最后讨论如何运用训练好的模型做推理。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2023/12/08/DL/diffusion/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script>
+    $(".article-content img").wrap(function() {
+        return '<a data-fancybox href="' + $(this).attr("src") + '"/>';
+    });
+</script>
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">Close</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              Archives
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/categories/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              Categories
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/tags/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              Tags
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="ROUND_RECT"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              About
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: '277317290454635afa73',
+  clientSecret: '78223c859304da5e8d71bfce136d436c6ff95c37',
+  repo: 'blog-comment',
+  owner: 'forsigner',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: md5(location.pathname),
+  admin: ['forsigner'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
