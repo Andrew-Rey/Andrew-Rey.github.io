@@ -636,13 +636,13 @@ body {
   letter-spacing: 0.01em;
   font-weight: 200;
   font-style: normal;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
 }
 #header #nav ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  line-height: 15px;
+  line-height: 22px;
 }
 #header #nav ul a {
   margin-right: 15px;
@@ -657,7 +657,7 @@ body {
 #header #nav ul li {
   display: inline-block;
   margin-right: 15px;
-  border-right: 1px dotted;
+  border-right: 1px solid;
   border-color: #2bbc8a;
   vertical-align: middle;
 }
@@ -706,7 +706,7 @@ body {
   #header #nav li:not(:first-child) {
     padding-top: 1rem;
     padding-left: 120px;
-    font-size: 1rem;
+    font-size: 2rem;
   }
 }
 #header-post {
@@ -1273,7 +1273,7 @@ article .content .caption {
   color: #908d8d;
   vertical-align: top;
   text-align: center;
-  font-size: 12px;
+  font-size: 16px;
 }
 #footer ul {
   margin: 0;
@@ -1521,73 +1521,66 @@ article .content .caption {
   content: ")";
 }
 .highlight {
-  background: #000;
-  color: #f8f8f8;
+  background: #1d1f21;
+  color: #c5c8c6;
+/* selection color */
+}
+.highlight::selection,
+.highlight span::selection {
+  background: #373b41;
+}
+.highlight::-moz-selection,
+.highlight span::-moz-selection {
+  background: #373b41;
+}
+.highlight .code .title,
+.highlight .code .name {
+  color: #f0c674;
 }
 .highlight .code .comment,
-.highlight .code .quote {
-  color: #aeaeae;
-  font-style: italic;
+.highlight .code .meta,
+.highlight .code .meta .keyword {
+  color: #707880;
+}
+.highlight .code .number,
+.highlight .code .symbol,
+.highlight .code .literal,
+.highlight .code .deletion,
+.highlight .code .link {
+  color: #c66;
+}
+.highlight .code .string,
+.highlight .code .doctag,
+.highlight .code .addition,
+.highlight .code .regexp,
+.highlight .code .selector-attr,
+.highlight .code .selector-pseudo {
+  color: #b5bd68;
+}
+.highlight .code .attribute,
+.highlight .code .code,
+.highlight .code .selector-id {
+  color: #b294bb;
 }
 .highlight .code .keyword,
 .highlight .code .selector-tag,
-.highlight .code .type {
-  color: #e28964;
-}
-.highlight .code .string {
-  color: #65b042;
-}
-.highlight .code .subst {
-  color: #daefa3;
-}
-.highlight .code .regexp,
-.highlight .code .link {
-  color: #e9c062;
-}
-.highlight .code .title,
-.highlight .code .section,
-.highlight .code .tag,
-.highlight .code .name {
-  color: #89bdff;
-}
-.highlight .code .class .title,
-.highlight .code .doctag {
-  text-decoration: underline;
-}
-.highlight .code .symbol,
 .highlight .code .bullet,
-.highlight .code .number {
-  color: #3387cc;
+.highlight .code .tag {
+  color: #81a2be;
 }
-.highlight .code .params,
+.highlight .code .subst,
 .highlight .code .variable,
+.highlight .code .template-tag,
 .highlight .code .template-variable {
-  color: #3e87e3;
+  color: #8abeb7;
 }
-.highlight .code .attribute {
-  color: #cda869;
-}
-.highlight .code .meta {
-  color: #8996a8;
-}
-.highlight .code .formula {
-  background-color: #0e2231;
-  color: #f8f8f8;
-  font-style: italic;
-}
-.highlight .code .addition {
-  background-color: #253b22;
-  color: #f8f8f8;
-}
-.highlight .code .deletion {
-  background-color: #420e09;
-  color: #f8f8f8;
-}
+.highlight .code .type,
+.highlight .code .built_in,
+.highlight .code .builtin-name,
+.highlight .code .quote,
+.highlight .code .section,
 .highlight .code .selector-class {
-  color: #9b703f;
-}
-.highlight .code .selector-id {
-  color: #8b98ab;
+  color: #de935f;
 }
 .highlight .code .emphasis {
   font-style: italic;
